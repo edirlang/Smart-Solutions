@@ -54,7 +54,69 @@
 			</div><!-- /.navbar-collapse -->
 		</nav>
 		
-		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					
+				</div>
+
+				<div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
+					<form action="ingresar.php" method="POST" role="form">
+						<legend>Nueva Transacion</legend>
+						<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="form-group">
+									<label for="">Fecha</label>
+									<input type="date" class="form-control" id="Codigo1" placeholder="dd/mm/aaaa">
+								</div>
+							</div>
+
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							
+							</div>
+
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="form-group">
+									<label for="">Tramitador</label>
+									<input type="number" class="form-control" id="Codigo1" placeholder="Cedula">
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<div class="form-group">
+								<h1 class="text-center">Debito/Debe</h1>
+								
+								<label for="">Codigo</label>
+								<input type="text" class="form-control" id="Codigo1" placeholder="Codigo de transacion">
+
+								<label for="">Valor</label>
+								<input type="number" class="form-control" id="Valor1" placeholder="Valor a tramitar">
+							</div>
+							<button type="submit" class="btn btn-primary">Enviar</button>
+						</div>
+						
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+							
+						</div>
+
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<div class="form-group">
+								<h1 class="text-center">Credito/Haber</h1>
+								
+								<label for="">Codigo</label>
+								<input type="text" class="form-control" id="Codigo2" placeholder="Codigo de transacion">
+
+								<label for="">Valor</label>
+								<input type="number" class="form-control" id="Valor2" placeholder="Valor a tramita">
+							</div>
+							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
 		
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>

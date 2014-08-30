@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,22 +32,62 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Factura</a></li>
-					<li><a href="#">Clientes</a></li>
+					<li class="active"><a href="#">Inventario</a></li>
+					<li><a href="Transacion-manual.php">Transaciones manuales</a></li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Activos</a></li>
+							<li><a href="#">Pasivos</a></li>
+						</ul>
+					</li>
 				</ul>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
 					</div>
-					<button type="submit" class="btn btn-default">Buscar</button>
+					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th class="text-center" colspan="4">Dede/Dedito</th>
+								<th class="text-center" colspan="4">Haber/Credito</th>
+							</tr>
+							<tr>
+								<th>Codigo</th>
+								<th>Fecha</th>
+								<th>Naturaleza</th>
+								<th>Tramitador</th>
+								<th>Valor</th>
 
-
+								<th>Codigo</th>
+								<th>Naturaleza</th>
+								<th>Tramitador</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<a type="button" class="btn btn-primary" href="ingresar-transacion.php">Ingresar</a>
+				</div>
+			</div>
+		</div>
+		
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->

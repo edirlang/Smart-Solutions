@@ -9,7 +9,7 @@
     <title>Smart-Solutions</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +39,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Inventario</a></li>
       <li><a href="#">Clientes</a></li>
-      <li><a href="#">EMpleados</a></li>
+      <li><a href="#">Empleados</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           Estados Financieros<b class="caret"></b>
@@ -63,7 +63,7 @@
     </form>
  
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="index.html">Salir</a></li>
+      <li><a href="../salir.php">Salir</a></li>
     </ul>
   </div>
 </nav>

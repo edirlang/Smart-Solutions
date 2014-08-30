@@ -13,11 +13,11 @@
             	$i=1;
                 switch ($row[5]) {
                 	case 'admin':
-						header("Location: panel_admin.php");
+						header("Location: Administrador/panel_admin.php");
 						$_SESSION['usuario']=$usuario;
 					break;
 					case 'contador':
-						header("Location: panel_contador.php");
+						header("Location: Contador/panel_contador.php");
 						$_SESSION['usuario']=$usuario;
 					break;
 
