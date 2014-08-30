@@ -30,7 +30,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">HONE</a>
+    <a class="navbar-brand" href="panel_admin.php">HONE</a>
   </div>
  
   <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -47,10 +47,9 @@
         <ul class="dropdown-menu">
           <li><a href="#">Ventas</a></li>
           <li><a href="#">Compras</a></li>
+          <li class="divider"></li>
           <li><a href="#">Activos</a></li>
-          <li class="divider"></li>
           <li><a href="#">Pasivos</a></li>
-          <li class="divider"></li>
           <li><a href="#">Gastos</a></li>
         </ul>
       </li>
@@ -64,19 +63,7 @@
     </form>
  
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Enlace #3</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Menú #2 <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Acción #1</a></li>
-          <li><a href="#">Acción #2</a></li>
-          <li><a href="#">Acción #3</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Acción #4</a></li>
-        </ul>
-      </li>
+      <li><a href="index.html">Salir</a></li>
     </ul>
   </div>
 </nav>
