@@ -57,33 +57,79 @@
 		
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 					<table class="table table-condensed table-hover">
 						<thead>
 							<tr>
-								<th class="text-center" colspan="4">Dede/Dedito</th>
-								<th class="text-center" colspan="4">Haber/Credito</th>
+								<th class="text-center" colspan="6">Dede/Dedito</th>
 							</tr>
 							<tr>
+								<th>Tramitador</th>
 								<th>Codigo</th>
 								<th>Fecha</th>
 								<th>Naturaleza</th>
-								<th>Tramitador</th>
-								<th>Valor</th>
-
-								<th>Codigo</th>
-								<th>Naturaleza</th>
-								<th>Tramitador</th>
+								<th>Descripcion</th>
 								<th>Valor</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-							</tr>
+							<?php 
+								include("../conexion.php");
+								$result = mysql_query("SELECT * FROM activo1 where Naturaleza='D'", $cn);
+								
+								while ($row = mysql_fetch_row($result)) {
+									echo "<tr>";
+									echo "<td>".$row[1]."</td>";
+									echo "<td>".$row[2]."</td>";
+									echo "<td>".$row[3]."</td>";
+									echo "<td>".$row[4]."</td>";
+									echo "<td>".$row[5]."</td>";
+									echo "<td>".$row[6]."</td>";
+									echo "</tr>";
+								}
+								echo mysql_error();
+								mysql_close($cn);
+							 ?>
 						</tbody>
 					</table>
 					<a type="button" class="btn btn-primary" href="ingresar-transacion.php">Ingresar</a>
+				</div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th class="text-center" colspan="6">Haber/Credito</th>
+							</tr>
+							<tr>
+								<th>Tramitador</th>
+								<th>Codigo</th>
+								<th>Fecha</th>
+								<th>Naturaleza</th>
+								<th>Descripcion</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+								include("../conexion.php");
+								$result = mysql_query("SELECT * FROM activo1 where Naturaleza='C'", $cn);
+								
+								while ($row = mysql_fetch_row($result)) {
+									echo "<tr>";
+									echo "<td>".$row[1]."</td>";
+									echo "<td>".$row[2]."</td>";
+									echo "<td>".$row[3]."</td>";
+									echo "<td>".$row[4]."</td>";
+									echo "<td>".$row[5]."</td>";
+									echo "<td>".$row[6]."</td>";
+									echo "</tr>";
+								}
+								echo mysql_error();
+								mysql_close($cn);
+							 ?>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+<?php include("consultar-usuario.php"); ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -44,9 +45,9 @@
 				</ul>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" class="form-control" placeholder="Ingrese codigo de operacion">
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Buscar</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
@@ -67,7 +68,7 @@
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="">Fecha</label>
-									<input type="date" class="form-control" id="Codigo1" placeholder="dd/mm/aaaa">
+									<input type="date" class="form-control" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
 								</div>
 							</div>
 
@@ -78,7 +79,7 @@
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="">Tramitador</label>
-									<input type="number" class="form-control" id="Codigo1" placeholder="Cedula">
+									<input type="number" class="form-control" name="Cedula" value="<?php echo $usuario; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -88,10 +89,13 @@
 								<h1 class="text-center">Debito/Debe</h1>
 								
 								<label for="">Codigo</label>
-								<input type="text" class="form-control" id="Codigo1" placeholder="Codigo de transacion">
+								<input type="text" class="form-control" name="Codigo1" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
+
+								<label for="">Descripcion</label>
+								<input type="text" class="form-control" name="descripcion1" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
 
 								<label for="">Valor</label>
-								<input type="number" class="form-control" id="Valor1" placeholder="Valor a tramitar">
+								<input type="number" class="form-control" name="Valor1" placeholder="Valor a tramitar" required title="Ingrese el valor">
 							</div>
 							<button type="submit" class="btn btn-primary">Enviar</button>
 						</div>
@@ -105,10 +109,13 @@
 								<h1 class="text-center">Credito/Haber</h1>
 								
 								<label for="">Codigo</label>
-								<input type="text" class="form-control" id="Codigo2" placeholder="Codigo de transacion">
+								<input type="text" class="form-control" name="Codigo2" placeholder="Codigo de transacion" required title="Ingrese la codigo">
+
+								<label for="">Descripcion</label>
+								<input type="text" class="form-control" name="descripcion2" placeholder="Descripcion de actividad" required title="Ingrese la Descripcion">
 
 								<label for="">Valor</label>
-								<input type="number" class="form-control" id="Valor2" placeholder="Valor a tramita">
+								<input type="number" class="form-control" name="Valor2" placeholder="Valor a tramitar" required title="Ingrese el valor">
 							</div>
 							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
 						</div>
