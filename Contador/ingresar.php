@@ -26,8 +26,7 @@ mysql_query($sql,$cn);
 if (mysql_error()) {
 	echo  mysql_error();
 }else{
-	//header("Location: Transacion-manual.php");
-	echo  mysql_error();
+	header("Location: Transacion-manual.php");
 }
 mysql_close($cn);
  ?>

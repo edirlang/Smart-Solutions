@@ -57,6 +57,8 @@
 		
 		<div class="container-fluid">
 			<div class="row">
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+				
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 					<table class="table table-condensed table-hover">
 						<thead>
@@ -94,6 +96,8 @@
 					</table>
 					<a type="button" class="btn btn-primary" href="ingresar-transacion.php">Ingresar</a>
 				</div>
+
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 					<table class="table table-condensed table-hover">
