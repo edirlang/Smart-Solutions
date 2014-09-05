@@ -26,13 +26,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Home</a>
+				<a class="navbar-brand" href="panel_contador.php">Home</a>
 			</div>
 		
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Inventario</a></li>
+					<li class="active"><a href="producto.php">Inventario</a></li>
 					<li><a href="Transacion-manual.php">Transaciones manuales</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
@@ -42,12 +42,12 @@
 						</ul>
 					</li>
 				</ul>
-				<form class="navbar-form navbar-left" role="search">
+				<!--<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
+				</form>-->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
 				</ul>

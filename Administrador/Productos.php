@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php include("ProductosBD.php"); ?>
+
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -58,34 +60,42 @@
     </ul>
   </div>
 </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <h3>¿Quienes Somos?</h3>
-        <p class="text-info">Smart-Solutions esta conformada por un grupo de 5 ingenieros que buscan solucionar las continuas dudas que se les presentan a los consumidores cuando se deben afrontar a la difícil decisión de adquirir un equipo nuevo, ya que en el mercado actual hay una gran variedad de productos diferentes disponibles en el mercado distribuidos en una amplia gama de precios en los que se encuentran equipos con configuraciones y propósitos diferentes, los cuales no quedan muy claros para los compradores en algunos casos, por ello es necesario prestar una asesoría durante todo el proceso de compra, para que cuando el usuario adquiera su producto este sea el que realmente se acomode a sus necesidades.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <h3>Objeto Social</h3>
-        <p class="text-info">comercializadora de equipos de computo por medio de asesorias predeterminadas.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <h3>Mision</h3>
-        <p class="text-info">El propósito de la comercializadora Smart-Solutions es el de proveer computadores de excelente calidad y rendimiento a los diferentes tipos de consumidores presentes en el mercado a través de una asesoría personalizada, garantizándole al consumidor el equipo mas adecuado para suplir sus necesidades, ya sea para el uso casual, estudio, trabajo, entretenimiento o cualquier otra.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        <h3>Vision</h3>
-        <p class="text-info">El objetivo de Smart-Solutions es el de prestar un servicio de excelente calidad a todos sus consumidores, para poder expandirse en toda la región de Cundinamarca y posteriormente por todo el país, no solo como comercializadora de computadores portátiles sino también buscando ampliar el portafolio de servicios e implementando el servicio técnico a sus consumidores.</p>
-      </div>
-    </div>
-    
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+       <table class="table table-condensed table-hover">
+         <thead>
+           <tr>
+             <th>Codigo</th>
+             <th>Nombre</th>
+             <th>Descripcion</th>
+             <th>Especificaciones</th>
+             <th>Valor de Compra</th>
+             <th>Valor de Venta</th>
+             <th>Cantidad</th>
+           </tr>
+         </thead>
+         <tbody>
+           <?php $total=0; while($row = mysql_fetch_row($productos)){ ?>
+           <tr>
+             <td><?php echo $row[0]; ?></td>
+             <td><?php echo $row[1]; ?></td>
+             <td><?php echo $row[2]; ?></td>
+             <td><?php echo $row[3]; ?></td>
+             <td><?php echo $row[4]; ?></td>
+             <td><?php echo $row[5]; ?></td>
+             <td><?php echo $row[6]; ?></td>
+             <td><a class"btn btn-mini" href="Editar-producto.php?id=<?php echo $row[0]; ?>" >Editar</a></td>
+             <td><a href="eliminarProducto.php" class"btn" href="Eliminar-producto.php?id=<?php echo $row[0]; ?>">Eliminar</a></td>
+           </tr>
+           <?php $total+=$row[6]*$row[4]; } 
+           echo $total;?>
+         </tbody>
+       </table>
+       <a class"btn btn-primary" href="Producto-Nuevo.html" >Nuevo</a>
+     </div> 
   </div>
+</div>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>

@@ -1,0 +1,21 @@
+body{
+	background-image: url(fondo.jpg);
+	font-family:verdana;
+	color:black;
+	font-size: 14px;
+}
+.panel{
+	background-image: url(fondo.jpg);
+	font-family:verdana;
+	color:black;
+	font-size: 14px;
+}
+footer
+{
+	background-color: #030303;
+	color: #F1F1F1;
+	font-size: 16px;
+	margin-top: 20px;
+	padding: 20px;
+	text-align: center;
+}

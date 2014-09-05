@@ -9,7 +9,10 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../css/bootstrap.css">
-
+		
+		<!-- jQuery -->
+		<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../js/Transaciones.js"></script>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -18,6 +21,11 @@
 		<![endif]-->
 	</head>
 	<body>
+		
+		
+		<!-- Bootstrap JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 		<nav class="navbar navbar-default" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -27,13 +35,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Home</a>
+				<a class="navbar-brand" href="panel_contador.php">Home</a>
 			</div>
 		
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Inventario</a></li>
+					<li class="active"><a href="producto.php">Inventario</a></li>
 					<li><a href="Transacion-manual.php">Transaciones manuales</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
@@ -43,18 +51,18 @@
 						</ul>
 					</li>
 				</ul>
-				<form class="navbar-form navbar-left" role="search">
+				<!--<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Ingrese codigo de operacion">
+						<input type="text" class="form-control" placeholder="Search">
 					</div>
-					<button type="submit" class="btn btn-default">Buscar</button>
-				</form>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>-->
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
-		
+
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -68,7 +76,7 @@
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="">Fecha</label>
-									<input type="date" class="form-control" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
+									<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
 								</div>
 							</div>
 
@@ -79,7 +87,7 @@
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="">Tramitador</label>
-									<input type="number" class="form-control" name="Cedula" value="<?php echo $usuario; ?>" disabled>
+									<input type="number" class="form-control" name="Cedula" id="Cedula" value="<?php echo $usuario; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -89,35 +97,47 @@
 								<h1 class="text-center">Debito/Debe</h1>
 								
 								<label for="">Codigo</label>
-								<input type="text" class="form-control" name="Codigo1" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
+								<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
 
 								<label for="">Descripcion</label>
-								<input type="text" class="form-control" name="descripcion1" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
+								<input type="text" class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
+
+								<label for="">Naturaleza</label>
+								<select class="form-control" name="Naturaleza" value="D" id="Naturaleza">
+  									<option value="D">D</option>
+  									<option value="C">C</option>
+								</select>
 
 								<label for="">Valor</label>
-								<input type="number" class="form-control" name="Valor1" placeholder="Valor a tramitar" required title="Ingrese el valor">
+								<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
 							</div>
 							<button type="submit" class="btn btn-primary">Enviar</button>
+							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
 						</div>
 						
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							
+							<div class="btn btn-primary" id="boton1">Agregar</div>
 						</div>
 
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="form-group">
-								<h1 class="text-center">Credito/Haber</h1>
-								
-								<label for="">Codigo</label>
-								<input type="text" class="form-control" name="Codigo2" placeholder="Codigo de transacion" required title="Ingrese la codigo">
-
-								<label for="">Descripcion</label>
-								<input type="text" class="form-control" name="descripcion2" placeholder="Descripcion de actividad" required title="Ingrese la Descripcion">
-
-								<label for="">Valor</label>
-								<input type="number" class="form-control" name="Valor2" placeholder="Valor a tramitar" required title="Ingrese el valor">
-							</div>
-							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
+							<table class="table table-condensed table-hover table-bordered">
+						<thead>
+							<tr>
+								<th class="text-center" colspan="6">Debe/Dedito</th>
+							</tr>
+							<tr>
+								<th>Tramitador</th>
+								<th>Codigo</th>
+								<th>Fecha</th>
+								<th>Naturaleza</th>
+								<th>Descripcion</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody id="Filas">
+							
+						</tbody>
+					</table>
 						</div>
 					</form>
 					
@@ -125,9 +145,6 @@
 			</div>
 		</div>
 		
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>
