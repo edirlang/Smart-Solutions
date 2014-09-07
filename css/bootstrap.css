@@ -6203,4 +6203,10 @@ button.close {
     display: none !important;
   }
 }
+
+.error {
+  border:1px solid red;
+  background:#ffa0a7;
+  color: red;
+}
 /*# sourceMappingURL=bootstrap.css.map */

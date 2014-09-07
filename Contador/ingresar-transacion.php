@@ -12,6 +12,7 @@
 		
 		<!-- jQuery -->
 		<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="../js/jquery.validate.js"></script>
 		<script type="text/javascript" src="../js/Transaciones.js"></script>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,35 +71,27 @@
 				</div>
 
 				<div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
-					<form action="ingresar.php" method="POST" role="form" on>
+					<div id="errores">
+						
+					</div>
+					<form id="formulario" name="formulario" method="POST" role="form" on>
 						<legend>Nueva Transacion</legend>
+						
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mensaje">
 							
 						</div>
-						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-								<div class="form-group">
-									<label for="">Fecha</label>
-									<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
-								</div>
-							</div>
-
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							
-							</div>
-
-							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-								<div class="form-group">
-									<label for="">Tramitador</label>
-									<input type="number" class="form-control" name="Cedula" id="Cedula" value="<?php echo $usuario; ?>" disabled>
-								</div>
-							</div>
-						</div>
+						
 						
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<h1 class="text-center"></h1>
 								<input name=arv type=hidden>
+								
+								<label for="">Tramitador</label>
+								<input type="number" class="form-control" name="Cedula" id="Cedula" value="<?php echo $usuario; ?>" disabled>
+								
+								<label for="">Fecha</label>
+								<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
 								
 								<label for="">Codigo</label>
 								<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
@@ -115,12 +108,24 @@
 								<label for="">Valor</label>
 								<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
 							</div>
-							<div class="btn btn-primary" id="Enviar">Enviar</div>
-							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
+							
 						</div>
 						
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<div class="btn btn-primary" id="boton1">Agregar</div>
+							<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<button class="btn btn-primary" id="boton1">Agregar</button>
+								<br>
+								<br>
+							</div>
+
+							<div class=" text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<button class="btn btn-primary" id="Enviar">Enviar</button>
+								<br>
+								<br>
+							</div>
+							<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
+							</div>
 						</div>
 
 						<div id="Mensaje" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -148,7 +153,5 @@
 				</div>
 			</div>
 		</div>
-		
-		
 	</body>
 </html>
