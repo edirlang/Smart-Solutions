@@ -70,8 +70,11 @@
 				</div>
 
 				<div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
-					<form action="ingresar.php" method="POST" role="form">
+					<form action="ingresar.php" method="POST" role="form" on>
 						<legend>Nueva Transacion</legend>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mensaje">
+							
+						</div>
 						<div class="row">
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								<div class="form-group">
@@ -94,7 +97,8 @@
 						
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
-								<h1 class="text-center">Debito/Debe</h1>
+								<h1 class="text-center"></h1>
+								<input name=arv type=hidden>
 								
 								<label for="">Codigo</label>
 								<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
@@ -111,7 +115,7 @@
 								<label for="">Valor</label>
 								<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
 							</div>
-							<button type="submit" class="btn btn-primary">Enviar</button>
+							<div class="btn btn-primary" id="Enviar">Enviar</div>
 							<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
 						</div>
 						
@@ -119,11 +123,11 @@
 							<div class="btn btn-primary" id="boton1">Agregar</div>
 						</div>
 
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<div id="Mensaje" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 							<table class="table table-condensed table-hover table-bordered">
 						<thead>
 							<tr>
-								<th class="text-center" colspan="6">Debe/Dedito</th>
+								<th class="text-center" colspan="6">Transaciones</th>
 							</tr>
 							<tr>
 								<th>Tramitador</th>
