@@ -10,6 +10,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css">
+    <script src="../js/jquery-2.1.1.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,83 +25,67 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-default" role="navigation">
-  <!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="panel_admin.php">HOME</a>
-  </div>
- 
-  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-       otro elemento que se pueda ocultar al minimizar la barra -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="Productos.php">Inventario</a></li>
-      <li><a href="Clientes.php">Clientes</a></li>
-      <li><a href="Empleados.php">Empleados</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Estados Financieros<b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Ventas</a></li>
-          <li><a href="#">Compras</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Activos</a></li>
-          <li><a href="#">Pasivos</a></li>
-          <li><a href="#">Gastos</a></li>
+    <nav class="navbar navbar-inverse">
+      <a class="navbar-brand" href="panel_admin.php">HOME</a>
+      <ul class="nav navbar-nav">
+          <li ><a href="Productos.php">Inventario</a></li>
+          <li><a href="Clientes.php">Clientes</a></li>
+          <li><a href="Empleados.php">Empleados</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Estados Financieros<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Ventas</a></li>
+              <li><a href="#">Compras</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Activos</a></li>
+              <li><a href="#">Pasivos</a></li>
+              <li><a href="#">Gastos</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
- 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="../salir.php">Salir</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-       <table class="table table-condensed table-hover">
-         <thead>
-           <tr>
-             <th>Codigo</th>
-             <th>Nombre</th>
-             <th>Descripcion</th>
-             <th>Especificaciones</th>
-             <th>Valor de Compra</th>
-             <th>Valor de Venta</th>
-             <th>Cantidad</th>
-           </tr>
-         </thead>
-         <tbody>
-           <?php $total=0; while($row = mysql_fetch_row($productos)){ ?>
-           <tr>
-             <td><?php echo $row[0]; ?></td>
-             <td><?php echo $row[1]; ?></td>
-             <td><?php echo $row[2]; ?></td>
-             <td><?php echo $row[3]; ?></td>
-             <td><?php echo $row[4]; ?></td>
-             <td><?php echo $row[5]; ?></td>
-             <td><?php echo $row[6]; ?></td>
-             <td><a class"btn btn-mini" href="Editar-producto.php?id=<?php echo $row[0]; ?>" >Editar</a></td>
-             <td><a href="eliminarProducto.php" class"btn" href="Eliminar-producto.php?id=<?php echo $row[0]; ?>">Eliminar</a></td>
-           </tr>
-           <?php $total+=$row[6]*$row[4]; } 
-           echo $total;?>
-         </tbody>
-       </table>
-       <a class"btn btn-primary" href="Producto-Nuevo.html" >Nuevo</a>
-     </div> 
-  </div>
-</div>
+        
+        <ul class="nav navbar-inverse navbar-right">
+          <li><a href="../salir.php">Salir</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+           <table class="table table-condensed table-hover">
+             <thead>
+               <tr>
+                 <th>Codigo</th>
+                 <th>Nombre</th>
+                 <th>Descripcion</th>
+                 <th>Especificaciones</th>
+                 <th>Valor de Compra</th>
+                 <th>Valor de Venta</th>
+                 <th>Cantidad</th>
+               </tr>
+             </thead>
+             <tbody>
+               <?php while($row = mysql_fetch_row($productos)){ ?>
+               <tr>
+                 <td><?php echo $row[0]; ?></td>
+                 <td><?php echo $row[1]; ?></td>
+                 <td><?php echo $row[2]; ?></td>
+                 <td><?php echo $row[3]; ?></td>
+                 <td><?php echo $row[4]; ?></td>
+                 <td><?php echo $row[5]; ?></td>
+                 <td><?php echo $row[6]; ?></td>
+                 <td><a class"btn btn-mini" href="Editar-producto.php?id=<?php echo $row[0]; ?>" >Editar</a></td>
+                 <td><a href="eliminarProducto.php" class"btn" href="Eliminar-producto.php?id=<?php echo $row[0]; ?>">Eliminar</a></td>
+               </tr>
+               <?php } ?>
+             </tbody>
+           </table>
+           <a class"btn btn-primary" href="Producto-Nuevo.html" >Nuevo</a>
+         </div> 
+      </div>
+    </div>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>

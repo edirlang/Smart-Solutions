@@ -9,6 +9,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/bootstrap-theme.css">
 		
 		<!-- jQuery -->
 		<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
@@ -23,133 +24,99 @@
 	</head>
 	<body>
 		
-		
 		<!-- Bootstrap JavaScript -->
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-		<nav class="navbar navbar-default" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="panel_contador.php">Home</a>
-			</div>
-		
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="producto.php">Inventario</a></li>
-					<li><a href="Transacion-manual.php">Transaciones manuales</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Activos</a></li>
-							<li><a href="#">Pasivos</a></li>
-						</ul>
-					</li>
-				</ul>
-				<!--<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>-->
-				<ul class="nav navbar-nav navbar-right">
+		<nav class="navbar navbar-inverse">
+			<a class="navbar-brand" href="panel_contador.php">HOME</a>
+			<ul class="nav navbar-nav">
+				<li><a href="producto.php">Inventario</a></li>
+				<li><a href="Transacion-manual.php">Transaciones manuales</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Activos</a></li>
+						<li><a href="#">Pasivos</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-inverse navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
+			</ul>
 		</nav>
 
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-					
-				</div>
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-				<div class="col-xs-8 col-sm-8 col-md-6 col-lg-8">
-					<div id="errores">
+				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+					<div id="Mensaje" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						
 					</div>
-					<form id="formulario" name="formulario" method="POST" role="form" on>
-						<legend>Nueva Transacion</legend>
-						
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mensaje">
-							
-						</div>
-						
-						
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="form-group">
-								<h1 class="text-center"></h1>
-								<input name=arv type=hidden>
-								
-								<label for="">Tramitador</label>
-								<input type="number" class="form-control" name="Cedula" id="Cedula" value="<?php echo $usuario; ?>" disabled>
-								
-								<label for="">Fecha</label>
-								<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
-								
-								<label for="">Codigo</label>
-								<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
-
-								<label for="">Descripcion</label>
-								<input type="text" class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
-
-								<label for="">Naturaleza</label>
-								<select class="form-control" name="Naturaleza" value="D" id="Naturaleza">
-  									<option value="D">D</option>
-  									<option value="C">C</option>
-								</select>
-
-								<label for="">Valor</label>
-								<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
+					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Nueva Transacion</h3>
 							</div>
-							
-						</div>
-						
-						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-							<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<button class="btn btn-primary" id="boton1">Agregar</button>
-								<br>
-								<br>
-							</div>
+							<div class="panel-body">
+								<form id="formulario" name="formulario" method="POST" role="form" on>
+									<div class="form-group">
+										
+										<label for="">Tramitador</label>
+										<input type="number" class="form-control" name="Cedula" id="Cedula" value="<?php echo $usuario; ?>" disabled>
+												
+										<label for="">Fecha</label>
+										<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
+												
+										<label for="">Codigo</label>
+										<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
 
-							<div class=" text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<button class="btn btn-primary" id="Enviar">Enviar</button>
-								<br>
-								<br>
-							</div>
-							<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<a type="button" class="btn btn-primary" href="Transacion-manual.php">Cancelar</a>
+										<label for="">Descripcion</label>
+										<input type="text" class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
+
+										<label for="">Naturaleza</label>
+										<select class="form-control" name="Naturaleza" value="D" id="Naturaleza">
+				  							<option value="D">D</option>
+				  							<option value="C">C</option>
+										</select>
+
+										<label for="">Valor</label>
+										<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
+									
+									</div>
+									<button class="btn btn-primary btn-block" id="boton1">Agregar</button>
+								</form>
 							</div>
 						</div>
-
-						<div id="Mensaje" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<table class="table table-condensed table-hover table-bordered">
-						<thead>
-							<tr>
-								<th class="text-center" colspan="6">Transaciones</th>
-							</tr>
-							<tr>
-								<th>Tramitador</th>
-								<th>Codigo</th>
-								<th>Fecha</th>
-								<th>Naturaleza</th>
-								<th>Descripcion</th>
-								<th>Valor</th>
-							</tr>
-						</thead>
-						<tbody id="Filas">
-							
-						</tbody>
-					</table>
-						</div>
-					</form>
+					</div>
 					
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Transaciones</h3>
+							</div>
+							<div class="panel-body">
+								<table class="table table-condensed table-hover">
+									<thead>
+										<tr>
+											<th>Tramitador</th>
+											<th>Codigo</th>
+											<th>Fecha</th>
+											<th>Naturaleza</th>
+											<th>Descripcion</th>
+											<th>Valor</th>
+										</tr>
+									</thead>
+									<tbody id="Filas">
+								
+									</tbody>
+								</table>
+								<button class="btn btn-success" id="Enviar">Enviar</button>
+								<a type="button" class="btn btn-danger" href="Transacion-manual.php">Cancelar</a>
+								
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

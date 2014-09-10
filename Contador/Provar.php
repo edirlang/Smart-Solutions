@@ -1,17 +1,29 @@
 <?php 
 	$datos = json_decode($_POST['jdatos'], true);
-	$totalDebito=0;
-	$totalCredito=0;
 	
-	for($i=0;$i<count($datos);$i++) {
-		if($datos[$i][3]=="C"){
-			$totalCredito+=$datos[$i][5];
-		}else{
-			$totalDebito+=$datos[$i][5];
-		}	
+	function Comprobar($datos){
+		$codigos = array(1105,1120,112005,12,1205,123005,131505,131520,133005,133010,133015,134010,134515,134520,134595,139935,139945,14,1405,1455,151670,1520,154005,
+			21,2105,2145,23,2305,233540,236540,25,2505,2615,263010,263515,270505,5140,510503,510506,510518,510548,511510,5220,512015,513535,514525,
+			520515,521030,4135,413556,421005,4235,470590,423530,413554,6205,31);
+ 		Global $totalCredito;
+ 		Global $totalDebito;
+
+ 		foreach ($datos as $llave => $valor) {
+ 			foreach ($codigos as $llave1 => $codigo) {
+ 				if($codigo == $valor[1]){
+ 					if($valor[3]=="C"){
+						$totalCredito+=$valor[5];
+					}else{
+						$totalDebito+=$valor[5];
+					}	
+ 				}
+ 			}
+ 		}
 	}
 
-	if($totalDebito!=$totalCredito){
+	Comprobar($datos);
+
+	if(($totalDebito != $totalCredito) || ($totalCredito == 0)){
 		echo 0;
 	}else{
 		GuardarBD($datos);

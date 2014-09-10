@@ -8,6 +8,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/bootstrap-theme.css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,31 +18,18 @@
 		<![endif]-->
 	</head>
 	<body>
-		<nav class="navbar navbar-default" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="panel_cajero.php">Home</a>
-			</div>
-		
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
+		<nav class="navbar navbar-inverse">
+			<a class="navbar-brand" href="">Menu</a>
+			<ul class="nav navbar-nav">
 					<li class="active"><a href="Factura.php">Factura</a></li>
 					<li><a href="Clientes.php">Clientes</a></li>
 					<li><a href="Catalogo.php">Catalogo</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
+				
+				<ul class="nav navbar-inverse navbar-right">
 					<li><a href="../salir.php">Salir</a></li>
 				</ul>
-			</div><!-- /.navbar-collapse -->
 		</nav>
-		
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->

@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart-Solutions</title>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css">
+    <script src="../js/jquery-2.1.1.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,89 +22,74 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-default" role="navigation">
-  <!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="panel_admin.php">HOME</a>
-  </div>
- 
-  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-       otro elemento que se pueda ocultar al minimizar la barra -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="Productos.php">Inventario</a></li>
-      <li><a href="Clientes.php">Clientes</a></li>
-      <li><a href="Empleados.php">Empleados</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Estados Financieros<b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Ventas</a></li>
-          <li><a href="#">Compras</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Activos</a></li>
-          <li><a href="#">Pasivos</a></li>
-          <li><a href="#">Gastos</a></li>
+    <nav class="navbar navbar-inverse">
+      <a class="navbar-brand" href="panel_admin.php">HOME</a>
+      <ul class="nav navbar-nav">
+          <li ><a href="Productos.php">Inventario</a></li>
+          <li><a href="Clientes.php">Clientes</a></li>
+          <li><a href="Empleados.php">Empleados</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Estados Financieros<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Ventas</a></li>
+              <li><a href="#">Compras</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Activos</a></li>
+              <li><a href="#">Pasivos</a></li>
+              <li><a href="#">Gastos</a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
- 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="../salir.php">Salir</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      
+        
+        <ul class="nav navbar-inverse navbar-right">
+          <li><a href="../salir.php">Salir</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+           <form action="GuardarProducto.php" method="POST" role="form" enctype="multipart/form-data">
+             <legend>Nuevo Producto</legend>
+           
+             <div class="form-group">
+               <label for="">Codigo</label>
+               <input type="text" class="form-control" name="Codigo" placeholder="Codigo de Producto">
+
+               <label for="">Nombre</label>
+               <input type="text" class="form-control" name="Nombre" placeholder="Codigo de Producto">
+
+               <label for="">Descripcion</label>
+               <textarea rows="4" cols="50" class="form-control" name="Descripcion"> </textarea>
+
+               <label for="">Especificaciones</label>
+               <textarea rows="4" cols="50" class="form-control" name="Especificaciones"> </textarea>
+
+               <label for="">Valor de Commpra</label>
+               <input type="number" name="ValorComp" id="inputValorComp" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+
+               <label for="">Valor par la Venta</label>
+               <input type="number" name="ValorVen" id="inputValorVen" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+
+               <label for="">Cantidad</label>
+               <input type="number" name="Cantidad" id="inputCantidad" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+
+               <label for="">Fotografia del Producto</label>
+               <input type="file" name="foto" required/>
+               <p class="help-block">Foto para mostrar a clientes.</p>
+             </div>
+
+             <button type="submit" class="btn btn-primary">Enviar</button>
+             <a href="Productos.php" class="btn btn-primary">Cancelar</a>
+           </form>
+         </div> 
+      </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-       <form action="GuardarProducto.php" method="POST" role="form" enctype="multipart/form-data">
-         <legend>Nuevo Producto</legend>
-       
-         <div class="form-group">
-           <label for="">Codigo</label>
-           <input type="text" class="form-control" name="Codigo" placeholder="Codigo de Producto">
-
-           <label for="">Nombre</label>
-           <input type="text" class="form-control" name="Nombre" placeholder="Codigo de Producto">
-
-           <label for="">Descripcion</label>
-           <textarea rows="4" cols="50" class="form-control" name="Descripcion"> </textarea>
-
-           <label for="">Especificaciones</label>
-           <textarea rows="4" cols="50" class="form-control" name="Especificaciones"> </textarea>
-
-           <label for="">Valor de Commpra</label>
-           <input type="number" name="ValorComp" id="inputValorComp" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
-
-           <label for="">Valor par la Venta</label>
-           <input type="number" name="ValorVen" id="inputValorVen" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
-
-           <label for="">Cantidad</label>
-           <input type="number" name="Cantidad" id="inputCantidad" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
-
-           <label for="">Fotografia del Producto</label>
-           <input type="file" name="foto" required/>
-           <p class="help-block">Foto para mostrar a clientes.</p>
-         </div>
-
-         <button type="submit" class="btn btn-primary">Enviar</button>
-         <a href="Productos.php" class="btn btn-primary">Cancelar</a>
-       </form>
-     </div> 
-  </div>
-</div>
 
     <!-- jQuery -->
     <script src="//code.jquery.com/jquery.js"></script>

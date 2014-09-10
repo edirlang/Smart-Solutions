@@ -46,18 +46,16 @@ function presionBoton()
             }), $('<td>', { text: $("#Valor").val()  
           })
         ).hide().appendTo('#Filas').fadeIn('slow');
-          
+          VaciarFormulario();
        }
     });
 }
 
 function VaciarFormulario(){
-  $("#Cedula").val()="";
-  $("#Codigo").val()="";
-  $("#Fecha").val()="";
-  $("#Naturaleza").val()="";
-  $("#Descripcion").val()="";
-  $("#Valor").val()="";
+  $('#formulario').each (function(){
+    this.reset();
+  });
+
 }
 
 function EnviarBD(){
@@ -70,9 +68,9 @@ function EnviarBD(){
 
 function procesar(datos){
    if(datos==1){
-      alert("Correpto");
+      alert("Correcto");
       setTimeout("location.href='Transacion-manual.php'", 50);
    }else{
-      alert(datos);
+    $('#Mensaje').append("<div class='alert alert-danger'>Error: No se cumplio la dobles partida </div>");
    }
 }
