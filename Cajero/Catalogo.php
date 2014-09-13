@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include("../Administrador/ProductosBD.php"); ?>
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
@@ -33,25 +32,12 @@
 		</nav>
 
 		<div class="container-fluid">
-			<?php while($row = mysql_fetch_row($productos)){ ?>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="thumbnail">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<img class="img-rounded img-responsive" alt="2" src="../Imagenes/<?php echo $row[0].".jpg"; ?>"/>
-						</div>
-						<div class="caption">
-							<h3><?php echo $row[0].". "; echo $row[1]; ?></h3>
-							<p>$ <?php echo $row[5]; ?></p>
-			        	</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<p>Descripcion: <br><?php echo $row[2]; ?></p>
-							<p>Caracteristicas: <br><?php echo $row[3]; ?></p>
-						</div>
-					</div>
+					<?php include("ProductosBD.php"); ?>
+					
 				</div>
 			</div>
-			<?php } ?>
 		</div>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>

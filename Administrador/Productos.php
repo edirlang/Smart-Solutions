@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php include("ProductosBD.php"); ?>
-
 <html lang="es">
   <head>
     <meta charset="utf-8">
@@ -25,65 +23,11 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse">
-      <a class="navbar-brand" href="panel_admin.php">HOME</a>
-      <ul class="nav navbar-nav">
-          <li ><a href="Productos.php">Inventario</a></li>
-          <li><a href="Clientes.php">Clientes</a></li>
-          <li><a href="Empleados.php">Empleados</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Estados Financieros<b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Ventas</a></li>
-              <li><a href="#">Compras</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Activos</a></li>
-              <li><a href="#">Pasivos</a></li>
-              <li><a href="#">Gastos</a></li>
-            </ul>
-          </li>
-        </ul>
-        
-        <ul class="nav navbar-inverse navbar-right">
-          <li><a href="../salir.php">Salir</a></li>
-        </ul>
-    </nav>
+    <?php include("menu.php"); ?>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-           <table class="table table-condensed table-hover">
-             <thead>
-               <tr>
-                 <th>Codigo</th>
-                 <th>Nombre</th>
-                 <th>Descripcion</th>
-                 <th>Especificaciones</th>
-                 <th>Valor de Compra</th>
-                 <th>Valor de Venta</th>
-                 <th>Cantidad</th>
-               </tr>
-             </thead>
-             <tbody>
-               <?php while($row = mysql_fetch_row($productos)){ ?>
-               <tr>
-                 <td><?php echo $row[0]; ?></td>
-                 <td><?php echo $row[1]; ?></td>
-                 <td><?php echo $row[2]; ?></td>
-                 <td><?php echo $row[3]; ?></td>
-                 <td><?php echo $row[4]; ?></td>
-                 <td><?php echo $row[5]; ?></td>
-                 <td><?php echo $row[6]; ?></td>
-                 <td><a class"btn btn-mini" href="Editar-producto.php?id=<?php echo $row[0]; ?>" >Editar</a></td>
-                 <td><a href="eliminarProducto.php" class"btn" href="Eliminar-producto.php?id=<?php echo $row[0]; ?>">Eliminar</a></td>
-               </tr>
-               <?php } ?>
-             </tbody>
-           </table>
-           <a class"btn btn-primary" href="Producto-Nuevo.html" >Nuevo</a>
-         </div> 
+        <?php include("ProductosBD.php"); ?> 
       </div>
     </div>
 

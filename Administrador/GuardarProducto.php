@@ -10,13 +10,13 @@
 
 	$ruta="../Imagenes/"; 
 	$uploadfile_temporal=$_FILES['foto']['tmp_name']; 
-	$uploadfile_nombre=$ruta.$Producto[0].".jpg"; 
+	$uploadfile_nombre=$ruta.$Producto[0].".png"; 
 
 	if (is_uploaded_file($uploadfile_temporal)) 
 	{ 
 	    move_uploaded_file($uploadfile_temporal,$uploadfile_nombre); 
 	    return true; 
 	} 
-	//header("Location: Productos.php");
+	header("Location: Productos.php");
 
  ?>

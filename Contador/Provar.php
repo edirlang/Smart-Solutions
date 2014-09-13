@@ -1,16 +1,23 @@
 <?php 
+
 	$datos = json_decode($_POST['jdatos'], true);
 	
 	function Comprobar($datos){
-		$codigos = array(1105,1120,112005,12,1205,123005,131505,131520,133005,133010,133015,134010,134515,134520,134595,139935,139945,14,1405,1455,151670,1520,154005,
-			21,2105,2145,23,2305,233540,236540,25,2505,2615,263010,263515,270505,5140,510503,510506,510518,510548,511510,5220,512015,513535,514525,
-			520515,521030,4135,413556,421005,4235,470590,423530,413554,6205,31);
- 		Global $totalCredito;
+		include("../conexion.php");
+		$result = mysql_query("SELECT * FROM codigotransacion");
+		mysql_close($cn);
+		$codigo= array();
+		
+		while($row = mysql_fetch_row($result)){
+			array_push($codigo, $row[0]);
+ 		}
+
+		Global $totalCredito;
  		Global $totalDebito;
 
  		foreach ($datos as $llave => $valor) {
- 			foreach ($codigos as $llave1 => $codigo) {
- 				if($codigo == $valor[1]){
+ 			foreach ($codigo as $llave1 => $row){
+				if($row == $valor[1]){
  					if($valor[3]=="C"){
 						$totalCredito+=$valor[5];
 					}else{
@@ -32,56 +39,43 @@
 
 	function GuardarBD($datos){
 		include("../conexion.php");
-		$activos = array(1105,1120,112005,12,1205,123005,131505,131520,133005,133010,133015,134010,134515,134520,134595,139935,139945,14,1405,1455,151670,1520,154005); 
- 		$pasivos = array(21,2105,2145,23,2305,233540,236540,25,2505,2615,263010,263515,270505);
- 		$gastos = array(5140,510503,510506,510518,510548,511510,5220,512015,513535,514525,520515,521030);
- 		$ingresos = array(4135,413556,421005,4235,470590,423530,413554);
- 		$costos = 6205;
- 		$patrimonio = 31;
-
+		$result = mysql_query("SELECT * FROM codigotransacion");
+		$codigo= array();
+		
+		while($row = mysql_fetch_row($result)){
+			array_push($codigo, $row);
+ 		}
  		foreach ($datos as $llave => $valor) {
- 			foreach ($activos as $llave1 => $codigo) {
- 				if($codigo == $valor[1]){
- 					$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-					mysql_query($sql,$cn);
-					break;
+ 			foreach ($codigo as $llave => $fila) {
+ 				if($fila[0]==$valor[1]){
+ 					switch ($fila[2]) {
+ 						case 'activo':
+ 								$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 						case 'pasivo':
+ 								$sql = "INSERT INTO pasivo VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 						case 'patrimonio':
+ 								$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 						case 'ingreso':
+ 								$sql = "INSERT INTO ingresos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 						case 'gasto':
+ 								$sql = "INSERT INTO gasto VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 						case 'costo':
+ 								$sql = "INSERT INTO costos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+								mysql_query($sql,$cn);
+ 							break;
+ 					}
  				}
  			}
-
- 			foreach ($pasivos as $llave1 => $codigo) {
- 				if($codigo==$valor[1]){
- 					$sql = "INSERT INTO pasivo VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-					mysql_query($sql,$cn);
-					break;
- 				}
- 			}
-
- 			foreach ($gastos as $llave1 => $codigo) {
- 				if($codigo==$valor[1]){
- 					$sql = "INSERT INTO gasto VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-					mysql_query($sql,$cn);
-					break;
- 				}
- 			}
-
- 			foreach ($ingresos as $llave1 => $codigo) {
- 				if($codigo==$valor[1]){
- 					$sql = "INSERT INTO ingresos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-					mysql_query($sql,$cn);
-					break;
- 				}
- 			}
-
- 			if($valor[1]==$costos){
- 				$sql = "INSERT INTO costos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-				mysql_query($sql,$cn);
- 			}
-
- 			if($valor[1]==$patrimonio){
- 				$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-				mysql_query($sql,$cn);
- 			}
- 			
  		}
  		mysql_close($cn);
 	}

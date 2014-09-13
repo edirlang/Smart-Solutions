@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2014 a las 05:23:03
+-- Tiempo de generación: 13-09-2014 a las 05:11:44
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -64,6 +64,35 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `Apellido` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `codigotransacion`
+--
+
+CREATE TABLE IF NOT EXISTS `codigotransacion` (
+  `Codigo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `codigotransacion`
+--
+
+INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
+('1105', 'Caja', 'activo'),
+('1120', 'Cuenta de Ahorros', 'activo'),
+('112005', 'Bancos', 'activo'),
+('12', 'Inversiones', 'activo'),
+('1205', 'Acciones', 'activo'),
+('123005', 'Empresas', 'activo'),
+('131505', 'Ventas', 'activo'),
+('131520', 'Presatomos', 'activo'),
+('134010', 'Maquinaria y equipo', 'activo'),
+('134515', 'Comiciones', 'activo'),
+('21', 'Obligaciones Financi', 'pasivo');
 
 -- --------------------------------------------------------
 
@@ -200,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Descripcion`, `Especificaciones`, `ValorCompra`, `ValorVenta`, `Cantidad`) VALUES
-('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red)', 'Screen Size	10.1 inches\r\nProcessor	1.6 GHz Intel Atom N270\r\nRAM	1 GB DDR2\r\nHard Drive	160 GB\r\nGraphics Coprocessor	Intel GMA 950\r\nAverage Battery Life (in hours)	3.15 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire One\r\nItem model number	AOD250-1042/LU.S700B.028\r\nHardware Platform	PC\r\nOperating System	Windows XP Home Edition\r\nItem Weight	5 pounds\r\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\r\nColor	Red\r\nProcessor Brand	Intel\r\nProcessor Count	1\r\nComputer Memory Type	SDRAM\r\nHard Drive Interface	ATA100', 180000, 300000, 4),
+('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red)', 'Screen Size	10.1 inches\r\nProcessor	1.6 GHz Intel Atom N270\r\nRAM	1 GB DDR2\r\nHard Drive	160 GB\r\nGraphics Coprocessor	Intel GMA 950\r\nAverage Battery Life (in hours)	3.15 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire One\r\nItem model number	AOD250-1042/LU.S700B.028\r\nHardware Platform	PC\r\nOperating System	Windows XP Home Edition\r\nItem Weight	5 pounds\r\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\r\nColor	Red\r\nProcessor Brand	Intel\r\nProcessor Count	1\r\nComputer Memory Type	SDRAM\r\nHard Drive Interface	ATA100', 180000, 300000, 1),
 ('Acer E15', 'Acer E15 15-Inch ', 'Intel N2830 dual-core processor (2.16GHz/2.41GHz w/ Intel Burst)15.6" HD widescreen CineCrystalTM LCD display (1366 x 768) - Intel HD Graphics4GB DDR3L memory (1 Memory Slots, 8GB Maximum Memory) - 500GB hard drivestereo speakers - HD audio - webcam - multi-gesture touchpad - Wireless - Bluetooth 4.0 - HDMI - USB 3.0 - card readerWindows 8.1 (64 bits), 3 cell (up to 4.5-hour) battery - 1-year limited warranty. Color: Diamond Black', 'Screen Size	15.6 inches\r\nMax Screen Resolution	1366 x 768\r\nProcessor	Intel Celeron\r\nRAM	SDRAM DDR3\r\nHard Drive	500 GB\r\nWireless Type	802.11bgn\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	ES1-511-C0DV\r\nHardware Platform	PC\r\nOperating System	Windows 8\r\nItem Weight	5.3 pounds\r\nItem Dimensions L x W x H	15 x 1.10 x 10.20 inches\r\nColor	Black\r\nComputer Memory Type	DDR3 SDRAM', 300000, 450000, 4),
 ('AcerAspire ES1-511', 'Acer Aspire ES1-511', 'Intel Celeron N2830 2.16 GHz Processor (1 MB Cache)4 GB DDR3L SDRAM500 GB 5400 rpm Hard Drive15.6-Inch Screen, Intel HD GraphicsWindows 8.1, 4.5-hour battery life', 'Screen Size	15.6 inchesMax Screen Resolution	1366x768Processor	2.16 GHz Intel CeleronRAM	4 GB DDR3L SDRAMHard Drive	500 GB SATAGraphics Coprocessor	Intel HD GraphicsGraphics Card Ram Size	64 MBWireless Type	802.11bgnNumber of USB 2.0 Ports	2Number of USB 3.0 Ports	1Average Battery Life (in hours)	4.5 hoursExpandOther Technical DetailsBrand Name	AcerSeries	ES1-511Item model number	ES1-511-C59VOperating System	Windows 8.1Item Weight	5.3 poundsItem Dimensions L x W x H	15.02 x 10.16 x 1.07 inchesColor	Diamond BlackProcessor Brand	Intel CeleronHard Drive Rotational Speed	5400 RPMBatteries:	1 Lithium ion batteries required. (included)', 350000, 500000, 4),
 ('AcerC720', 'Acer C720 Acer C720 ', 'Built-in dual band Wi-Fi 802.11 a/b/g/n\r\nIntel Celeron 2955U 1.4 GHz (Haswell micro-architecture)\r\n16 GB Solid-State Drive\r\n11.6-Inch Anti-Glare Screen, Intel HD Graphics\r\nHDMI port, 8.5-hour battery life', 'Screen Size	11.6 inches\r\nScreen Resolution	1366 x 768\r\nMax Screen Resolution	1366x768\r\nProcessor	1.4 GHz Intel Celeron\r\nRAM	2 GB DDR3L SDRAM\r\nMemory Speed	1333.00\r\nHard Drive	16 GB flash_memory_solid_state\r\nGraphics Coprocessor	Intel HD Graphics\r\nChipset Brand	Intel\r\nGraphics Card Ram Size	128 MB\r\nWireless Type	802.11 a/b/g/n\r\nNumber of USB 2.0 Ports	1\r\nNumber of USB 3.0 Ports	1\r\nAverage Battery Life (in hours)	8.5 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Acer C720-2848 11.6-Inch Chromebook (Granite Gray)\r\nItem model number	C720-2848\r\nHardware Platform	Consumer Electronics\r\nOperating System	Chrome\r\nItem Weight	2.8 pounds\r\nItem Dimensions L x W x H	11.34 x 8.03 x 0.75 inches\r\nColor	Granite Gray\r\nProcessor Brand	Intel Celeron\r\nProcessor Count	2\r\nComputer Memory Type	DDR3 SDRAM\r\nFlash Memory Size	16\r\nHard Drive Interface	Serial ATA\r\nOptical Drive Type	No\r\nAudio-out Ports (#)	1\r\nBattery Type	Lithium Polymer (LiPo)\r\nBatteries:	1 Lithium ion batteries required. (included)', 300000, 400000, 4),
@@ -260,6 +289,12 @@ ALTER TABLE `activo1`
 --
 ALTER TABLE `clientes`
  ADD PRIMARY KEY (`Cedula`);
+
+--
+-- Indices de la tabla `codigotransacion`
+--
+ALTER TABLE `codigotransacion`
+ ADD PRIMARY KEY (`Codigo`);
 
 --
 -- Indices de la tabla `costos`
