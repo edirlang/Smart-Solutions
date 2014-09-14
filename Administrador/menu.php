@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../css/mystile.css">
 <nav class="navbar navbar-inverse">
       <a class="navbar-brand" href="panel_admin.php">HOME</a>
       <ul class="nav navbar-nav">
