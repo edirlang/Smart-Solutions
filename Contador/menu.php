@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart-Solutions</title>
+
+  <script src="../js/jquery-2.1.1.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
 <nav class="navbar navbar-inverse">
 			<a class="navbar-brand" href="panel_contador.php">HOME</a>
 			<ul class="nav navbar-nav">
