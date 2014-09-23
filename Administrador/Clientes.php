@@ -15,14 +15,15 @@
          </tr>
        </thead>
        <tbody>
-         <?php while($row = mysql_fetch_row($Clientes)){ ?>
+         <?php while($row = mysql_fetch_assoc($Clientes)){ ?>
          <tr>
-           <td><?php echo $row[0]; ?></td>
-           <td><?php echo $row[1]; ?></td>
-           <td><?php echo $row[2]; ?></td>
-           <td><?php echo $row[3]; ?></td>
+           <td><?php echo $row['Cedula']; ?></td>
+           <td><?php echo $row['Nombre']; ?></td>
+           <td><?php echo $row['Apellido']; ?></td>
+           <td><?php echo $row['Telefono']; ?></td>
          </tr>
-         <?php } ?>
+         <?php } 
+         mysql_close()?>
        </tbody>
      </table>
      

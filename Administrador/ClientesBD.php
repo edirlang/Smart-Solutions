@@ -3,4 +3,6 @@
 
   $Clientes = mysql_query("SELECT * FROM clientes");
   
+  
+  
  ?>

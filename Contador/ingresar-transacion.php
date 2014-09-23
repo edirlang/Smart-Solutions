@@ -1,8 +1,5 @@
-<?php include("consultar-usuario.php"); ?>
 <?php include("menu.php"); ?>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript" src="../js/Transaciones.js"></script>
-
+<?php include("consultar-usuario.php"); ?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -78,5 +75,10 @@
 		</div>
 	</div>
 </div>
+<!-- Librería jQuery requerida por los plugins de JavaScript -->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/Transaciones.js"></script>
 </body>
 </html>

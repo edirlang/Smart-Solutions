@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Smart-Solutions</title>
 
-	<script src="../js/jquery-2.1.1.js"></script>
+	<script src="../js/jquery.js"></script>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<script src="../js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
 			<li><a href="Catalogo.php">Catalogo</a></li>
 		</ul>
 
-		<ul class="nav navbar-inverse navbar-right">
+		<ul class="nav navbar-right">
 			<li><a href="../salir.php">Salir</a></li>
 		</ul>
 	</nav>

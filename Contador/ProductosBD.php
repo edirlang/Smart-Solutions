@@ -5,9 +5,9 @@
 
 	while($row = mysql_fetch_row($productos)){ 
     	$alerta;
-    	if ($row[6]<2) {
+    	if ($row[8]<2) {
     		$alerta="danger";
-    	}elseif ($row[6]>2 && $row[6]<6) {
+    	}elseif ($row[8]>2 && $row[8]<6) {
     		$alerta="info";
     	}else{
     		$alerta="success";
@@ -22,7 +22,7 @@
     		  			<p>Codigo: ".$row[0]."</p>
     					<p>Valor Compra $ ".$row[4]."</p>
            				<p>Valor para la venta $ ".$row[5]."</p>
-           				<p>Cantidad: ".$row[6]."</p>
+           				<p>Cantidad: ".$row[8]."</p>
            				<p>
              				<a class='btn btn-primary btn-lg' href='DetallesProducto.php?id=".$row[0]."'>Mas Informacion</a>
            				</p>
