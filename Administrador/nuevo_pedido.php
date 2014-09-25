@@ -1,9 +1,9 @@
 <?php 
- include("menu.php"); 
- require("consultar_proveedor.php"); 
- $proveedor = consultar($_GET['id']);
- $productos = Productos($proveedor);
-	?>
+include("menu.php"); 
+require("consultar_proveedor.php"); 
+$proveedor = consultar($_GET['id']);
+$productos = Productos($proveedor);
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -27,8 +27,8 @@
 								<label for="">Selecione codigo de producto</label>
 								<select class="form-control" name="codigo" id="codigo">
 									<?php while($row = mysql_fetch_assoc($productos)){ ?>
-   										<option value='<?php echo $row['cod_poducto']; ?>'><?php echo $row['cod_poducto']; ?></option>
-   									<?php } ?>
+									<option value='<?php echo $row['cod_poducto']; ?>'><?php echo $row['cod_poducto']; ?></option>
+									<?php } ?>
 									<option value='0'>Nuevo Producto</option>
 								</select>
 
@@ -71,9 +71,15 @@
 							</tbody>
 						</table>
 						<h3 id="total">Total = $ 0</h3>
+						<label>Forma de pago</label>
+						<div class="form-group">
+							<select class="form-control" name="pago" id="pago" value="contado">
+								<option value='contado'>Contado</option>
+								<option value='credito'>Credito</option>
+							</select>
+						</div>
 						<button class="btn btn-success" id="Enviar">Enviar</button>
 						<a type="button" class="btn btn-danger" href="Proveedor.php">Cancelar</a>
-
 					</div>
 				</div>
 			</div>
@@ -82,8 +88,8 @@
 </div>
 <!-- Librería jQuery requerida por los plugins de JavaScript -->
 <script src="http://code.jquery.com/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/pedido.js"></script>
 </body>

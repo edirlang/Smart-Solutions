@@ -4,12 +4,22 @@ x.ready(inicializarEventos);
 var transacion=[];
 function inicializarEventos()
 {
-  var x;
-  transaciones= new Array();
-  x=$("#agregar");
-  x.click(presionBoton)
   
-  $("#Enviar").click(EnviarBD)
+  transaciones= new Array();
+  $("#agregar").click(presionBoton);
+  $("#Enviar").click(EnviarBD);
+  $("#codigo").keypress(BuscarProductos);
+}
+
+function BuscarProductos(ev){
+  $.post("buscar_producto.php",{
+    busqueda: $("#codigo").val()
+  },mostrarCodigos);
+}
+
+function mostrarCodigos(datos){
+  var codigos = $.parseJSON(datos);
+  alert(codigos[0]);
 }
 
 function presionBoton()
