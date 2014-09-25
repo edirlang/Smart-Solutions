@@ -20,8 +20,8 @@ while($row = mysql_fetch_row($productos)){
   <div class='panel-body'>
   <p>Codigo: ".$row[0]."</p>
   <p>Valor Compra $ ".$row[4]."</p>
-  <p>Valor para la venta $ ".$row[7]."</p>
-  <p>Cantidad: ".$row[8]."</p>
+  <p>Valor para la venta $ ".$row[5]."</p>
+  <p>Cantidad: ".$row[6]."</p>
   <p>
   <a class='btn btn-primary' href='DetallesProducto.php?id=".$row[0]."'>Detalles</a>
   <a class='btn btn-primary' href='EditarProducto.php?id=".$row[0]."'>Editar</a>

@@ -5,13 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smart-Solutions</title>
-
-  <script src="../js/jquery.js"></script>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/bootstrap.js"></script>
-    
+  <link rel="stylesheet" href="../css/bootstrap.css">  
 </head>
 <body>
 
@@ -21,6 +15,7 @@
       <li ><a href="Productos.php">Inventario</a></li>
       <li><a href="Clientes.php">Clientes</a></li>
       <li><a href="Empleados.php">Empleados</a></li>
+      <li><a href="Proveedor.php">Proveedores</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           Estados Financieros<b class="caret"></b>

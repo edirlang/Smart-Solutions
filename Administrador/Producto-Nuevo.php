@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-          
+
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
          <form action="GuardarProducto.php" method="POST" role="form" enctype="multipart/form-data">
@@ -47,5 +47,7 @@
    <script src="//code.jquery.com/jquery.js"></script>
    <!-- Bootstrap JavaScript -->
    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   <script src="../js/jquery.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
  </body>
  </html>

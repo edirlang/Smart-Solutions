@@ -1,5 +1,6 @@
 <?php 
 	session_start();
-	$_SESSION['usuario']=null;
-	header("Location: index.html")
+    session_unset();
+    session_destroy();
+	header("Location: index.html");
  ?>

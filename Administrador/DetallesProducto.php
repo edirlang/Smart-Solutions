@@ -1,6 +1,5 @@
+<?php include("menu.php"); ?>
 <?php include('ConsultarProducto.php'); ?>
-<?php include("menu.php"); ?>    
-
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -29,12 +28,12 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

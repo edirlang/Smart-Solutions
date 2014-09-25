@@ -1,7 +1,5 @@
-<?php include("clientesBD.php"); ?>
-
 <?php include("menu.php"); ?>
-
+<?php include("clientesBD.php"); ?>
 <div class="container container-fluid">
   <div class="row">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -30,5 +28,7 @@
    </div> 
  </div>
 </div>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

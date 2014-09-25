@@ -1,5 +1,5 @@
-<?php include("usuarios.php"); ?>
 <?php include("menu.php"); ?>
+<?php include("usuarios.php"); ?>
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -34,5 +34,7 @@
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
