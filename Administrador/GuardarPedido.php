@@ -7,19 +7,19 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	$i=0;
 	include("../conexion.php");
 	foreach ($datos as $llave => $valor) {
-		$result =mysql_query("SELECT * FROM `inventario` WHERE codigo='Acer AOD2' order by fecha desc limit 1",$cn);
+		$result =mysql_query("SELECT * FROM `inventario` WHERE codigo like '".$valor[2]."' order by fecha desc limit 1",$cn);
 		$subtotal=$valor[3]*$valor[4];
 		while ($row = mysql_fetch_assoc($result)) {
 			if($row['codigo']==$valor[2]){
 				$cantidad = $row['cantidad']+$valor[3];
 				$total = $row['total']+$subtotal;
 				$vlr_unidad=$total/$cantidad;
-				$sql = "INSERT INTO inventario VALUES (null,'".$valor[2]."','Compra','".$valor[1]."','".$cantidad."','".$vlr_unidad."','".$total."')";
+				$sql = "INSERT INTO inventario VALUES (null,'".$valor[2]."','Compra','".$valor[1]."','".$valor[3]."','".$valor[4]."','".$cantidad."','".$vlr_unidad."','".$total."','C')";
 				$i=1;
 			}
 		}
 		if ($i==0) {
-			$sql = "INSERT INTO inventario VALUES (null,'".$valor[2]."','Compra','".$valor[1]."','".$valor[3]."','".$valor[4]."','".$subtotal."')";
+			$sql = "INSERT INTO inventario VALUES (null,'".$valor[2]."','Compra','".$valor[1]."','".$valor[3]."','".$valor[4]."','".$valor[3]."','".$valor[4]."','".$subtotal."','C')";
 		}
 		mysql_query($sql,$cn);
 		

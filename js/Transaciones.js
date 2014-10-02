@@ -71,9 +71,11 @@ function procesar(datos){
   alert("Correcto");
   setTimeout("location.href='Transacion-manual.php'", 50);
 }else{
+  alert(datos);
   if($('#error').length){
       
   }else{
+    
     $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: No se cumplio la doble partida </div>");
   }
 }

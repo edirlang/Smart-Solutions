@@ -1,8 +1,7 @@
 <?php 
 if($_SERVER['REQUEST_METHOD']=="POST"){
 	include("../conexion.php");
-	$busqueda = $_POST['busqueda'];
-	$result = mysql_query("SELECT * FROM productos where Codigo like '".$busqueda."%' ",$cn);
+	$result = mysql_query("SELECT * FROM productos",$cn);
 	
 	$productos = array();
 	

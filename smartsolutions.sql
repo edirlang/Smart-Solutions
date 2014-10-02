@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2014 a las 04:07:00
+-- Tiempo de generación: 30-09-2014 a las 22:23:01
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -27,30 +27,29 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `activo1` (
-`ID` int(11) NOT NULL,
+  `Documento` int(11) NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `activo1`
 --
 
-INSERT INTO `activo1` (`ID`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(16, '2', '31', '2014-09-01', 'C', 'Capital Social', 50000000),
-(17, '2', '1105', '2014-09-01', 'D', 'Caja', 50000000),
-(18, '2', '1105', '2014-09-01', 'C', 'Caja', 40000000),
-(19, '2', '1120', '2014-09-01', 'D', 'Cuenta de Ahorros', 40000000),
-(20, '2', '1105', '2014-09-02', 'C', 'Caja', 1528500),
-(21, '2', '1120', '2014-09-03', 'D', 'Cuenta de ahorros', 40000000),
-(22, '2', '1105', '2014-09-03', 'C', 'Caja', 7144900),
-(23, '2', '1520', '2014-09-03', 'D', 'Muebles y enceres', 7144900),
-(25, '1', '1120', '2014-09-03', 'C', 'Cuenta de ahorros', 76820000),
-(28, '1', '1105', '2014-09-03', 'C', 'Caja', 1200000);
+INSERT INTO `activo1` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(1, '2', '1105', '2014-09-01', 'D', 'Caja', 50000000),
+(1, '2', '31', '2014-09-01', 'C', 'Capital Social', 50000000),
+(2, '2', '1105', '2014-09-01', 'C', 'Caja', 40000000),
+(2, '2', '1120', '2014-09-01', 'D', 'Cuenta de Ahorros', 40000000),
+(3, '2', '1105', '2014-09-02', 'C', 'Caja', 1528500),
+(4, '2', '1105', '2014-09-03', 'C', 'Caja', 7144900),
+(4, '2', '1520', '2014-09-03', 'D', 'Muebles y enceres', 7144900),
+(17, '2', '1105', '2014-09-30', 'D', 'caja', 1000),
+(17, '2', '1120', '2014-09-30', 'C', 'banco', 1000);
 
 -- --------------------------------------------------------
 
@@ -99,7 +98,12 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 ('131520', 'Presatomos', 'activo'),
 ('134010', 'Maquinaria y equipo', 'activo'),
 ('134515', 'Comiciones', 'activo'),
-('21', 'Obligaciones Financi', 'pasivo');
+('14', 'Inventario', 'activo'),
+('21', 'Obligaciones Financi', 'pasivo'),
+('2205', 'Proveedor', 'pasivo'),
+('2804', 'IVA', 'pasivo'),
+('4135', 'Ventas', 'ingreso'),
+('613554', 'Costo de venta', 'costo');
 
 -- --------------------------------------------------------
 
@@ -108,21 +112,21 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `costos` (
-`ID` int(11) NOT NULL,
+  `Documento` int(11) NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `costos`
 --
 
-INSERT INTO `costos` (`ID`, `Codigo`, `Cedula`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(1, '1', '6205', '2014-09-03', 'D', 'Costos Compras', 76820000);
+INSERT INTO `costos` (`Documento`, `Codigo`, `Cedula`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(5, '1', '6205', '2014-09-03', 'D', 'Costos Compras', 76820000);
 
 -- --------------------------------------------------------
 
@@ -138,6 +142,39 @@ CREATE TABLE IF NOT EXISTS `detallefactura` (
   `vlr_venta` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `documentado`
+--
+
+CREATE TABLE IF NOT EXISTS `documentado` (
+`cod_documento` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
+
+--
+-- Volcado de datos para la tabla `documentado`
+--
+
+INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
+(1, ''),
+(2, ''),
+(3, ''),
+(4, ''),
+(5, ''),
+(6, ''),
+(7, ''),
+(8, ''),
+(9, ''),
+(10, 'Transacion'),
+(11, 'Transacion'),
+(12, 'Transacion'),
+(13, 'Transacion'),
+(14, 'Transacion'),
+(15, 'Transacion'),
+(16, 'Transacion');
 
 -- --------------------------------------------------------
 
@@ -161,22 +198,22 @@ CREATE TABLE IF NOT EXISTS `factura` (
 --
 
 CREATE TABLE IF NOT EXISTS `gasto` (
-`ID` int(11) NOT NULL,
+  `Documento` int(11) NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `gasto`
 --
 
-INSERT INTO `gasto` (`ID`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(1, '2', '5140', '2014-09-02', 'D', 'Gasto Legal', 1528500),
-(2, '1', '5220', '2014-09-03', 'D', 'Arriendo', 1200000);
+INSERT INTO `gasto` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(2, '1', '5220', '2014-09-03', 'D', 'Arriendo', 1200000),
+(3, '2', '5140', '2014-09-02', 'D', 'Gasto Legal', 1528500);
 
 -- --------------------------------------------------------
 
@@ -185,14 +222,14 @@ INSERT INTO `gasto` (`ID`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripci
 --
 
 CREATE TABLE IF NOT EXISTS `ingresos` (
-`ID` int(11) NOT NULL,
+  `Documento` int(11) NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` int(11) NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -203,20 +240,25 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
 CREATE TABLE IF NOT EXISTS `inventario` (
 `id` int(11) NOT NULL,
   `codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL,
+  `cant_inicial` int(11) NOT NULL,
+  `vlr_inicial` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `vlr_unidad` int(11) NOT NULL,
-  `total` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+  `total` int(11) NOT NULL,
+  `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id`, `codigo`, `fecha`, `cantidad`, `vlr_unidad`, `total`) VALUES
-(1, 'Acer AOD2', '2014-08-24', 10, 1000, 10000),
-(2, 'Acer AOD2', '2014-08-24', 15, 1067, 16000),
-(3, 'Acer AOD2', '2014-08-24', 20, 1100, 22000);
+INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`, `vlr_inicial`, `cantidad`, `vlr_unidad`, `total`, `tipo`) VALUES
+(1, 'Acer AOD2', 'Compra', '2014-08-29', 12, 12000, 12, 12000, 144000, 'C'),
+(2, 'Acer E15', 'Compra', '2014-08-29', 10, 10000, 10, 10000, 100000, 'C'),
+(3, 'Acer AOD2', 'Compra', '2014-08-29', 5, 10000, 17, 11412, 194000, 'C'),
+(4, 'AcerS3-391-6046', 'Compra', '2014-08-29', 10, 15000, 10, 15000, 150000, 'C');
 
 -- --------------------------------------------------------
 
@@ -225,21 +267,14 @@ INSERT INTO `inventario` (`id`, `codigo`, `fecha`, `cantidad`, `vlr_unidad`, `to
 --
 
 CREATE TABLE IF NOT EXISTS `pasivo` (
-`ID` int(11) NOT NULL,
+  `Documento` int(11) NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
-
---
--- Volcado de datos para la tabla `pasivo`
---
-
-INSERT INTO `pasivo` (`ID`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(2, '2', '21', '2014-09-03', 'C', 'Obligacion Financier', 40000000);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -300,7 +335,11 @@ CREATE TABLE IF NOT EXISTS `producto_proveedor` (
 --
 
 INSERT INTO `producto_proveedor` (`cod_proveedor`, `cod_poducto`, `vlr_compra`) VALUES
-(12, 'Acer AOD2', 0);
+(12, 'Acer AOD2', 0),
+(12, 'Acer E15', 0),
+(12, 'AcerAspire ES1-511', 0),
+(12, 'AcerC720', 0),
+(12, 'AcerS3-391-6046', 0);
 
 -- --------------------------------------------------------
 
@@ -354,7 +393,7 @@ INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `Contrasena`
 -- Indices de la tabla `activo1`
 --
 ALTER TABLE `activo1`
- ADD PRIMARY KEY (`ID`), ADD KEY `Cedula` (`Cedula`);
+ ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `clientes`
@@ -372,13 +411,19 @@ ALTER TABLE `codigotransacion`
 -- Indices de la tabla `costos`
 --
 ALTER TABLE `costos`
- ADD PRIMARY KEY (`ID`);
+ ADD PRIMARY KEY (`Documento`,`Codigo`,`Cedula`);
 
 --
 -- Indices de la tabla `detallefactura`
 --
 ALTER TABLE `detallefactura`
  ADD PRIMARY KEY (`num_factura`,`cedula`,`codigo`), ADD KEY `num_factura` (`num_factura`), ADD KEY `cedula` (`cedula`), ADD KEY `codigo` (`codigo`);
+
+--
+-- Indices de la tabla `documentado`
+--
+ALTER TABLE `documentado`
+ ADD PRIMARY KEY (`cod_documento`), ADD KEY `cod_documento` (`cod_documento`);
 
 --
 -- Indices de la tabla `factura`
@@ -390,13 +435,13 @@ ALTER TABLE `factura`
 -- Indices de la tabla `gasto`
 --
 ALTER TABLE `gasto`
- ADD PRIMARY KEY (`ID`), ADD KEY `Cedula` (`Cedula`);
+ ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`), ADD KEY `Documentado` (`Documento`,`Cedula`,`Codigo`);
 
 --
 -- Indices de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
- ADD PRIMARY KEY (`ID`), ADD KEY `Cedula` (`Cedula`);
+ ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `inventario`
@@ -408,7 +453,7 @@ ALTER TABLE `inventario`
 -- Indices de la tabla `pasivo`
 --
 ALTER TABLE `pasivo`
- ADD PRIMARY KEY (`ID`), ADD KEY `Cedula` (`Cedula`);
+ ADD PRIMARY KEY (`Documento`), ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `productos`
@@ -420,7 +465,7 @@ ALTER TABLE `productos`
 -- Indices de la tabla `producto_proveedor`
 --
 ALTER TABLE `producto_proveedor`
- ADD PRIMARY KEY (`cod_proveedor`), ADD KEY `codgio_proveedor` (`cod_proveedor`,`cod_poducto`), ADD KEY `cod_poducto` (`cod_poducto`);
+ ADD PRIMARY KEY (`cod_poducto`), ADD KEY `codgio_proveedor` (`cod_proveedor`,`cod_poducto`), ADD KEY `cod_poducto` (`cod_poducto`);
 
 --
 -- Indices de la tabla `proveedo`
@@ -439,35 +484,15 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `activo1`
+-- AUTO_INCREMENT de la tabla `documentado`
 --
-ALTER TABLE `activo1`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
---
--- AUTO_INCREMENT de la tabla `costos`
---
-ALTER TABLE `costos`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT de la tabla `gasto`
---
-ALTER TABLE `gasto`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT de la tabla `ingresos`
---
-ALTER TABLE `ingresos`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `documentado`
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `pasivo`
---
-ALTER TABLE `pasivo`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --

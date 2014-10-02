@@ -45,32 +45,40 @@
 		while($row = mysql_fetch_row($result)){
 			array_push($codigo, $row);
  		}
+ 		
+ 		mysql_query("INSERT INTO documentado VALUES (NULL,'Transacion')",$cn);
+		$documentos = mysql_query("SELECT * FROM documentado order by `cod_documento` desc limit 1",$cn);
+		$documento=0;
+		while ($row = mysql_fetch_row($documentos)) {
+			$documento = $row[0]+1;
+		}
+
  		foreach ($datos as $llave => $valor) {
  			foreach ($codigo as $llave => $fila) {
  				if($fila[0]==$valor[1]){
  					switch ($fila[2]) {
  						case 'activo':
- 								$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO activo1 VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  						case 'pasivo':
- 								$sql = "INSERT INTO pasivo VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO pasivo VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  						case 'patrimonio':
- 								$sql = "INSERT INTO activo1 VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO activo1 VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  						case 'ingreso':
- 								$sql = "INSERT INTO ingresos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO ingresos VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  						case 'gasto':
- 								$sql = "INSERT INTO gasto VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO gasto VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  						case 'costo':
- 								$sql = "INSERT INTO costos VALUES (NULL,'".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
+ 								$sql = "INSERT INTO costos VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
 								mysql_query($sql,$cn);
  							break;
  					}
