@@ -50,7 +50,7 @@
 		$documentos = mysql_query("SELECT * FROM documentado order by `cod_documento` desc limit 1",$cn);
 		$documento=0;
 		while ($row = mysql_fetch_row($documentos)) {
-			$documento = $row[0]+1;
+			$documento = $row[0];
 		}
 
  		foreach ($datos as $llave => $valor) {

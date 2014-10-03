@@ -1,7 +1,7 @@
 <?php  
 	include("../conexion.php");
 
-	$facturas = mysql_query("SELECT * FROM factura order by 'num_factura' desc limit 1");
+	$facturas = mysql_query("SELECT * FROM factura",$cn);
 
 	$numero=0;
 	while($row = mysql_fetch_assoc($facturas)){ 
