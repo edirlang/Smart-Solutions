@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class='panel panel-alert'>
 			<div class='panel-heading'>
-				<h4>Kardex</h4>
+				<h1>Inventario</h1>
 			</div>
 			<div class='panel-body'>
 				<table class="table table-condensed table-bordered">

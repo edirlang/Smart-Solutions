@@ -1,5 +1,9 @@
 	<?php include("menu.php"); ?>
-	
+	<script type="text/javascript" src="../js/jquery.validate.js"></script>
+	<script type="text/javascript" src="../js/buscar_transaciones.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" src="../css/jquery-ui.css">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
@@ -7,9 +11,26 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						<h3 class="panel-title">Debe/Debito</h3>
+						<h3 class="panel-title">Cuentas Contables</h3>
 					</div>
 					<div class="panel-body">
+						<div class="panel panel-success">
+							<div class="panel-body">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<div class="form-group">
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<label>Cuenta: </label>
+											<input type="text" name="cuenta" id="cuenta" class="form-control">
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<label>Fecha: </label>
+											<input type="date" name="fecha" id="fecha" class="form-control">
+										</div>
+									</div>
+									<button type="input" class="btn btn-primary" id="buscar">Buscar</button>
+								</div>
+							</div>
+						</div>
 						<table class="table table-condensed table-hover">
 							<thead>
 								<tr>
@@ -22,7 +43,9 @@
 									<th>Valor</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="filas">
+								
+
 								<?php 
 								$total_c=0;
 								$total_d=0;
@@ -35,10 +58,9 @@
 										$total_c+=$valor['Valor'];
 									}
 									foreach ($valor as $key1 => $row) {
-										
+
 										echo "<td>".$row."</td>";
 									}
-									
 									echo "</tr>";	
 								}
 
