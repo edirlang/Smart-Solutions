@@ -1,12 +1,9 @@
 <?php include("menu.php"); ?>
 <?php include("clientesBD.php"); ?>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript" src="../js/clientes.js"></script>
-
 <div class="container container-fluid">
   <div class="row">
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="panel panel-danger">
         <div class="panel-heading">
           <h3 class="panel-title">Clientes</h3>
@@ -30,8 +27,8 @@
                <td><?php echo $row['Nombre']; ?></td>
                <td><?php echo $row['Apellido']; ?></td>
                <td><?php echo $row['Telefono']; ?></td>
-               <td><a href="" >Editar</a> </td>
-               <td><a href="" >Eliminar</a> </td>
+               <td><a class="btn btn-success" href="editar_cliente.php?id=<?php echo $row['Cedula'] ?>">Editar</a> </td>
+               <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>">Eliminar</a> </td>
              </tr>
              <?php } 
              mysql_close()?>
@@ -40,9 +37,9 @@
        </div>
      </div>
    </div>
-   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-      
-    </div> 
+   
+   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+
    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
      <div class="panel panel-success">
        <div class="panel-heading">
@@ -50,19 +47,20 @@
        </div>
        <div class="panel-body">
 
-        <form id="formulario" name="formulario" role="form" method="POST" on>
+        <form id="formulario" name="formulario" role="form" method="post">
          <div class="form-group">
           <label for="">Cedula</label>
-          <input type="text" class="form-control" id="cedula"  name="cedula" placeholder="Cedula">
+          <input type="text" class="form-control" id="Cedula"  name="Cedula" placeholder="Cedula">
           <label for="">Nombre</label>
-          <input type="text" class="form-control" id="nombre"  name="nombre" placeholder="primer nombre">
+          <input type="text" class="form-control" id="Nombre"  name="Nombre" placeholder="primer nombre">
           <label for="">Apellido</label>
-          <input type="text" class="form-control" id="apellido" name="apellido" placeholder="primer apellido">
+          <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="primer apellido">
           <label for="">Telefono</label>
-          <input type="text" class="form-control" id="telefono" name="telefono" placeholder="telefono">
+          <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
         </div>
         <button id="Enviar" type="submit" class="btn btn-primary">Guardar</button>
       </form>  
+
     </div>
   </div>
 </div>  
@@ -70,5 +68,7 @@
 </div>
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script type="text/javascript" src="../js/clientes.js"></script>
 </body>
 </html>

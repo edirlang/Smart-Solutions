@@ -9,48 +9,33 @@ function presionBoton()
 {
   $('#formulario').validate({
     rules: {
-     'cedula': 'required',
-     'nombre': 'required',
-     'apellido': 'required',
-     'telefono': 'required',
+     'Cedula': 'required',
+     'Nombre': 'required',
+     'Apellido': 'required',
+     'Telefono': 'required'
    },
    messages: {
-     'cedula': 'Debe ingresar cedula del cliente',
-     'nombre': 'Debe ingresar el nombre del cliente',
-     'apellido': 'Debe ingresar el apellido del cliente',
-     'telefono': 'ingrese telefono',
-   },
-   submitHandler: function(form){
-    var datos = new Array($("#cedula").val(),$("#nombre").val(),$("#apellido").val(),$("#telefono").val());
+     'Cedula': 'Debe ingresar cedula del cliente',
+     'Nombre': 'Debe ingresar el nombre del cliente',
+     'Apellido': 'Debe ingresar el apellido del cliente',
+     'Telefono': 'ingrese telefono'
+   }, submitHandler: function(form){
+    
+    var datos = new Array($("#Cedula").val(),$("#Nombre").val(),$("#Apellido").val(),$("#Telefono").val());
     var jdatos = JSON.stringify(datos); 
     $.post("GuardarClienta.php",{
       jdatos: jdatos
     },procesar); 
-    alert("si")
-    $("<tr>").append(
-      $('<td>', { text: $("#cedula").val()
-    }), $('<td>', { text: $("#nombre").val()
-  }), $('<td>', { text: $("#apellido").val() 
-}), $('<td>', { text: $("#telefono").val()  
-})
-).hide().appendTo('#Filas').fadeIn('slow');
-    VaciarFormulario();
-
   }
 });
+  
 }
-
-function VaciarFormulario(){
-  $('#formulario').each (function(){
-    this.reset();
-  });
-
-}
-
 
 function procesar(datos){
- alert(datos);
  if(datos==1){
   alert("Correcto");
-}
+  setTimeout("location.href='Clientes.php'", 50);
+  }else{
+    alert("No se pudo crear debido a: "+datos);
+  }
 }
