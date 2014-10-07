@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+  if($_SESSION['rol'] !='contador' ){
+    header("location: ../index.html");
+  }else{
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +22,7 @@
 <nav class="navbar navbar-inverse">
 			<a class="navbar-brand" href="panel_contador.php">HOME</a>
 			<ul class="nav navbar-nav">
-				<li><a href="producto.php">Inventario</a></li>
+				<li><a href="Productos.php">Inventario</a></li>
 				<li class="dropdown">
 					<a href="Transacion-manual.php" class="dropdown-toggle" data-toggle="dropdown">Transaciones manuales<b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -36,3 +43,4 @@
 					<li><a href="../salir.php">Salir</a></li>
 			</ul>
 </nav>
+<?php } ?>

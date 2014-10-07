@@ -21,7 +21,7 @@ $productos = Productos($proveedor);
 						<form id="formulario" name="formulario" method="POST" role="form" on>
 							<div class="form-group">
 
-								<label for="">Proveedor</label>
+								<label for="">Provedor</label>
 								<input type="number" class="form-control" name="proveedor" id="proveedor" value="<?php echo $proveedor; ?>" disabled>
 
 								<label for="">Selecione codigo de producto</label>
@@ -54,7 +54,7 @@ $productos = Productos($proveedor);
 						<h3 class="panel-title">Productos</h3>
 					</div>
 					<div class="panel-body">
-						<p>Proveerdor: <?php echo $proveedor ?></p>
+						<p>Provedor: <?php echo $proveedor ?></p>
 						<p id="fecha_a">Fecha: </p>
 						<table class="table table-condensed table-hover">
 							<thead>
@@ -88,6 +88,7 @@ $productos = Productos($proveedor);
 </div>
 <!-- Librería jQuery requerida por los plugins de JavaScript -->
 <script src="http://code.jquery.com/jquery.js"></script>
+<script src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>

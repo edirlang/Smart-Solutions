@@ -4,7 +4,7 @@ var fecha;
 function inicializarEventos()
 {
   var d = new Date();
-  fecha = d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate();
+  fecha = d.getFullYear()+"-"+((d.getMonth()*1)+1)+"-"+d.getDate();
   transaciones= new Array();
   $("#boton1").click(presionBoton)
   $("#Enviar").click(EnviarBD)

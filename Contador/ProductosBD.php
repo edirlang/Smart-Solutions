@@ -20,9 +20,8 @@
     		  		</div>
     		  		<div class='panel-body'>
     		  			<p>Codigo: ".$row[0]."</p>
-    					<p>Valor Compra $ ".$row[4]."</p>
            				<p>Valor para la venta $ ".$row[5]."</p>
-           				<p>Cantidad: ".$row[8]."</p>
+           				
            				<p>
              				<a class='btn btn-primary btn-lg' href='DetallesProducto.php?id=".$row[0]."'>Mas Informacion</a>
            				</p>

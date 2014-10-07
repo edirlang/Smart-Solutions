@@ -1,3 +1,9 @@
+<?php 
+session_start();
+  if($_SESSION['rol'] !='admin' ){
+    header("location: ../index.html");
+  }else{
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,3 +43,4 @@
       <li><a href="../salir.php">Salir</a></li>
     </ul>
   </nav>
+  <?php } ?>

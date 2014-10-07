@@ -9,7 +9,7 @@
 					<h1>Inventario</h1>
 					<p>Productos para vender</p>
 					<p>
-						<a class="btn btn-primary btn-lg" href="producto.php">Ir</a>
+						<a class="btn btn-primary btn-lg" href="Productos.php">Ir</a>
 					</p>
 				</div>
 			</div>

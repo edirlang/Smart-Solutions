@@ -14,19 +14,21 @@
             	switch ($row[5]) {
                 	case 'admin':
 						$_SESSION['usuario']=$usuario;
+						$_SESSION['rol']='admin';
 						$tipo="admin";
 					break;
 					case 'contador':
 						$_SESSION['usuario']=$usuario;
+						$_SESSION['rol']='contador';
 						$tipo="contador";
 					break;
 
 					case 'cajero':
 						$_SESSION['usuario']=$usuario;
+						$_SESSION['rol']='cajero';
 						$tipo="cajero";
 					break;
-				}
-					
+				}	
              }
    		}
 	}
