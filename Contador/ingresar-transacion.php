@@ -24,8 +24,18 @@
 								<input type="date" class="form-control" id="Fecha" name="Fecha" placeholder="dd/mm/aaaa" required title="Ingrese la Fecha">
 
 								<label for="">Codigo</label>
-								<input type="text" class="form-control" name="Codigo" id="Codigo" placeholder="Codigo de transacion" required title="Ingrese codigo de operacion">
-
+								<select class="form-control" name="codigo" id="codigo">
+									<?php
+									include("../conexion.php");
+									$result = mysql_query("SELECT * FROM codigotransacion",$cn);
+									while ($row = mysql_fetch_assoc($result)) {	?>
+										<option value="<?php echo $row['Codigo']?>"><?php echo $row['Codigo']?></option>
+								<?php 
+									}
+									echo mysql_error();
+									mysql_close();
+									?>
+								</select>
 								<label for="">Descripcion</label>
 								<input type="text" class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripcion de actividad" required title="Ingrese la descripcion">
 
@@ -80,5 +90,6 @@
 <script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script type="text/javascript" src="../js/Transaciones.js"></script>
+<script type="text/javascript" src="../js/codigos.js"></script>
 </body>
 </html>

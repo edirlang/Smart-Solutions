@@ -34,12 +34,12 @@ function presionBoton()
        //errorElement: 'div',
        //errorContainer: $('#errores'),
        submitHandler: function(form){
-        var datos = new Array($("#Cedula").val(),$("#Codigo").val(),$("#Fecha").val(),$("#Naturaleza").val(),$("#Descripcion").val(),$("#Valor").val());
+        var datos = new Array($("#Cedula").val(),$("#codigo option:selected").val(),$("#Fecha").val(),$("#Naturaleza").val(),$("#Descripcion").val(),$("#Valor").val());
         transacion.push(datos);
 
         $("<tr>").append(
           $('<td>', { text: $("#Cedula").val()
-        }), $('<td>', { text: $("#Codigo").val()
+        }), $('<td>', { text: $("#codigo option:selected").val()
       }), $('<td>', { text: $("#Fecha").val() 
     }), $('<td>', { text: $("#Naturaleza").val()  
   }), $('<td>', { text: $("#Descripcion").val()  

@@ -10,8 +10,12 @@ $productos = Productos($proveedor);
 
 		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 			<div id="Mensaje" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
+				
 			</div>
+			<div id="ventana" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+			</div>
+
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -70,7 +74,7 @@ $productos = Productos($proveedor);
 								
 							</tbody>
 						</table>
-						<h3 id="total">Total = $ 0</h3>
+						<h3>Total = $ <input type="text" name="total" id="total" value="0" placeholder="" /></h3>
 						<label>Forma de pago</label>
 						<div class="form-group">
 							<select class="form-control" name="pago" id="pago" value="contado">

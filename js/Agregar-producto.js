@@ -105,5 +105,6 @@ function EnviarBD(){
 }
 
 function procesar(datos){
-  alert(datos);
+  alert("Total: $"+total);
+  setTimeout("location.href='Factura.php'", 100);
 }

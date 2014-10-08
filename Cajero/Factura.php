@@ -2,7 +2,6 @@
 include("menu.php"); 
 include("clientesBD.php");
 include("Consultar_factura.php"); 
-session_start();
 
 ?>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>

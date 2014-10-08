@@ -1,53 +1,63 @@
-    <?php include("menu.php"); ?>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart-Solutions</title>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+  <div id="1" class="container">
+    <div class="row">
+      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+       <form id="fomr_producto" role="form">
+         <legend>Nuevo Producto</legend>
+         
+         <div class="form-group">
+            <label for="">Proveedor</label>
+           <input type="text" class="form-control" name="proveedor" id="proveedor" value="<?php echo $_GET['id']; ?>">
 
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-         <form action="GuardarProducto.php" method="POST" role="form" enctype="multipart/form-data">
-           <legend>Nuevo Producto</legend>
-           
-           <div class="form-group">
-             <label for="">Codigo</label>
-             <input type="text" class="form-control" name="Codigo" placeholder="Codigo de Producto">
+           <label for="">Codigo</label>
+           <input type="text" class="form-control" name="cod_nuevo" placeholder="Codigo de Producto" id="cod_nuevo">
 
-             <label for="">Nombre</label>
-             <input type="text" class="form-control" name="Nombre" placeholder="Codigo de Producto">
+           <label for="">Nombre</label>
+           <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Codigo de Producto">
 
-             <label for="">Descripcion</label>
-             <textarea rows="4" cols="50" class="form-control" name="Descripcion"> </textarea>
+           <label for="">Descripcion</label>
+           <textarea rows="4" cols="50" class="form-control" name="descripcion" id="descripcion"> </textarea>
 
-             <label for="">Especificaciones</label>
-             <textarea rows="4" cols="50" class="form-control" name="Especificaciones"> </textarea>
+           <label for="">Especificaciones</label>
+           <textarea rows="4" cols="50" class="form-control" name="especificaciones" id="especificaciones"> </textarea>
 
-             <label for="">Valor de Commpra</label>
-             <input type="number" name="ValorComp" id="inputValorComp" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+           <label for="">Valor para la Venta</label>
+           <input type="number" name="vlr_ven" id="vlr_ven" class="form-control" >
 
-             <label for="">Valor par la Venta</label>
-             <input type="number" name="ValorVen" id="inputValorVen" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+           <label for="">Valor comprado</label>
+           <input type="number" name="vlr_comp" id="vlr_comp" class="form-control" >
 
-             <label for="">Cantidad</label>
-             <input type="number" name="Cantidad" id="inputCantidad" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+            <label for="">IVA</label>
+            <input type="number" name="iva_nuevo" id="iva_nuevo" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+         
+            <label for="">Cantidad</label>
+            <input type="number" name="cant" id="cant" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
 
-             <label for="">Fotografia del Producto</label>
-             <input type="file" name="foto" required/>
-             <p class="help-block">Foto para mostrar a clientes.</p>
-           </div>
+         </div>
 
-           <button type="submit" class="btn btn-primary">Enviar</button>
-           <a href="Productos.php" class="btn btn-primary">Cancelar</a>
-         </form>
-       </div> 
-     </div>
+         <button class="btn btn-primary" id="Guardar">Enviar</button>
+         <a href="Productos.php" class="btn btn-primary">Cancelar</a>
+       </form>
+     </div> 
    </div>
+ </div>
 
-   <!-- jQuery -->
-   <script src="//code.jquery.com/jquery.js"></script>
-   <!-- Bootstrap JavaScript -->
-   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-   <script src="../js/jquery.js"></script>
-   <script src="../js/bootstrap.min.js"></script>
- </body>
- </html>
+ <script src="http://code.jquery.com/jquery.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.validate.js"></script>
+<script src="../js/pedido.js"></script>
+</body>
+</html>
