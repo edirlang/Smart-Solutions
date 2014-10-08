@@ -11,4 +11,5 @@ $Producto = array($_POST['Codigo'] , $_POST['Nombre'] , $_POST['Descripcion'] , 
 
 	echo mysql_error();
 	mysql_close($cn);
+	echo $Producto[0];
 ?>

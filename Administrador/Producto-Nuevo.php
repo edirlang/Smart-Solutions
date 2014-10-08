@@ -46,10 +46,17 @@
             <input type="number" name="cant" id="cant" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
 
          </div>
+         <form id="fomr_producto" role="form">
+         <div class="form-group">
+            <label for="">Imagen</label>
+           <input type="file" class="form-control" name="foto" id="foto" >
+         </div>
+       </form>
 
          <button class="btn btn-primary" id="Guardar">Enviar</button>
          <a href="Productos.php" class="btn btn-primary">Cancelar</a>
        </form>
+       
      </div> 
    </div>
  </div>

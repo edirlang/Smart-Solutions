@@ -106,7 +106,32 @@ function procesar(datos){
 }
 
 function GuardarProducto(){
-  
+  var archivos = document.getElementById("foto");//Damos el valor del input tipo file
+  var archivo = archivos.files; //Obtenemos el valor del input (los arcchivos) en modo de arreglo
+
+  //El objeto FormData nos permite crear un formulario pasandole clave/valor para poder enviarlo, este tipo de objeto ya tiene la propiedad multipart/form-data para poder subir archivos
+  var data = new FormData();
+
+  //Como no sabemos cuantos archivos subira el usuario, iteramos la variable y al
+  //objeto de FormData con el metodo "append" le pasamos calve/valor, usamos el indice "i" para
+  //que no se repita, si no lo usamos solo tendra el valor de la ultima iteracion
+  for(i=0; i<archivo.length; i++){
+    data.append('foto'+i,archivo[i]);
+  }
+   $.ajax({
+    url:'guardar_imagen.php', //Url a donde la enviaremos
+    type:'POST', //Metodo que usaremos
+    contentType:false, //Debe estar en false para que pase el objeto sin procesar
+    data: {
+      Codigo: $("#cod_nuevo").val(),
+      foto: data
+  }, //Le pasamos el objeto que creamos con los archivos
+    processData:false, //Debe estar en false para que JQuery no procese los datos a enviar
+    cache:false //Para que el formulario no guarde cache
+  }).done(function(msg){
+    alert(msg); //Mostrara los archivos cargados en el div con el id "Cargados"
+  });
+
   $.ajax({
     type: 'POST',
     url: "GuardarProducto.php",
@@ -120,8 +145,10 @@ function GuardarProducto(){
       Cantidad: $("#cant").val(),
       iva: $("#iva_nuevo").val(),
       proveedor: $("#proveedor").val()
-    },beforeSend: function () {
-                        alert("Procesando, espere por favor...");
+    },
+    dataType: "text",
+    contentType: "application/x-www-form-urlencoded",
+    beforeSend: function () {
                         var texto = document.getElementById("cod_nuevo").value;
                         var fila = document.createElement("tr");
                         
@@ -163,10 +190,10 @@ function GuardarProducto(){
 
                         total = (parent.document.getElementById("total").value * 1)+subtotal;
                         parent.document.getElementById("total").value =total;
-                },
-    error: function(){ alert("error");},
+    },
     success: function(datos){
-      alert("si"+datos);
+      alert("Agregado"+datos);
+      parent.document.getElementById("codigo").value  = '%';
       parent.document.getElementById("nuevo").remove();
     }
   });

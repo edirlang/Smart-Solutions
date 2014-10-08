@@ -34,6 +34,7 @@ $productos = Productos($proveedor);
 									<option value='<?php echo $row['cod_poducto']; ?>'><?php echo $row['cod_poducto']; ?></option>
 									<?php } ?>
 									<option value='0'>Nuevo Producto</option>
+									<option value='%'>--------------</option>
 								</select>
 
 								<label for="">Cantidad</label>
