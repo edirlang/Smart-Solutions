@@ -4,9 +4,11 @@
 
 <div class="container">
 	<div class="row">
-		<div class='panel panel-alert'>
+		<?php 
+				foreach ($productos as $key => $valor) { ?>
+		<div id="productos" class='panel panel-danger'>
 			<div class='panel-heading'>
-				<h1>Inventario</h1>
+				<h1>Inventario <?php echo $valor; ?></h1>
 			</div>
 			<div class='panel-body'>
 				<table class="table table-condensed table-bordered">
@@ -32,37 +34,42 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php while($row = mysql_fetch_assoc($inventario)){ ?>
-						<tr>
-							<td><?php echo $row['fecha']; ?></td>
-							<td><?php echo $row['descripcion']; ?></td>
-							<td><?php echo $row['codigo']; ?></td>
-							
-							<td><?php echo $row['vlr_inicial']; ?></td>
-							<?php if($row['tipo']=='C'){ ?>
-							<td><?php echo $row['cant_inicial']; ?></td>
-							<td><?php echo $row['vlr_inicial']*$row['cant_inicial']; ?></td>
-							<td>0</td>
-							<td>0</td>
-							<?php }else{ ?>
-							<td>0</td>
-							<td>0</td>
-							<td><?php echo $row['cant_inicial']; ?></td>
-							<td><?php echo $row['vlr_inicial']*$row['cant_inicial']; ?></td>
-							
-							<?php } ?>
+						<?php 
+						$inventario = mysql_query("SELECT * FROM `inventario` where `codigo` like '".$valor."' order by fecha",$cn);
+						while($row = mysql_fetch_assoc($inventario)){ 
+							 ?>
+							<tr>
+								<td><?php echo $row['fecha']; ?></td>
+								<td><?php echo $row['descripcion']; ?></td>
+								<td><?php echo $row['codigo']; ?></td>
 
-							<td><?php echo $row['cantidad']; ?></td>
-							<td><?php echo $row['vlr_unidad']; ?></td>
-							<td><?php echo $row['total']; ?></td>
-							
-						</tr> 
-						<?php  };
-						mysql_close()?>
+								<td><?php echo $row['vlr_inicial']; ?></td>
+								<?php if($row['tipo']=='C'){ ?>
+								<td><?php echo $row['cant_inicial']; ?></td>
+								<td><?php echo $row['vlr_inicial']*$row['cant_inicial']; ?></td>
+								<td>0</td>
+								<td>0</td>
+								<?php }else{ ?>
+								<td>0</td>
+								<td>0</td>
+								<td><?php echo $row['cant_inicial']; ?></td>
+								<td><?php echo $row['vlr_inicial']*$row['cant_inicial']; ?></td>
+
+								<?php } ?>
+
+								<td><?php echo $row['cantidad']; ?></td>
+								<td><?php echo $row['vlr_unidad']; ?></td>
+								<td><?php echo $row['total']; ?></td>
+
+							</tr> 
+							<?php } ?>
 					</tbody>
 				</table>
+				
 			</div>
 		</div>
+		<?php } 
+				mysql_close(); ?>
 	</div>
 </div>
 </div>
