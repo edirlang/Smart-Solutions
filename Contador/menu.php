@@ -26,9 +26,9 @@ session_start();
 				<li class="dropdown">
 					<a href="Transacion-manual.php" class="dropdown-toggle" data-toggle="dropdown">Transaciones manuales<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="Transacion-manual.php">Transaciones</a></li>
-						<li><a href="ingresar-transacion.php">Ingresar Nueva Transacion</a></li>
-						<li><a href="Codigos.php">Codigos</a></li>
+						<li><a href="Transacion-manual.php"><span class="glyphicon glyphicon-book"></span>	Libro Contable</a></li>
+						<li><a href="ingresar-transacion.php"> Ingresar Nueva Transacion</a></li>
+						<li><a href="Codigos.php"><span class="glyphicon glyphicon-list"></span>	Codigos-PUC</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

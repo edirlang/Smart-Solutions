@@ -4,12 +4,14 @@ function main(){
 }
 
 function Buscar(){
+	var documento = $("#documento").val();
 	var fech = $("#fecha").val();
 	var cuenta = $("#cuenta").val();
 
 	$.post("consultar_transaciones.php",{
 		codigo: cuenta,
-		fecha: fech
+		fecha: fech,
+		documento: documento
 	},consultar);
 }
 

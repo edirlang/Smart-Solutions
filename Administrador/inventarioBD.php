@@ -15,7 +15,6 @@
     }
     if($i==0){
       array_push($productos, $row['codigo']);
-      echo $row['codigo'];
     }
   }
  ?>

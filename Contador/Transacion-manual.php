@@ -1,4 +1,5 @@
 	<?php include("menu.php"); ?>
+	
 	<script type="text/javascript" src="../js/jquery.validate.js"></script>
 	<script type="text/javascript" src="../js/buscar_transaciones.js"></script>
 	<script src="../js/jquery-ui.js"></script>
@@ -18,11 +19,15 @@
 							<div class="panel-body">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="form-group">
-										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+											<label>Documento: </label>
+											<input type="text" name="documento" id="documento" class="form-control">
+										</div>
+										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 											<label>Cuenta: </label>
 											<input type="text" name="cuenta" id="cuenta" class="form-control">
 										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 											<label>Fecha: </label>
 											<input type="date" name="fecha" id="fecha" class="form-control">
 										</div>
