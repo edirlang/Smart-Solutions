@@ -17,10 +17,10 @@ include("Consultar_factura.php");
 			<div class="panel panel-success">
 				<div class="panel-body">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-						<h2>Smart-Solution</h2>
-						<h2>Caller nose q</h2>
-						<h2>Tel: 0000000000</h2>
-						<h2>Nit: 1111111-0</h2>
+						<h2>Smart-Solutions</h2>
+						<h2>Centro Comercial la hacienda Local 201 </h2>
+						<h2>Tel: 867 2290</h2>
+						<h2>Nit: 1069748845-5</h2>
 						<h2>Regimen Comun</h2>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
