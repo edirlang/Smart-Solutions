@@ -28,8 +28,8 @@
                <td><?php echo $row[2]; ?></td>
                <td><?php echo $row[3]; ?></td>
                <td><?php echo $row[5]; ?></td>
-               <td><a class="btn btn-success" href="editar_empleado.php?id=<?php echo $row[0] ?>">Editar</a> </td>
-               <td><a class="btn btn-danger" href="eliminar_empleado.php?id=<?php echo $row[0] ?>">Eliminar</a> </td>
+                <td><a class="btn btn-success" href="editar_empleado.php?id=<?php echo $row[0] ?>"><span class="glyphicon glyphicon-edit"></span></a> </td>
+               <td><a class="btn btn-danger" href="eliminar_empleado.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
              </tr>
              <?php } ?>
            </tbody>

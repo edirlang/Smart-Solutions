@@ -31,7 +31,7 @@
 								echo "<td>".$row['nombre']."</td>";
 								echo "<td>".$row['telefono']."</td>";
 								echo "<td>".$row['direccion']."</td>";
-								echo "<td><a class='btn btn-success' href='nuevo_pedido.php?id=".$row['codigo']."''>Ingresar Pedido</a></td>";
+								echo "<td><a class='btn btn-success' href='nuevo_pedido.php?id=".$row['codigo']."''><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>";
 								echo "</tr>";
 							}
 							echo mysql_error();

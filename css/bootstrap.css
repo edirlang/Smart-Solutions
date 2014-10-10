@@ -6396,3 +6396,6 @@ textarea:focus {
 .panel-default > .panel-heading {
   background-color: #464545;
 }
+.blue {
+    color: rgb(255, 194, 0);
+}

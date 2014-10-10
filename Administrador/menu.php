@@ -18,14 +18,14 @@ session_start();
 <body>
 
   <nav class="navbar navbar-inverse">
-    <a class="navbar-brand" href="panel_admin.php">HOME</a>
+    <a class="navbar-brand" href="panel_admin.php"><span class="glyphicon glyphicon-home"></span>HOME</a>
     <ul class="nav navbar-nav">
-      <li ><a href="Productos.php">Inventario</a></li>
-      <li><a href="Clientes.php">Clientes</a></li>
-      <li><a href="Empleados.php">Empleados</a></li>
-      <li><a href="Proveedor.php">Proveedores</a></li>
+      <li ><a href="Productos.php"><span class="glyphicon glyphicon-book"></span> Inventario</a></li>
+      <li><a href="Clientes.php"><span class="glyphicon glyphicon-list"></span> Clientes</a></li>
+      <li><a href="Empleados.php"><span class="glyphicon glyphicon-briefcase"></span> Empleados</a></li>
+      <li><a href="Proveedor.php"><span class="glyphicon glyphicon-folder-open"></span> Proveedores</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span>
           Estados Financieros<b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -40,7 +40,7 @@ session_start();
     </ul>
 
     <ul class="nav navbar-inverse navbar-right">
-      <li><a href="../salir.php">Salir</a></li>
+      <li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span>Salir</a></li>
     </ul>
   </nav>
   <?php } ?>

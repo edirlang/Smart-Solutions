@@ -20,14 +20,14 @@ session_start();
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-			<a class="navbar-brand" href="panel_contador.php">HOME</a>
+			<a class="navbar-brand" href="panel_contador.php"><span class="glyphicon glyphicon-home"></span>HOME</a>
 			<ul class="nav navbar-nav">
-				<li><a href="Productos.php">Inventario</a></li>
+				<li><a href="Productos.php"><span class="glyphicon glyphicon-tasks"></span> Inventario</a></li>
 				<li class="dropdown">
-					<a href="Transacion-manual.php" class="dropdown-toggle" data-toggle="dropdown">Transaciones manuales<b class="caret"></b></a>
+					<a href="Transacion-manual.php" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-close"></span> Transaciones manuales<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="Transacion-manual.php"><span class="glyphicon glyphicon-book"></span>	Libro Contable</a></li>
-						<li><a href="ingresar-transacion.php"> Ingresar Nueva Transacion</a></li>
+						<li><a href="ingresar-transacion.php"><span class="glyphicon glyphicon-list-alt"></span> Ingresar Nueva Transacion</a></li>
 						<li><a href="Codigos.php"><span class="glyphicon glyphicon-list"></span>	Codigos-PUC</a></li>
 					</ul>
 				</li>
@@ -40,7 +40,7 @@ session_start();
 				</li>
 			</ul>
 			<ul class="nav navbar-inverse navbar-right">
-					<li><a href="../salir.php">Salir</a></li>
+					<li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span>Salir</a></li>
 			</ul>
 </nav>
 <?php } ?>

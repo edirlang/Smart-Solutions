@@ -27,8 +27,8 @@
                <td><?php echo $row['Nombre']; ?></td>
                <td><?php echo $row['Apellido']; ?></td>
                <td><?php echo $row['Telefono']; ?></td>
-               <td><a class="btn btn-success" href="editar_cliente.php?id=<?php echo $row['Cedula'] ?>">Editar</a> </td>
-               <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>">Eliminar</a> </td>
+               <td><a class="btn btn-success" href="editar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-edit"></span></a> </td>
+               <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
              </tr>
              <?php } 
              mysql_close()?>
@@ -58,7 +58,7 @@
           <label for="">Telefono</label>
           <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
         </div>
-        <button id="Enviar" type="submit" class="btn btn-primary">Guardar</button>
+        <button id="Enviar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
       </form>  
 
     </div>
