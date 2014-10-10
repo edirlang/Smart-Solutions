@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <h3>Objeto Social</h3>
-      <p class="text-info" align="justify">comercializadora de equipos de computo por medio de asesorias predeterminadas.</p>
+      <p class="text-info" align="justify">Smart Solutions es una comercializadora de equipos de computo por medio de asesorias predeterminadas.</p>
     </div>
   </div>
   <div class="row">
