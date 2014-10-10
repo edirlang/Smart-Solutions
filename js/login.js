@@ -3,6 +3,9 @@ x.ready(inicializarEventos);
 function inicializarEventos()
 {
   $("#Enviar").click(presionBoton);
+  $(".ws_next").remove();
+  $(".ws_prev").remove();
+  $(".ws_playpause").remove();
 }
 
 function presionBoton()
