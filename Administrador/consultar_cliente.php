@@ -1,6 +1,6 @@
 <?php 
 	include '../conexion.php';
-	$id = $_GET['id'];
+	$id = $_POST['id'];
 	$cliente;
 	$sql = 'SELECT * FROM clientes';
 	$resultado = mysql_query($sql,$cn);
@@ -10,4 +10,8 @@
 		}
 	}                    
 	mysql_close($cn);
+
+	$json = json_encode($cliente); 
+	echo $json;
+	
 ?>

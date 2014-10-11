@@ -8,6 +8,4 @@
 	echo mysql_error();
 	mysql_close($cn);
 	
-	header("Location: Clientes.php");
-
  ?>
