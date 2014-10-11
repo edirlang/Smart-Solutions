@@ -2,8 +2,8 @@
 <?php 
 include("../conexion.php");
 
-$productos = mysql_query("SELECT * FROM productos");
-while($row = mysql_fetch_row($productos)){ 
+$productos = mysqli_query($cn,"SELECT * FROM productos");
+while($row = mysqli_fetch_row($productos)){ 
    $alerta;
    if ($row[6]<2) {
       $alerta="danger";
@@ -31,4 +31,5 @@ while($row = mysql_fetch_row($productos)){
   </div>
   </div>";
 }
+mysqli_close($cn);
 ?>

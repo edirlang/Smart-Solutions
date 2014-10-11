@@ -35,8 +35,8 @@
 					</thead>
 					<tbody>
 						<?php 
-						$inventario = mysql_query("SELECT * FROM `inventario` where `codigo` like '".$valor."' order by fecha",$cn);
-						while($row = mysql_fetch_assoc($inventario)){ 
+						$inventario = mysqli_query($cn,"SELECT * FROM `inventario` where `codigo` like '".$valor."' order by fecha");
+						while($row = mysqli_fetch_assoc($inventario)){ 
 							 ?>
 							<tr>
 								<td><?php echo $row['fecha']; ?></td>

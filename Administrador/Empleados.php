@@ -21,7 +21,7 @@
              </tr>
            </thead>
            <tbody id="Filas">
-             <?php while($row = mysql_fetch_row($Usuarios)){ ?>
+             <?php while($row = mysqli_fetch_row($Usuarios)){ ?>
              <tr id="<?php echo $row[0]; ?>">
                <td><?php echo $row[0]; ?></td>
                <td id="-1"><?php echo $row[1]; ?></td>
@@ -36,7 +36,7 @@
                   $.post('consultar_empleado.php',{
                     id: <?php echo $row[0]; ?>
                   },function(datos){
-                      
+                      alert(datos);
                       datos = $.parseJSON(datos);
 
                       document.getElementById('cedula').value =datos['Cedula'];
@@ -52,7 +52,9 @@
                </td>
                 <td><a class="btn btn-danger" href="eliminar_empleado.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
              </tr>
-             <?php } ?>
+             <?php } 
+              mysqli_close($cn);
+             ?>
            </tbody>
          </table>
        </div>

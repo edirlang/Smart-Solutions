@@ -3,11 +3,12 @@
 	$id = $_GET['id'];
 	$producto;
 	$sql = 'SELECT * FROM productos';
-	$resultado = mysql_query($sql,$cn);
-	while ($row = mysql_fetch_assoc($resultado)) {
+	$resultado = mysqli_query($cn,$sql);
+	while ($row = mysqli_fetch_assoc($resultado)) {
 		if($row['Codigo'] == $id){
 			$producto=$row;
 		}
-	}                    
-	mysql_close($cn);
+	}
+	echo mysqli_error();                    
+	mysqli_close($cn);
 ?>

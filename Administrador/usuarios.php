@@ -1,6 +1,7 @@
 <?php 
 	include("../conexion.php");
 
-	$Usuarios = mysql_query("SELECT * FROM usuarios");
+	$Usuarios = mysqli_query($cn,"SELECT * FROM usuarios");
+	
 	
  ?>

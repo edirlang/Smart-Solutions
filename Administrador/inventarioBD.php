@@ -1,11 +1,11 @@
 <?php 
   include("../conexion.php");
 
-  $inventario = mysql_query("SELECT * FROM inventario",$cn);
+  $inventario = mysqli_query($cn,"SELECT * FROM inventario");
   
   $productos = array();
   
-  while ($row = mysql_fetch_assoc($inventario)) {
+  while ($row = mysqli_fetch_assoc($inventario)) {
   	$aux1=$row['codigo'];
   	$i=0;
     foreach ($productos as $key => $valor) {

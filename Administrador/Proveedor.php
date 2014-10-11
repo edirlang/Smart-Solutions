@@ -25,7 +25,7 @@
 						<tbody>
 							<?php 
 							require("proveedorBD.php");
-							while ($row = mysql_fetch_assoc($result)) {
+							while ($row = mysqli_fetch_assoc($result)) {
 								echo "<tr>";
 								echo "<td>".$row['codigo']."</td>";
 								echo "<td>".$row['nombre']."</td>";
@@ -34,8 +34,7 @@
 								echo "<td><a class='btn btn-success' href='nuevo_pedido.php?id=".$row['codigo']."''><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>";
 								echo "</tr>";
 							}
-							echo mysql_error();
-							mysql_close($cn);
+							mysqli_close($cn);
 							?>
 						</tbody>
 					</table>

@@ -30,7 +30,7 @@ $productos = Productos($proveedor);
 
 								<label for="">Selecione codigo de producto</label>
 								<select class="form-control" name="codigo" id="codigo">
-									<?php while($row = mysql_fetch_assoc($productos)){ ?>
+									<?php while($row = mysqli_fetch_assoc($productos)){ ?>
 									<option value='<?php echo $row['cod_poducto']; ?>'><?php echo $row['cod_poducto']; ?></option>
 									<?php } ?>
 									<option value='0'>Nuevo Producto</option>

@@ -5,15 +5,15 @@
 	$empleado=array();
 	
 	$sql = 'SELECT * FROM usuarios';
-	$resultado = mysql_query($sql,$cn);
+	$resultado = mysqli_query($cn,$sql);
 	
-	while ($row = mysql_fetch_assoc($resultado)) {
+	while ($row = mysqli_fetch_assoc($resultado)) {
 		if($row['Cedula'] == $id){
 			$empleado=$row;
 		}
 	} 
 	$json = json_encode($empleado);
 	echo $json;
-	echo mysql_error();
-	mysql_close($cn);
+	
+	mysqli_close($cn);
 ?>

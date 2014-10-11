@@ -1,4 +1,5 @@
 <?php 
 include("../conexion.php");
-$result = mysql_query("SELECT * FROM proveedo", $cn);
+$result = mysqli_query($cn,"SELECT * FROM proveedo");
+
 ?>

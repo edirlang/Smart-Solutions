@@ -21,7 +21,7 @@
              </tr>
            </thead>
            <tbody id="Filas">
-             <?php while($row = mysql_fetch_assoc($Clientes)){ ?>
+             <?php while($row = mysqli_fetch_assoc($Clientes)){ ?>
              <tr id='<?php echo $row['Cedula']; ?>'>
                <td><?php echo $row['Cedula']; ?></td>
                <td id="1"><?php echo $row['Nombre']; ?></td>
@@ -49,7 +49,7 @@
               <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
             </tr>
             <?php } 
-            mysql_close()?>
+            mysqli_close($cn)?>
           </tbody>
         </table>
       </div>
