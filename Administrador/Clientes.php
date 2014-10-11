@@ -88,7 +88,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Nuevo Cliente</h4>
+        <h4>Editar Cliente</h4>
       </div>
 
       <div class="modal-body">
@@ -114,7 +114,7 @@
       <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
     </div>
   </div>
-</div>
+  </div>
 </div> 
 </div>
 </div>

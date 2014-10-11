@@ -10,7 +10,6 @@ function inicializarEventos()
 
 function presionBoton()
 {
-  
   $('#Formulario').validate({
     rules: {
      'cedula': 'required',

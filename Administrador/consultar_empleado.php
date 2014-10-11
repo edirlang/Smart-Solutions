@@ -1,8 +1,8 @@
 <?php 
 	include '../conexion.php';
-	$id = $_GET['id'];
+	$id = $_POST['id'];
 	
-	$empleado=null;
+	$empleado=array();
 	
 	$sql = 'SELECT * FROM usuarios';
 	$resultado = mysql_query($sql,$cn);
@@ -12,7 +12,8 @@
 			$empleado=$row;
 		}
 	} 
-	
+	$json = json_encode($empleado);
+	echo $json;
 	echo mysql_error();
 	mysql_close($cn);
 ?>

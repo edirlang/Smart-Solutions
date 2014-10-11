@@ -18,10 +18,7 @@ function actualizar(){
       $("#"+$("#cedula").val()+" #1").text($("#nombre").val());
       $("#"+$("#cedula").val()+" #2").text($("#apellido").val());
       $("#"+$("#cedula").val()+" #3").text($("#telefono").val());
-
-
-    }); 
-  
+    });  
 }
 
 function presionBoton()

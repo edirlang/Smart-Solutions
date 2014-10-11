@@ -22,14 +22,35 @@
            </thead>
            <tbody id="Filas">
              <?php while($row = mysql_fetch_row($Usuarios)){ ?>
-             <tr>
+             <tr id="<?php echo $row[0]; ?>">
                <td><?php echo $row[0]; ?></td>
-               <td><?php echo $row[1]; ?></td>
-               <td><?php echo $row[2]; ?></td>
-               <td><?php echo $row[3]; ?></td>
-               <td><?php echo $row[5]; ?></td>
-                <td><a class="btn btn-success" href="editar_empleado.php?id=<?php echo $row[0] ?>"><span class="glyphicon glyphicon-edit"></span></a> </td>
-               <td><a class="btn btn-danger" href="eliminar_empleado.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
+               <td id="-1"><?php echo $row[1]; ?></td>
+               <td id="-2"><?php echo $row[2]; ?></td>
+               <td id="-3"><?php echo $row[3]; ?></td>
+               <td id="-4"><?php echo $row[5]; ?></td>
+               <td>
+                <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row[0]; ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                <script language="JavaScript" type="text/javascript">
+                $("#<?php echo $row[0]; ?>").click(function(){
+                
+                  $.post('consultar_empleado.php',{
+                    id: <?php echo $row[0]; ?>
+                  },function(datos){
+                      
+                      datos = $.parseJSON(datos);
+
+                      document.getElementById('cedula').value =datos['Cedula'];
+                      document.getElementById('nombre').value =datos['Nombre'];
+                      document.getElementById('apellido').value =datos['Apellido'];
+                      document.getElementById('telefono').value =datos['Telefono'];
+                      document.getElementById('cargo').value =datos['Rol'];
+                      }
+                    )
+                  }
+                );
+                </script>
+               </td>
+                <td><a class="btn btn-danger" href="eliminar_empleado.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
              </tr>
              <?php } ?>
            </tbody>
@@ -72,7 +93,49 @@
     </div>
   </div>
 </div> 
- </div>
+</div>
+</div>
+
+<div class="modal fade" id="ventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4>Editar Empleado</h4>
+      </div>
+
+      <div class="modal-body">
+       <form action="actualizar_empleado.php" method="post">
+        <div class="form-group">
+          <label for="">Cedula</label>
+          <input type="text" name="cedula" class="form-control"  id="cedula" placeholder="Codigo de Producto" readonly="readonly"/>
+
+          <label for="">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de Producto" />
+
+          <label for="">Apellido</label>
+          <input type="text" class="form-control" name="apellido" id="apellido"/>
+
+          <label for="">Telefono</label>
+          <input type="text" class="form-control" name="telefono" id="telefono">
+
+          <label for="">Cargo</label>
+          <select  class="form-control" id="cargo" name="rol">
+            <option value="admin">Administrador</option>
+            <option value="contador">Auxiliar Contables</option>
+            <option value="cajero">Cajero</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" id="guardar" data-dismiss="modal">Actualizar</button>
+      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- jQuery -->

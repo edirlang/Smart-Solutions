@@ -3,6 +3,23 @@ var x = $(document).ready(inicializarEventos);
 function inicializarEventos()
 {
   $("#Enviar").click(presionBoton);
+  $("#guardar").click(actualizar);
+}
+
+function actualizar(){
+    $.post("actualizar_empleado.php",{
+      cedula: $("#cedula").val(),
+      nombre: $("#nombre").val(),
+      apellido: $("#apellido").val(),
+      telefono: $("#telefono").val(),
+      cargo: $("#cargo").val()
+    },function(datos){
+
+      $("#"+$("#cedula").val()+" #-1").text($("#nombre").val());
+      $("#"+$("#cedula").val()+" #-2").text($("#apellido").val());
+      $("#"+$("#cedula").val()+" #-3").text($("#telefono").val());
+      $("#"+$("#cedula").val()+" #-4").text($("#cargo").val());
+    });  
 }
 
 function presionBoton()
