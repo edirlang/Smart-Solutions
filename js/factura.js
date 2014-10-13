@@ -48,17 +48,6 @@ function presionBoton()
         var vlr_unidad = (($("#vlr_unidad").val()*iva)/100)+($("#vlr_unidad").val()*1);
         var subtotal = cantidad*vlr_unidad;
         var total=($("#total").val()*1) + subtotal;
-
-        $("#total").replaceWith($('<h3>',{ 
-         text:  'Total= $' + total,
-         'id'    : 'total'
-       }));
-
-        $("#fecha_a").replaceWith($('<p>',{ 
-         text:  'Fecha: ' + fecha,
-         'id'    : 'fecha_a'
-       }));
-
         VaciarFormulario();
       }
     });
@@ -83,12 +72,12 @@ function procesar(datos){
  if(datos==1){
   alert("Correcto");
   setTimeout("location.href='Proveedor.php'", 50);
-}else{
-  if($('#error').length){
-
   }else{
-    alert(datos);
-    $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: No se almaceno el pedido </div>");
+    if($('#error').length){
+
+    }else{
+      alert(datos);
+      $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: No se almaceno el pedido </div>");
+    }
   }
-}
 }
