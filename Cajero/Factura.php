@@ -41,7 +41,7 @@ include("Consultar_factura.php");
 							<div class="form-group">
 								<label for="">C.C. Cliente</label>
 								<select name="cc_cliente" class="form-control" id="cc_cliente">
-									<?php while($row = mysql_fetch_row($Clientes)){ ?>
+									<?php while($row = mysqli_fetch_row($Clientes)){ ?>
 									<option value='<?php echo $row[0]; ?>'><?php echo $row[0]; ?></option>
 									<?php } ?>
 									

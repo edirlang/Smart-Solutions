@@ -11,6 +11,7 @@
 	    move_uploaded_file($uploadfile_temporal,$uploadfile_nombre); 
 	    return true; 
 	}
-}
+	}
+	echo "imagen";
 } 
  ?>

@@ -23,8 +23,8 @@
 						<tbody>
 							<?php 
 							include("../conexion.php");
-							$result = mysql_query("SELECT * FROM codigotransacion", $cn);
-							while ($row = mysql_fetch_row($result)) {
+							$result = mysqli_query($cn,"SELECT * FROM codigotransacion");
+							while ($row = mysqli_fetch_row($result)) {
 								echo "<tr>";
 								echo "<td>".$row[0]."</td>";
 								echo "<td>".$row[1]."</td>";
@@ -32,7 +32,7 @@
 								echo "</tr>";
 							}
 							echo mysql_error();
-							mysql_close($cn);
+							mysqli_close($cn);
 							?>
 						</tbody>
 					</table>

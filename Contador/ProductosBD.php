@@ -1,9 +1,9 @@
 <?php 
 	include("../conexion.php");
 
-	$productos = mysql_query("SELECT * FROM productos");
+	$productos = mysqli_query($cn,"SELECT * FROM productos");
 
-	while($row = mysql_fetch_row($productos)){ 
+	while($row = mysqli_fetch_row($productos)){ 
     	$alerta;
     	if ($row[8]<2) {
     		$alerta="danger";
@@ -30,5 +30,5 @@
      		</div>";
 
   	}
-	mysql_close($cn);
+	mysqli_close($cn);
  ?>

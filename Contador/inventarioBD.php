@@ -1,12 +1,12 @@
 <?php 
   include("../conexion.php");
 
-  $inventario = mysql_query("SELECT * FROM inventario",$cn);
+  $inventario = mysqli_query($cn,"SELECT * FROM inventario");
   
   $productos = array();
   $aux=0;
 
-  while ($row = mysql_fetch_assoc($inventario)) {
+  while ($row = mysqli_fetch_assoc($inventario)) {
   	$aux1=$row['codigo'];
   	if($aux != $aux1){
   		array_push($productos, $row['codigo']);

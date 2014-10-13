@@ -33,8 +33,6 @@ $productos = Productos($proveedor);
 									<?php while($row = mysqli_fetch_assoc($productos)){ ?>
 									<option value='<?php echo $row['cod_poducto']; ?>'><?php echo $row['cod_poducto']; ?></option>
 									<?php } ?>
-									<option value='0'>Nuevo Producto</option>
-									<option value='%'>--------------</option>
 								</select>
 
 								<label for="">Cantidad</label>
@@ -49,6 +47,7 @@ $productos = Productos($proveedor);
 							</div>
 							<button class="btn btn-primary btn-block" id="boton1">Agregar</button>
 						</form>
+						<a class="btn btn-success form-control" data-toggle="modal" data-target="#from_nuevo">Nuevo producto</a>
 					</div>
 				</div>
 			</div>
@@ -90,13 +89,72 @@ $productos = Productos($proveedor);
 			</div>
 		</div>
 	</div>
-</div>
-<!-- Librería jQuery requerida por los plugins de JavaScript -->
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript" src="../js/pedido.js"></script>
+
+	<div class="modal fade" id="from_nuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4>Nuevo Producto</h4>
+				</div>
+
+				<div class="modal-body">
+					<form id="fomr_producto" role="form">
+						<div class="form-group">
+							<label for="">Proveedor</label>
+							<input type="text" class="form-control" name="proveedor" id="proveedor" value="<?php echo $_GET['id']; ?>">
+
+							<label for="">Codigo</label>
+							<input type="text" class="form-control" name="cod_nuevo" placeholder="Codigo de Producto" id="cod_nuevo">
+
+							<label for="">Nombre</label>
+							<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Codigo de Producto">
+
+							<label for="">Descripcion</label>
+							<textarea rows="4" cols="50" class="form-control" name="descripcion" id="descripcion"> </textarea>
+
+							<label for="">Especificaciones</label>
+							<textarea rows="4" cols="50" class="form-control" name="especificaciones" id="especificaciones"> </textarea>
+
+							<label for="">Valor para la Venta</label>
+							<input type="number" name="vlr_ven" id="vlr_ven" class="form-control" >
+
+							<label for="">Valor comprado</label>
+							<input type="number" name="vlr_comp" id="vlr_comp" class="form-control" >
+
+							<label for="">IVA</label>
+							<input type="number" name="iva_nuevo" id="iva_nuevo" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+
+							<label for="">Cantidad</label>
+							<input type="number" name="cant" id="cant" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
+
+						</div>
+						<form id="fomr_producto" role="form">
+							<div class="form-group">
+								<label for="">Imagen</label>
+								<input type="file" class="form-control" name="foto" id="foto" >
+							</div>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary" id="Guardar" data-dismiss="modal">Actualizar</button>
+						<button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- jQuery -->
+	<script src="//code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.validate.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/pedido.js"></script>
 </body>
 </html>

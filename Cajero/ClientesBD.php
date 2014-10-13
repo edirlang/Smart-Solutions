@@ -1,6 +1,6 @@
 <?php 
   include("../conexion.php");
 
-  $Clientes = mysql_query("SELECT * FROM clientes");
+  $Clientes = mysqli_query($cn,"SELECT * FROM clientes");
   
  ?>

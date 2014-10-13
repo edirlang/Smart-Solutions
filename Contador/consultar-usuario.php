@@ -1,13 +1,13 @@
 <?php 
 include("../conexion.php");
 
-$result = mysql_query("SELECT * FROM usuarios where Cedula='".$_SESSION['usuario']."'", $cn);
+$result = mysqli_query($cn,"SELECT * FROM usuarios where Cedula='".$_SESSION['usuario']."'");
 echo mysql_error();
-mysql_close($cn);
+mysqli_close($cn);
 
 $usuario;
 
-while ($row = mysql_fetch_row($result)){
+while ($row = mysqli_fetch_row($result)){
     	$usuario= $row[0];	        
    	}
 

@@ -10,204 +10,204 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 	if($fecha != null && $codigo != null && $documento != null){
 		
-		$cuentas = mysql_query("SELECT * FROM codigotransacion where Codigo = '".$codigo."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM codigotransacion where Codigo = '".$codigo."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
 			
 			switch ($row['Tipo']) {
 				case 'activo':
-				$transaciones = mysql_query("SELECT * FROM activo1 WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM activo1 WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'");
 				break;
 
 				case 'pasivo':
-				$transaciones = mysql_query("SELECT * FROM pasivo WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM pasivo WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'");
 				break;
 
 				case 'ingreso':
-				$transaciones = mysql_query("SELECT * FROM ingresos WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM ingresos WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'");
 				break;
 
 				case 'costo':
-				$transaciones = mysql_query("SELECT * FROM costos WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM costos WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'");
 				break;
 
 				case 'gasto':
-				$transaciones = mysql_query("SELECT * FROM gasto WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM gasto WHERE Documento = '".$documento."' and Codigo = '".$codigo."' and Fecha = '".$fecha."'");
 				break;
 			}
 		}
 	}elseif($codigo != null && $documento != null){
-		$cuentas = mysql_query("SELECT * FROM codigotransacion where Codigo='".$codigo."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
+		$cuentas =  mysqli_query($cn,"SELECT * FROM codigotransacion where Codigo='".$codigo."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
 			switch ($row['Tipo']) {
 				case 'activo':
-				$transaciones = mysql_query("SELECT * FROM activo1 WHERE Documento = '".$documento."' and Codigo = '".$codigo."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM activo1 WHERE Documento = '".$documento."' and Codigo = '".$codigo."'");
 				break;
 
 				case 'pasivo':
-				$transaciones = mysql_query("SELECT * FROM pasivo WHERE Documento = '".$documento."' and Codigo = '".$codigo."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM pasivo WHERE Documento = '".$documento."' and Codigo = '".$codigo."'");
 				break;
 
 				case 'ingreso':
-				$transaciones = mysql_query("SELECT * FROM ingresos WHERE Documento = '".$documento."' and Codigo = '".$codigo."'",$cn);
+				$transaciones =  mysqli_query($cn,"SELECT * FROM ingresos WHERE Documento = '".$documento."' and Codigo = '".$codigo."'");
 				break;
 
 				case 'costo':
-				$transaciones = mysql_query("SELECT * FROM costos WHERE Documento = '".$documento."' and Codigo = '".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM costos WHERE Documento = '".$documento."' and Codigo = '".$codigo."'");
 				break;
 
 				case 'gasto':
-				$transaciones = mysql_query("SELECT * FROM gasto WHERE Documento = '".$documento."' and Codigo = '".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM gasto WHERE Documento = '".$documento."' and Codigo = '".$codigo."'");
 				break;
 			}
 		} 
 	}elseif($fecha != null && $documento != null){
-		$cuentas = mysql_query("SELECT * FROM documentado where cod_documento='".$documento."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
-			$transaciones = mysql_query("SELECT * FROM activo1 WHERE Documento = '".$documento."' and Fecha = '".$fecha."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM documentado where cod_documento='".$documento."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM activo1 WHERE Documento = '".$documento."' and Fecha = '".$fecha."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM pasivo WHERE Documento = '".$documento."' and Fecha = '".$fecha."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM pasivo WHERE Documento = '".$documento."' and Fecha = '".$fecha."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM ingresos WHERE Documento = '".$documento."' and Fecha = '".$fecha."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones =mysqli_query($cn,"SELECT * FROM ingresos WHERE Documento = '".$documento."' and Fecha = '".$fecha."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM costos WHERE Documento = '".$documento."' and Fecha = '".$fecha."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM costos WHERE Documento = '".$documento."' and Fecha = '".$fecha."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM gasto WHERE Documento = '".$documento."' and Fecha = '".$fecha."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM gasto WHERE Documento = '".$documento."' and Fecha = '".$fecha."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
 		}
 	}elseif($fecha!=null && $codigo!=null ){
-		$cuentas = mysql_query("SELECT * FROM codigotransacion where Codigo='".$codigo."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM codigotransacion where Codigo='".$codigo."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
 			switch ($row['Tipo']) {
 				case 'activo':
-				$transaciones = mysql_query("SELECT * FROM activo1 where Codigo like'".$codigo."' and Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM activo1 where Codigo like'".$codigo."' and Fecha like '".$fecha."'");
 				break;
 
 				case 'pasivo':
-				$transaciones = mysql_query("SELECT * FROM pasivo where Codigo like'".$codigo."' and Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM pasivo where Codigo like'".$codigo."' and Fecha like '".$fecha."'");
 				break;
 
 				case 'ingreso':
-				$transaciones = mysql_query("SELECT * FROM ingresos where Codigo like'".$codigo."' and Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM ingresos where Codigo like'".$codigo."' and Fecha like '".$fecha."'");
 				break;
 
 				case 'costo':
-				$transaciones = mysql_query("SELECT * FROM costos where Codigo like'".$codigo."' and Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM costos where Codigo like'".$codigo."' and Fecha like '".$fecha."'");
 				break;
 
 				case 'gasto':
-				$transaciones = mysql_query("SELECT * FROM gasto where Codigo like'".$codigo."' and Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM gasto where Codigo like'".$codigo."' and Fecha like '".$fecha."'");
 				break;
 			}
 		}
 	}elseif($codigo != null){
-		$cuentas = mysql_query("SELECT * FROM codigotransacion where Codigo='".$codigo."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM codigotransacion where Codigo='".$codigo."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
 			switch ($row['Tipo']) {
 				case 'activo':
-				$transaciones = mysql_query("SELECT * FROM activo1 where Codigo like'".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM activo1 where Codigo like'".$codigo."'");
 				break;
 
 				case 'pasivo':
-				$transaciones = mysql_query("SELECT * FROM pasivo where Codigo like'".$codigo."'",$cn);
+				$transaciones =mysqli_query($cn,"SELECT * FROM pasivo where Codigo like'".$codigo."'");
 				break;
 
 				case 'ingreso':
-				$transaciones = mysql_query("SELECT * FROM ingresos where Codigo like'".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM ingresos where Codigo like'".$codigo."'");
 				break;
 
 				case 'costo':
-				$transaciones = mysql_query("SELECT * FROM costos where Codigo like'".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM costos where Codigo like'".$codigo."'");
 				break;
 
 				case 'gasto':
-				$transaciones = mysql_query("SELECT * FROM gasto where Codigo like'".$codigo."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM gasto where Codigo like'".$codigo."'");
 				break;
 			}
 		}
 	}elseif($fecha != null){
-		$cuentas = mysql_query("SELECT * FROM codigotransacion where Codigo='".$codigo."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM codigotransacion where Codigo='".$codigo."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
 			switch ($row['Tipo']) {
 				case 'activo':
-				$transaciones = mysql_query("SELECT * FROM activo1 where Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM activo1 where Fecha like '".$fecha."'");
 				break;
 
 				case 'pasivo':
-				$transaciones = mysql_query("SELECT * FROM pasivo where Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM pasivo where Fecha like '".$fecha."'");
 				break;
 
 				case 'ingreso':
-				$transaciones = mysql_query("SELECT * FROM ingresos where Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM ingresos where Fecha like '".$fecha."'");
 				break;
 
 				case 'costo':
-				$transaciones = mysql_query("SELECT * FROM costos where Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM costos where Fecha like '".$fecha."'");
 				break;
 
 				case 'gasto':
-				$transaciones = mysql_query("SELECT * FROM gasto where Fecha like '".$fecha."'",$cn);
+				$transaciones = mysqli_query($cn,"SELECT * FROM gasto where Fecha like '".$fecha."'");
 				break;
 			}
 		}
 	}elseif($documento != null){
-		$cuentas = mysql_query("SELECT * FROM documentado where cod_documento='".$documento."'",$cn);
-		while ($row = mysql_fetch_assoc($cuentas)) {
-			$transaciones = mysql_query("SELECT * FROM activo1 WHERE Documento = '".$documento."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM documentado where cod_documento='".$documento."'");
+		while ($row = mysqli_fetch_assoc($cuentas)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM activo1 WHERE Documento = '".$documento."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM pasivo WHERE Documento = '".$documento."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM pasivo WHERE Documento = '".$documento."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM ingresos WHERE Documento = '".$documento."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM ingresos WHERE Documento = '".$documento."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM costos WHERE Documento = '".$documento."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM costos WHERE Documento = '".$documento."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
-			$transaciones = mysql_query("SELECT * FROM gasto WHERE Documento = '".$documento."'",$cn);
-			while ($row = mysql_fetch_assoc($transaciones)) {
+			$transaciones = mysqli_query($cn,"SELECT * FROM gasto WHERE Documento = '".$documento."'");
+			while ($row = mysqli_fetch_assoc($transaciones)) {
 				array_push($transacion, $row);
 			}
 		}
 	}else{
-		$cuentas = mysql_query("SELECT * FROM codigotransacion",$cn);
-		$transaciones = mysql_query("SELECT * FROM activo1 ",$cn);
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		$cuentas = mysqli_query($cn,"SELECT * FROM codigotransacion");
+		$transaciones = mysqli_query($cn,"SELECT * FROM activo1 ");
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
-		$transaciones = mysql_query("SELECT * FROM pasivo ",$cn);
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		$transaciones = mysqli_query($cn,"SELECT * FROM pasivo ");
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
-		$transaciones = mysql_query("SELECT * FROM ingresos",$cn);
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		$transaciones = mysqli_query($cn,"SELECT * FROM ingresos");
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
-		$transaciones = mysql_query("SELECT * FROM costos ",$cn);
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		$transaciones = mysqli_query($cn,"SELECT * FROM costos ");
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
-		$transaciones = mysql_query("SELECT * FROM gasto",$cn);
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		$transaciones = mysqli_query($cn,"SELECT * FROM gasto");
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
 	}
 	if($codigo != null){
-		while ($row = mysql_fetch_assoc($transaciones)) {
+		while ($row = mysqli_fetch_assoc($transaciones)) {
 			array_push($transacion, $row);
 		}
 	}

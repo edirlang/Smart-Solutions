@@ -4,11 +4,11 @@
 	
 	function Comprobar($datos){
 		include("../conexion.php");
-		$result = mysql_query("SELECT * FROM codigotransacion");
-		mysql_close($cn);
+		$result = mysqli_query($cn,"SELECT * FROM codigotransacion");
+		mysqli_close($cn);
 		$codigo= array();
 		
-		while($row = mysql_fetch_row($result)){
+		while($row = mysqli_fetch_row($result)){
 			array_push($codigo, $row[0]);
  		}
 
@@ -39,17 +39,17 @@
 
 	function GuardarBD($datos){
 		include("../conexion.php");
-		$result = mysql_query("SELECT * FROM codigotransacion");
+		$result = mysqli_query($cn,"SELECT * FROM codigotransacion");
 		$codigo= array();
 		
-		while($row = mysql_fetch_row($result)){
+		while($row = mysqli_fetch_row($result)){
 			array_push($codigo, $row);
  		}
  		
- 		mysql_query("INSERT INTO documentado VALUES (NULL,'Transacion')",$cn);
-		$documentos = mysql_query("SELECT * FROM documentado order by `cod_documento` desc limit 1",$cn);
+ 		mysqli_query($cn,"INSERT INTO documentado VALUES (NULL,'Transacion')");
+		$documentos = mysqli_query($cn,"SELECT * FROM documentado order by `cod_documento` desc limit 1");
 		$documento=0;
-		while ($row = mysql_fetch_row($documentos)) {
+		while ($row = mysqli_fetch_row($documentos)) {
 			$documento = $row[0];
 		}
 
@@ -59,32 +59,32 @@
  					switch ($fila[2]) {
  						case 'activo':
  								$sql = "INSERT INTO activo1 VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  						case 'pasivo':
  								$sql = "INSERT INTO pasivo VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  						case 'patrimonio':
  								$sql = "INSERT INTO activo1 VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  						case 'ingreso':
  								$sql = "INSERT INTO ingresos VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  						case 'gasto':
  								$sql = "INSERT INTO gasto VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  						case 'costo':
  								$sql = "INSERT INTO costos VALUES ('".$documento."','".$valor[0]."','".$valor[1]."','".$valor[2]."','".$valor[3]."','".$valor[4]."','".$valor[5]."')";
-								mysql_query($sql,$cn);
+								mysqli_query($cn,$sql);
  							break;
  					}
  				}
  			}
  		}
- 		mysql_close($cn);
+ 		mysqli_close($cn);
 	}
  ?>

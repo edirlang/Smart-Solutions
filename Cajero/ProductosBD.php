@@ -1,8 +1,8 @@
 <?php 
 	include("../conexion.php");
     echo "<meta charset='utf-8'>";
-	$productos = mysql_query("SELECT * FROM productos");
-	while($row = mysql_fetch_row($productos)){ 
+	$productos = mysqli_query($cn,"SELECT * FROM productos");
+	while($row = mysqli_fetch_row($productos)){ 
 	   echo "<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
     			<div class='panel panel-success'>
     		 		<div class='panel-heading'>

@@ -4,7 +4,7 @@
 	include("../conexion.php");
 	
 	$sql = "INSERT INTO codigotransacion VALUES ('".$Codigo[0]."','".$Codigo[1]."','".$Codigo[2]."')";
-	mysql_query($sql,$cn);
+	mysql_query($cn,$sql);
 	mysql_close($cn);
 	echo mysql_error();
 	header("Location: Codigos.php");

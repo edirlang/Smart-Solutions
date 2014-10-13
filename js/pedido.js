@@ -7,21 +7,13 @@ function inicializarEventos()
   fecha = d.getFullYear()+"-"+((d.getMonth()*1)+1)+"-"+d.getDate();
   transaciones= new Array();
   $("#boton1").click(presionBoton)
-  $("#Enviar").click(EnviarBD)
-  $("#codigo").click(buscar_cliente);
+  $("#Enviar").click(EnviarBD);
   $("#Guardar").click(GuardarProducto);
-}
 
-function buscar_cliente(){
-  if($('#codigo').val()=='0'){
-    if($('#nuevo').length){
-
-    }else{  
-      $("<iframe src='Producto-Nuevo.php?id="+$("#proveedor").val()+"' width='80%' height='700px' id='nuevo'></iframe>").appendTo("#ventana");
-    }
-  }else{
-    $("#nuevo").remove();
-  }
+  $("#fecha_a").replaceWith($('<p>',{ 
+           text:  'Fecha: ' + fecha,
+           'id'    : 'fecha_a'
+         }));
 }
 
 function presionBoton()
@@ -36,11 +28,11 @@ function presionBoton()
      'iva': 'required'
    },
    messages: {
-     'proveedor': '<p class="alert alert-danger">Debe ingresar su usuario</p>',
-     'Codigo': '<p class="alert alert-danger">Debe selecionar el codigo de producto</p>',
-     'cantidad': '<p class="alert alert-danger">digita la cantidad</p>',
-     'vlr_unidad': '<p class="alert alert-danger">Digita el valor de unidad</p>',
-     'iva': '<p class="alert alert-danger">Digite el iva</p>'
+     'proveedor': '<p class="alert alert-danger">Debe ingresar su usuario</p><br>',
+     'Codigo': '<p class="alert alert-danger">Debe selecionar el codigo de producto</p><br>',
+     'cantidad': '<p class="alert alert-danger">digita la cantidad</p><br>',
+     'vlr_unidad': '<p class="alert alert-danger">Digita el valor de unidad</p><br>',
+     'iva': '<p class="alert alert-danger">Digite el iva</p><br>'
    },
        //errorElement: 'div',
        //errorContainer: $('#errores'),
@@ -65,11 +57,6 @@ function presionBoton()
           var subtotal = cantidad*vlr_unidad;
           var total=($("#total").val()*1) + subtotal;
           $("#total").val(total);
-
-          $("#fecha_a").replaceWith($('<p>',{ 
-           text:  'Fecha: ' + fecha,
-           'id'    : 'fecha_a'
-         }));
         }
         VaciarFormulario();
       }
@@ -192,7 +179,7 @@ function GuardarProducto(){
                         parent.document.getElementById("total").value =total;
     },
     success: function(datos){
-      alert("Agregado"+datos);
+      alert("Producto "+datos+" creado");
       parent.document.getElementById("codigo").value  = '%';
       parent.document.getElementById("nuevo").remove();
     }
