@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	foreach ($datos as $llave => $valor) {
 		$result =mysqli_query($cn,"SELECT * FROM `inventario` WHERE codigo like '".$valor[2]."' order by fecha desc limit 1");
 		$subtotal=$valor[3]*$valor[4];
-		while ($row = mysqli_fetch_assoc($cn,$result)) {
+		while ($row = mysqli_fetch_assoc($result)) {
 			if($row['codigo']==$valor[2]){
 				$cantidad = $row['cantidad']+$valor[3];
 				$total = $row['total']+$subtotal;

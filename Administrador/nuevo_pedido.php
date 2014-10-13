@@ -6,9 +6,8 @@ $productos = Productos($proveedor);
 ?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div id="Mensaje" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
 			</div>
@@ -16,7 +15,7 @@ $productos = Productos($proveedor);
 				
 			</div>
 
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Pedido</h3>
@@ -52,7 +51,7 @@ $productos = Productos($proveedor);
 				</div>
 			</div>
 
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Productos</h3>

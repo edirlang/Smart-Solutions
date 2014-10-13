@@ -61,9 +61,8 @@
      </div>
    </div>
 
-   <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
 
-   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
      <div class="panel panel-success">
        <div class="panel-heading">
          <h3 class="panel-title">Nuevo Cliente</h3>
@@ -87,7 +86,7 @@
             <option value="cajero">Cajero</option>
           </select>
           <label for="">Contraseña</label>
-          <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="contraseña">
+          <input type="password" class="form-control" id="Contrasena" name="Contrasena">
         </div>
         <button id="Enviar"  class="btn btn-primary">Guardar</button>
       </form>  

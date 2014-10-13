@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<?php } 
-				mysql_close(); ?>
+				mysqli_close($cn); ?>
 	</div>
 </div>
 </div>
