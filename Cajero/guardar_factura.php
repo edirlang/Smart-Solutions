@@ -140,7 +140,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 ";
 	echo $factura;
 
-
 	//crear_factura($cn,$numero, $fecha, $hora, $cedula, $cajero, $productos, $subtotal, $iva, $total, $Efectivo,$pago);
 
 	mysqli_close($cn);

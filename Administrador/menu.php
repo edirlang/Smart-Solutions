@@ -15,6 +15,7 @@ session_start();
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
+
 <body>
 
   <nav class="navbar navbar-inverse">

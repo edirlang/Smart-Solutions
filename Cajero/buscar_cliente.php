@@ -2,6 +2,7 @@
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 	include("../conexion.php");
 	$cedula = $_POST['cc'];
+	
 	$result = mysqli_query($cn,"SELECT * FROM clientes where Cedula = '".$cedula."'");
 	
 	$nombre;

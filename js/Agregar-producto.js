@@ -1,15 +1,8 @@
-$(document).ready(inicializarEventos);
 var productos=[];
 var total=0;
 var iva_t=0;
 
-function inicializarEventos()
-{
-  transaciones= new Array();
-  $("#agregar").click(presionBoton);
-  $("#Enviar").click(EnviarBD);
-  $("#cc_cliente").change(buscar_cliente);
-}
+$(document).ready(inicializarEventos);
 
 $(function() {
   var codigos=[];
@@ -24,6 +17,30 @@ $(function() {
     source: codigos
   });
 });
+
+function inicializarEventos() {
+  $("#agregar").click(presionBoton);
+  $("#Enviar").click(EnviarBD);
+  $("#cc_cliente").change(buscar_cliente);
+  
+  $("#cerrar_v").click(cerar);
+  $("#nuevo").click(function(){
+    $("#nuevo_cliente").modal();
+  })
+}
+
+function cerar(){
+  $("#total_v").val($("#total").text());
+  $("#efectivo_v").keypress(calcular_cambio);
+  $("#cerar_venta").modal();
+
+}
+
+function calcular_cambio(){
+  
+  var efectivo = $("#efectivo_v").val();
+  alert(efectivo)
+}
 
 function buscar_cliente(){
   var op = $("#cc_cliente option:selected").val();
