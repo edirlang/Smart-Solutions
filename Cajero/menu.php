@@ -6,7 +6,7 @@ session_start();
   }else{
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +16,6 @@ session_start();
 	<script src="../js/jquery.js"></script>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.css">
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/bootstrap.js"></script>
 	
 </head>
 <body>

@@ -1,8 +1,8 @@
-var x;
-x=$(document).ready(inicializarEventos);
+$(document).ready(inicializarEventos);
 var productos=[];
 var total=0;
 var iva_t=0;
+
 function inicializarEventos()
 {
   transaciones= new Array();
@@ -49,62 +49,73 @@ function presionBoton()
 
    submitHandler: function(form){
     selecion = $('input#tags').val();
-   
-   $.post("consultar_producto.php",{
+
+    $.post("consultar_producto.php",{
       codigo: selecion
     }, Consultar_Producto);
   }});
 }
 
 function Consultar_Producto(dato){
-      
-      var datos=[];
-      datos=$.parseJSON(dato);
-      var iva = (datos[2]*datos[3])/100;
-      var vlr_unid = datos[3];
-      var subtotal = (vlr_unid*1)*($("#cantidad").val()*1);
-      var producto = new Array($("#tags").val(),$("#cantidad").val(),iva,vlr_unid,subtotal);
-      productos.push(producto);
+  var datos=[];
+  datos=$.parseJSON(dato);
 
-      $("<tr>").append(
-        $('<td>', { text: datos[0]
-        }), $('<td>', { text: datos[1]
-        }), $('<td>', { text:  $("#cantidad").val()
-      }), $('<td>', { text: vlr_unid 
-      }), $('<td>', { text: datos[2]  
-      }), $('<td>', { text: subtotal  
-      })
-      ).hide().appendTo('#Filas').fadeIn('slow');
-      VaciarFormulario();
-      iva_t += iva*($("#cantidad").val()*1);
-      total += subtotal;
+  if(datos.length){
+    var iva = (datos[2]*datos[3])/100;
+    var vlr_unid = datos[3];
+    var subtotal = (vlr_unid*1)*($("#cantidad").val()*1);
+    var producto = new Array($("#tags").val(),$("#cantidad").val(),iva,vlr_unid,subtotal,datos[1]);
+    productos.push(producto);
+
+    $("<tr>").append(
+      $('<td>', { text: datos[0]
+      }), $('<td>', { text: datos[1]
+      }), $('<td>', { text:  $("#cantidad").val()
+    }), $('<td>', { text: vlr_unid 
+    }), $('<td>', { text: datos[2]  
+    }), $('<td>', { text: subtotal  
+    })
+    ).hide().appendTo('#Filas').fadeIn('slow');
+    VaciarFormulario();
+    iva_t += iva*($("#cantidad").val()*1);
+    total += subtotal;
     
-      $("#subtotal").text(total);
-      $("#iva").text(iva_t);
-      $("#total").text(total*1+iva*1);
-}
+    $("#subtotal").text(total);
+    $("#iva").text(iva_t);
+    $("#total").text(total*1+iva*1);
+  }else{
+    alert("producto no registrado");
+  }
 
-function VaciarFormulario(){
-  $('#formulario').each (function(){
-    this.reset();
-  });
+  }
 
-}
+  function VaciarFormulario(){
+    $('#formulario').each (function(){
+      this.reset();
+    });
 
-function EnviarBD(){
+  }
 
-  var jdatos = JSON.stringify(productos); 
-  
-  $.post("guardar_factura.php",{
-    num_fact: $("#numero").val(),
-    fecha: $("#fecha").val(),
-    cliente: $("#cc_cliente").val(),
-    cajero: $("#cajero").val(),
-    jdatos: jdatos
-  },procesar); 
-}
+  function EnviarBD(){
+    var Efectivo = prompt("Efectivo");
 
-function procesar(datos){
-  alert("Total: $"+total);
-  setTimeout("location.href='Factura.php'", 100);
-}
+    var jdatos = JSON.stringify(productos); 
+
+    $.post("guardar_factura.php",{
+      num_fact: $("#numero").val(),
+      fecha: $("#fecha").val(),
+      hora: $("#hora").val(),
+      cliente: $("#cc_cliente").val(),
+      cajero: $("#cajero").val(),
+      Efectivo: Efectivo,
+      pago: 'contado',
+      jdatos: jdatos
+    },procesar); 
+  }
+
+  function procesar(datos){
+    $("#factura").remove();
+    document.getElementById("imp").innerHTML = datos;
+    window.print();
+    setTimeout("location.href='Factura.php?"+datos+"'", 10);
+  }

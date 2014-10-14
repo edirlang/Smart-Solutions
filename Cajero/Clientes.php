@@ -26,7 +26,6 @@
                <td><?php echo $row['Apellido']; ?></td>
                <td><?php echo $row['Telefono']; ?></td>
                <td><a class="btn btn-success" href="editar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-edit"></span>Editar</a> </td>
-             
              </tr>
              <?php } 
              mysqli_close($cn)?>
