@@ -20,15 +20,15 @@ session_start();
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-		<a class="navbar-brand" href="panel_cajero.php"><span class="glyphicon glyphicon-home"></span>HOME</a>
+		<a class="navbar-brand" href="panel_cajero.php"><span class="glyphicon glyphicon-home"></span> HOME</a>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="Factura.php"><span class="glyphicon glyphicon-shopping-cart"></span>Factura</a></li>
-			<li><a href="Clientes.php"><span class="glyphicon glyphicon-list"></span>Clientes</a></li>
-			<li><a href="Catalogo.php"><span class="glyphicon glyphicon-book"></span>Catalogo</a></li>
+			<li class="active"><a href="Factura.php"><span class="glyphicon glyphicon-shopping-cart"></span> Factura</a></li>
+			<li><a href="Clientes.php"><span class="glyphicon glyphicon-list"></span> Clientes</a></li>
+			<li><a href="Catalogo.php"><span class="glyphicon glyphicon-book"></span> Catalogo</a></li>
 		</ul>
 
 		<ul class="nav navbar-right">
-			<li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span>Salir</a></li>
+			<li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span> Salir</a></li>
 		</ul>
 	</nav>
 <?php } ?>

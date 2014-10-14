@@ -49,7 +49,7 @@
 								<input type="number" class="form-control" name="Valor" id="Valor" placeholder="Valor a tramitar" required title="Ingrese el valor">
 
 							</div>
-							<button class="btn btn-primary btn-block" id="boton1">Agregar</button>
+							<button class="btn btn-primary btn-block" id="boton1"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
 						</form>
 					</div>
 				</div>
@@ -76,8 +76,8 @@
 								
 							</tbody>
 						</table>
-						<button class="btn btn-success" id="Enviar">Enviar</button>
-						<a type="button" class="btn btn-danger" href="Transacion-manual.php">Cancelar</a>
+						<button class="btn btn-success" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+						<a type="button" class="btn btn-danger" href="Transacion-manual.php"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 
 					</div>
 				</div>

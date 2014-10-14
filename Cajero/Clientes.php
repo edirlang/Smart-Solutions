@@ -55,7 +55,7 @@
           <label for="">Telefono</label>
           <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
         </div>
-        <button id="Enviar" type="submit" class="btn btn-primary">Guardar</button>
+        <button id="Enviar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
       </form>  
 
     </div>

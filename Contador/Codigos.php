@@ -66,8 +66,8 @@
 							</select>
 						</div>
 
-						<button type="submit" class="btn btn-primary">Enviar</button>
-						<a href="Codigos.php.php" class="btn btn-primary">Cancelar</a>
+						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+						<a href="Codigos.php.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 					</form>
 				</div>
 			</div>
