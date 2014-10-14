@@ -104,7 +104,7 @@ date_default_timezone_set("America/Bogota");
 								</div>
 							</div>
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-								<button type="submit" class="btn btn-primary form-control" id="agregar">Agregar</button>
+								<button type="submit" class="btn btn-primary form-control" id="agregar"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
 							</div>
 						</form>
 					</div>
@@ -142,7 +142,7 @@ date_default_timezone_set("America/Bogota");
 						<h3>SubTotal: $ <label id="subtotal"></label></h3>
 						<h3>IVA: $ <label id="iva"></label></h3>
 						<h3>Total: $ <label id="total"></label></h3>
-						<button  type="submit" class="btn btn-primary form-control" id="Enviar">Enviar</button>
+						<button  type="submit" class="btn btn-primary form-control" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
 					</div>
 				</div>
 			</div>

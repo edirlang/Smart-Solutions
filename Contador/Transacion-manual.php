@@ -32,7 +32,8 @@
 											<input type="date" name="fecha" id="fecha" class="form-control">
 										</div>
 									</div>
-									<button type="input" class="btn btn-primary" id="buscar">Buscar</button>
+									<button type="input" class="btn btn-primary" id="buscar"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+									<a type="button" class="btn btn-primary" href="ingresar-transacion.php"><span class="glyphicon glyphicon-plus"></span> Nueva transaccion</a>
 								</div>
 							</div>
 						</div>
@@ -80,8 +81,6 @@
 						</table>
 					</div>
 				</div>
-
-				<a type="button" class="btn btn-primary" href="ingresar-transacion.php">Ingresar</a>
 			</div>
 		</div>
 	</div>

@@ -20,7 +20,7 @@ session_start();
 </head>
 <body>
 <nav class="navbar navbar-inverse">
-			<a class="navbar-brand" href="panel_contador.php"><span class="glyphicon glyphicon-home"></span>HOME</a>
+			<a class="navbar-brand" href="panel_contador.php"><span class="glyphicon glyphicon-home"></span> HOME</a>
 			<ul class="nav navbar-nav">
 				<li><a href="Productos.php"><span class="glyphicon glyphicon-tasks"></span> Inventario</a></li>
 				<li class="dropdown">
@@ -32,7 +32,7 @@ session_start();
 					</ul>
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span> Reportes<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Activos</a></li>
 						<li><a href="#">Pasivos</a></li>
@@ -40,7 +40,7 @@ session_start();
 				</li>
 			</ul>
 			<ul class="nav navbar-inverse navbar-right">
-					<li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span>Salir</a></li>
+					<li><a href="../salir.php"><span class="glyphicon glyphicon-cog"></span> Salir</a></li>
 			</ul>
 </nav>
 <?php } ?>

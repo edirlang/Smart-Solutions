@@ -28,7 +28,7 @@
                <td id="2"><?php echo $row['Apellido']; ?></td>
                <td id="3"><?php echo $row['Telefono']; ?></td>
                <td>
-                <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                 <script language="JavaScript" type="text/javascript">
                 $("#<?php echo $row['Cedula']; ?>").click(function(){
                 
@@ -46,7 +46,7 @@
                 );
                 </script>
                </td>
-              <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
+              <td><a class="btn btn-danger" href="eliminar_cliente.php?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span> Eliminar</a> </td>
             </tr>
             <?php } 
             mysqli_close($cn)?>
@@ -110,8 +110,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" id="guardar" data-dismiss="modal">Actualizar</button>
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
     </div>
   </div>
   </div>
