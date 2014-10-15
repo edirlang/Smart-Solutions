@@ -66,9 +66,8 @@
 							</select>
 						</div>
 
-						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-						<a href="Codigos.php.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
-					</form>
+						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
+						</form>
 				</div>
 			</div>
 		</div>
