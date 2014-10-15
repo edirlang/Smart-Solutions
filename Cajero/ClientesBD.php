@@ -7,5 +7,6 @@
   while ($row = mysqli_fetch_assoc($result)) {
   	array_push($Clientes, $row);
   }
-
- 
+  
+  return $Clientes;
+ ?>

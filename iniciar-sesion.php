@@ -15,17 +15,20 @@
                 	case 'admin':
 						$_SESSION['usuario']=$usuario;
 						$_SESSION['rol']='admin';
+						$_SESSION['nombre']=$row[1].' '.$row[2];
 						$tipo="admin";
 					break;
 					case 'contador':
 						$_SESSION['usuario']=$usuario;
 						$_SESSION['rol']='contador';
+						$_SESSION['nombre']=$row[1].' '.$row[2];
 						$tipo="contador";
 					break;
 
 					case 'cajero':
 						$_SESSION['usuario']=$usuario;
 						$_SESSION['rol']='cajero';
+						$_SESSION['nombre']=$row[1].' '.$row[2];
 						$tipo="cajero";
 					break;
 				}	

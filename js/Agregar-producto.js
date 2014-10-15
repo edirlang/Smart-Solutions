@@ -21,35 +21,62 @@ $(function() {
 function inicializarEventos() {
   $("#agregar").click(presionBoton);
   $("#Enviar").click(EnviarBD);
-  $("#cc_cliente").change(buscar_cliente);
+  $("#l_guardar").click(crear_cliente);
   
   $("#cerrar_v").click(cerar);
+  $('#Enviar').attr("disabled", true);
   $("#nuevo").click(function(){
-    $("#nuevo_cliente").modal();
+  $("#nuevo_cliente").modal();
   })
+}
+
+function crear_cliente(){
+
+  $('#crear_cliente').validate({
+    rules: {
+     'Cedula': 'required',
+     'Nombre': 'required',
+     'Apellido': 'required',
+     'Telefono': 'required'
+   },
+   messages: {
+     'Cedula': 'Debe ingresar cedula del cliente',
+     'Nombre': 'Debe ingresar el nombre del cliente',
+     'Apellido': 'Debe ingresar el apellido del cliente',
+     'Telefono': 'ingrese telefono'
+   }, submitHandler: function(form){
+
+    var datos = new Array($("#Cedula").val(),$("#Nombre").val(),$("#Apellido").val(),$("#Telefono").val());
+    var jdatos = JSON.stringify(datos); 
+    $.post("crear_cliente.php",{
+      jdatos: jdatos
+    },procesar_cliente); 
+  }
+});
+}
+
+function procesar_cliente(datos){
+  datos = $.parseJSON(datos);
+  $("#cc_cliente").append("<option value='"+datos[0]+"' selected='selected'>"+datos[0]+" - "+datos[1]+" "+datos[1]+"</option>");
+  
+  $("#nuevo_cliente").modal('hide');
 }
 
 function cerar(){
   $("#total_v").val($("#total").text());
   $("#efectivo_v").keypress(calcular_cambio);
   $("#cerar_venta").modal();
-
 }
 
-function calcular_cambio(){
+function calcular_cambio(evt){
+  var Efectivo = $("#efectivo_v").val()+String.fromCharCode(evt.charCode);
+  var total = $("#total_v").val();
   
-  var efectivo = $("#efectivo_v").val();
-  alert(efectivo)
-}
-
-function buscar_cliente(){
-  var op = $("#cc_cliente option:selected").val();
-  $.post("buscar_cliente.php",{
-    cc: op
-  },function(datos){
-    $("#nom_cliente").val(datos);
+  var cambio = (Efectivo*1)-(total*1);
+  $("#cambio_v").val(cambio);
+  if(cambio >= 0){
+    $('#Enviar').attr("disabled", false);
   }
-  );
 }
 
 function presionBoton()
@@ -114,7 +141,7 @@ function Consultar_Producto(dato){
   }
 
   function EnviarBD(){
-    var Efectivo = prompt("Efectivo");
+    var Efectivo = $("#efectivo_v").val();
 
     var jdatos = JSON.stringify(productos); 
 

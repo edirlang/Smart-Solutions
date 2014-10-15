@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			<h4>Nit: 1069748845-5</h4>
 			<h4>Regimen Comun</h4>
 		</div>
-		<font size='2' face='Verdana'>
+		<font size='3' face='Verdana'>
 		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
 			<p>Factura: ".$numero."</p>
 			<p>Fecha  ".$fecha."	Hora ".$hora."</p>
@@ -96,12 +96,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 		</div>
 
 		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
-			<table class='table table-hover'>
+			<table class='table table-responsive table-condensed'>
 				<thead>
 					<tr>
 						<th>Codigo</th>
 						<th>Nombre</th>
-						<th>Cantd.</th>
+						<th>Cant.</th>
 						<th>vlr. unid.</th>
 						<th>iva</th>
 						<th>Subtotal</th>

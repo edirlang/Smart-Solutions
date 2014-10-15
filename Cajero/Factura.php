@@ -4,11 +4,9 @@ include("clientesBD.php");
 include("Consultar_factura.php");
 date_default_timezone_set("America/Bogota");
 ?>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script src="../js/jquery-ui.js"></script>
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" src="../css/jquery-ui.css" />
-<script type="text/javascript" src="../js/Agregar-producto.js"></script>
 
 <div id="imp">
 	
@@ -60,22 +58,14 @@ date_default_timezone_set("America/Bogota");
 					</div>
 
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+						
+						<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 ">
 							<div class="form-group">
-								<label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 control-label">Nombre Cliente:</label>
-								<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-									<input type="text" class="form-control input-sm" id="nom_cliente" placeholder="Nombre de Cliente">	
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
-							<div class="form-group">
-								<label class="col-xs-12 col-sm-4 col-md-3 col-lg-3 control-label">C.C. o Nit</label>
+								<label class="col-xs-12 col-sm-4 col-md-2 col-lg-2 control-label">Cliente</label>
 								<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
 									<select name="cc_cliente" class="form-control input-sm" id="cc_cliente">
 										<?php foreach ($Clientes as $cliente) { ?>
-										<option value='<?php echo $row[0]; ?>'><?php echo $cliente['Cedula']; ?></option>
+										<option value='<?php echo $cliente['Cedula']; ?>'><?php echo $cliente['Cedula']." - ".$cliente['Nombre']." ".$cliente['Apellido']; ?></option>
 										<?php } ?>
 									</select>	
 								</div>
@@ -83,7 +73,7 @@ date_default_timezone_set("America/Bogota");
 						</div>
 
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-							<a class="btn btn-success" id="nuevo">Nuevo Cliente</a>
+							<a class="btn btn-success form-control" id="nuevo">Nuevo Cliente</a>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -141,9 +131,9 @@ date_default_timezone_set("America/Bogota");
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 			<div class="panel">
 				<div class="panel-body">
-					<h3>SubTotal: $ <label id="subtotal"></label></h3>
-					<h3>IVA: $ <label id="iva"></label></h3>
-					<h3>Total: $ <label id="total"></label></h3>
+					<h3>SubTotal: $ <label id="subtotal">0</label></h3>
+					<h3>IVA: $ <label id="iva"></label>0</h3>
+					<h3>Total: $ <label id="total"></label>0</h3>
 					<a class="btn btn-success" id="cerrar_v">Registrar</a>
 				</div>
 			</div>
@@ -161,20 +151,21 @@ date_default_timezone_set("America/Bogota");
 			</div>
 
 			<div class="modal-body">
-				<form id="editar" name="editar" action="actualizar_cliente.php" method="post">
+				<form id="crear_cliente" name="crear_cliente" method="post">
 					<div class="form-group">
 						<label for="">Cedula</label>
-						<input type="text" name="cedula" class="form-control"  id="cedula"  readonly="readonly"/>
+						<input type="text" name="Cedula" class="form-control"  id="Cedula"/>
 
 						<label for="">Nombre</label>
-						<input type="text" class="form-control" name="nombre" id="nombre" />
+						<input type="text" class="form-control" name="Nombre" id="Nombre" />
 
 						<label for="">Apellido</label>
-						<input type="text" class="form-control" name="apellido" id="apellido"/>
+						<input type="text" class="form-control" name="Apellido" id="Apellido"/>
 
 						<label for="">Telefono</label>
-						<input type="text" class="form-control" name="telefono" id="telefono">
+						<input type="text" class="form-control" name="Telefono" id="Telefono">
 					</div>
+					<button type="submit" class="btn btn-primary" id="l_guardar">Actualizar</button>
 				</form>
 			</div>
 
@@ -199,13 +190,13 @@ date_default_timezone_set("America/Bogota");
 				<form id="editar" name="editar" action="actualizar_cliente.php" method="post">
 					<div class="form-group">
 						<label for="">Total</label>
-						<input type="text" name="cedula" class="form-control"  id="total_v"  readonly="readonly"/>
+						<input type="number" name="cedula" class="form-control"  id="total_v"  readonly="readonly" value="0"/>
 
 						<label for="">Efectivo</label>
-						<input type="text" class="form-control" name="efectivo_v" id="efectivo_v" />
+						<input type="number" class="form-control" name="efectivo_v" id="efectivo_v" onkeypress="calcular_cambio()"/>
 
 						<label for="">Cambio</label>
-						<input type="text" class="form-control" name="apellido" id="cambio_v"/>
+						<input type="number" class="form-control" name="cambio_v" id="cambio_v"/>
 					</div>
 				</form>
 			</div>
@@ -217,6 +208,9 @@ date_default_timezone_set("America/Bogota");
 	</div>
 </div>
 
+<script type="text/javascript" src="../js/jquery.validate.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/Agregar-producto.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/bootstrap.js"></script>
 </body>
