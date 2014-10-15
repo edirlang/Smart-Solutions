@@ -73,7 +73,7 @@ date_default_timezone_set("America/Bogota");
 						</div>
 
 						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-							<a class="btn btn-success form-control" id="nuevo">Nuevo Cliente</a>
+							<a class="btn btn-success form-control" id="nuevo"><span class="glyphicon glyphicon-user"></span> Nuevo Cliente</a>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -98,11 +98,10 @@ date_default_timezone_set("America/Bogota");
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-								<button type="submit" class="btn btn-primary form-control" id="agregar">Agregar</button>
+								<button type="submit" class="btn btn-primary form-control" id="agregar"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -134,7 +133,7 @@ date_default_timezone_set("America/Bogota");
 					<h3>SubTotal: $ <label id="subtotal">0</label></h3>
 					<h3>IVA: $ <label id="iva"></label>0</h3>
 					<h3>Total: $ <label id="total"></label>0</h3>
-					<a class="btn btn-success" id="cerrar_v">Registrar</a>
+					<a class="btn btn-success" id="cerrar_v"><span class="glyphicon glyphicon-ok"></span> Registrar</a>
 				</div>
 			</div>
 		</div>
@@ -147,7 +146,7 @@ date_default_timezone_set("America/Bogota");
 
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4>Nuevor Cliente</h4>
+				<h4>Nuevo Cliente</h4>
 			</div>
 
 			<div class="modal-body">
@@ -165,13 +164,12 @@ date_default_timezone_set("America/Bogota");
 						<label for="">Telefono</label>
 						<input type="text" class="form-control" name="Telefono" id="Telefono">
 					</div>
-					<button type="submit" class="btn btn-primary" id="l_guardar">Actualizar</button>
+					<button type="submit" class="btn btn-primary" id="l_guardar"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+					<button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
 				</form>
 			</div>
 
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" id="l_guardar" data-dismiss="modal">Actualizar</button>
-				<button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 			</div>
 		</div>
 	</div>
@@ -202,7 +200,7 @@ date_default_timezone_set("America/Bogota");
 			</div>
 
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary" id="Enviar" data-dismiss="modal">Actualizar</button>
+				<button type="submit" class="btn btn-primary" id="Enviar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
 			</div>
 		</div>
 	</div>

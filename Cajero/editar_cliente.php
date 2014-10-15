@@ -26,9 +26,8 @@
                 <label for="">Telefono</label>
                 <input type="text" class="form-control" name="telefono" value="<?php  echo $cliente['Telefono'];?>">
               </div>
-
-              <button type="submit" class="btn btn-primary">Actualizar</button>
-              <a href="Clientes.php" class="btn btn-primary">Cancelar</a>
+              <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+              <a href="Clientes.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
             </form>
           </div>
         </div>   

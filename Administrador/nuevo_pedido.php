@@ -24,7 +24,7 @@ $productos = Productos($proveedor);
 						<form id="formulario" name="formulario" method="POST" role="form" on>
 							<div class="form-group">
 
-								<label for="">Provedor</label>
+								<label for="">Proveedor</label>
 								<input type="number" class="form-control" name="proveedor" id="proveedor" value="<?php echo $proveedor; ?>" disabled>
 
 								<label for="">Selecione codigo de producto</label>
@@ -44,9 +44,9 @@ $productos = Productos($proveedor);
 								<input type="number" class="form-control" name="iva" id="iva" placeholder="IVA de producto">
 
 							</div>
-							<button class="btn btn-primary btn-block" id="boton1">Agregar</button>
+							<button class="btn btn-primary btn-block" id="boton1"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
 						</form>
-						<a class="btn btn-success form-control" data-toggle="modal" data-target="#from_nuevo">Nuevo producto</a>
+						<a class="btn btn-success form-control" data-toggle="modal" data-target="#from_nuevo"><span class="glyphicon glyphicon-asterisk"></span> Nuevo producto</a>
 					</div>
 				</div>
 			</div>
@@ -81,8 +81,8 @@ $productos = Productos($proveedor);
 								<option value='credito'>Credito</option>
 							</select>
 						</div>
-						<button class="btn btn-success" id="Enviar">Enviar</button>
-						<a type="button" class="btn btn-danger" href="Proveedor.php">Cancelar</a>
+						<button class="btn btn-success" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+						<a type="button" class="btn btn-danger" href="Proveedor.php"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 					</div>
 				</div>
 			</div>
@@ -138,8 +138,8 @@ $productos = Productos($proveedor);
 					</div>
 
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary" id="Guardar" data-dismiss="modal">Actualizar</button>
-						<button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+						<button type="submit" class="btn btn-success" id="Guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+						<button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
 					</div>
 				</div>
 			</div>

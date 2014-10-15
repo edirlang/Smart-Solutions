@@ -64,9 +64,8 @@
 							<input type="text" class="form-control" name="direccion" placeholder="dirrecion de envio">
 							
 						</div>
-
 						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-						<a href="Proveedor.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+						<a href="Proveedor.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpiar</a>
 					</form>
 				</div>
 			</div>
