@@ -15,6 +15,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				$total = $row['total']+$subtotal;
 				$vlr_unidad=$total/$cantidad;
 				$sql = "INSERT INTO inventario VALUES (null,'".$valor[2]."','Compra','".$valor[1]."','".$valor[3]."','".$valor[4]."','".$cantidad."','".$vlr_unidad."','".$total."','C')";
+				
+				$produc = "UPDATE productos SET iva = '".$valor[5]."' where Codigo = '".$valor[2]."')";
+				mysqli_query($cn,$produc);
+
 				$i=1;
 			}
 		}
@@ -49,13 +53,4 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	echo 0;
 }
 
-function imprimirpdf(){
-	require('../pdf_imprimir/fpdf.php');
-
-	$pdf = new FPDF();
-	$pdf->AddPage();
-	$pdf->SetFont('Arial','B',16);
-	$pdf->Cell(40,10,'¡Hola, Mundo!');
-	$pdf->Output();
-}
 ?>

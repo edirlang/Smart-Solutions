@@ -105,12 +105,12 @@ function Consultar_Producto(dato){
   datos=$.parseJSON(dato);
 
   if(datos.length){
-    var iva = (datos[2]*datos[3])/100;
+    var iva = (datos[2]*datos[4])/100;
     var vlr_unid = datos[3];
     var subtotal = (vlr_unid*1)*($("#cantidad").val()*1);
     var producto = new Array($("#tags").val(),$("#cantidad").val(),iva,vlr_unid,subtotal,datos[1]);
     productos.push(producto);
-
+    alert("sub total "+subtotal+"  + "+iva);
     $("<tr>").append(
       $('<td>', { text: datos[0]
       }), $('<td>', { text: datos[1]

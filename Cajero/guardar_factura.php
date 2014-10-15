@@ -12,8 +12,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	$pago = $_POST['pago'];
 	$total=0;
 	$iva=0;
-	foreach ($productos as $key => $row) {
-		$total+=$row[4]+($row[2]*$row[1]);
+
+	foreach ($productos as $row) {
+		$total+=$row[4]+$row[2];
 	}
 
 
@@ -26,8 +27,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	while ($row = mysqli_fetch_row($documentos)) {
 		$documento = $row[0];
 	}
-	foreach ($productos as $key => $row) {
-			$iva = $row[1]*$row[2];
+	foreach ($productos as $row) {
+		$iva = $row[2];
 		
 		$sql = "INSERT INTO detallefactura VALUES ('".$numero."','".$row[0]."','".$row[1]."','".$row[3]."','".$row[4]."')";
 		mysqli_query($cn,$sql);
@@ -59,85 +60,87 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	}	
 
 	$result = mysqli_query($cn,"SELECT * from clientes where Cedula = '".$cedula."'");
-  $nom_cliente;
-  while ($row = mysqli_fetch_assoc($result)) {
-    if($row['Cedula']==$cedula){
-      $nom_cliente = $row['Nombre']." ".$row['Apellido'];
-    }
-  }
+	$nom_cliente;
+	while ($row = mysqli_fetch_assoc($result)) {
+		if($row['Cedula']==$cedula){
+			$nom_cliente = $row['Nombre']." ".$row['Apellido'];
+		}
+	}
 
-  $result = mysqli_query($cn,"SELECT * from usuarios where Cedula = '".$cajero."'");
-  $nom_cajero;
-  while ($row = mysqli_fetch_assoc($result)) {
-    if($row['Cedula']==$cajero){
-      $nom_cajero = $row['Nombre']." ".$row['Apellido'];
-    }
-  }	
+	$result = mysqli_query($cn,"SELECT * from usuarios where Cedula = '".$cajero."'");
+	$nom_cajero;
+	while ($row = mysqli_fetch_assoc($result)) {
+		if($row['Cedula']==$cajero){
+			$nom_cajero = $row['Nombre']." ".$row['Apellido'];
+		}
+	}	
 
-	$subtotal = $total-$iva;
-	$Cambio = $Efectivo-$total;
+	$total=0;
 
 	$factura = "<div class='container-fluid'>
 	<div class='row'>
-		<a href='Factura.php' class='hidden-print btn btn-primary'>Regresar</a>
-		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
-			<h4>Smart-Solutions</h4>
-			<h4>Centro Comercial la hacienda Local 201 </h4>
-			<h4>Tel: 867 2290</h4>
-			<h4>Nit: 1069748845-5</h4>
-			<h4>Regimen Comun</h4>
-		</div>
-		<font size='3' face='Verdana'>
-		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-			<p>Factura: ".$numero."</p>
-			<p>Fecha  ".$fecha."	Hora ".$hora."</p>
-			<p>Cliente: ".$nom_cliente."	CC o NIT: ".$cedula."</p>
-			<p>Vendedor: ".$nom_cajero."	CC o Nit ".$cajero."</p>
-		</div>
-
-		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
-			<table class='table table-responsive table-condensed'>
-				<thead>
-					<tr>
-						<th>Codigo</th>
-						<th>Nombre</th>
-						<th>Cant.</th>
-						<th>vlr. unid.</th>
-						<th>iva</th>
-						<th>Subtotal</th>
-					</tr>
-				</thead>
-				<tbody>";
-	foreach ($productos as $producto) {
-		$factura = $factura."<tr>
-					<td>".$producto[0]."</td>
-					<td>".$producto[5]."</td>
-					<td>".$producto[1]."</td>
-					<td>".$producto[2]."</td>
-					<td>".$producto[3]."</td>
-					<td>".$producto[4]."</td>
-					</tr>";
-	}
-	$factura = $factura."
-				</tbody>
-			</table>
-		</div>
-
-		<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-			<p>Subtotal $ ".$subtotal."</p>
-			<p>IVA $ ".$iva."</p>
-			<p>Total $ ".$total."</p>
-			<p>Efectivo $ ".$Efectivo."</p>
-			<p>Cambio $ ".$Cambio."</p>
-		</div>
-
-		<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-			<p>Resolucion</p>
-		</div>
-		</font>
+	<a href='Factura.php' class='hidden-print btn btn-primary'>Regresar</a>
+	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
+	<h4>Smart-Solutions</h4>
+	<h4>Centro Comercial la hacienda Local 201 </h4>
+	<h4>Tel: 867 2290</h4>
+	<h4>Nit: 1069748845-5</h4>
+	<h4>Regimen Comun</h4>
 	</div>
-</div>
-";
+	<font size='3' face='Verdana'>
+	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<p>Factura: ".$numero."</p>
+	<p>Fecha  ".$fecha."	Hora ".$hora."</p>
+	<p>Cliente: ".$nom_cliente."	CC o NIT: ".$cedula."</p>
+	<p>Vendedor: ".$nom_cajero."	CC o Nit ".$cajero."</p>
+	</div>
+
+	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
+	<table class='table table-responsive table-condensed'>
+	<thead>
+	<tr>
+	<th>Codigo</th>
+	<th>Nombre</th>
+	<th>Cant.</th>
+	<th>vlr. unid.</th>
+	<th>iva</th>
+	<th>Subtotal</th>
+	</tr>
+	</thead>
+	<tbody>";
+	foreach ($productos as $producto) {
+		$total+=$producto[4]+$producto[2];
+		$factura = $factura."<tr>
+		<td>".$producto[0]."</td>
+		<td>".$producto[5]."</td>
+		<td>".$producto[1]."</td>
+		<td>$ ".$producto[3]."</td>
+		<td>".$producto[2]."%</td>
+		<td>$ ".$producto[4]."</td>
+		</tr>";
+	}
+	$subtotal = $total-$iva;
+	$Cambio = $Efectivo-$total;
+	$factura = $factura."
+	</tbody>
+	</table>
+	</div>
+
+	<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<p>Subtotal $ ".$subtotal."</p>
+	<p>IVA $ ".$iva."</p>
+	<p>Total $ ".$total."</p>
+	<p>Efectivo $ ".$Efectivo."</p>
+	<p>Cambio $ ".$Cambio."</p>
+	</div>
+
+	<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<p>Resolucion</p>
+	</div>
+	</font>
+	</div>
+	</div>
+	";
 	echo $factura;
 
 	//crear_factura($cn,$numero, $fecha, $hora, $cedula, $cajero, $productos, $subtotal, $iva, $total, $Efectivo,$pago);
