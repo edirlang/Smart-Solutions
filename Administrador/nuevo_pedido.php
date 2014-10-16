@@ -15,7 +15,7 @@ $productos = Productos($proveedor);
 				
 			</div>
 
-			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+			<div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Pedido</h3>
@@ -42,7 +42,6 @@ $productos = Productos($proveedor);
 
 								<label for="">IVA</label>
 								<input type="number" class="form-control" name="iva" id="iva" placeholder="IVA de producto">
-
 							</div>
 							<button class="btn btn-primary btn-block" id="boton1"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
 						</form>
@@ -51,7 +50,7 @@ $productos = Productos($proveedor);
 				</div>
 			</div>
 
-			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+			<div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Productos</h3>
@@ -73,7 +72,7 @@ $productos = Productos($proveedor);
 								
 							</tbody>
 						</table>
-						<h3>Total = $ <input type="text" name="total" id="total" value="0" placeholder="" /></h3>
+						<h3>Total = $ <label name="total" id="total" value="0" placeholder="" /></h3>
 						<label>Forma de pago</label>
 						<div class="form-group">
 							<select class="form-control" name="pago" id="pago" value="contado">
@@ -147,10 +146,6 @@ $productos = Productos($proveedor);
 
 	</div>
 
-	<!-- jQuery -->
-	<script src="//code.jquery.com/jquery.js"></script>
-	<!-- Bootstrap JavaScript -->
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery.validate.js"></script>
 	<script src="../js/bootstrap.min.js"></script>

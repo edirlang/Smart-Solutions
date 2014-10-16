@@ -208,8 +208,7 @@ date_default_timezone_set("America/Bogota");
 
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script src="../js/jquery-ui.js"></script>
-<script type="text/javascript" src="../js/Agregar-producto.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/Agregar-producto.js"></script>
 </body>
 </html>

@@ -9,11 +9,22 @@ function inicializarEventos()
   $("#boton1").click(presionBoton)
   $("#Enviar").click(EnviarBD);
   $("#Guardar").click(GuardarProducto);
+  $("#codigo").change(producto_selecionado);
 
   $("#fecha_a").replaceWith($('<p>',{ 
            text:  'Fecha: ' + fecha,
            'id'    : 'fecha_a'
          }));
+}
+
+function producto_selecionado(){
+  $.post("ConsultarProducto.php",{
+    id: $("#codigo").val()
+  },function(datos){
+    var dato = $.parseJSON(datos);
+    $("#iva").val(dato[2]);
+    $("#vlr_unidad").val(dato[1]);
+  });
 }
 
 function presionBoton()
@@ -55,8 +66,8 @@ function presionBoton()
           var iva = $("#iva").val();
           var vlr_unidad = (($("#vlr_unidad").val()*iva)/100)+($("#vlr_unidad").val()*1);
           var subtotal = cantidad*vlr_unidad;
-          var total=($("#total").val()*1) + subtotal;
-          $("#total").val(total);
+          var total=($("#total").text()*1) + subtotal;
+          $("#total").text(total);
         }
         VaciarFormulario();
       }
@@ -73,10 +84,7 @@ function VaciarFormulario(){
 function EnviarBD(){
 
   var jdatos = JSON.stringify(transacion); 
-  $.post("GuardarPedido.php",{
-    jdatos: jdatos,
-    pago: $("#pago").val()
-  },procesar); 
+   
 }
 function procesar(datos){
  if(datos==1){
@@ -116,7 +124,7 @@ function GuardarProducto(){
     processData:false, //Debe estar en false para que JQuery no procese los datos a enviar
     cache:false //Para que el formulario no guarde cache
   }).done(function(msg){
-    alert(msg); //Mostrara los archivos cargados en el div con el id "Cargados"
+    
   });
 
   $.ajax({
