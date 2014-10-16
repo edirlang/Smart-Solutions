@@ -70,3 +70,10 @@ function procesar(datos){
     alert("No se pudo crear debido a: "+datos);
   }
 }
+
+function VaciarFormulario(){
+  $('#formulario').each (function(){
+    this.reset();
+  });
+
+}

@@ -4,12 +4,15 @@
 	
 	$datos = json_decode($_POST['jdatos'], true);
 	$usuario = $datos[0];
-	$contrasena = $datos[1];
+	
+	$salt = '34a@$#aA9823$';
+	$contrasena = crypt($datos[1],$salt);
 	$result = mysqli_query($cn,"SELECT * FROM usuarios where Cedula='".$usuario."'");
 	
 	$tipo="null";
 	if($result){
 		while ($row = mysqli_fetch_row($result)){
+			
             if ($row[4]==$contrasena) {
             	switch ($row[5]) {
                 	case 'admin':

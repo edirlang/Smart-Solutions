@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2014 a las 18:16:33
+-- Tiempo de generación: 16-10-2014 a las 18:24:32
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -48,43 +48,97 @@ INSERT INTO `activo1` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `
 (3, '2', '1105', '2014-09-02', 'C', 'Caja', 1528500),
 (4, '2', '1105', '2014-09-03', 'C', 'Caja', 7144900),
 (4, '2', '1520', '2014-09-03', 'D', 'Muebles y enceres', 7144900),
-(17, '2', '1105', '2014-09-30', 'D', 'caja', 1000),
-(17, '2', '1120', '2014-09-30', 'C', 'banco', 1000),
-(20, '3', '1105', '2014-10-03', 'D', 'Caja LENOVA Y410p', 2314200),
-(21, '3', '1105', '2014-10-03', 'D', 'Caja Acer AOD2', 348000),
-(21, '3', '14', '2014-10-03', 'C', 'inventario Acer AOD2', 12000),
-(22, '3', '1105', '2014-10-03', 'D', 'Caja Acer AOD2', 348000),
-(22, '3', '14', '2014-10-03', 'C', 'inventario Acer AOD2', 12000),
-(23, '3', '1105', '2014-10-03', 'D', 'Caja Acer AOD2', 696000),
-(23, '3', '14', '2014-10-03', 'C', 'inventario Acer AOD2', 24000),
-(24, '3', '1105', '2014-10-03', 'D', 'Caja Acer AOD2', 1044000),
-(24, '3', '14', '2014-10-03', 'C', 'inventario Acer AOD2', 36000),
-(25, '1', '1105', '2014-09-04', 'C', 'Caja pago ', 139200),
-(25, '1', '14', '2014-09-04', 'D', 'Inventario ', 120000),
-(26, '1', '1105', '2014-09-04', 'C', 'Caja pago ', 139200),
-(26, '1', '14', '2014-09-04', 'D', 'Inventario ', 120000),
-(27, '1', '1105', '2014-09-07', 'C', 'Caja pago ', 139200),
-(27, '1', '14', '2014-09-07', 'D', 'Inventario ', 120000),
-(28, '3', '1105', '2014-10-07', 'D', 'Caja Acer AOD2', 3132000),
-(28, '3', '14', '2014-10-07', 'C', 'inventario Acer AOD2', 108000),
-(29, '1', '1105', '2014-10-07', 'C', 'Caja pago ', 139200),
-(29, '1', '14', '2014-10-07', 'D', 'Inventario ', 120000),
-(30, '3', '1105', '2014-10-07', 'D', 'Caja Acer AOD2', 3132000),
-(30, '3', '14', '2014-10-07', 'C', 'inventario Acer AOD2', 108000),
-(31, '3', '1105', '2014-10-08', 'D', 'Caja LENOVA Y410p', 4628400),
-(31, '3', '14', '2014-10-08', 'C', 'inventario LENOVA Y410p', 0),
-(32, '3', '1105', '2014-10-08', 'D', 'Caja LENOVA Y410p', 4628400),
-(32, '3', '14', '2014-10-08', 'C', 'inventario LENOVA Y410p', 0),
-(33, '3', '1105', '2014-10-08', 'D', 'Caja Acer AOD2', 348000),
-(33, '3', '14', '2014-10-08', 'C', 'inventario Acer AOD2', 12000),
-(34, '1', '1105', '2014-10-09', 'C', 'Caja pago ', 15600000),
-(34, '1', '14', '2014-10-09', 'D', 'Inventario ', 15600000),
-(35, '1', '1105', '2014-10-09', 'C', 'Caja pago ', 1500000),
-(35, '1', '14', '2014-10-09', 'D', 'Inventario ', 1500000),
-(36, '1', '1105', '2014-10-09', 'C', 'Caja pago ', 34800000),
-(36, '1', '14', '2014-10-09', 'D', 'Inventario ', 30000000),
-(37, '3', '1105', '2014-10-09', 'D', 'Caja Acer AOD2', 1740000),
-(37, '3', '14', '2014-10-09', 'C', 'inventario Acer AOD2', 60000);
+(38, '2', '1105', '2014-10-11', 'C', 'Caja', 1000),
+(38, '2', '1120', '2014-10-11', 'D', 'Cuenta de Ahorros', 1000),
+(39, '3', '1105', '2014-10-13', 'D', 'Caja ASUSG51J', 1972000),
+(40, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(40, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(41, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 5800000),
+(41, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(42, '3', '1105', '2014-10-13', 'D', 'Caja LENOVA Y410p', 2314200),
+(42, '3', '14', '2014-10-13', 'C', 'inventario LENOVA Y410p', 0),
+(43, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 580000),
+(43, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(44, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(44, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(45, '3', '1105', '2014-10-13', 'D', 'Caja 1', 110),
+(45, '3', '14', '2014-10-13', 'C', 'inventario 1', 0),
+(46, '3', '1105', '2014-10-13', 'D', 'Caja LENOVA Y410p', 2314200),
+(46, '3', '14', '2014-10-13', 'C', 'inventario LENOVA Y410p', 0),
+(47, '3', '1105', '2014-10-13', 'D', 'Caja Acer AOD2', 348000),
+(47, '3', '14', '2014-10-13', 'C', 'inventario Acer AOD2', 0),
+(48, '3', '1105', '2014-10-13', 'D', 'Caja LENOVA Y410p', 2314200),
+(48, '3', '14', '2014-10-13', 'C', 'inventario LENOVA Y410p', 0),
+(49, '3', '1105', '2014-10-13', 'D', 'Caja LENOVAE431', 1506840),
+(49, '3', '14', '2014-10-13', 'C', 'inventario LENOVAE431', 0),
+(50, '3', '1105', '2014-10-13', 'D', 'Caja Acer AOD2', 348000),
+(50, '3', '14', '2014-10-13', 'C', 'inventario Acer AOD2', 0),
+(51, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 580000),
+(51, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(52, '3', '1105', '2014-10-13', 'D', 'Caja LENOVAE431', 1506840),
+(52, '3', '14', '2014-10-13', 'C', 'inventario LENOVAE431', 0),
+(53, '3', '1105', '2014-10-13', 'D', 'Caja ASUSG51J', 1972000),
+(53, '3', '14', '2014-10-13', 'C', 'inventario ASUSG51J', 0),
+(54, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(54, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(55, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(55, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(56, '3', '1105', '2014-10-13', 'D', 'Caja AcerS3-391-6046', 928000),
+(56, '3', '14', '2014-10-13', 'C', 'inventario AcerS3-391-6046', 0),
+(57, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(57, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(58, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 580000),
+(58, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(59, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(59, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(60, '3', '1105', '2014-10-13', 'D', 'Caja Acer E15', 522000),
+(60, '3', '14', '2014-10-13', 'C', 'inventario Acer E15', 0),
+(61, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 580000),
+(61, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(62, '3', '1105', '2014-10-13', 'D', 'Caja Lenovo2-14-R', 1364160),
+(62, '3', '14', '2014-10-13', 'C', 'inventario Lenovo2-14-R', 0),
+(63, '3', '1105', '2014-10-13', 'D', 'Caja LENOVAE431', 1506840),
+(63, '3', '14', '2014-10-13', 'C', 'inventario LENOVAE431', 0),
+(65, '3', '1105', '2014-10-13', 'D', 'Caja AcerAspire ES1-511', 580000),
+(65, '3', '14', '2014-10-13', 'C', 'inventario AcerAspire ES1-511', 0),
+(66, '3', '1105', '2014-10-13', 'D', 'Caja Lenovo2-14-R', 1364160),
+(66, '3', '14', '2014-10-13', 'C', 'inventario Lenovo2-14-R', 0),
+(67, '3', '1105', '2014-10-14', 'D', 'Caja Acer AOD2', 348000),
+(67, '3', '14', '2014-10-14', 'C', 'inventario Acer AOD2', 0),
+(68, '3', '1105', '2014-10-14', 'D', 'Caja LENOVAE431', 1506840),
+(68, '3', '14', '2014-10-14', 'C', 'inventario LENOVAE431', 0),
+(70, '3', '1105', '2014-10-14', 'D', 'Caja Acer E15', 522000),
+(70, '3', '14', '2014-10-14', 'C', 'inventario Acer E15', 0),
+(71, '3', '1105', '2014-10-14', 'D', 'Caja LENOVA Y410p', 2314200),
+(71, '3', '14', '2014-10-14', 'C', 'inventario LENOVA Y410p', 0),
+(72, '3', '1105', '2014-10-14', 'D', 'Caja Acer E15', 522000),
+(72, '3', '14', '2014-10-14', 'C', 'inventario Acer E15', 0),
+(73, '3', '1105', '2014-10-14', 'D', 'Caja ASUS750JZ', 3016000),
+(73, '3', '14', '2014-10-14', 'C', 'inventario ASUS750JZ', 0),
+(74, '3', '1105', '2014-10-14', 'D', 'Caja AcerAspire ES1-511', 580000),
+(74, '3', '14', '2014-10-14', 'C', 'inventario AcerAspire ES1-511', 0),
+(75, '3', '1105', '2014-10-14', 'D', 'Caja Acer E15', 522000),
+(75, '3', '14', '2014-10-14', 'C', 'inventario Acer E15', 0),
+(76, '3', '1105', '2014-10-14', 'D', 'Caja 1', 110),
+(76, '3', '14', '2014-10-14', 'C', 'inventario 1', 0),
+(77, '1', '1105', '2014-10-15', 'C', 'Caja pago ', 2400000),
+(77, '1', '14', '2014-10-15', 'D', 'Inventario ', 2400000),
+(78, '3', '1105', '2014-10-15', 'D', 'Caja Acer AOD2', 300000),
+(78, '3', '14', '2014-10-15', 'C', 'inventario Acer AOD2', 200000),
+(79, '1', '1105', '2014-10-15', 'C', 'Caja pago ', 3500000),
+(79, '1', '14', '2014-10-15', 'D', 'Inventario ', 3500000),
+(80, '3', '1105', '2014-10-15', 'D', 'Caja Acer E15', 450000),
+(80, '3', '14', '2014-10-15', 'C', 'inventario Acer E15', 350000),
+(81, '3', '1105', '2014-10-15', 'D', 'Caja Acer E15', 450000),
+(81, '3', '14', '2014-10-15', 'C', 'inventario Acer E15', 350000),
+(82, '3', '1105', '2014-10-15', 'D', 'Caja Acer AOD2', 300000),
+(82, '3', '14', '2014-10-15', 'C', 'inventario Acer AOD2', 200000),
+(83, '3', '1105', '2014-10-15', 'D', 'Caja Acer AOD2', 300000),
+(83, '3', '14', '2014-10-15', 'C', 'inventario Acer AOD2', 200000),
+(84, '3', '1105', '2014-10-16', 'D', 'Caja Acer AOD2', 300000),
+(84, '3', '14', '2014-10-16', 'C', 'inventario Acer AOD2', 200000),
+(85, '3', '1105', '2014-10-16', 'D', 'Caja Acer E15', 450000),
+(85, '3', '14', '2014-10-16', 'C', 'inventario Acer E15', 350000);
 
 -- --------------------------------------------------------
 
@@ -104,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 --
 
 INSERT INTO `clientes` (`Cedula`, `Nombre`, `Apellido`, `Telefono`) VALUES
-('1069563343', 'Andres', 'Lozano', '3132323232'),
-('1069745533', 'Javier', 'Valencia', '3153232553'),
-('1069751356', 'Fernando ', 'Ricaurte', '3204367170'),
+('1', 'jkj', 'jkj', 'jkj'),
+('1069745533', 'Javier', 'Valencia muñoz', '3153232553'),
+('1069751356', 'Fernando', 'Ricaurte', '3204367170'),
 ('1069753434', 'Edixon', 'Hernandez', '3134765649'),
 ('1069878633', 'Edwar', 'Diaz', '3157232372');
 
@@ -166,16 +220,48 @@ CREATE TABLE IF NOT EXISTS `costos` (
 --
 
 INSERT INTO `costos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(21, '3', '613554', '2014-10-03', 'D', 'inventario Acer AOD2', 12000),
-(22, '3', '613554', '2014-10-03', 'D', 'inventario Acer AOD2', 12000),
-(23, '3', '613554', '2014-10-03', 'D', 'Costo Acer AOD2', 24000),
-(24, '3', '613554', '2014-10-03', 'D', 'Costo Acer AOD2', 36000),
-(28, '3', '613554', '2014-10-07', 'D', 'Costo Acer AOD2', 108000),
-(30, '3', '613554', '2014-10-07', 'D', 'Costo Acer AOD2', 108000),
-(31, '3', '613554', '2014-10-08', 'D', 'Costo LENOVA Y410p', 0),
-(32, '3', '613554', '2014-10-08', 'D', 'Costo LENOVA Y410p', 0),
-(33, '3', '613554', '2014-10-08', 'D', 'Costo Acer AOD2', 12000),
-(37, '3', '613554', '2014-10-09', 'D', 'Costo Acer AOD2', 60000);
+(40, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(41, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(42, '3', '613554', '2014-10-13', 'D', 'Costo LENOVA Y410p', 0),
+(43, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(44, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(45, '3', '613554', '2014-10-13', 'D', 'Costo 1', 0),
+(46, '3', '613554', '2014-10-13', 'D', 'Costo LENOVA Y410p', 0),
+(47, '3', '613554', '2014-10-13', 'D', 'Costo Acer AOD2', 0),
+(48, '3', '613554', '2014-10-13', 'D', 'Costo LENOVA Y410p', 0),
+(49, '3', '613554', '2014-10-13', 'D', 'Costo LENOVAE431', 0),
+(50, '3', '613554', '2014-10-13', 'D', 'Costo Acer AOD2', 0),
+(51, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(52, '3', '613554', '2014-10-13', 'D', 'Costo LENOVAE431', 0),
+(53, '3', '613554', '2014-10-13', 'D', 'Costo ASUSG51J', 0),
+(54, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(55, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(56, '3', '613554', '2014-10-13', 'D', 'Costo AcerS3-391-604', 0),
+(57, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(58, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(59, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(60, '3', '613554', '2014-10-13', 'D', 'Costo Acer E15', 0),
+(61, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(62, '3', '613554', '2014-10-13', 'D', 'Costo Lenovo2-14-R', 0),
+(63, '3', '613554', '2014-10-13', 'D', 'Costo LENOVAE431', 0),
+(65, '3', '613554', '2014-10-13', 'D', 'Costo AcerAspire ES1', 0),
+(66, '3', '613554', '2014-10-13', 'D', 'Costo Lenovo2-14-R', 0),
+(67, '3', '613554', '2014-10-14', 'D', 'Costo Acer AOD2', 0),
+(68, '3', '613554', '2014-10-14', 'D', 'Costo LENOVAE431', 0),
+(70, '3', '613554', '2014-10-14', 'D', 'Costo Acer E15', 0),
+(71, '3', '613554', '2014-10-14', 'D', 'Costo LENOVA Y410p', 0),
+(72, '3', '613554', '2014-10-14', 'D', 'Costo Acer E15', 0),
+(73, '3', '613554', '2014-10-14', 'D', 'Costo ASUS750JZ', 0),
+(74, '3', '613554', '2014-10-14', 'D', 'Costo AcerAspire ES1', 0),
+(75, '3', '613554', '2014-10-14', 'D', 'Costo Acer E15', 0),
+(76, '3', '613554', '2014-10-14', 'D', 'Costo 1', 0),
+(78, '3', '613554', '2014-10-15', 'D', 'Costo Acer AOD2', 200000),
+(80, '3', '613554', '2014-10-15', 'D', 'Costo Acer E15', 350000),
+(81, '3', '613554', '2014-10-15', 'D', 'Costo Acer E15', 350000),
+(82, '3', '613554', '2014-10-15', 'D', 'Costo Acer AOD2', 200000),
+(83, '3', '613554', '2014-10-15', 'D', 'Costo Acer AOD2', 200000),
+(84, '3', '613554', '2014-10-16', 'D', 'Costo Acer AOD2', 200000),
+(85, '3', '613554', '2014-10-16', 'D', 'Costo Acer E15', 350000);
 
 -- --------------------------------------------------------
 
@@ -196,16 +282,61 @@ CREATE TABLE IF NOT EXISTS `detallefactura` (
 --
 
 INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, `total`) VALUES
+(0, 'ASUSG51J', 1, 1700000, 1700000),
 (1, 'LENOVA Y410p', 1, 1995000, 1995000),
 (2, 'Acer AOD2', 1, 300000, 300000),
+(2, 'Acer E15', 1, 450000, 450000),
 (3, 'Acer AOD2', 2, 300000, 600000),
+(3, 'AcerAspire ES1-511', 10, 500000, 5000000),
 (4, 'Acer AOD2', 3, 300000, 900000),
+(4, 'LENOVA Y410p', 1, 1995000, 1995000),
 (5, 'Acer AOD2', 9, 300000, 2700000),
+(5, 'AcerAspire ES1-511', 1, 500000, 500000),
 (6, 'Acer AOD2', 9, 300000, 2700000),
+(6, 'Acer E15', 1, 450000, 450000),
 (7, 'ASUSG51J', 1, 1700000, 1700000),
 (7, 'LENOVA Y410p', 2, 1995000, 3990000),
 (8, 'Acer AOD2', 1, 300000, 300000),
-(9, 'Acer AOD2', 5, 300000, 1500000);
+(8, 'LENOVA Y410p', 1, 1995000, 1995000),
+(9, 'Acer AOD2', 5, 300000, 1500000),
+(10, 'LENOVA Y410p', 1, 1995000, 1995000),
+(11, 'LENOVAE431', 1, 1299000, 1299000),
+(12, 'Acer AOD2', 1, 300000, 300000),
+(13, 'AcerAspire ES1-511', 1, 500000, 500000),
+(14, 'LENOVAE431', 1, 1299000, 1299000),
+(15, 'ASUSG51J', 1, 1700000, 1700000),
+(16, 'Acer E15', 1, 450000, 450000),
+(17, 'Acer E15', 1, 450000, 450000),
+(18, 'AcerS3-391-6046', 1, 800000, 800000),
+(19, 'Acer E15', 1, 450000, 450000),
+(20, 'AcerAspire ES1-511', 1, 500000, 500000),
+(21, 'Acer E15', 1, 450000, 450000),
+(22, 'Acer E15', 1, 450000, 450000),
+(23, 'AcerAspire ES1-511', 1, 500000, 500000),
+(24, 'Lenovo2-14-R', 1, 1176000, 1176000),
+(25, 'LENOVAE431', 1, 1299000, 1299000),
+(27, 'AcerAspire ES1-511', 1, 500000, 500000),
+(27, 'Lenovo2-14-R', 1, 1176000, 1176000),
+(28, 'AcerAspire ES1-511', 1, 500000, 500000),
+(28, 'Lenovo2-14-R', 1, 1176000, 1176000),
+(29, 'Acer AOD2', 1, 300000, 300000),
+(30, 'Acer AOD2', 1, 300000, 300000),
+(30, 'LENOVAE431', 1, 1299000, 1299000),
+(31, 'Acer E15', 1, 450000, 450000),
+(32, 'LENOVA Y410p', 1, 1995000, 1995000),
+(33, 'Acer E15', 1, 450000, 450000),
+(34, 'ASUS750JZ', 1, 2600000, 2600000),
+(35, 'AcerAspire ES1-511', 1, 500000, 500000),
+(36, 'Acer E15', 1, 450000, 450000),
+(38, 'Acer AOD2', 1, 300000, 300000),
+(39, 'Acer AOD2', 1, 300000, 300000),
+(39, 'Acer E15', 1, 450000, 450000),
+(40, 'Acer E15', 1, 450000, 450000),
+(41, 'Acer AOD2', 1, 300000, 300000),
+(41, 'Acer E15', 1, 450000, 450000),
+(42, 'Acer AOD2', 1, 300000, 300000),
+(43, 'Acer AOD2', 1, 300000, 300000),
+(44, 'Acer E15', 1, 450000, 450000);
 
 -- --------------------------------------------------------
 
@@ -216,7 +347,7 @@ INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, 
 CREATE TABLE IF NOT EXISTS `documentado` (
 `cod_documento` int(11) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=86 ;
 
 --
 -- Volcado de datos para la tabla `documentado`
@@ -258,7 +389,55 @@ INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
 (34, 'Compra'),
 (35, 'Compra'),
 (36, 'Compra'),
-(37, 'Factura+9');
+(37, 'Factura+9'),
+(38, 'Transacion'),
+(39, 'Factura+0'),
+(40, 'Factura+2'),
+(41, 'Factura+3'),
+(42, 'Factura+4'),
+(43, 'Factura+5'),
+(44, 'Factura+6'),
+(45, 'Factura+7'),
+(46, 'Factura+8'),
+(47, 'Factura+9'),
+(48, 'Factura+10'),
+(49, 'Factura+11'),
+(50, 'Factura+12'),
+(51, 'Factura+13'),
+(52, 'Factura+14'),
+(53, 'Factura+15'),
+(54, 'Factura+16'),
+(55, 'Factura+17'),
+(56, 'Factura+18'),
+(57, 'Factura+19'),
+(58, 'Factura+20'),
+(59, 'Factura+21'),
+(60, 'Factura+22'),
+(61, 'Factura+23'),
+(62, 'Factura+24'),
+(63, 'Factura+25'),
+(64, 'Factura+26'),
+(65, 'Factura+27'),
+(66, 'Factura+28'),
+(67, 'Factura+29'),
+(68, 'Factura+30'),
+(69, 'Factura+31'),
+(70, 'Factura+31'),
+(71, 'Factura+32'),
+(72, 'Factura+33'),
+(73, 'Factura+34'),
+(74, 'Factura+35'),
+(75, 'Factura+36'),
+(76, 'Factura+37'),
+(77, 'Compra'),
+(78, 'Factura+38'),
+(79, 'Compra'),
+(80, 'Factura+39'),
+(81, 'Factura+40'),
+(82, 'Factura+41'),
+(83, 'Factura+42'),
+(84, 'Factura+43'),
+(85, 'Factura+44');
 
 -- --------------------------------------------------------
 
@@ -273,7 +452,57 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `hora` time DEFAULT NULL,
   `vendedor` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `total` int(11) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=45 ;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`num_factura`, `cliente`, `fecha`, `hora`, `vendedor`, `total`) VALUES
+(1, '1069745533', '2014-10-13', '00:00:00', '3', 1972000),
+(2, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(3, '1069745533', '2014-10-13', '00:00:00', '3', 5800000),
+(4, '1069745533', '2014-10-13', '00:00:00', '3', 2314200),
+(5, '1069745533', '2014-10-13', '00:00:00', '3', 580000),
+(6, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(7, '1069745533', '2014-10-13', '00:00:00', '3', 110),
+(8, '1069745533', '2014-10-13', '00:00:00', '3', 2314200),
+(9, '1069745533', '2014-10-13', '00:00:00', '3', 348000),
+(10, '1069745533', '2014-10-13', '00:00:00', '3', 2314200),
+(11, '1069745533', '2014-10-13', '00:00:00', '3', 1506840),
+(12, '1069745533', '2014-10-13', '00:00:00', '3', 348000),
+(13, '1069745533', '2014-10-13', '00:00:00', '3', 580000),
+(14, '1069745533', '2014-10-13', '00:00:00', '3', 1506840),
+(15, '1069745533', '2014-10-13', '00:00:00', '3', 1972000),
+(16, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(17, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(18, '1069745533', '2014-10-13', '00:00:00', '3', 928000),
+(19, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(20, '1069745533', '2014-10-13', '00:00:00', '3', 580000),
+(21, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(22, '1069745533', '2014-10-13', '00:00:00', '3', 522000),
+(23, '1069745533', '2014-10-13', '00:00:00', '3', 580000),
+(24, '1069745533', '2014-10-13', '00:00:00', '3', 1364160),
+(25, '1069745533', '2014-10-13', '00:00:00', '3', 1506840),
+(26, '1069745533', '2014-10-13', '00:00:00', '3', 0),
+(27, '1069745533', '2014-10-13', '00:00:00', '3', 1944160),
+(28, '1069745533', '2014-10-13', '00:00:00', '3', 1944160),
+(29, '1069745533', '2014-10-14', '00:00:00', '3', 348000),
+(30, '1069745533', '2014-10-14', '00:00:00', '3', 1854840),
+(31, '1069745533', '2014-10-14', '08:10:00', '3', 522000),
+(32, '1', '2014-10-14', '09:10:00', '3', 2314200),
+(33, '1', '2014-10-14', '09:10:00', '3', 522000),
+(34, '1', '2014-10-14', '09:10:00', '3', 3016000),
+(35, '1', '2014-10-14', '09:10:00', '3', 580000),
+(36, '1', '2014-10-14', '09:10:00', '3', 522000),
+(37, '1', '2014-10-14', '09:10:00', '3', 110),
+(38, '1', '2014-10-15', '05:10:00', '3', 300000),
+(39, '1', '2014-10-15', '05:10:00', '3', 750000),
+(40, '1', '2014-10-15', '05:10:00', '3', 450000),
+(41, '1', '2014-10-15', '05:10:00', '3', 750000),
+(42, '1', '2014-10-15', '05:10:00', '3', 300000),
+(43, '1069753434', '2014-10-16', '09:10:00', '3', 300000),
+(44, '1', '2014-10-16', '10:10:00', '3', 450000);
 
 -- --------------------------------------------------------
 
@@ -291,13 +520,6 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `gasto`
---
-
-INSERT INTO `gasto` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(3, '2', '5140', '2014-09-02', 'D', 'Gasto Legal', 1528500);
-
 -- --------------------------------------------------------
 
 --
@@ -313,23 +535,6 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ingresos`
---
-
-INSERT INTO `ingresos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(20, '3', '4135', '2014-10-03', 'C', 'Venta LENOVA Y410p', 1995000),
-(21, '3', '4135', '2014-10-03', 'C', 'Venta Acer AOD2', 300000),
-(22, '3', '4135', '2014-10-03', 'C', 'Venta Acer AOD2', 300000),
-(23, '3', '4135', '2014-10-03', 'C', 'Venta Acer AOD2', 600000),
-(24, '3', '4135', '2014-10-03', 'C', 'Venta Acer AOD2', 900000),
-(28, '3', '4135', '2014-10-07', 'C', 'Venta Acer AOD2', 2700000),
-(30, '3', '4135', '2014-10-07', 'C', 'Venta Acer AOD2', 2700000),
-(31, '3', '4135', '2014-10-08', 'C', 'Venta LENOVA Y410p', 3990000),
-(32, '3', '4135', '2014-10-08', 'C', 'Venta LENOVA Y410p', 3990000),
-(33, '3', '4135', '2014-10-08', 'C', 'Venta Acer AOD2', 300000),
-(37, '3', '4135', '2014-10-09', 'C', 'Venta Acer AOD2', 1500000);
 
 -- --------------------------------------------------------
 
@@ -348,28 +553,24 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `vlr_unidad` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
 INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`, `vlr_inicial`, `cantidad`, `vlr_unidad`, `total`, `tipo`) VALUES
-(1, 'Acer AOD2', 'Compra', '2014-08-29', 12, 12000, 12, 12000, 144000, 'C'),
-(2, 'Acer E15', 'Compra', '2014-08-29', 10, 10000, 10, 10000, 100000, 'C'),
-(3, 'Acer AOD2', 'Compra', '2014-08-29', 5, 10000, 17, 11412, 194000, 'C'),
-(4, 'AcerS3-391-6046', 'Compra', '2014-08-29', 10, 15000, 10, 15000, 150000, 'C'),
-(5, 'Acer AOD2', 'Venta', '2014-10-03', 3, 12000, 9, 12000, 108000, 'V'),
-(6, 'AcerS3-391-6046', 'Compra', '2014-09-04', 10, 12000, 20, 13500, 270000, 'C'),
-(7, 'AcerS3-391-6046', 'Compra', '2014-09-04', 10, 12000, 30, 13000, 390000, 'C'),
-(8, 'Acer AOD2', 'Compra', '2014-09-07', 10, 12000, 19, 12000, 228000, 'C'),
-(10, 'Acer AOD2', 'Compra', '2014-10-07', 10, 12000, 19, 12000, 228000, 'C'),
-(11, 'Acer AOD2', 'Venta', '2014-10-07', 9, 12000, 10, 12000, 120000, 'V'),
-(12, 'Acer AOD2', 'Venta', '2014-10-08', 1, 12000, 9, 12000, 108000, 'V'),
-(13, 'LENOVOT440s', 'Compra', '2014-10-09', 12, 1300000, 12, 1300000, 15600000, 'C'),
-(14, 'Acer E15', 'Compra', '2014-10-09', 5, 300000, 15, 106667, 1600000, 'C'),
-(15, 'Acer E15', 'Compra', '2014-10-09', 5, 300000, 15, 106667, 1600000, 'C'),
-(16, 'Acer AOD2', 'Venta', '2014-10-09', 5, 12000, 4, 12000, 48000, 'V');
+(1, 'Acer AOD2', 'Compra', '2014-10-15', 12, 200000, 12, 200000, 2400000, 'C'),
+(2, 'Acer AOD2', 'Venta', '2014-10-15', 1, 200000, 11, 200000, 2200000, 'V'),
+(3, 'Acer E15', 'Compra', '2014-10-15', 10, 350000, 10, 350000, 3500000, 'C'),
+(4, 'Acer E15', 'Venta', '2014-10-15', 1, 350000, 9, 350000, 3150000, 'V'),
+(5, 'Acer AOD2', 'Venta', '2014-10-15', 1, 200000, 11, 200000, 2200000, 'V'),
+(6, 'Acer E15', 'Venta', '2014-10-15', 1, 350000, 9, 350000, 3150000, 'V'),
+(7, 'Acer AOD2', 'Venta', '2014-10-15', 1, 200000, 10, 200000, 2000000, 'V'),
+(8, 'Acer E15', 'Venta', '2014-10-15', 1, 350000, 8, 350000, 2800000, 'V'),
+(9, 'Acer AOD2', 'Venta', '2014-10-15', 1, 200000, 9, 200000, 1800000, 'V'),
+(10, 'Acer AOD2', 'Venta', '2014-10-16', 1, 200000, 8, 200000, 1600000, 'V'),
+(11, 'Acer E15', 'Venta', '2014-10-16', 1, 350000, 7, 350000, 2450000, 'V');
 
 -- --------------------------------------------------------
 
@@ -386,30 +587,6 @@ CREATE TABLE IF NOT EXISTS `pasivo` (
   `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `pasivo`
---
-
-INSERT INTO `pasivo` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(20, '3', '2804', '2014-10-03', 'C', 'IVA LENOVA Y410p', 319200),
-(21, '3', '2804', '2014-10-03', 'C', 'IVA Acer AOD2', 48000),
-(22, '3', '2804', '2014-10-03', 'C', 'IVA Acer AOD2', 48000),
-(23, '3', '2804', '2014-10-03', 'C', 'IVA Acer AOD2', 96000),
-(24, '3', '2804', '2014-10-03', 'C', 'IVA Acer AOD2', 144000),
-(25, '1', '2804', '2014-09-04', 'D', 'IVA', 19200),
-(26, '1', '2804', '2014-09-04', 'D', 'IVA', 19200),
-(27, '1', '2804', '2014-09-07', 'D', 'IVA', 19200),
-(28, '3', '2804', '2014-10-07', 'C', 'IVA Acer AOD2', 432000),
-(29, '1', '2804', '2014-10-07', 'D', 'IVA', 19200),
-(30, '3', '2804', '2014-10-07', 'C', 'IVA Acer AOD2', 432000),
-(31, '3', '2804', '2014-10-08', 'C', 'IVA LENOVA Y410p', 638400),
-(32, '3', '2804', '2014-10-08', 'C', 'IVA LENOVA Y410p', 638400),
-(33, '3', '2804', '2014-10-08', 'C', 'IVA Acer AOD2', 48000),
-(34, '1', '2804', '2014-10-09', 'D', 'IVA', 0),
-(35, '1', '2804', '2014-10-09', 'D', 'IVA', 0),
-(36, '1', '2804', '2014-10-09', 'D', 'IVA', 4800000),
-(37, '3', '2804', '2014-10-09', 'C', 'IVA Acer AOD2', 240000);
 
 -- --------------------------------------------------------
 
@@ -431,26 +608,26 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Descripcion`, `Especificaciones`, `iva`, `ValorVenta`) VALUES
-('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red)', 'Screen Size	10.1 inches\r\nProcessor	1.6 GHz Intel Atom N270\r\nRAM	1 GB DDR2\r\nHard Drive	160 GB\r\nGraphics Coprocessor	Intel GMA 950\r\nAverage Battery Life (in hours)	3.15 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire One\r\nItem model number	AOD250-1042/LU.S700B.028\r\nHardware Platform	PC\r\nOperating System	Windows XP Home Edition\r\nItem Weight	5 pounds\r\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\r\nColor	Red\r\nProcessor Brand	Intel\r\nProcessor Count	1\r\nComputer Memory Type	SDRAM\r\nHard Drive Interface	ATA100', '16', 300000),
-('Acer E15', 'Acer E15 15-Inch ', 'Intel N2830 dual-core processor (2.16GHz/2.41GHz w/ Intel Burst)15.6" HD widescreen CineCrystalTM LCD display (1366 x 768) - Intel HD Graphics4GB DDR3L memory (1 Memory Slots, 8GB Maximum Memory) - 500GB hard drivestereo speakers - HD audio - webcam - multi-gesture touchpad - Wireless - Bluetooth 4.0 - HDMI - USB 3.0 - card readerWindows 8.1 (64 bits), 3 cell (up to 4.5-hour) battery - 1-year limited warranty. Color: Diamond Black', 'Screen Size	15.6 inches\r\nMax Screen Resolution	1366 x 768\r\nProcessor	Intel Celeron\r\nRAM	SDRAM DDR3\r\nHard Drive	500 GB\r\nWireless Type	802.11bgn\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	ES1-511-C0DV\r\nHardware Platform	PC\r\nOperating System	Windows 8\r\nItem Weight	5.3 pounds\r\nItem Dimensions L x W x H	15 x 1.10 x 10.20 inches\r\nColor	Black\r\nComputer Memory Type	DDR3 SDRAM', '16', 450000),
+('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red)', 'Screen Size	10.1 inches\r\nProcessor	1.6 GHz Intel Atom N270\r\nRAM	1 GB DDR2\r\nHard Drive	160 GB\r\nGraphics Coprocessor	Intel GMA 950\r\nAverage Battery Life (in hours)	3.15 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire One\r\nItem model number	AOD250-1042/LU.S700B.028\r\nHardware Platform	PC\r\nOperating System	Windows XP Home Edition\r\nItem Weight	5 pounds\r\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\r\nColor	Red\r\nProcessor Brand	Intel\r\nProcessor Count	1\r\nComputer Memory Type	SDRAM\r\nHard Drive Interface	ATA100', '0', 300000),
+('Acer E15', 'Acer E15 15-Inch ', 'Intel N2830 dual-core processor (2.16GHz/2.41GHz w/ Intel Burst)15.6" HD widescreen CineCrystalTM LCD display (1366 x 768) - Intel HD Graphics4GB DDR3L memory (1 Memory Slots, 8GB Maximum Memory) - 500GB hard drivestereo speakers - HD audio - webcam - multi-gesture touchpad - Wireless - Bluetooth 4.0 - HDMI - USB 3.0 - card readerWindows 8.1 (64 bits), 3 cell (up to 4.5-hour) battery - 1-year limited warranty. Color: Diamond Black', 'Screen Size	15.6 inches\r\nMax Screen Resolution	1366 x 768\r\nProcessor	Intel Celeron\r\nRAM	SDRAM DDR3\r\nHard Drive	500 GB\r\nWireless Type	802.11bgn\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	ES1-511-C0DV\r\nHardware Platform	PC\r\nOperating System	Windows 8\r\nItem Weight	5.3 pounds\r\nItem Dimensions L x W x H	15 x 1.10 x 10.20 inches\r\nColor	Black\r\nComputer Memory Type	DDR3 SDRAM', '0', 450000),
 ('AcerAspire ES1-511', 'Acer Aspire ES1-511', 'Intel Celeron N2830 2.16 GHz Processor (1 MB Cache)4 GB DDR3L SDRAM500 GB 5400 rpm Hard Drive15.6-Inch Screen, Intel HD GraphicsWindows 8.1, 4.5-hour battery life', 'Screen Size	15.6 inchesMax Screen Resolution	1366x768Processor	2.16 GHz Intel CeleronRAM	4 GB DDR3L SDRAMHard Drive	500 GB SATAGraphics Coprocessor	Intel HD GraphicsGraphics Card Ram Size	64 MBWireless Type	802.11bgnNumber of USB 2.0 Ports	2Number of USB 3.0 Ports	1Average Battery Life (in hours)	4.5 hoursExpandOther Technical DetailsBrand Name	AcerSeries	ES1-511Item model number	ES1-511-C59VOperating System	Windows 8.1Item Weight	5.3 poundsItem Dimensions L x W x H	15.02 x 10.16 x 1.07 inchesColor	Diamond BlackProcessor Brand	Intel CeleronHard Drive Rotational Speed	5400 RPMBatteries:	1 Lithium ion batteries required. (included)', '16', 500000),
-('AcerC720', 'Acer C720 Acer C720 ', 'Built-in dual band Wi-Fi 802.11 a/b/g/n\r\nIntel Celeron 2955U 1.4 GHz (Haswell micro-architecture)\r\n16 GB Solid-State Drive\r\n11.6-Inch Anti-Glare Screen, Intel HD Graphics\r\nHDMI port, 8.5-hour battery life', 'Screen Size	11.6 inches\r\nScreen Resolution	1366 x 768\r\nMax Screen Resolution	1366x768\r\nProcessor	1.4 GHz Intel Celeron\r\nRAM	2 GB DDR3L SDRAM\r\nMemory Speed	1333.00\r\nHard Drive	16 GB flash_memory_solid_state\r\nGraphics Coprocessor	Intel HD Graphics\r\nChipset Brand	Intel\r\nGraphics Card Ram Size	128 MB\r\nWireless Type	802.11 a/b/g/n\r\nNumber of USB 2.0 Ports	1\r\nNumber of USB 3.0 Ports	1\r\nAverage Battery Life (in hours)	8.5 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Acer C720-2848 11.6-Inch Chromebook (Granite Gray)\r\nItem model number	C720-2848\r\nHardware Platform	Consumer Electronics\r\nOperating System	Chrome\r\nItem Weight	2.8 pounds\r\nItem Dimensions L x W x H	11.34 x 8.03 x 0.75 inches\r\nColor	Granite Gray\r\nProcessor Brand	Intel Celeron\r\nProcessor Count	2\r\nComputer Memory Type	DDR3 SDRAM\r\nFlash Memory Size	16\r\nHard Drive Interface	Serial ATA\r\nOptical Drive Type	No\r\nAudio-out Ports (#)	1\r\nBattery Type	Lithium Polymer (LiPo)\r\nBatteries:	1 Lithium ion batteries required. (included)', '16', 400000),
-('AcerS3-391-6046', 'Acer S3-391-6046 ', 'Screen Size: 13.3"\r\nIntel Core i3-2367M 1.4GHz - 4GB DDR3 - 320GB HDD\r\nBuilt-in 1.3 megapixel webcam\r\nScreen Resolution: 1366 x 768\r\n802.11b/g/n Wireless LAN Bluetooth 4.0 HS', '\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	SNID#23501755920/S3 SERIES\r\nHardware Platform	Consumer Electronics\r\nOperating System	Windows 8\r\nItem Weight	2.6 pounds\r\nItem Dimensions L x W x H	13.30 x 1 x 7 inches\r\nProcessor Brand	Intel\r\nProcessor Count	2\r\nComputer Memory Type	DDR3 SDRAM\r\nHard Drive Interface	Serial ATA\r\nPower Source	Battery', '16', 800000),
-('ASUS750JZ', 'ASUS ROG G750JZ-DS71', 'Windows 8.1 Pro u otras ediciones disponibles, Cuarta  generacion de procesadores Intel Core i7 y la grafica NVIDIA GeForce GTX880MDos ventiladores con salidas independientes para alejar el ruido y la temperaturaASUS SonicMaster y ROG AudioWizard ofrecen un audio potente y optimizadoTeclado retroiluminado con una gran capacidad de respuesta y resistencia', 'Procesador Intel Core i7 4700HQ Sistema Operativo Windows 8.1 ProWindows 8.1ChipsetIntel HM87 Express ChipsetMemoriaDDR3L MHz SDRAM, up to 32 G Pantalla17.3" Auto FHD EWV LED Retroiluminado Non-Glare LCD Panel GraficosNVIDIA GeForce GTX880M 4GB GDDR5 Almacenamiento1.5TB 5400 1TB 7200 750GB 5400 With 8 G SSD 512GB SSD 256GB SSD Soporte para Dual HDD RAID0 Support (Opcional)Unidad OpticaSuper-Multi DVD Lectora Blue-rayLector de tarjetas2 -en-1 Lector de tarjetas ( SD/ MMC)Camara web HDRedesIntegrado 802.11ac or 802.11 a/b/g/n (WiDi)10/100/1000 Base TSoporte BT 4.0 (en WLAN+ BT 4.0 tarjeta combo)Interfaz1 x Entrada para microfono0 x Salida para auriculares1 x Puerto VGA /Mini D-sub 15-pin para monitor externo 4 x puerto(s) USB 3.0 1 x Puerto LAN RJ451 x HDMI 1 x Thunderbolt port 1X AC adapter plugAudioParlantes y Array MicrophoneSubwoofer IntegradoSoporte MaxxAudioBatería8 Celdas 5900 mAh 89 WhrsAdaptador de CorrienteSalida :19.5 V DC, 11.8 A, 230 WEntrada :100 -240 V AC, 50/60 Hz universal3/ 2 pin compact power supply systemDimensiones410 x 318 x 17 -58 cm (WxDxH) (w/ 8cell battery)Peso4.8 kg (con batería de 8 celdas)SeguridadKensington lockLoJackIntel Anti-theft', '16', 2600000),
-('ASUSG51J', 'ASUS G51J-A1 ', 'Windows 7 Ultimate u otras ediciones disponibles\r\nDisfruta del gaming más realista con la gráfica NVIDIA\r\nPower4Gear Hybrid permite jerarquizar el rendimiento de la CPU para disfrutar de tus juegos sin sobresaltos\r\nAudio 3D con EAX Advanced HD 4.0 para una experiencia sonora más realista\r\nTeclado tipo chicle con retroiluminación dinámica para situación de iluminación limitada', 'ProcesadorIntel Core i7 820QM/720QM ProcesadorSistema OperativoWindows 7 Ultimate Windows 7 Home Premium Esta versión contiene todas las actualizaciones del producto (SP1)ChipsetIntel PM55 Express ChipsetMemoriaDDR3 1066 MHz SDRAM, 2 x SO-DIMM socket para una expansión hasta 4 GB SDRAMPantalla15.6" 16:9 Full HD (1920x1080) LED RetroiluminadoGráficosNVIDIA GeForce GTX 260M con 1GB DDR3 VRAMAlmacenamiento2.5" SATA500GB 5400/7200 320GB 5400/7200 250GB 5400 Soporte para Dual HDDUnidad OpticaBlu-Ray DVD Combo Super-Multi DVDLector de tarjetas8 -en-1 Lector de tarjetas ( SDXC/ MS/ MS Pro/ MS Duo/ MMC)CámaraCámara web con 2.0 de Mega PixelRedesIntegrado 802.11 b/g/nBluetooth™ V2.1+EDR Integrado (Opcional)10/100/1000 Base TInterfaz1 x Entrada para micrófono2 x Salida para auriculares(1 x SPDIF)4 x Puerto(s) USB 2.0 1 x IEEE 1394 port1 x Puerto LAN RJ451 x HDMI 1 x Puerto E-SATA (USB2.0 Combo)AudioEAX Advanced HD 4.0 Parlantes Altec LansingCreative Audigy HDTV-TunerAnálogoBatería6 Células 4800 mAh9 Células 7200 mAhAdaptador de CorrienteSalida :19 V DC, 4.74 A, 120 WEntrada :100 -240 V AC, 50/60 Hz universalDimensiones37.5 x 26.5 x 3.43 ~4.06 cm (WxDxH)Peso3.30 kg (con 6 celdas de batería)SeguridadCertificadosGarantía1 año de garantía limitada en hardware.*diferente según el país.Resolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)OS (Windows 7 ) Consulta de instalación/desinstalaciónSoftware integrado Consulta de instalación/desinstalaciónSoftware de soporte ASUSNotaOnly for SearchThinnes - Laptop', '16', 1700000),
-('ASUSG55VW', 'ASUS G55VW-RS71 ', 'Windows 8 Pro u otras ediciones disponibles\r\n3ª gen de procesadores Intel® Core™ i7 y las nuevas gráficas NVIDIA®\r\nRefrigeración inteligente con dos salidas para el aire caliente\r\nErgonomía superior\r\nDisfruta del 3D más realista con las gafas activas\r\nMejoras de audio SonicMaster Lite con subwoofer integrado', 'Procesador\r\nIntel® Core™ i7 3630QM Procesador\r\nIntel® Core™ i7 3610QM Procesador\r\nIntel® Core™ i5 3230M /3210M Procesador\r\nSistema Operativo\r\nWindows 8 Pro\r\nWindows 8\r\nWindows 7 Ultimate \r\nWindows 7 Professional \r\nWindows 7 Home Premium \r\nWindows 7 Home Basic\r\nChipset\r\nIntel® HM77 Chipset\r\nMemoria\r\nDDR3 1600 MHz SDRAM, 4 x SO-DIMM socket para una expansión hasta 16 GB SDRAM *1\r\nPantalla\r\n15.6" 4:3 HD (1366x768)/HD 3D (1366x768 120Hz)/Full HD (1920x1080)/Amplio ángulo de visión LED Retroiluminado Non-Glare LCD Panel\r\nGráficos\r\nNVIDIA® GeForce® GTX 660M con 2GB GDDR5 VRAM\r\nAlmacenamiento\r\n1TB 5400 \r\n750GB 5400/7200 \r\n500GB 5400/7200 \r\n128GB SSD \r\n750GB 7200 SSH\r\nUnidad Optica\r\nBlu-Ray DVD Combo \r\nSuper-Multi DVD \r\nLectora Blue-ray\r\nLector de tarjetas\r\n3 -en-1 Lector de tarjetas ( SD/ MS/ MMC)\r\nCámara\r\nCámara web HD\r\nRedes\r\nIntegrado 802.11 b/g/n\r\nBluetooth™ V4.0 integrado (Opcional)\r\n10/100/1000 Base T\r\nInterfaz\r\n1 x Entrada para micrófono\r\n0 x Salida para auriculares\r\n1 x Puerto VGA /Mini D-sub 15-pin para monitor externo\r\n4 x puerto(s) USB 3.0 \r\n1 x Puerto LAN RJ45\r\n1 x HDMI \r\n1 x SPIDIF Salida para parlantes\r\n1 x mini puerto Display Port\r\nAudio\r\nParlantes y Micrófono Integrado\r\nSubwoofer Integrado\r\nBatería\r\n8 Células 5200 mAh 74 Whrs\r\nAdaptador de Corriente\r\nSalida :\r\n19 V DC, A, W\r\nEntrada :\r\n100 -240 V AC, 50/60 Hz universal\r\nDimensiones\r\n384 x 299 x 20 -51 mm (WxDxH)\r\nPeso\r\n3.8 kg (con 8 celdas de batería)\r\nSeguridad\r\nKensington lock\r\nGarantía\r\n1 año de garantía limitada en hardware.*diferente según el país.\r\nResolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)\r\nOS (Windows 7 ) Consulta de instalación/desinstalación\r\nSoftware integrado Consulta de instalación/desinstalación\r\nSoftware de soporte ASUS', '16', 3400000),
-('ASUSG75', 'ASUS ROG G75VW-AH71 ', 'Windows 7 Ultimate u otras ediciones disponibles3ª gen de procesadores Intel Core i7 y las nuevas gráficas NVIDIARefrigeración inteligente con dos salidas para el aire caliente y filtros desmontablesErgonomía superiorDisfruta del 3D más realista con la tecnología NVIDIA 3D LightBoostMejoras de audio SonicMaster Lite con subwoofer integrado', 'Procesador\r\nIntel® Core™ i7 3720QM Procesador\r\nIntel® Core™ i7 3610QM Procesador\r\nSistema Operativo\r\nWindows 7 Ultimate \r\nWindows 7 Professional \r\nWindows 7 Home Premium \r\nWindows 7 Home Basic\r\nChipset\r\nIntel® HM77 Chipset\r\nMemoria\r\nDDR3 1600 MHz SDRAM, 4 x SO-DIMM socket para una expansión hasta 16 GB SDRAM\r\nPantalla\r\n17.3" 4:3 HD con EWV (1366 x 768) / FHD 3D LED Retroiluminado\r\nGráficos\r\nNVIDIA® GeForce® GTX 660M/670M con 2GB/3GB GDDR5 VRAM\r\nAlmacenamiento\r\n2.5" SATA Dual HDD\r\n1TB 5400 \r\n750GB 5400/7200 \r\n500GB 5400/7200 \r\n750GB 7200 SSH\r\n256GB SSD \r\nRAID0/1 Support\r\nUnidad Optica\r\nBlu-Ray DVD Combo \r\nSuper-Multi DVD \r\nLectora Blue-ray\r\nLector de tarjetas\r\n3 -en-1 Lector de tarjetas ( SD/ MS/ MMC)\r\nCámara\r\nCámara web HD\r\nRedes\r\nIntegrado 802.11 b/g/n\r\nBluetooth™ V4.0 integrado (Opcional)\r\n10/100/1000 Base T\r\nInterfaz\r\n1 x Entrada para micrófono\r\n0 x Salida para auriculares\r\n1 x Puerto VGA /Mini D-sub 15-pin para monitor externo\r\n4 x puerto(s) USB 3.0 \r\n1 x Puerto LAN RJ45\r\n1 x HDMI \r\n1 x SPIDIF Salida para parlantes\r\n1 x mini puerto Display Port\r\nAudio\r\nParlantes y Micrófono Integrado\r\nSubwoofer Integrado\r\nBatería\r\n8 Células 5200 mAh 74 Whrs\r\nAdaptador de Corriente\r\nSalida :\r\n19 V DC, A, 180 W\r\nEntrada :\r\n100 -240 V AC, 50/60 Hz universal\r\nDimensiones\r\n415 x 320 x 17 -52 mm (WxDxH)\r\nPeso\r\n4.5 kg (con 8 celdas de batería)\r\nSeguridad\r\nKensington lock\r\nGarantía\r\n1 año de garantía limitada en hardware.*diferente según el país.\r\nResolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)\r\nOS (Windows 7 ) Consulta de instalación/desinstalación\r\nSoftware integrado Consulta de instalación/desinstalación\r\nSoftware de soporte ASUS', '16', 2500000),
-('ASUSG750JM', 'ASUS ROG G750JM-DS71', 'Windows 8 Pro u otras ediciones disponibles4 generación de procesadores Intel Core i7 y las gráficas NVIDIA® más avanzadasDos ventiladores con salidas independientes para alejar el ruido y la temperaturaMejoras de audio SonicMaster y una salida para auriculares mejoradaTeclado retroiluminado con una gran capacidad de respuesta y rendimiento', 'ProcesadorIntel Core i7 4700HQ ProcesadorSistema OperativoWindows 8 ProWindows 8ChipsetIntel HM87 Express ChipsetMemoriaDDR3L 1800 MHz SDRAM, up to 32 GPantalla17.3" 16:9 FHD EWV LED Retroiluminado/Full HD 3D(1920x1080 120Hz) Non-Glare LCD Panel (Opcional)GráficosNVIDIA GeForce® GTX 770M 3GB GDDR5 VRAMAlmacenamiento2.5" 9.5mm SATA1TB 5400 RPM With 256 GB SSD 750GB 5400/7200 RPM With 256 GB SSD 500GB 7200 RPM 500GB 5400 RPM With 8 G SSD SSHSoporte para Dual HDD RAID0 SupportUnidad OpticaBlu-Ray DVD Combo Super-Multi DVD Grabadora Blue-rayLector de tarjetas2 -en-1 Lector de tarjetas ( SD/ MMC)CámaraCámara web HDRedesIntegrado 802.11 b/g/n or 802.11ac 10/100/1000 Base TSoporte BT 4.0 (en WLAN+ BT 4.0 tarjeta combo)Interfaz1 x Entrada para micrófono0 x Salida para auriculares(SPDIF)1 x Puerto VGA /Mini D-sub 15-pin para monitor externo4 x puerto(s) USB 3.0 1 x Puerto LAN RJ451 x HDMI 1 x mini puerto Display Port1 x Thunderbolt port (Opcional)1X AC adapter plugAudioBuilt-in 2 Speakers And Micrófono IntegradoSonicMasterSubwoofer IntegradoSoporte MaxxAudioBatería8 Células 5900 mAh 89 WhrsAdaptador de CorrienteSalida :19.5 V DC, 9.23 A, 180 WEntrada :100 -240 V AC, 50/60 Hz universal3/ 2 pin compact power supply systemDimensiones410 x 318 x 17 -50 mm (WxDxH) (w/ 8cell battery)Peso4.8 kg (con 8 celdas de batería)SeguridadKensington lockLoJackIntel Anti-theftGarantía1 año de garantía limitada en hardware.*diferente según el país.', '16', 2400000),
-('LENOVA Y410p', 'Lenovo Y410p - Dusk ', 'Duración de la batería\r\nHasta 5 horas con batería estándar de 6 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 2,5 kg\r\nParlantes\r\nParlantes estéreo JBL® con Dolby® Home Theater® v4\r\nMicrófonos\r\nIntegrado\r\nPuertos\r\n2 x USB 2.0, USB 3.0, lector de tarjetas 6-en-1, Combo Jack (audífonos / micrófono), HDMI', 'Procesador\r\nCuarta generación del procesador Intel® Core™ i7-4700MQ (6M Cache, 2.4 GHz)\r\nSistema Operativo\r\nWindows 8.1\r\nPantalla\r\n14" HD LED GLARE\r\nPlaca de Video\r\nNVIDIA GeForce GT650M GDDR5 2GB\r\nMemoria\r\n6GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n1TB 5400 RPM\r\nUnidad Óptica\r\nDVD Recordable (Dual Layer)\r\nConectividad\r\n802.11bgn\r\nBluetooth\r\nBluetooth® 4.0\r\nGarantía\r\n1 Año de garantía carry in (en centro de servicio)\r\nDispositivo de Puntero\r\nIndustry Standard Multi-touch 2 button touchpad\r\nBatería\r\n6 Celdas Lithium-Ion', '16', 1995000),
-('LENOVAE431', 'lENOVA ThinkPad Edge', 'Duración de la batería\r\nHasta 6 horas con batería estándar de 6 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 2,13 kg\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™ v2\r\nMicrófono\r\nMicrófono dual con optimización para VOIP\r\nPuertos\r\n2 x USB 3.0, USB 2.0 (siempre encendido) VGA, HDMI, Ethernet RJ-45, lector de tarjetas 4-en-1, Combo Jack (audífono / micrófono), tecnología Lenovo OneLink', 'Procesador\r\nTercera generación del procesador Intel® Core™ i3-3120M (3M Cache, 2.5 GHz)\r\nSistema Operativo\r\nWindows 8 64\r\nPantalla\r\n14" Antirreflejos HD 1366x768\r\nPlaca de Video\r\nIntel Integrated HD Graphics 4000\r\nMemoria\r\n4.0GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 5400 rpm\r\nUnidad Óptica\r\nGrabadora Multi Recorder\r\nConectividad\r\nThinkPad 11b/g/n Wi-Fi wireless\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nMano de obra y piezas: un año (batería del sistema: un año)\r\nBatería\r\nIon Litio, 6 celdas\r\nDiseño\r\nNotebook\r\n', '16', 1299000),
-('Lenovo2-14-R', 'Lenovo Flex 2-14 - R', 'Duración de la batería\r\nHasta 6 hs de duración con batería estándar\r\nPeso\r\nA partir de 1,9 kg\r\nPuertos\r\n1 USB 3.0, 2 USB 2.0, salida para HDMI, puerto LAN, lector de tarjetas 2-en-1 (SD/MMC), combo de conectores\r\nMicrófono\r\nMicrófono dual digital integrado\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™', 'Procesador\r\nCuarta generación del procesador Intel® Core™ i3-4010U (3M Cache, 1.7 GHz)\r\nSistema Operativo\r\nWindows 8.1\r\nPantalla\r\n14" HD LED (1366x768) Multi-Touch 10 dedos (SLIM)\r\nPlaca de Video\r\nIntel® HD Graphics 4400\r\nMemoria\r\n4GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 5400rpm\r\nConectividad\r\nLenovo BGN Wireless + 100/1000M Ethernet\r\nBluetooth\r\nBluetooth® 4.0\r\nGarantía\r\n1 Año de garantía carry in (en centro de servicio)\r\nBatería\r\n4 Céldas Li-Cilindrica', '16', 1176000),
-('LENOVO40-30', 'Lenovo G40-30 ', 'Duración de la batería\r\nHasta 4 horas con batería estándar de 4 celdas\r\nPeso\r\nA partir de 2,1 kg\r\nPuertos\r\n1 USB 3.0, USB 2.0, salida HDMI, lector de tarjetas 2 en 1 (SD/MMC), combo de auriculares y micrófono y VGA.\r\nMicrófono\r\nAnalógico\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™', 'Procesador\r\nIntel® Celeron® N2830 (1M Cache, 2.16 GHz)\r\nSistema Operativo\r\nWindows 8.1 64\r\nPantalla\r\n14,0" HD Wide LED\r\nPlaca de Video\r\nGráficos Intel de alta definición\r\nMemoria\r\n2.0GB PC3-10600 DDR3L SDRAM 1333 MHz\r\nDisco Rígido\r\n500GB 5400 rpm\r\nUnidad Óptica\r\nDVD Grabable\r\nConectividad\r\nLenovo BGN Wireless\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nUn año\r\nDispositivo de Puntero\r\nClickPAd\r\nBatería\r\nCilíndrica de Litio, 4 celdas', '16', 629000),
-('LENOVOT440s', 'LENOVOThinkPadT440s ', 'Ethernet\r\nIntel® 10/1000 Gigabyte Ethernet\r\nGráficos\r\nIntel® HD 4400\r\nWebcam\r\nTecnología de seguimiento facial 720p HD, alta sensibilidad con poca luz\r\nDuración de la batería\r\nHasta 10 horas con batería estándar de 3+3 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 1,65 kg\r\nPuertos\r\nMini Display Port con audio, VGA, 3 x USB 3.0 (1 siempre encendido), lector de tarjeta 4-en-1, Combo Jack (micrófono / audífono)\r\nMicrófono\r\nMicrófonos duales HD con cancelación de ruido\r\nParlantes\r\nParlantes estéreo con Dolby® Home Theater® v4', 'Procesador\r\nIntel Core i5-4300U Procesador( 1,90GHz 3MB)\r\nSistema Operativo\r\nWindows 7 Professional 64\r\nPantalla\r\n14,0" FHD IPS AntiGlare LED Backlight 1920x1080\r\nPlaca de Video\r\nIntel HD 4400\r\nMemoria\r\n4.0GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 7200 rpm\r\nConectividad\r\nIntel Dual Band Wireless-AC 7260\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nTres años\r\nBatería\r\nPolímero de Litio, 3 celdas\r\nOtros\r\nLector de huellas digitales', '16', 2856000),
-('MSI60', 'GP60 2PE LEOPARD', 'Windows 8.1\r\nProcesador 4ta generación Intel® Core™ i7/i5\r\nTarjeta gráfica NVIDIA GeForce 840M 2GB VRAM DDR3\r\nPantalla LCD de 15.6" HD (1366x768) /FHD(1920x1080) Antirreflejo\r\nUnidad Híbrida de Estado Sólido (SSD+HDD)\r\nTecnología exclusiva Cooler Boost\r\nMatrix Display expande la visión para una experiencia de juego extrema\r\nTeclado hecho para gamers por SteelSeries\r\nDiseño exclusivo Audio boost para una fidelidad de audio clara como el cristal\r\nAudio de primera calidad con Sound Blaster Cinema\r\nKiller™ E2200 Game Networking para una red más inteligente y rápida para el entretenimiento en línea\r\nExclusiva función MSI Super-Charger', 'Sistema Operativo Windows 8.1\r\nCPU Nuevo procesador 4ta generación Intel® Core™ i7/i5\r\nChipset Intel HM86\r\nMemoria 2 x DDR3L-1600 MHz,max 16GB\r\nPantalla LCD 15.6" HD (1366x768) /FHD(1920x1080) Antirreflejo\r\nGráficos GeForce 840M\r\nMemoria gráfica VRAM DDR3 2GB\r\nDisco rígido (GB) Hasta 128GB SSD+1TB SATA 7200 RPM\r\nUnidad óptica BD Combo / DVD Super Multi\r\nAudio Estéreo\r\nWebcam HD (30cps@720p)\r\nLector de Tarjeta SD\r\nLAN Killer Gb LAN\r\nLAN inalámbrica 802.11 ac\r\nBluetooth Bluetooth v4.0\r\nD-Sub (VGA) 1\r\nHDMI 1\r\nPuertos USB 2.0 2\r\nPuertos USB 3.0 2\r\nEntrada Mic/Salida audífonos 1/1\r\nTeclado Keyboard by SteelSeries\r\nAdaptador AC 120W\r\nBatería 6 Celdas Li-Ion(4400mAH)\r\nDimensiones 383X249.5X32.3~37.6mm\r\nPeso (KG) 2.4Kg(c/batería)', '16', 1500000),
-('MSI60E', 'GE60 2OE', 'Windows 8.1 El nuevo procesador de 4ta generacion Intel Core i7• Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminación LED• La tarjeta grafica diferenciada NVIDIA GeForce GTX 765M (con memoria VRAM GDDR5 de 2GB) ofrece excelente calidad de imagenes• La tecnologia exclusiva Cooler Boost 2 mejora la refrigeracion y la acústica• La disposicion de pantalla en matriz expande la vision para un juego extremo• Killer E2200 Game Networking para un networking mejor y mas rapido para el entretenimiento en linea• Teclado hecho para gamers por SteelSeries• Exclusivo diseno Audio boost para un sonido claro con alta fidelidad', 'Sistema Operativo Windows 8.1CPU Intel® Core i7-4700MQ (6M Cache, hasta 3.20 GHz)Chipset Intel HM87Memoria DDR3L,hasta 1600 MHz, 2 ranuras, Max. 16GBPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos Nvidia GeForce GTX 765MMemoria grafica VRAM 2GB GDDR5Disco rigido (GB) Super RAID hasta 256GB + 750GB HDD 7200rpmUnidad optica BD Combo / DVD Super MultiAudio Audio Boost, 4 parlantes 2W HDWebcam HD (30cps@720p)Lector de Tarjeta SD(XC/HC)LAN Killer Gaming LANLAN inalambrica 802.11 b/g/nBluetooth v4.0D-Sub (VGA) 1HDMI 1(v1.4)Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audífonos 1 /1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBatería 6 CeldasDimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.4Kg (c/ batería)', '16', 1900000),
-('MSI60PE', 'GE60 2PE APACHE PRO', 'Windows 8.1Procesador 4ta generacion Intel Core i7Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminacion LEDTarjeta grafica diferenciada NVIDIA GeForce GTX 860M que ofrece una calidad de imagen muy detalladaSteelSeries Engine personaliza cada tecla y dispositivo para lograr un estilo de juego personalXSplit Gamecaster para grabar facilmente los momentos de juego, transmitirlos y compartir las sesiones de juego en YouTube, Twitch, UStream y masAngulo de vision amplioSuper RAID con 2 SSD RAID0 ofrece mas de 900MB/s de velocidad de lecturaExclusiva tecnologia Cooler Boost permite reducir un 5%~10% la temperatura del sistemaKiller E2200 Game Networking para una red más inteligente y rápida para el entretenimiento en líneaTeclado hecho para gamers por SteelSeriesMatrix Display expande la vision para una experiencia de juego extremaExclusivo diseno Audio boost para una fidelidad de audio clara como el cristal', 'Sistema Operativo Windows 8.1CPU Procesador de 4ta generacion Intel Core i7 ProcessorChipset Intel HM86Memoria Hasta 16GB x 2 DIMMsPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos GeForce GTX 860MMemoria grafica VRAM GDDR5 2GBDisco rigido (GB) Hasta 256GB Super RAID* + 750GB HDD 7200rpmUnidad optica BD Combo / DVD Super MultiAudio Sonido por Dynaudio, 2 parlantes de 2.1 canales + subwooferWebcam HD (30cps@720p)Lector de Tarjeta SD (XC/HC)LAN Killer™ E2200 Game Networking LANLAN inalambrica 802.11 b/g/ nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audifonos 1/1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBateria 6 Celdas Li-Ion (4400mAh 49Wh)Dimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.6Kg (c/ bateria)', '16', 2450000),
-('MSI61C', 'CX61 2OC', ' Windows 8.1• El nuevo procesador de 4ta. Generacion Intel Core i• NVIDIA GeForce GT720M 2G VRAM DDR3• La tecnologia GPU Boost ofrece un mejor equilibrio entre duracion de bateria y desempeno• Soporta HDMI 1.4 para imagenes HD• La ultima tecnologia Bluetooth 4.0• Pantalla 15.6" LED antirreflejo• Webcam integrada de 720P HD que ofrece la mejor experiencia en llamadas de video• La ultima y mas veloz tecnologia de transferencia de datos USB 3.0', 'Sistema Operativo Windows 8.1CPU El nuevo procesador de 4ta. Generacion Intel Core Chipset Intel HM86Memoria DDR3, hasta 1600MHzPantalla LCD 15.6" HD (1366x768) con retroiluminación LEDGraficos NVIDIA GeForce GT720MMemoria grafica VRAM DDR3 2GBDisco rigido (GB) 750GB/640/500GB SATA 5400rpmUnidad optica BD Combo / DVD Super MultiAudio 2Webcam HD (30cps@720p)Lector de Tarjeta SD(HC/XC)/MMC/MSLAN Gigabit LANLAN inalambrica 802.11 b/g/nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 1Puertos USB 3.0 2Entrada Mic/Salida audifonos 1 / 1Teclado 102 teclasAdaptador AC 95WBatería 6-CeldasAdministración de Energía Turbo Battery+Dimensiones 383(W)x249.5(D)x32.3~37.6(H)mmPeso (KG) 2.4Kg (c/ batería)', '16', 1500000),
-('MSI61PC', 'CX61 2PC', 'Windows 8.1Procesador 4ta generacion Intel Core i7Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminacion LEDTarjeta grafica diferenciada NVIDIA GeForce GTX 860M que ofrece una calidad de imagen muy detalladaSteelSeries Engine personaliza cada tecla y dispositivo para lograr un estilo de juego personalXSplit Gamecaster para grabar facilmente los momentos de juego, transmitirlos y compartir las sesiones de juego en YouTube, Twitch, UStream y mas Angulo de vision amplioSuper RAID con 2 SSD RAID0 ofrece mas de 900MB/s de velocidad de lecturaExclusiva tecnologia Cooler Boost permite reducir un 5%~10% la temperatura del sistemaKiller E2200 Game Networking para una red mas inteligente y rapida para el entretenimiento en lineaTeclado hecho para gamers por SteelSeriesMatrix Display expande la vision para una experiencia de juego extremaExclusivo diseno Audio boost para una fidelidad de audio clara como el cristal', 'Sistema Operativo Windows 8.1CPU Procesador de 4ta generacion Intel Core i7 ProcessorChipset Intel HM86Memoria Hasta 16GB x 2 DIMMsPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos GeForce GTX 860M Memoria grafica VRAM GDDR5 2GBDisco rigido (GB) Hasta 256GB Super RAID + 750GB HDD 7200rpm Unidad optica BD Combo / DVD Super MultiAudio Sonido por Dynaudio, 2 parlantes de 2.1 canales + subwooferWebcam HD (30cps@720p)Lector de Tarjeta SD (XC/HC)LAN Killer E2200 Game Networking LANLAN inalambrica 802.11 b/g/ nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audifonos 1/1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBatería 6 Celdas Li-Ion (4400mAh 49Wh)Dimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.6Kg (c/ batería)', '16', 1400000);
+('AcerC720', 'Acer C720 Acer C720 ', 'Built-in dual band Wi-Fi 802.11 a/b/g/n\r\nIntel Celeron 2955U 1.4 GHz (Haswell micro-architecture)\r\n16 GB Solid-State Drive\r\n11.6-Inch Anti-Glare Screen, Intel HD Graphics\r\nHDMI port, 8.5-hour battery life', 'Screen Size	11.6 inches\r\nScreen Resolution	1366 x 768\r\nMax Screen Resolution	1366x768\r\nProcessor	1.4 GHz Intel Celeron\r\nRAM	2 GB DDR3L SDRAM\r\nMemory Speed	1333.00\r\nHard Drive	16 GB flash_memory_solid_state\r\nGraphics Coprocessor	Intel HD Graphics\r\nChipset Brand	Intel\r\nGraphics Card Ram Size	128 MB\r\nWireless Type	802.11 a/b/g/n\r\nNumber of USB 2.0 Ports	1\r\nNumber of USB 3.0 Ports	1\r\nAverage Battery Life (in hours)	8.5 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Acer C720-2848 11.6-Inch Chromebook (Granite Gray)\r\nItem model number	C720-2848\r\nHardware Platform	Consumer Electronics\r\nOperating System	Chrome\r\nItem Weight	2.8 pounds\r\nItem Dimensions L x W x H	11.34 x 8.03 x 0.75 inches\r\nColor	Granite Gray\r\nProcessor Brand	Intel Celeron\r\nProcessor Count	2\r\nComputer Memory Type	DDR3 SDRAM\r\nFlash Memory Size	16\r\nHard Drive Interface	Serial ATA\r\nOptical Drive Type	No\r\nAudio-out Ports (#)	1\r\nBattery Type	Lithium Polymer (LiPo)\r\nBatteries:	1 Lithium ion batteries required. (included)', '', 400000),
+('AcerS3-391-6046', 'Acer S3-391-6046 ', 'Screen Size: 13.3"\r\nIntel Core i3-2367M 1.4GHz - 4GB DDR3 - 320GB HDD\r\nBuilt-in 1.3 megapixel webcam\r\nScreen Resolution: 1366 x 768\r\n802.11b/g/n Wireless LAN Bluetooth 4.0 HS', '\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	SNID#23501755920/S3 SERIES\r\nHardware Platform	Consumer Electronics\r\nOperating System	Windows 8\r\nItem Weight	2.6 pounds\r\nItem Dimensions L x W x H	13.30 x 1 x 7 inches\r\nProcessor Brand	Intel\r\nProcessor Count	2\r\nComputer Memory Type	DDR3 SDRAM\r\nHard Drive Interface	Serial ATA\r\nPower Source	Battery', '', 800000),
+('ASUS750JZ', 'ASUS ROG G750JZ-DS71', 'Windows 8.1 Pro u otras ediciones disponibles, Cuarta  generacion de procesadores Intel Core i7 y la grafica NVIDIA GeForce GTX880MDos ventiladores con salidas independientes para alejar el ruido y la temperaturaASUS SonicMaster y ROG AudioWizard ofrecen un audio potente y optimizadoTeclado retroiluminado con una gran capacidad de respuesta y resistencia', 'Procesador Intel Core i7 4700HQ Sistema Operativo Windows 8.1 ProWindows 8.1ChipsetIntel HM87 Express ChipsetMemoriaDDR3L MHz SDRAM, up to 32 G Pantalla17.3" Auto FHD EWV LED Retroiluminado Non-Glare LCD Panel GraficosNVIDIA GeForce GTX880M 4GB GDDR5 Almacenamiento1.5TB 5400 1TB 7200 750GB 5400 With 8 G SSD 512GB SSD 256GB SSD Soporte para Dual HDD RAID0 Support (Opcional)Unidad OpticaSuper-Multi DVD Lectora Blue-rayLector de tarjetas2 -en-1 Lector de tarjetas ( SD/ MMC)Camara web HDRedesIntegrado 802.11ac or 802.11 a/b/g/n (WiDi)10/100/1000 Base TSoporte BT 4.0 (en WLAN+ BT 4.0 tarjeta combo)Interfaz1 x Entrada para microfono0 x Salida para auriculares1 x Puerto VGA /Mini D-sub 15-pin para monitor externo 4 x puerto(s) USB 3.0 1 x Puerto LAN RJ451 x HDMI 1 x Thunderbolt port 1X AC adapter plugAudioParlantes y Array MicrophoneSubwoofer IntegradoSoporte MaxxAudioBatería8 Celdas 5900 mAh 89 WhrsAdaptador de CorrienteSalida :19.5 V DC, 11.8 A, 230 WEntrada :100 -240 V AC, 50/60 Hz universal3/ 2 pin compact power supply systemDimensiones410 x 318 x 17 -58 cm (WxDxH) (w/ 8cell battery)Peso4.8 kg (con batería de 8 celdas)SeguridadKensington lockLoJackIntel Anti-theft', '', 2600000),
+('ASUSG51J', 'ASUS G51J-A1 ', 'Windows 7 Ultimate u otras ediciones disponibles\r\nDisfruta del gaming más realista con la gráfica NVIDIA\r\nPower4Gear Hybrid permite jerarquizar el rendimiento de la CPU para disfrutar de tus juegos sin sobresaltos\r\nAudio 3D con EAX Advanced HD 4.0 para una experiencia sonora más realista\r\nTeclado tipo chicle con retroiluminación dinámica para situación de iluminación limitada', 'ProcesadorIntel Core i7 820QM/720QM ProcesadorSistema OperativoWindows 7 Ultimate Windows 7 Home Premium Esta versión contiene todas las actualizaciones del producto (SP1)ChipsetIntel PM55 Express ChipsetMemoriaDDR3 1066 MHz SDRAM, 2 x SO-DIMM socket para una expansión hasta 4 GB SDRAMPantalla15.6" 16:9 Full HD (1920x1080) LED RetroiluminadoGráficosNVIDIA GeForce GTX 260M con 1GB DDR3 VRAMAlmacenamiento2.5" SATA500GB 5400/7200 320GB 5400/7200 250GB 5400 Soporte para Dual HDDUnidad OpticaBlu-Ray DVD Combo Super-Multi DVDLector de tarjetas8 -en-1 Lector de tarjetas ( SDXC/ MS/ MS Pro/ MS Duo/ MMC)CámaraCámara web con 2.0 de Mega PixelRedesIntegrado 802.11 b/g/nBluetooth™ V2.1+EDR Integrado (Opcional)10/100/1000 Base TInterfaz1 x Entrada para micrófono2 x Salida para auriculares(1 x SPDIF)4 x Puerto(s) USB 2.0 1 x IEEE 1394 port1 x Puerto LAN RJ451 x HDMI 1 x Puerto E-SATA (USB2.0 Combo)AudioEAX Advanced HD 4.0 Parlantes Altec LansingCreative Audigy HDTV-TunerAnálogoBatería6 Células 4800 mAh9 Células 7200 mAhAdaptador de CorrienteSalida :19 V DC, 4.74 A, 120 WEntrada :100 -240 V AC, 50/60 Hz universalDimensiones37.5 x 26.5 x 3.43 ~4.06 cm (WxDxH)Peso3.30 kg (con 6 celdas de batería)SeguridadCertificadosGarantía1 año de garantía limitada en hardware.*diferente según el país.Resolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)OS (Windows 7 ) Consulta de instalación/desinstalaciónSoftware integrado Consulta de instalación/desinstalaciónSoftware de soporte ASUSNotaOnly for SearchThinnes - Laptop', '', 1700000),
+('ASUSG55VW', 'ASUS G55VW-RS71 ', 'Windows 8 Pro u otras ediciones disponibles\r\n3ª gen de procesadores Intel® Core™ i7 y las nuevas gráficas NVIDIA®\r\nRefrigeración inteligente con dos salidas para el aire caliente\r\nErgonomía superior\r\nDisfruta del 3D más realista con las gafas activas\r\nMejoras de audio SonicMaster Lite con subwoofer integrado', 'Procesador\r\nIntel® Core™ i7 3630QM Procesador\r\nIntel® Core™ i7 3610QM Procesador\r\nIntel® Core™ i5 3230M /3210M Procesador\r\nSistema Operativo\r\nWindows 8 Pro\r\nWindows 8\r\nWindows 7 Ultimate \r\nWindows 7 Professional \r\nWindows 7 Home Premium \r\nWindows 7 Home Basic\r\nChipset\r\nIntel® HM77 Chipset\r\nMemoria\r\nDDR3 1600 MHz SDRAM, 4 x SO-DIMM socket para una expansión hasta 16 GB SDRAM *1\r\nPantalla\r\n15.6" 4:3 HD (1366x768)/HD 3D (1366x768 120Hz)/Full HD (1920x1080)/Amplio ángulo de visión LED Retroiluminado Non-Glare LCD Panel\r\nGráficos\r\nNVIDIA® GeForce® GTX 660M con 2GB GDDR5 VRAM\r\nAlmacenamiento\r\n1TB 5400 \r\n750GB 5400/7200 \r\n500GB 5400/7200 \r\n128GB SSD \r\n750GB 7200 SSH\r\nUnidad Optica\r\nBlu-Ray DVD Combo \r\nSuper-Multi DVD \r\nLectora Blue-ray\r\nLector de tarjetas\r\n3 -en-1 Lector de tarjetas ( SD/ MS/ MMC)\r\nCámara\r\nCámara web HD\r\nRedes\r\nIntegrado 802.11 b/g/n\r\nBluetooth™ V4.0 integrado (Opcional)\r\n10/100/1000 Base T\r\nInterfaz\r\n1 x Entrada para micrófono\r\n0 x Salida para auriculares\r\n1 x Puerto VGA /Mini D-sub 15-pin para monitor externo\r\n4 x puerto(s) USB 3.0 \r\n1 x Puerto LAN RJ45\r\n1 x HDMI \r\n1 x SPIDIF Salida para parlantes\r\n1 x mini puerto Display Port\r\nAudio\r\nParlantes y Micrófono Integrado\r\nSubwoofer Integrado\r\nBatería\r\n8 Células 5200 mAh 74 Whrs\r\nAdaptador de Corriente\r\nSalida :\r\n19 V DC, A, W\r\nEntrada :\r\n100 -240 V AC, 50/60 Hz universal\r\nDimensiones\r\n384 x 299 x 20 -51 mm (WxDxH)\r\nPeso\r\n3.8 kg (con 8 celdas de batería)\r\nSeguridad\r\nKensington lock\r\nGarantía\r\n1 año de garantía limitada en hardware.*diferente según el país.\r\nResolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)\r\nOS (Windows 7 ) Consulta de instalación/desinstalación\r\nSoftware integrado Consulta de instalación/desinstalación\r\nSoftware de soporte ASUS', '', 3400000),
+('ASUSG75', 'ASUS ROG G75VW-AH71 ', 'Windows 7 Ultimate u otras ediciones disponibles3ª gen de procesadores Intel Core i7 y las nuevas gráficas NVIDIARefrigeración inteligente con dos salidas para el aire caliente y filtros desmontablesErgonomía superiorDisfruta del 3D más realista con la tecnología NVIDIA 3D LightBoostMejoras de audio SonicMaster Lite con subwoofer integrado', 'Procesador\r\nIntel® Core™ i7 3720QM Procesador\r\nIntel® Core™ i7 3610QM Procesador\r\nSistema Operativo\r\nWindows 7 Ultimate \r\nWindows 7 Professional \r\nWindows 7 Home Premium \r\nWindows 7 Home Basic\r\nChipset\r\nIntel® HM77 Chipset\r\nMemoria\r\nDDR3 1600 MHz SDRAM, 4 x SO-DIMM socket para una expansión hasta 16 GB SDRAM\r\nPantalla\r\n17.3" 4:3 HD con EWV (1366 x 768) / FHD 3D LED Retroiluminado\r\nGráficos\r\nNVIDIA® GeForce® GTX 660M/670M con 2GB/3GB GDDR5 VRAM\r\nAlmacenamiento\r\n2.5" SATA Dual HDD\r\n1TB 5400 \r\n750GB 5400/7200 \r\n500GB 5400/7200 \r\n750GB 7200 SSH\r\n256GB SSD \r\nRAID0/1 Support\r\nUnidad Optica\r\nBlu-Ray DVD Combo \r\nSuper-Multi DVD \r\nLectora Blue-ray\r\nLector de tarjetas\r\n3 -en-1 Lector de tarjetas ( SD/ MS/ MMC)\r\nCámara\r\nCámara web HD\r\nRedes\r\nIntegrado 802.11 b/g/n\r\nBluetooth™ V4.0 integrado (Opcional)\r\n10/100/1000 Base T\r\nInterfaz\r\n1 x Entrada para micrófono\r\n0 x Salida para auriculares\r\n1 x Puerto VGA /Mini D-sub 15-pin para monitor externo\r\n4 x puerto(s) USB 3.0 \r\n1 x Puerto LAN RJ45\r\n1 x HDMI \r\n1 x SPIDIF Salida para parlantes\r\n1 x mini puerto Display Port\r\nAudio\r\nParlantes y Micrófono Integrado\r\nSubwoofer Integrado\r\nBatería\r\n8 Células 5200 mAh 74 Whrs\r\nAdaptador de Corriente\r\nSalida :\r\n19 V DC, A, 180 W\r\nEntrada :\r\n100 -240 V AC, 50/60 Hz universal\r\nDimensiones\r\n415 x 320 x 17 -52 mm (WxDxH)\r\nPeso\r\n4.5 kg (con 8 celdas de batería)\r\nSeguridad\r\nKensington lock\r\nGarantía\r\n1 año de garantía limitada en hardware.*diferente según el país.\r\nResolución de problemas On-line a través de la interfaz web (Actualización BIOS, Drivers)\r\nOS (Windows 7 ) Consulta de instalación/desinstalación\r\nSoftware integrado Consulta de instalación/desinstalación\r\nSoftware de soporte ASUS', '', 2500000),
+('ASUSG750JM', 'ASUS ROG G750JM-DS71', 'Windows 8 Pro u otras ediciones disponibles4 generación de procesadores Intel Core i7 y las gráficas NVIDIA® más avanzadasDos ventiladores con salidas independientes para alejar el ruido y la temperaturaMejoras de audio SonicMaster y una salida para auriculares mejoradaTeclado retroiluminado con una gran capacidad de respuesta y rendimiento', 'ProcesadorIntel Core i7 4700HQ ProcesadorSistema OperativoWindows 8 ProWindows 8ChipsetIntel HM87 Express ChipsetMemoriaDDR3L 1800 MHz SDRAM, up to 32 GPantalla17.3" 16:9 FHD EWV LED Retroiluminado/Full HD 3D(1920x1080 120Hz) Non-Glare LCD Panel (Opcional)GráficosNVIDIA GeForce® GTX 770M 3GB GDDR5 VRAMAlmacenamiento2.5" 9.5mm SATA1TB 5400 RPM With 256 GB SSD 750GB 5400/7200 RPM With 256 GB SSD 500GB 7200 RPM 500GB 5400 RPM With 8 G SSD SSHSoporte para Dual HDD RAID0 SupportUnidad OpticaBlu-Ray DVD Combo Super-Multi DVD Grabadora Blue-rayLector de tarjetas2 -en-1 Lector de tarjetas ( SD/ MMC)CámaraCámara web HDRedesIntegrado 802.11 b/g/n or 802.11ac 10/100/1000 Base TSoporte BT 4.0 (en WLAN+ BT 4.0 tarjeta combo)Interfaz1 x Entrada para micrófono0 x Salida para auriculares(SPDIF)1 x Puerto VGA /Mini D-sub 15-pin para monitor externo4 x puerto(s) USB 3.0 1 x Puerto LAN RJ451 x HDMI 1 x mini puerto Display Port1 x Thunderbolt port (Opcional)1X AC adapter plugAudioBuilt-in 2 Speakers And Micrófono IntegradoSonicMasterSubwoofer IntegradoSoporte MaxxAudioBatería8 Células 5900 mAh 89 WhrsAdaptador de CorrienteSalida :19.5 V DC, 9.23 A, 180 WEntrada :100 -240 V AC, 50/60 Hz universal3/ 2 pin compact power supply systemDimensiones410 x 318 x 17 -50 mm (WxDxH) (w/ 8cell battery)Peso4.8 kg (con 8 celdas de batería)SeguridadKensington lockLoJackIntel Anti-theftGarantía1 año de garantía limitada en hardware.*diferente según el país.', '', 2400000),
+('LENOVA Y410p', 'Lenovo Y410p - Dusk ', 'Duración de la batería\r\nHasta 5 horas con batería estándar de 6 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 2,5 kg\r\nParlantes\r\nParlantes estéreo JBL® con Dolby® Home Theater® v4\r\nMicrófonos\r\nIntegrado\r\nPuertos\r\n2 x USB 2.0, USB 3.0, lector de tarjetas 6-en-1, Combo Jack (audífonos / micrófono), HDMI', 'Procesador\r\nCuarta generación del procesador Intel® Core™ i7-4700MQ (6M Cache, 2.4 GHz)\r\nSistema Operativo\r\nWindows 8.1\r\nPantalla\r\n14" HD LED GLARE\r\nPlaca de Video\r\nNVIDIA GeForce GT650M GDDR5 2GB\r\nMemoria\r\n6GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n1TB 5400 RPM\r\nUnidad Óptica\r\nDVD Recordable (Dual Layer)\r\nConectividad\r\n802.11bgn\r\nBluetooth\r\nBluetooth® 4.0\r\nGarantía\r\n1 Año de garantía carry in (en centro de servicio)\r\nDispositivo de Puntero\r\nIndustry Standard Multi-touch 2 button touchpad\r\nBatería\r\n6 Celdas Lithium-Ion', '', 1995000),
+('LENOVAE431', 'lENOVA ThinkPad Edge', 'Duración de la batería\r\nHasta 6 horas con batería estándar de 6 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 2,13 kg\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™ v2\r\nMicrófono\r\nMicrófono dual con optimización para VOIP\r\nPuertos\r\n2 x USB 3.0, USB 2.0 (siempre encendido) VGA, HDMI, Ethernet RJ-45, lector de tarjetas 4-en-1, Combo Jack (audífono / micrófono), tecnología Lenovo OneLink', 'Procesador\r\nTercera generación del procesador Intel® Core™ i3-3120M (3M Cache, 2.5 GHz)\r\nSistema Operativo\r\nWindows 8 64\r\nPantalla\r\n14" Antirreflejos HD 1366x768\r\nPlaca de Video\r\nIntel Integrated HD Graphics 4000\r\nMemoria\r\n4.0GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 5400 rpm\r\nUnidad Óptica\r\nGrabadora Multi Recorder\r\nConectividad\r\nThinkPad 11b/g/n Wi-Fi wireless\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nMano de obra y piezas: un año (batería del sistema: un año)\r\nBatería\r\nIon Litio, 6 celdas\r\nDiseño\r\nNotebook\r\n', '', 1299000),
+('Lenovo2-14-R', 'Lenovo Flex 2-14 - R', 'Duración de la batería\r\nHasta 6 hs de duración con batería estándar\r\nPeso\r\nA partir de 1,9 kg\r\nPuertos\r\n1 USB 3.0, 2 USB 2.0, salida para HDMI, puerto LAN, lector de tarjetas 2-en-1 (SD/MMC), combo de conectores\r\nMicrófono\r\nMicrófono dual digital integrado\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™', 'Procesador\r\nCuarta generación del procesador Intel® Core™ i3-4010U (3M Cache, 1.7 GHz)\r\nSistema Operativo\r\nWindows 8.1\r\nPantalla\r\n14" HD LED (1366x768) Multi-Touch 10 dedos (SLIM)\r\nPlaca de Video\r\nIntel® HD Graphics 4400\r\nMemoria\r\n4GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 5400rpm\r\nConectividad\r\nLenovo BGN Wireless + 100/1000M Ethernet\r\nBluetooth\r\nBluetooth® 4.0\r\nGarantía\r\n1 Año de garantía carry in (en centro de servicio)\r\nBatería\r\n4 Céldas Li-Cilindrica', '', 1176000),
+('LENOVO40-30', 'Lenovo G40-30 ', 'Duración de la batería\r\nHasta 4 horas con batería estándar de 4 celdas\r\nPeso\r\nA partir de 2,1 kg\r\nPuertos\r\n1 USB 3.0, USB 2.0, salida HDMI, lector de tarjetas 2 en 1 (SD/MMC), combo de auriculares y micrófono y VGA.\r\nMicrófono\r\nAnalógico\r\nParlantes\r\nParlantes estéreo con Dolby® Advanced Audio™', 'Procesador\r\nIntel® Celeron® N2830 (1M Cache, 2.16 GHz)\r\nSistema Operativo\r\nWindows 8.1 64\r\nPantalla\r\n14,0" HD Wide LED\r\nPlaca de Video\r\nGráficos Intel de alta definición\r\nMemoria\r\n2.0GB PC3-10600 DDR3L SDRAM 1333 MHz\r\nDisco Rígido\r\n500GB 5400 rpm\r\nUnidad Óptica\r\nDVD Grabable\r\nConectividad\r\nLenovo BGN Wireless\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nUn año\r\nDispositivo de Puntero\r\nClickPAd\r\nBatería\r\nCilíndrica de Litio, 4 celdas', '', 629000),
+('LENOVOT440s', 'LENOVOThinkPadT440s ', 'Ethernet\r\nIntel® 10/1000 Gigabyte Ethernet\r\nGráficos\r\nIntel® HD 4400\r\nWebcam\r\nTecnología de seguimiento facial 720p HD, alta sensibilidad con poca luz\r\nDuración de la batería\r\nHasta 10 horas con batería estándar de 3+3 celdas (la verdadera duración de la batería depende del uso)\r\nPeso\r\nA partir de 1,65 kg\r\nPuertos\r\nMini Display Port con audio, VGA, 3 x USB 3.0 (1 siempre encendido), lector de tarjeta 4-en-1, Combo Jack (micrófono / audífono)\r\nMicrófono\r\nMicrófonos duales HD con cancelación de ruido\r\nParlantes\r\nParlantes estéreo con Dolby® Home Theater® v4', 'Procesador\r\nIntel Core i5-4300U Procesador( 1,90GHz 3MB)\r\nSistema Operativo\r\nWindows 7 Professional 64\r\nPantalla\r\n14,0" FHD IPS AntiGlare LED Backlight 1920x1080\r\nPlaca de Video\r\nIntel HD 4400\r\nMemoria\r\n4.0GB PC3-12800 DDR3L SDRAM 1600 MHz\r\nDisco Rígido\r\n500GB 7200 rpm\r\nConectividad\r\nIntel Dual Band Wireless-AC 7260\r\nBluetooth\r\nBluetooth versión 4.0\r\nGarantía\r\nTres años\r\nBatería\r\nPolímero de Litio, 3 celdas\r\nOtros\r\nLector de huellas digitales', '', 2856000),
+('MSI60', 'GP60 2PE LEOPARD', 'Windows 8.1\r\nProcesador 4ta generación Intel® Core™ i7/i5\r\nTarjeta gráfica NVIDIA GeForce 840M 2GB VRAM DDR3\r\nPantalla LCD de 15.6" HD (1366x768) /FHD(1920x1080) Antirreflejo\r\nUnidad Híbrida de Estado Sólido (SSD+HDD)\r\nTecnología exclusiva Cooler Boost\r\nMatrix Display expande la visión para una experiencia de juego extrema\r\nTeclado hecho para gamers por SteelSeries\r\nDiseño exclusivo Audio boost para una fidelidad de audio clara como el cristal\r\nAudio de primera calidad con Sound Blaster Cinema\r\nKiller™ E2200 Game Networking para una red más inteligente y rápida para el entretenimiento en línea\r\nExclusiva función MSI Super-Charger', 'Sistema Operativo Windows 8.1\r\nCPU Nuevo procesador 4ta generación Intel® Core™ i7/i5\r\nChipset Intel HM86\r\nMemoria 2 x DDR3L-1600 MHz,max 16GB\r\nPantalla LCD 15.6" HD (1366x768) /FHD(1920x1080) Antirreflejo\r\nGráficos GeForce 840M\r\nMemoria gráfica VRAM DDR3 2GB\r\nDisco rígido (GB) Hasta 128GB SSD+1TB SATA 7200 RPM\r\nUnidad óptica BD Combo / DVD Super Multi\r\nAudio Estéreo\r\nWebcam HD (30cps@720p)\r\nLector de Tarjeta SD\r\nLAN Killer Gb LAN\r\nLAN inalámbrica 802.11 ac\r\nBluetooth Bluetooth v4.0\r\nD-Sub (VGA) 1\r\nHDMI 1\r\nPuertos USB 2.0 2\r\nPuertos USB 3.0 2\r\nEntrada Mic/Salida audífonos 1/1\r\nTeclado Keyboard by SteelSeries\r\nAdaptador AC 120W\r\nBatería 6 Celdas Li-Ion(4400mAH)\r\nDimensiones 383X249.5X32.3~37.6mm\r\nPeso (KG) 2.4Kg(c/batería)', '', 1500000),
+('MSI60E', 'GE60 2OE', 'Windows 8.1 El nuevo procesador de 4ta generacion Intel Core i7• Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminación LED• La tarjeta grafica diferenciada NVIDIA GeForce GTX 765M (con memoria VRAM GDDR5 de 2GB) ofrece excelente calidad de imagenes• La tecnologia exclusiva Cooler Boost 2 mejora la refrigeracion y la acústica• La disposicion de pantalla en matriz expande la vision para un juego extremo• Killer E2200 Game Networking para un networking mejor y mas rapido para el entretenimiento en linea• Teclado hecho para gamers por SteelSeries• Exclusivo diseno Audio boost para un sonido claro con alta fidelidad', 'Sistema Operativo Windows 8.1CPU Intel® Core i7-4700MQ (6M Cache, hasta 3.20 GHz)Chipset Intel HM87Memoria DDR3L,hasta 1600 MHz, 2 ranuras, Max. 16GBPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos Nvidia GeForce GTX 765MMemoria grafica VRAM 2GB GDDR5Disco rigido (GB) Super RAID hasta 256GB + 750GB HDD 7200rpmUnidad optica BD Combo / DVD Super MultiAudio Audio Boost, 4 parlantes 2W HDWebcam HD (30cps@720p)Lector de Tarjeta SD(XC/HC)LAN Killer Gaming LANLAN inalambrica 802.11 b/g/nBluetooth v4.0D-Sub (VGA) 1HDMI 1(v1.4)Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audífonos 1 /1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBatería 6 CeldasDimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.4Kg (c/ batería)', '', 1900000),
+('MSI60PE', 'GE60 2PE APACHE PRO', 'Windows 8.1Procesador 4ta generacion Intel Core i7Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminacion LEDTarjeta grafica diferenciada NVIDIA GeForce GTX 860M que ofrece una calidad de imagen muy detalladaSteelSeries Engine personaliza cada tecla y dispositivo para lograr un estilo de juego personalXSplit Gamecaster para grabar facilmente los momentos de juego, transmitirlos y compartir las sesiones de juego en YouTube, Twitch, UStream y masAngulo de vision amplioSuper RAID con 2 SSD RAID0 ofrece mas de 900MB/s de velocidad de lecturaExclusiva tecnologia Cooler Boost permite reducir un 5%~10% la temperatura del sistemaKiller E2200 Game Networking para una red más inteligente y rápida para el entretenimiento en líneaTeclado hecho para gamers por SteelSeriesMatrix Display expande la vision para una experiencia de juego extremaExclusivo diseno Audio boost para una fidelidad de audio clara como el cristal', 'Sistema Operativo Windows 8.1CPU Procesador de 4ta generacion Intel Core i7 ProcessorChipset Intel HM86Memoria Hasta 16GB x 2 DIMMsPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos GeForce GTX 860MMemoria grafica VRAM GDDR5 2GBDisco rigido (GB) Hasta 256GB Super RAID* + 750GB HDD 7200rpmUnidad optica BD Combo / DVD Super MultiAudio Sonido por Dynaudio, 2 parlantes de 2.1 canales + subwooferWebcam HD (30cps@720p)Lector de Tarjeta SD (XC/HC)LAN Killer™ E2200 Game Networking LANLAN inalambrica 802.11 b/g/ nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audifonos 1/1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBateria 6 Celdas Li-Ion (4400mAh 49Wh)Dimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.6Kg (c/ bateria)', '', 2450000),
+('MSI61C', 'CX61 2OC', ' Windows 8.1• El nuevo procesador de 4ta. Generacion Intel Core i• NVIDIA GeForce GT720M 2G VRAM DDR3• La tecnologia GPU Boost ofrece un mejor equilibrio entre duracion de bateria y desempeno• Soporta HDMI 1.4 para imagenes HD• La ultima tecnologia Bluetooth 4.0• Pantalla 15.6" LED antirreflejo• Webcam integrada de 720P HD que ofrece la mejor experiencia en llamadas de video• La ultima y mas veloz tecnologia de transferencia de datos USB 3.0', 'Sistema Operativo Windows 8.1CPU El nuevo procesador de 4ta. Generacion Intel Core Chipset Intel HM86Memoria DDR3, hasta 1600MHzPantalla LCD 15.6" HD (1366x768) con retroiluminación LEDGraficos NVIDIA GeForce GT720MMemoria grafica VRAM DDR3 2GBDisco rigido (GB) 750GB/640/500GB SATA 5400rpmUnidad optica BD Combo / DVD Super MultiAudio 2Webcam HD (30cps@720p)Lector de Tarjeta SD(HC/XC)/MMC/MSLAN Gigabit LANLAN inalambrica 802.11 b/g/nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 1Puertos USB 3.0 2Entrada Mic/Salida audifonos 1 / 1Teclado 102 teclasAdaptador AC 95WBatería 6-CeldasAdministración de Energía Turbo Battery+Dimensiones 383(W)x249.5(D)x32.3~37.6(H)mmPeso (KG) 2.4Kg (c/ batería)', '', 1500000),
+('MSI61PC', 'CX61 2PC', 'Windows 8.1Procesador 4ta generacion Intel Core i7Pantalla LCD de 15.6" Full HD (1920x1080) antirreflejo con retroiluminacion LEDTarjeta grafica diferenciada NVIDIA GeForce GTX 860M que ofrece una calidad de imagen muy detalladaSteelSeries Engine personaliza cada tecla y dispositivo para lograr un estilo de juego personalXSplit Gamecaster para grabar facilmente los momentos de juego, transmitirlos y compartir las sesiones de juego en YouTube, Twitch, UStream y mas Angulo de vision amplioSuper RAID con 2 SSD RAID0 ofrece mas de 900MB/s de velocidad de lecturaExclusiva tecnologia Cooler Boost permite reducir un 5%~10% la temperatura del sistemaKiller E2200 Game Networking para una red mas inteligente y rapida para el entretenimiento en lineaTeclado hecho para gamers por SteelSeriesMatrix Display expande la vision para una experiencia de juego extremaExclusivo diseno Audio boost para una fidelidad de audio clara como el cristal', 'Sistema Operativo Windows 8.1CPU Procesador de 4ta generacion Intel Core i7 ProcessorChipset Intel HM86Memoria Hasta 16GB x 2 DIMMsPantalla LCD 15.6" Full HD (1920x1080), AntirreflejoGraficos GeForce GTX 860M Memoria grafica VRAM GDDR5 2GBDisco rigido (GB) Hasta 256GB Super RAID + 750GB HDD 7200rpm Unidad optica BD Combo / DVD Super MultiAudio Sonido por Dynaudio, 2 parlantes de 2.1 canales + subwooferWebcam HD (30cps@720p)Lector de Tarjeta SD (XC/HC)LAN Killer E2200 Game Networking LANLAN inalambrica 802.11 b/g/ nBluetooth Bluetooth v4.0D-Sub (VGA) 1HDMI 1Puertos USB 2.0 2Puertos USB 3.0 2Entrada Mic/Salida audifonos 1/1Teclado Teclado por SteelSeries 103 teclasAdaptador AC 120WBatería 6 Celdas Li-Ion (4400mAh 49Wh)Dimensiones 383 x 249.5 x 37.6~32.3mmPeso (KG) 2.6Kg (c/ batería)', '', 1400000);
 
 -- --------------------------------------------------------
 
@@ -522,7 +699,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `Contrasena` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Contrasena` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Rol` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -531,9 +708,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `Contrasena`, `Rol`) VALUES
-('1', 'Edixon', 'Hernandez', '311', 'admin', 'admin'),
-('2', 'contador', 'contador', '123', 'contador', 'contador'),
-('3', 'cajero', 'cajero', '123', 'cajero', 'cajero');
+('1', 'Edixon', 'Hernandez', '311', '34Hr82oIlAE8I', 'admin'),
+('2', 'Javier', 'Valencia', '3111', '340wB3hoGhd5c', 'contador'),
+('3', 'Fernando', 'Ricaurte', '123', '34X.26ccMgqmM', 'cajero');
 
 --
 -- Índices para tablas volcadas
@@ -637,17 +814,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `documentado`
 --
 ALTER TABLE `documentado`
-MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=86;
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --

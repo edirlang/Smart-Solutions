@@ -21,22 +21,21 @@
              </tr>
            </thead>
            <tbody id="Filas">
-             <?php while($row = mysqli_fetch_row($Usuarios)){ ?>
-             <tr id="<?php echo $row[0]; ?>">
-               <td><?php echo $row[0]; ?></td>
-               <td id="-1"><?php echo $row[1]; ?></td>
-               <td id="-2"><?php echo $row[2]; ?></td>
-               <td id="-3"><?php echo $row[3]; ?></td>
-               <td id="-4"><?php echo $row[5]; ?></td>
+             <?php while($row = mysqli_fetch_assoc($Usuarios)){ ?>
+             <tr id="<?php echo $row['Cedula']; ?>">
+               <td><?php echo $row['Cedula']; ?></td>
+               <td id="-1"><?php echo $row['Nombre']; ?></td>
+               <td id="-2"><?php echo $row['Apellido']; ?></td>
+               <td id="-3"><?php echo $row['Telefono']; ?></td>
+               <td id="-4"><?php echo $row['Rol']; ?></td>
                <td>
-                <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row[0]; ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
                 <script language="JavaScript" type="text/javascript">
-                $("#<?php echo $row[0]; ?>").click(function(){
+                $("#<?php echo $row['Cedula']; ?>").click(function(){
                 
                   $.post('consultar_empleado.php',{
-                    id: <?php echo $row[0]; ?>
+                    id: <?php echo $row['Cedula']; ?>
                   },function(datos){
-                      alert(datos);
                       datos = $.parseJSON(datos);
 
                       document.getElementById('cedula').value =datos['Cedula'];

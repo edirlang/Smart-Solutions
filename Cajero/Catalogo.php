@@ -1,3 +1,4 @@
+<?php header("Content-Type: text/html; charset=utf-8");?>
 <?php include("menu.php"); ?>
 		<div class="container-fluid">
 			<div class="row">
