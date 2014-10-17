@@ -16,6 +16,7 @@ function Buscar(){
 }
 
 function consultar(datos){
+	
 	$("#filas").children('tr').remove();
 	datos=$.parseJSON(datos);
 	var total_C=0;

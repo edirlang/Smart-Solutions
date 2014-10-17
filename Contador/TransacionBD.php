@@ -1,5 +1,6 @@
 <?php 
 include("../conexion.php");
+
 $transaciones  = array();
 
 $result1 = mysqli_query($cn,"SELECT * FROM documentado");

@@ -1,6 +1,6 @@
 <?php 
 	include("../conexion.php");
-
+  
 	$productos = mysqli_query($cn,"SELECT * FROM productos");
 
 	while($row = mysqli_fetch_row($productos)){ 

@@ -1,6 +1,6 @@
 <?php
 include("menu.php"); 
-include("clientesBD.php");
+include("ClientesBD.php");
 include("Consultar_factura.php");
 date_default_timezone_set("America/Bogota");
 ?>
