@@ -7,7 +7,7 @@ function inicializarEventos()
 }
 
 function actualizar(){
-    $.post("actualizar_empleado.php",{
+    $.post("actualizar_empleado",{
       cedula: $("#cedula").val(),
       nombre: $("#nombre").val(),
       apellido: $("#apellido").val(),
@@ -41,11 +41,14 @@ function presionBoton()
      'rol': 'selecione el cargo',
      'Contrasena': 'defina contrseña por defaul'
    }, submitHandler: function(form){
-    
-    var datos = new Array($("#Cedula").val(),$("#Nombre").val(),$("#Apellido").val(),$("#Telefono").val(),$("#Contrasena").val(),$("#rol option:selected").val());
-    var jdatos = JSON.stringify(datos); 
-    $.post("GuardarEmpleado.php",{
-      jdatos: jdatos
+     
+    $.post("crear_empleado",{
+      Cedula: $("#Cedula").val(),
+      Nombre: $("#Nombre").val(),
+      Apellido: $("#Apellido").val(),
+      Telefono: $("#Telefono").val(),
+      Contrasena: $("#Contrasena").val(),
+      Rol: $("#rol option:selected").val()
     },procesar); 
   }
 });
@@ -53,6 +56,7 @@ function presionBoton()
 }
 
 function procesar(datos){
+
  if(datos==1){
   alert("Correcto");
   $("<tr>").append(

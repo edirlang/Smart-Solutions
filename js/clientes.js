@@ -8,13 +8,12 @@ function inicializarEventos()
 }
 
 function actualizar(){
-    $.post("actualizar_cliente.php",{
+    $.post("actualizar_cliente",{
       cedula: $("#cedula").val(),
       nombre: $("#nombre").val(),
       apellido: $("#apellido").val(),
       telefono: $("#telefono").val()
     },function(datos){
-      
       $("#"+$("#cedula").val()+" #1").text($("#nombre").val());
       $("#"+$("#cedula").val()+" #2").text($("#apellido").val());
       $("#"+$("#cedula").val()+" #3").text($("#telefono").val());
@@ -36,11 +35,12 @@ function presionBoton()
      'Apellido': 'Debe ingresar el apellido del cliente',
      'Telefono': 'ingrese telefono'
    }, submitHandler: function(form){
-
-    var datos = new Array($("#Cedula").val(),$("#Nombre").val(),$("#Apellido").val(),$("#Telefono").val());
-    var jdatos = JSON.stringify(datos); 
-    $.post("GuardarClienta.php",{
-      jdatos: jdatos
+ 
+    $.post("crear_cliente",{
+      Cedula: $("#Cedula").val(),
+      Nombre: $("#Nombre").val(),
+      Apellido: $("#Apellido").val(),
+      Telefono: $("#Telefono").val()
     },procesar); 
   }
 });
@@ -49,7 +49,7 @@ function presionBoton()
 function procesar(datos){
  if(datos==1){
   alert("Correcto");
-  setTimeout("location.href='Clientes.php'", 50);
+  setTimeout("location.href='clientes'", 50);
 }else{
   alert("No se pudo crear debido a: "+datos);
 }
