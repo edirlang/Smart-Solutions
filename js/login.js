@@ -39,10 +39,10 @@ function procesar(datos){
       setTimeout("location.href='admin'", 50);
     break;
     case 'contador':
-      setTimeout("location.href='panel_contador'", 50);
+      setTimeout("location.href='contador'", 50);
     break;
     case 'cajero':
-      setTimeout("location.href='panel_cajero'", 50);
+      setTimeout("location.href='cajero'", 50);
     break;
     case 'null':
       if($('#error').length){

@@ -52,6 +52,12 @@ function abrir_panel_admin(){
 	}
 }
 
+function abrir_panel_contador(){
+		require "plantillas/panel_contador.php";
+	
+}
+		
+
 function inventario_action(){
 	$rol = "admin";
 	if(tipo_usuario($rol)){
@@ -92,4 +98,49 @@ function eliminar_cliente_action(){
 	eliminar_cliente();
 }
 
+//Proveedores
+function proveedores_action(){
+	$rol = "admin";
+	if(tipo_usuario($rol)){
+		$proveedores = proveedores();
+		require "plantillas/proveedores.php";
+	}else{
+		header("location: login");
+	}
+}
+
+function consultar_proveedor_action(){
+	consultar_provedor();
+}
+
+function actualizar_proveedor_action(){
+		actualizar_provedor();
+}
+
+function crear_proveedor_action(){
+	crear_provedor();
+}
+
+function eliminar_proveedor_action(){
+	eliminar_provedor();
+}
+
+function pedido_action(){
+	$proveedor = $_POST['codigo'];
+	$productos = consultar_provedor_producto();
+
+	require "plantillas/nuevo_pedido.php";
+}
+
+function prodcuto_nuevo_action(){
+	crear_producto();
+}
+
+function consultar_inventario_action(){
+	consultar_inventario();
+}
+
+function procesar_pedido_action(){
+	crear_inventario();
+}
 ?>

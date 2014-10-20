@@ -4,7 +4,7 @@
       <li ><a href="inventario"><span class="glyphicon glyphicon-book"></span>  Inventario</a></li>
       <li><a href="clientes"><span class="glyphicon glyphicon-list"></span>  Clientes</a></li>
       <li><a href="empleados"><span class="glyphicon glyphicon-briefcase"></span>  Empleados</a></li>
-      <li><a href="Proveedor.php"><span class="glyphicon glyphicon-folder-open"></span>   Proveedores</a></li>
+      <li><a href="proveedores"><span class="glyphicon glyphicon-folder-open"></span>   Proveedores</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span>
            Estados Financieros<b class="caret"></b>

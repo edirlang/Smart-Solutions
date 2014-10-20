@@ -18,9 +18,10 @@ function inicializarEventos()
 }
 
 function producto_selecionado(){
-  $.post("ConsultarProducto.php",{
+  $.post("consultar_producto",{
     id: $("#codigo").val()
   },function(datos){
+    alert(datos);
     var dato = $.parseJSON(datos);
     $("#iva").val(dato[2]);
     $("#vlr_unidad").val(dato[1]);
@@ -84,12 +85,17 @@ function VaciarFormulario(){
 function EnviarBD(){
 
   var jdatos = JSON.stringify(transacion); 
+  $.post("almacenar_pedido",{
+    pago: $("#pago").val(),
+    jdatos: jdatos
+  },procesar);
    
 }
 function procesar(datos){
+  alert(datos);
  if(datos==1){
   alert("Correcto");
-  setTimeout("location.href='Proveedor.php'", 50);
+  setTimeout("location.href='proveedores'", 50);
 }else{
   if($('#error').length){
 
@@ -101,35 +107,10 @@ function procesar(datos){
 }
 
 function GuardarProducto(){
-  var archivos = document.getElementById("foto");//Damos el valor del input tipo file
-  var archivo = archivos.files; //Obtenemos el valor del input (los arcchivos) en modo de arreglo
-
-  //El objeto FormData nos permite crear un formulario pasandole clave/valor para poder enviarlo, este tipo de objeto ya tiene la propiedad multipart/form-data para poder subir archivos
-  var data = new FormData();
-
-  //Como no sabemos cuantos archivos subira el usuario, iteramos la variable y al
-  //objeto de FormData con el metodo "append" le pasamos calve/valor, usamos el indice "i" para
-  //que no se repita, si no lo usamos solo tendra el valor de la ultima iteracion
-  for(i=0; i<archivo.length; i++){
-    data.append('foto'+i,archivo[i]);
-  }
-   $.ajax({
-    url:'guardar_imagen.php', //Url a donde la enviaremos
-    type:'POST', //Metodo que usaremos
-    contentType:false, //Debe estar en false para que pase el objeto sin procesar
-    data: {
-      Codigo: $("#cod_nuevo").val(),
-      foto: data
-  }, //Le pasamos el objeto que creamos con los archivos
-    processData:false, //Debe estar en false para que JQuery no procese los datos a enviar
-    cache:false //Para que el formulario no guarde cache
-  }).done(function(msg){
-    
-  });
-
+  
   $.ajax({
     type: 'POST',
-    url: "GuardarProducto.php",
+    url: "crear_producto",
     data: {
       Codigo: $("#cod_nuevo").val(),
       Nombre: $("#nombre").val(),
