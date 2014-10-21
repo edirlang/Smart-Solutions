@@ -76,7 +76,7 @@ function inventario_consultar_action($codigo){
 
 function clientes_action(){
 	$rol = "admin";
-	if(tipo_usuario($rol)){
+	if(tipo_usuario('admin') || tipo_usuario('cajero')){
 		$clientes = clientes();
 		require "plantillas/clientes.php";
 	}else{
@@ -85,7 +85,9 @@ function clientes_action(){
 }
 
 function consultar_cliente_action(){
-	consultar_cliente();
+	$cliente = consultar_cliente();
+	$json = json_encode($cliente); 
+	echo $json;
 }
 
 function actualizar_cliente_action(){
@@ -167,5 +169,38 @@ function consultar_codigo_action(){
 
 function crear_contabilidad_action(){
 	crear_contabilida();
+}
+function codigos_action(){
+	$codigos = codigos();
+	require "plantillas/codigos.php";
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		nuevo_codigo();
+	}
+}
+
+function productos_action(){
+	$productos = productos();
+	require "plantillas/catalogo.php";
+}
+
+function crear_factura_action(){
+	date_default_timezone_set("America/Bogota");
+	$numero = consltar_num_factura();
+	$clientes = clientes();
+	require "plantillas/factura.php";
+}
+
+function productos_numero_action(){
+	$productos =  productos();
+	$datos = json_encode($productos);
+	echo $datos;
+}
+
+function consultar_producto_fact_action(){
+	consultar_producto_fact();
+}
+
+function guardar_factura_action(){
+	crear_factura();
 }
 ?>

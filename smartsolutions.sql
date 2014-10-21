@@ -2,8 +2,8 @@
 -- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2014 a las 18:24:32
+-- Servidor: localhost
+-- Tiempo de generación: 21-10-2014 a las 16:45:12
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -138,7 +138,22 @@ INSERT INTO `activo1` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `
 (84, '3', '1105', '2014-10-16', 'D', 'Caja Acer AOD2', 300000),
 (84, '3', '14', '2014-10-16', 'C', 'inventario Acer AOD2', 200000),
 (85, '3', '1105', '2014-10-16', 'D', 'Caja Acer E15', 450000),
-(85, '3', '14', '2014-10-16', 'C', 'inventario Acer E15', 350000);
+(85, '3', '14', '2014-10-16', 'C', 'inventario Acer E15', 350000),
+(86, '2', '1105', '2014-10-17', 'C', 'Caja', 1000),
+(86, '2', '1120', '2014-10-17', 'D', 'Cuenta de Ahorros', 1000),
+(87, '3', '1105', '2014-10-17', 'D', 'Caja Acer E15', 450000),
+(87, '3', '14', '2014-10-17', 'C', 'inventario Acer E15', 350000),
+(88, '3', '1105', '2014-10-17', 'D', 'Caja Acer AOD2', 300000),
+(88, '3', '14', '2014-10-17', 'C', 'inventario Acer AOD2', 200000),
+(89, '3', '1105', '2014-10-17', 'D', 'Caja Acer E15', 450000),
+(89, '3', '14', '2014-10-17', 'C', 'inventario Acer E15', 350000),
+(90, '3', '1105', '2014-10-17', 'D', 'Caja Acer AOD2', 300000),
+(90, '3', '14', '2014-10-17', 'C', 'inventario Acer AOD2', 200000),
+(92, '1', '1105', '2014-10-19', 'C', 'Caja PagoLENOVA Y410p', 4500000),
+(92, '1', '14', '2014-10-19', 'D', 'InventarioLENOVA Y410p', 4500000),
+(93, '1', '1105', '2014-10-19', 'C', 'Caja PagoAcer AOD2', 3000000),
+(93, '1', '14', '2014-10-19', 'D', 'InventarioAcer AOD2', 3000000),
+(94, '2', '1105', '2014-10-20', 'D', 'Caja', 1000);
 
 -- --------------------------------------------------------
 
@@ -158,11 +173,10 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 --
 
 INSERT INTO `clientes` (`Cedula`, `Nombre`, `Apellido`, `Telefono`) VALUES
-('1', 'jkj', 'jkj', 'jkj'),
-('1069745533', 'Javier', 'Valencia muñoz', '3153232553'),
+('1', 'jkj a', 'jkj', 'jkj'),
+('1069745533', 'Javier Andres', 'Valencia muñoz', '3153232553'),
 ('1069751356', 'Fernando', 'Ricaurte', '3204367170'),
-('1069753434', 'Edixon', 'Hernandez', '3134765649'),
-('1069878633', 'Edwar', 'Diaz', '3157232372');
+('1069753434', 'Edixon', 'Hernandez', '3134765649');
 
 -- --------------------------------------------------------
 
@@ -261,7 +275,12 @@ INSERT INTO `costos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `D
 (82, '3', '613554', '2014-10-15', 'D', 'Costo Acer AOD2', 200000),
 (83, '3', '613554', '2014-10-15', 'D', 'Costo Acer AOD2', 200000),
 (84, '3', '613554', '2014-10-16', 'D', 'Costo Acer AOD2', 200000),
-(85, '3', '613554', '2014-10-16', 'D', 'Costo Acer E15', 350000);
+(85, '3', '613554', '2014-10-16', 'D', 'Costo Acer E15', 350000),
+(87, '3', '613554', '2014-10-17', 'D', 'Costo Acer E15', 350000),
+(88, '3', '613554', '2014-10-17', 'D', 'Costo Acer AOD2', 200000),
+(89, '3', '613554', '2014-10-17', 'D', 'Costo Acer E15', 350000),
+(90, '3', '613554', '2014-10-17', 'D', 'Costo Acer AOD2', 200000),
+(94, '2', '613554', '2014-10-20', 'C', 'Costo de venta', 1000);
 
 -- --------------------------------------------------------
 
@@ -336,7 +355,11 @@ INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, 
 (41, 'Acer E15', 1, 450000, 450000),
 (42, 'Acer AOD2', 1, 300000, 300000),
 (43, 'Acer AOD2', 1, 300000, 300000),
-(44, 'Acer E15', 1, 450000, 450000);
+(44, 'Acer E15', 1, 450000, 450000),
+(45, 'Acer E15', 1, 450000, 450000),
+(46, 'Acer AOD2', 1, 300000, 300000),
+(47, 'Acer E15', 1, 450000, 450000),
+(48, 'Acer AOD2', 1, 300000, 300000);
 
 -- --------------------------------------------------------
 
@@ -347,7 +370,7 @@ INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, 
 CREATE TABLE IF NOT EXISTS `documentado` (
 `cod_documento` int(11) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=95 ;
 
 --
 -- Volcado de datos para la tabla `documentado`
@@ -437,7 +460,15 @@ INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
 (82, 'Factura+41'),
 (83, 'Factura+42'),
 (84, 'Factura+43'),
-(85, 'Factura+44');
+(85, 'Factura+44'),
+(86, 'Transacion'),
+(87, 'Factura+45'),
+(88, 'Factura+46'),
+(89, 'Factura+47'),
+(90, 'Factura+48'),
+(92, 'Compra'),
+(93, 'Compra'),
+(94, 'Transacion');
 
 -- --------------------------------------------------------
 
@@ -452,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `hora` time DEFAULT NULL,
   `vendedor` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `total` int(11) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=49 ;
 
 --
 -- Volcado de datos para la tabla `factura`
@@ -502,7 +533,11 @@ INSERT INTO `factura` (`num_factura`, `cliente`, `fecha`, `hora`, `vendedor`, `t
 (41, '1', '2014-10-15', '05:10:00', '3', 750000),
 (42, '1', '2014-10-15', '05:10:00', '3', 300000),
 (43, '1069753434', '2014-10-16', '09:10:00', '3', 300000),
-(44, '1', '2014-10-16', '10:10:00', '3', 450000);
+(44, '1', '2014-10-16', '10:10:00', '3', 450000),
+(45, '1069745533', '2014-10-17', '11:10:00', '3', 450000),
+(46, '1069745533', '2014-10-17', '12:10:00', '3', 300000),
+(47, '1', '2014-10-17', '12:10:00', '3', 450000),
+(48, '1', '2014-10-17', '12:10:00', '3', 300000);
 
 -- --------------------------------------------------------
 
@@ -536,6 +571,13 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `ingresos`
+--
+
+INSERT INTO `ingresos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(94, '2', '4135', '2014-10-20', 'D', 'Ventas', 1000);
+
 -- --------------------------------------------------------
 
 --
@@ -553,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `vlr_unidad` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `inventario`
@@ -570,7 +612,13 @@ INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`
 (8, 'Acer E15', 'Venta', '2014-10-15', 1, 350000, 8, 350000, 2800000, 'V'),
 (9, 'Acer AOD2', 'Venta', '2014-10-15', 1, 200000, 9, 200000, 1800000, 'V'),
 (10, 'Acer AOD2', 'Venta', '2014-10-16', 1, 200000, 8, 200000, 1600000, 'V'),
-(11, 'Acer E15', 'Venta', '2014-10-16', 1, 350000, 7, 350000, 2450000, 'V');
+(11, 'Acer E15', 'Venta', '2014-10-16', 1, 350000, 7, 350000, 2450000, 'V'),
+(12, 'Acer E15', 'Venta', '2014-10-17', 1, 350000, 6, 350000, 2100000, 'V'),
+(13, 'Acer AOD2', 'Venta', '2014-10-17', 1, 200000, 7, 200000, 1400000, 'V'),
+(14, 'Acer E15', 'Venta', '2014-10-17', 1, 350000, 5, 350000, 1750000, 'V'),
+(15, 'Acer AOD2', 'Venta', '2014-10-17', 1, 200000, 6, 200000, 1200000, 'V'),
+(17, 'LENOVA Y410p', 'Compra', '2014-10-19', 10, 450000, 10, 450000, 4500000, 'C'),
+(18, 'Acer AOD2', 'Compra', '2014-10-19', 10, 300000, 16, 262500, 4200000, 'C');
 
 -- --------------------------------------------------------
 
@@ -587,6 +635,15 @@ CREATE TABLE IF NOT EXISTS `pasivo` (
   `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pasivo`
+--
+
+INSERT INTO `pasivo` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(92, '1', '2804', '2014-10-19', 'D', 'IVALENOVA Y410p', 0),
+(93, '1', '2804', '2014-10-19', 'D', 'IVAAcer AOD2', 0),
+(94, '2', '21', '2014-10-20', 'C', 'Obligaciones Financi', 1000);
 
 -- --------------------------------------------------------
 
@@ -608,6 +665,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Descripcion`, `Especificaciones`, `iva`, `ValorVenta`) VALUES
+('1', 'klk', 'lklk ', 'lklk ', '10', 1000),
 ('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red)', 'Screen Size	10.1 inches\r\nProcessor	1.6 GHz Intel Atom N270\r\nRAM	1 GB DDR2\r\nHard Drive	160 GB\r\nGraphics Coprocessor	Intel GMA 950\r\nAverage Battery Life (in hours)	3.15 hours\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire One\r\nItem model number	AOD250-1042/LU.S700B.028\r\nHardware Platform	PC\r\nOperating System	Windows XP Home Edition\r\nItem Weight	5 pounds\r\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\r\nColor	Red\r\nProcessor Brand	Intel\r\nProcessor Count	1\r\nComputer Memory Type	SDRAM\r\nHard Drive Interface	ATA100', '0', 300000),
 ('Acer E15', 'Acer E15 15-Inch ', 'Intel N2830 dual-core processor (2.16GHz/2.41GHz w/ Intel Burst)15.6" HD widescreen CineCrystalTM LCD display (1366 x 768) - Intel HD Graphics4GB DDR3L memory (1 Memory Slots, 8GB Maximum Memory) - 500GB hard drivestereo speakers - HD audio - webcam - multi-gesture touchpad - Wireless - Bluetooth 4.0 - HDMI - USB 3.0 - card readerWindows 8.1 (64 bits), 3 cell (up to 4.5-hour) battery - 1-year limited warranty. Color: Diamond Black', 'Screen Size	15.6 inches\r\nMax Screen Resolution	1366 x 768\r\nProcessor	Intel Celeron\r\nRAM	SDRAM DDR3\r\nHard Drive	500 GB\r\nWireless Type	802.11bgn\r\nExpand\r\nOther Technical Details\r\nBrand Name	Acer\r\nSeries	Aspire\r\nItem model number	ES1-511-C0DV\r\nHardware Platform	PC\r\nOperating System	Windows 8\r\nItem Weight	5.3 pounds\r\nItem Dimensions L x W x H	15 x 1.10 x 10.20 inches\r\nColor	Black\r\nComputer Memory Type	DDR3 SDRAM', '0', 450000),
 ('AcerAspire ES1-511', 'Acer Aspire ES1-511', 'Intel Celeron N2830 2.16 GHz Processor (1 MB Cache)4 GB DDR3L SDRAM500 GB 5400 rpm Hard Drive15.6-Inch Screen, Intel HD GraphicsWindows 8.1, 4.5-hour battery life', 'Screen Size	15.6 inchesMax Screen Resolution	1366x768Processor	2.16 GHz Intel CeleronRAM	4 GB DDR3L SDRAMHard Drive	500 GB SATAGraphics Coprocessor	Intel HD GraphicsGraphics Card Ram Size	64 MBWireless Type	802.11bgnNumber of USB 2.0 Ports	2Number of USB 3.0 Ports	1Average Battery Life (in hours)	4.5 hoursExpandOther Technical DetailsBrand Name	AcerSeries	ES1-511Item model number	ES1-511-C59VOperating System	Windows 8.1Item Weight	5.3 poundsItem Dimensions L x W x H	15.02 x 10.16 x 1.07 inchesColor	Diamond BlackProcessor Brand	Intel CeleronHard Drive Rotational Speed	5400 RPMBatteries:	1 Lithium ion batteries required. (included)', '16', 500000),
@@ -646,6 +704,7 @@ CREATE TABLE IF NOT EXISTS `producto_proveedor` (
 --
 
 INSERT INTO `producto_proveedor` (`cod_proveedor`, `cod_poducto`, `vlr_compra`) VALUES
+(12, '1', 1000),
 (8967573, 'Acer AOD2', 0),
 (8967573, 'Acer E15', 0),
 (8967573, 'AcerAspire ES1-511', 0),
@@ -685,6 +744,7 @@ CREATE TABLE IF NOT EXISTS `proveedo` (
 --
 
 INSERT INTO `proveedo` (`codigo`, `nombre`, `telefono`, `direccion`) VALUES
+(12, 'klkl', 'lkl', 'lkl'),
 (8967573, 'AsusColombia', '3145678976', 'calle 23-45'),
 (89737484, 'lenovoColombia', '3134564454', 'calle 45-67');
 
@@ -699,18 +759,19 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `Rol` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Contrasena` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `Rol` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `salt` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `Contrasena`, `Rol`) VALUES
-('1', 'Edixon', 'Hernandez', '311', '34Hr82oIlAE8I', 'admin'),
-('2', 'Javier', 'Valencia', '3111', '340wB3hoGhd5c', 'contador'),
-('3', 'Fernando', 'Ricaurte', '123', '34X.26ccMgqmM', 'cajero');
+INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `Rol`, `Contrasena`, `salt`) VALUES
+('1', 'Edixon', 'Hernandez', '1235', 'admin', 'shSVw/ZRPc3ec549e18dc7e9aa180f4c04aaa36216ceb', '549e18dc7e9aa180f4c04aaa36216ceb'),
+('2', 'Javier', 'Valencia', '321', 'contador', 'shy8LQEfxqkewa18effe44e536f3b23160dc5f3ea8b5f', 'a18effe44e536f3b23160dc5f3ea8b5f'),
+('3', 'Fernando', 'Ricaurte', '123', 'cajero', 'sh4SKBxY2.SO.38105425b3ec299e9c9320b78b748f26', '38105425b3ec299e9c9320b78b748f26');
 
 --
 -- Índices para tablas volcadas
@@ -814,17 +875,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `documentado`
 --
 ALTER TABLE `documentado`
-MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=86;
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- Restricciones para tablas volcadas
 --

@@ -6,11 +6,12 @@ $(document).ready(inicializarEventos);
 
 $(function() {
   var codigos=[];
-  $.post("buscar_producto.php",
-    function(datos){
-      datos=$.parseJSON(datos);
-      for(var i in datos)
-        codigos[i]=datos[i];
+  $.post("buscar_productos",
+    function(dato){
+      datos=$.parseJSON(dato);
+      for(var i in datos){
+        codigos[i]=datos[i]['Codigo'];
+      }
     }
     );
   $( "#tags" ).autocomplete({
@@ -26,7 +27,7 @@ function inicializarEventos() {
   $("#cerrar_v").click(cerar);
   $('#Enviar').attr("disabled", true);
   $("#nuevo").click(function(){
-  $("#nuevo_cliente").modal();
+    $("#nuevo_cliente").modal();
   })
 }
 
@@ -46,20 +47,24 @@ function crear_cliente(){
      'Telefono': 'ingrese telefono'
    }, submitHandler: function(form){
 
-    var datos = new Array($("#Cedula").val(),$("#Nombre").val(),$("#Apellido").val(),$("#Telefono").val());
-    var jdatos = JSON.stringify(datos); 
-    $.post("crear_cliente.php",{
-      jdatos: jdatos
+    $.post("crear_cliente",{
+      Cedula: $("#Cedula").val(),
+      Nombre: $("#Nombre").val(),
+      Apellido: $("#Apellido").val(),
+      Telefono: $("#Telefono").val()
     },procesar_cliente); 
   }
 });
 }
 
 function procesar_cliente(datos){
-  datos = $.parseJSON(datos);
-  $("#cc_cliente").append("<option value='"+datos[0]+"' selected='selected'>"+datos[0]+" - "+datos[1]+" "+datos[1]+"</option>");
-  
-  $("#nuevo_cliente").modal('hide');
+  if(datos == '1'){
+    $("#cc_cliente").append("<option value='"+$("#Cedula").val()+"' selected='selected'>"+$("#Cedula").val()+" - "+$("#Nombre").val()+" "+$("#Apellido").val()+"</option>");
+
+    $("#nuevo_cliente").modal('hide');
+  }else{
+    alert("No almecenado"+datos);
+  }
 }
 
 function cerar(){
@@ -93,14 +98,14 @@ function presionBoton()
 
    submitHandler: function(form){
     selecion = $('input#tags').val();
-
-    $.post("consultar_producto.php",{
-      codigo: selecion
+    $.post("consultar_producto1",{
+      id: selecion
     }, Consultar_Producto);
   }});
 }
 
 function Consultar_Producto(dato){
+  alert(dato);
   var datos=[];
   datos=$.parseJSON(dato);
 
@@ -131,35 +136,35 @@ function Consultar_Producto(dato){
     alert("producto no registrado");
   }
 
-  }
+}
 
-  function VaciarFormulario(){
-    $('#formulario').each (function(){
-      this.reset();
-    });
+function VaciarFormulario(){
+  $('#formulario').each (function(){
+    this.reset();
+  });
 
-  }
+}
 
-  function EnviarBD(){
-    var Efectivo = $("#efectivo_v").val();
+function EnviarBD(){
+  var Efectivo = $("#efectivo_v").val();
 
-    var jdatos = JSON.stringify(productos); 
+  var jdatos = JSON.stringify(productos); 
 
-    $.post("guardar_factura.php",{
-      num_fact: $("#numero").val(),
-      fecha: $("#fecha").val(),
-      hora: $("#hora").val(),
-      cliente: $("#cc_cliente").val(),
-      cajero: $("#cajero").val(),
-      Efectivo: Efectivo,
-      pago: 'contado',
-      jdatos: jdatos
-    },procesar); 
-  }
+  $.post("imprimir_factura",{
+    num_fact: $("#numero").val(),
+    fecha: $("#fecha").val(),
+    hora: $("#hora").val(),
+    cliente: $("#cc_cliente").val(),
+    cajero: $("#cajero").val(),
+    Efectivo: Efectivo,
+    pago: 'contado',
+    jdatos: jdatos
+  },procesar); 
+}
 
-  function procesar(datos){
-    $("#factura").remove();
-    document.getElementById("imp").innerHTML = datos;
-    window.print();
-    setTimeout("location.href='Factura.php?"+datos+"'", 10);
-  }
+function procesar(datos){
+  $("#factura").remove();
+  document.getElementById("imp").innerHTML = datos;
+  window.print();
+  setTimeout("location.href='Factura.php?"+datos+"'", 10);
+}

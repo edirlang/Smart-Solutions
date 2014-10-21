@@ -111,6 +111,28 @@
 		break;
 		case "/Smart-Solutions/index.php/guardar_transaiones":
 			crear_contabilidad_action();
-		break;				
+		break;
+		case "/Smart-Solutions/index.php/Codigos":
+			codigos_action();
+		break;
+
+		case "/Smart-Solutions/index.php/catalogo":
+			productos_action();
+		break;
+
+		case "/Smart-Solutions/index.php/factura":
+			crear_factura_action();
+		break;
+
+		case "/Smart-Solutions/index.php/buscar_productos":
+			productos_numero_action();
+		break;
+		case "/Smart-Solutions/index.php/consultar_producto1":
+			consultar_producto_fact_action();
+		break;
+
+		case "/Smart-Solutions/index.php/imprimir_factura":
+			guardar_factura_action();
+		break;
 	}
  ?>

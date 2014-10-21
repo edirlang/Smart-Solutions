@@ -217,9 +217,7 @@ function consultar_cliente(){
 
 	cerrar_conexion_db($conexion);
 
-	$json = json_encode($cliente); 
-
-	echo $json;
+	return $cliente;
 }
 
 function actualizar_cliente(){
@@ -357,6 +355,16 @@ function crear_provedor_producto(){
 }
 
 //CRUD Producto
+function productos(){
+	$conexion = conectar_base_datos();
+	$productos = array();
+	$result = mysqli_query($conexion,"SELECT * FROM productos");
+	while ($producto = mysqli_fetch_assoc($result)) {
+		array_push($productos, $producto);
+	}
+	return $productos;
+}
+
 function crear_producto(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$conexion = conectar_base_datos();
@@ -390,15 +398,34 @@ function consultar_producto($row,$conexion){
 
 	$sql = mysqli_query($conexion,"SELECT * FROM productos where Codigo = '".$id."'");
 	while ($fila = mysqli_fetch_assoc($sql)) {
-		$producto=[$row['codigo'],$row['vlr_unidad'],$fila['iva']];
-		echo json_encode($producto);
+		$producto=[$row['codigo'],$row['vlr_unidad'],$fila['iva'],$fila['ValorVenta']];
+		return $producto;
+	}
+}
+
+function consultar_producto_fact(){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$conexion = conectar_base_datos();
 		
+		$id = $_POST['id'];
+
+		$sql = "SELECT * FROM inventario where codigo = '$id'  order by fecha desc limit 1";
+		
+		$resultado = mysqli_query($conexion,$sql);
+
+		echo mysqli_error($conexion);
+		while ($row = mysqli_fetch_assoc($resultado)) {
+			$producto = consultar_producto($row,$conexion);
+			$returno = [$producto[0],$producto[1],$producto[2],$producto[3],$row['vlr_unidad'],];
+			echo json_encode($returno);
+		}
+		cerrar_conexion_db($conexion);
 	}
 }
 
 function actualizar_prodcto($codigo,$iva,$conexion){
 	$produc = "UPDATE productos SET iva = '".$iva."' where Codigo = '".$codigo."')";
-mysqli_query($conexion,$produc);
+	mysqli_query($conexion,$produc);
 }
 
 //Inventario
@@ -414,7 +441,8 @@ function consultar_inventario(){
 
 		echo mysqli_error($conexion);
 		while ($row = mysqli_fetch_assoc($resultado)) {
-			consultar_producto($row,$conexion);
+			$producto = consultar_producto($row,$conexion);
+			echo json_encode($producto);
 		}
 		cerrar_conexion_db($conexion);
 	}
@@ -839,6 +867,14 @@ function consultar_codigo(){
 	}
 }
 
+function nuevo_codigo(){
+	$cn = conectar_base_datos();
+	$Codigo = array($_POST['Codigo'] , $_POST['Nombre'] , $_POST['Tipo']);
+	$sql = "INSERT INTO codigotransacion VALUES ('$Codigo[0]','$Codigo[1]','$Codigo[2]')";
+	mysqli_query($cn,$sql);
+	cerrar_conexion_db($cn);
+}
+
 function crear_contabilida(){
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
@@ -898,4 +934,238 @@ function crear_contabilida(){
 		}
 		cerrar_conexion_db($conexion);
 	}
+}
+
+//CRUD Facturas
+function consltar_num_factura(){
+	$conexion = conectar_base_datos();
+
+	$result = mysqli_query($conexion,"SELECT * FROM `factura` order by `num_factura` desc limit 1 ");
+
+	$numero=0;
+	while($row = mysqli_fetch_assoc($result)){ 
+    	$numero = $row['num_factura']+1;
+  	}
+  	cerrar_conexion_db($conexion);
+  	return $numero;
+}
+
+function crear_factura(){
+	$conexion = conectar_base_datos();
+	$productos = json_decode($_POST['jdatos'], true);
+	$numero = $_POST['num_fact'];
+	$fecha = $_POST['fecha'];
+	$hora = $_POST['hora'];
+	$cedula = $_POST['cliente'];
+	$cajero = $_POST['cajero'];
+	$Efectivo = $_POST['Efectivo'];
+	$pago = $_POST['pago'];
+	$total=0;
+	$iva=0;
+
+	foreach ($productos as $row) {
+		$total+=$row[4]+$row[2];
+	}
+	$sql = "INSERT INTO factura VALUES ('".$numero."','".$cedula."','".$fecha."','".$hora."','".$cajero."','".$total."')";
+	mysqli_query($conexion,$sql);
+
+	crear_documento("Factura ".$numero,$conexion);
+	$documento = consultar_ultimo_documento($conexion);
+	foreach ($productos as $producto) {
+		$iva = $producto[2];
+		
+		crear_detalle_factura($numero, $producto[0], $producto[1], $producto[3] ,$producto[4],$conexion);
+
+		crear_activo($documento,$cajero,'1105',$fecha,'D','CAJA '.$producto[0],($producto[4]+$iva),$conexion);
+		crear_pasivo($documento,$cajero,'2804',$fecha,'C','IVA '.$producto[0],$iva,$conexion);
+		crear_ingreso($documento,$cajero,'4135',$fecha,'C','VENTA '.$producto[0],$producto[4],$conexion);
+		
+		$inventario = consultar_inventario1($documento,$cajero,$fecha,$producto, $conexion);
+		crear_activo($documento,$cajero,'14',$fecha,'C','Inventario  '.$producto[0],$inventario,$conexion);
+		crear_costo($documento,$cajero,'613554',$fecha,'D','Costo  '.$producto[0],$inventario,$conexion);
+	}
+
+  	cerrar_conexion_db($conexion);
+
+  	generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$productos);
+  	
+}
+
+function crear_detalle_factura($numero, $codigo, $cantidad, $valor_ven,$total,$conexion){
+		mysqli_query($conexion,"INSERT INTO detallefactura VALUES ('".$numero."','".$codigo."','".$cantidad."','".$valor_ven."','".$total."')");
+}
+
+function consultar_inventario1($documento,$cajero,$fecha, $row, $cn){
+	$inventario = 0;
+	$result =mysqli_query($cn,"SELECT * FROM inventario WHERE codigo like '".$row[0]."' order by fecha desc limit 1");
+		while ($fila = mysqli_fetch_assoc($result)) {
+			$cantidad = $fila['cantidad']-$row[1];
+			$total = $fila['vlr_inicial']*$cantidad;
+			$sql = "INSERT INTO inventario VALUES (null,'".$fila['codigo']."','Venta','".$fecha."','".$row[1]."','".$fila['vlr_inicial']."','".$cantidad."','".$fila['vlr_inicial']."','".$total."','V')";
+			$inventario=$fila['vlr_inicial']*$row[1];
+			mysqli_query($cn,$sql);	
+		}
+		return $inventario;
+}
+
+function consultar_cliente1($cedula){
+	$conexion = conectar_base_datos();
+	$consulta = "SELECT * FROM clientes where Cedula = '$cedula'";
+
+	$resultado = mysqli_query($conexion,$consulta);
+
+	$cliente = array();
+
+	while ($fila = mysqli_fetch_assoc($resultado)) {
+		$cliente = $fila;
+	}
+	cerrar_conexion_db($conexion);
+	return $cliente;
+}
+
+function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$productos){
+	$conexion = conectar_base_datos();
+	$cliente = consultar_cliente1($cedula,$conexion);
+	cerrar_conexion_db($conexion);
+	$nom_cliente = $cliente['Nombre']." ".$cliente['Apellido']; 
+	$empleado = consultar_empleado($cajero);
+	$nom_cajero = $empleado['Nombre']." ".$empleado['Apellido'];
+	
+	$total=0;
+
+	$factura = "<div class='container container-fluid'>
+	<div class='row'>
+		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+			<a href='factura' class='hidden-print btn btn-primary'>Regresar</a>
+		</div>
+		<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+			<img src='../Imagenes/bac.gif'></img>
+		</div>
+		<font size='3' face='Verdana'>
+			<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center'>
+				<p>Smart-Solutions</p>
+				<p>Nit: 1069748845-5 Regimen Comun</p>
+				<p>Cra 6 # 7-49 CC. La Hacienda Local 201 </p>
+				<p>Tel: 867 2290</p>
+				<br>
+				<p>Fecha  ".$fecha."	Hora ".$hora."</p>
+			</div>
+			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+				<hr size='10' ></hr>
+			</div>
+			<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2'>
+				<table class='table table-border table-condense'>
+						<tr>
+							<th>Factura:</th>
+						</tr>
+					
+						<tr>
+							<td>".$numero."</td>
+						</tr>
+				</table>
+			</div>
+			<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>
+				<table class='table table-bordered table-condense'>
+						<tr>
+							<th>Cliente</th>
+							<th></th>
+						</tr>
+					
+						<tr>
+							<td>Cliente: </td>
+							<td>".$nom_cliente."</td>
+						</tr>
+						<tr>
+							<td>CC o NIT: </td>
+							<td>".$cedula."</td>
+						</tr>
+				</table>
+			</div>
+			<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>
+				<table class='table table-hover table-bordered'>
+						<tr>
+							<th>Vendedor</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td>Vendedor: </td>
+							<td>".$nom_cajero."</td>
+						</tr>
+						<tr>
+							<td>CC o Nit </td>
+							<td>".$cajero."</td>
+						</tr>
+				</table>
+			</div>
+				
+			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+				<hr size='10' ></hr>
+			</div>
+
+			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center'>
+				<table class='table table-responsive table-condensed table-bordered'>
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th>Cant.</th>
+							<th>vlr. unid.</th>
+							<th>iva</th>
+							<th>Subtotal</th>
+						</tr>
+					</thead>
+					<tbody>";
+	foreach ($productos as $producto) {
+		$total+=$producto[4]+$producto[2];
+		$factura = $factura."<tr>
+							<td>".$producto[0]."</td>
+							<td>".$producto[5]."</td>
+							<td>".$producto[1]."</td>
+							<td>$ ".$producto[3]."</td>
+							<td>".$producto[2]."%</td>
+							<td>$ ".$producto[4]."</td>
+						</tr>";
+	}
+	$subtotal = $total-$iva;
+	$Cambio = $Efectivo-$total;
+	$factura = $factura."
+	</tbody>
+				</table>
+			</div>
+			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+				<hr size='10' ></hr>
+			</div>
+			<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+				<table>
+					<tr>
+						<td>Subtotal</td>
+						<td> $ ".$subtotal."</td>
+					</tr>
+					<tr>
+						<td>IVA</td>
+						<td> $ ".$iva."</td>
+					</tr>
+					<tr>
+						<td>Total </td>
+						<td> $ ".$total."</td>
+					</tr>
+					<tr>
+						<td>Efectivo </td>
+						<td> $ ".$Efectivo."</td>
+					</tr>
+					<tr>
+						<td>Cambio</td>
+						<td> $ ".$Cambio."</td>
+					</tr>
+				</table>
+			</div>
+
+			<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+				<p>Resolucion</p>
+			</div>
+		</font>
+	</div>
+</div>";
+	echo $factura;
+
 }

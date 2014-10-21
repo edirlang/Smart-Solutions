@@ -43,6 +43,7 @@
                 </script>
                </td>
               <td>
+                <?php if($_SESSION['rol']=='admin'){ ?>
                 <a class="btn btn-danger" id="eli<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-trash blue"></span> Eliminar</a> 
               <script language="JavaScript" type="text/javascript">
                 $("#eli<?php echo $row['Cedula']; ?>").click(function(){
@@ -55,6 +56,7 @@
                   }
                 );
                 </script>
+              <?php } ?>
               </td>
             </tr>
             <?php } ?>
