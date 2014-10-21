@@ -1,17 +1,19 @@
 <?php ob_start(); ?>
-<?php 
+<?php
   if(isset($_SESSION['rol'])){
     switch($_SESSION['rol']){
       case 'admin':
-      include 'plantillas/menu_admin.php';
+        include 'plantillas/menu_admin.php';
       break;
       case 'contador':
-      include 'plantillas/menu_contador.php';
+        include 'plantillas/menu_contador.php';
       break;
       case 'cajero':
-      include 'plantillas/menu_cajero.php';
+        include 'plantillas/menu_cajero.php';
       break;
     }
+  }else{
+
   } ?>
 <?php $menu = ob_get_clean(); ?>
 <!DOCTYPE html>

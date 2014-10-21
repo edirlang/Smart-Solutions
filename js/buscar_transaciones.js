@@ -8,7 +8,7 @@ function Buscar(){
 	var fech = $("#fecha").val();
 	var cuenta = $("#cuenta").val();
 
-	$.post("consultar_transaciones.php",{
+	$.post("buscar_cuentas",{
 		codigo: cuenta,
 		fecha: fech,
 		documento: documento

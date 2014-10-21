@@ -61,7 +61,7 @@ function VaciarFormulario(){
 function EnviarBD(){
 
   var jdatos = JSON.stringify(transacion); 
-  $.post("Provar.php",{
+  $.post("guardar_transaiones",{
     jdatos: jdatos
   },procesar); 
 }
@@ -69,7 +69,7 @@ function EnviarBD(){
 function procesar(datos){
  if(datos==1){
   alert("Correcto");
-  setTimeout("location.href='Transacion-manual.php'", 50);
+  setTimeout("location.href='Transacion-manual'", 50);
 }else{
   alert(datos);
   if($('#error').length){

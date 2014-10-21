@@ -1,6 +1,6 @@
 <?php
 function tipo_usuario($usuario){
-	session_start();
+	
 	if($_SESSION['rol'] == $usuario){
 		return true;
 	}else{
@@ -54,13 +54,15 @@ function abrir_panel_admin(){
 
 function abrir_panel_contador(){
 		require "plantillas/panel_contador.php";
-	
 }
-		
+
+function abrir_panel_cajero(){
+		require "plantillas/panel_cajero.php";
+}	
 
 function inventario_action(){
 	$rol = "admin";
-	if(tipo_usuario($rol)){
+	if(tipo_usuario($rol) || tipo_usuario('contador')){
 		$productos = inventario();
 		require "plantillas/inventario.php";
 	}else{
@@ -142,5 +144,28 @@ function consultar_inventario_action(){
 
 function procesar_pedido_action(){
 	crear_inventario();
+}
+
+function contabilidad_action(){
+	$transaciones = cuentas_contables();
+	require "plantillas/transacion-manual.php";
+}
+
+function contabilidad_consultar_action(){
+	consultar_cuentas();
+}
+
+function contabilidad_nueva_action(){
+	$usuario = $_SESSION['usuario'];
+	$codigos = codigos();
+	require "plantillas/nueva_contabilidad.php";
+}
+
+function consultar_codigo_action(){
+	consultar_codigo();
+}
+
+function crear_contabilidad_action(){
+	crear_contabilida();
 }
 ?>

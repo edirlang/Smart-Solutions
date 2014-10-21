@@ -1,6 +1,7 @@
 <?php 
 	require_once "modelos.php";
 	require_once "controladores.php";
+	session_start();
 
 	$uri = $_SERVER['REQUEST_URI'];
 	switch ($uri) {
@@ -23,6 +24,9 @@
 		break;
 		case "/Smart-Solutions/index.php/contador":
 			abrir_panel_contador();
+		break;
+		case "/Smart-Solutions/index.php/cajero":
+			abrir_panel_cajero();
 		break;
 
 		case "/Smart-Solutions/index.php/inventario":
@@ -92,5 +96,21 @@
 		case "/Smart-Solutions/index.php/almacenar_pedido":
 			procesar_pedido_action();
 		break;
+
+		case "/Smart-Solutions/index.php/Transacion-manual":
+			contabilidad_action();
+		break;
+		case "/Smart-Solutions/index.php/buscar_cuentas":
+			contabilidad_consultar_action();
+		break;
+		case "/Smart-Solutions/index.php/nueva_contabilidad":
+			contabilidad_nueva_action();
+		break;
+		case "/Smart-Solutions/index.php/buscar_codigo":
+			consultar_codigo_action();
+		break;
+		case "/Smart-Solutions/index.php/guardar_transaiones":
+			crear_contabilidad_action();
+		break;				
 	}
  ?>

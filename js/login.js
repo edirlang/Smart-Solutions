@@ -24,7 +24,6 @@ function presionBoton()
        submitHandler: function(form){
         var datos = new Array($("#cedula").val(),$("#contrasena").val());
         var jdatos = JSON.stringify(datos); 
-        alert(jdatos);
         $.post("login",{
           jdatos: jdatos
         },procesar); 
@@ -44,11 +43,11 @@ function procesar(datos){
     case 'cajero':
       setTimeout("location.href='cajero'", 50);
     break;
-    case 'null':
+    default:
       if($('#error').length){
 
       }else{
-        $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: Login Incorecto </div>");
+        $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: "+datos+"</div>");
       }
     break;
   }

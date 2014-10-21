@@ -9,7 +9,7 @@ function inicializarEventos()
 
 function buscar_cliente(){
   var op = $("#codigo option:selected").val();
-  $.post("buscar_codigos.php",{
+  $.post("buscar_codigo",{
     codigo: op
   },function(datos){
     $("#Descripcion").val(datos);
