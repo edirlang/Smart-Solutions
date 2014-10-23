@@ -28,11 +28,15 @@ function empleados_action(){
 }
 
 function consultar_empleado_action(){
-	consultar_empleado1();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$cedula = $_POST['id'];
+		$empleado = consultar_empleado($cedula);
+		echo json_encode($empleado);
+	}
 }
 
 function actualizar_empleado_action(){
-		actualizar_empleado();
+	actualizar_empleado();
 }
 
 function crear_empleado_action(){
@@ -53,17 +57,23 @@ function abrir_panel_admin(){
 }
 
 function abrir_panel_contador(){
-		require "plantillas/panel_contador.php";
+	require "plantillas/panel_contador.php";
 }
 
 function abrir_panel_cajero(){
-		require "plantillas/panel_cajero.php";
+	require "plantillas/panel_cajero.php";
 }	
 
 function inventario_action(){
 	$rol = "admin";
 	if(tipo_usuario($rol) || tipo_usuario('contador')){
-		$productos = inventario();
+		$productos = array();
+		if($_SERVER['REQUEST_METHOD']=='POST'){
+			$numero = $_POST['codigo'];
+			$productos = consultar_inventario($numero);
+		}else{
+			$productos = inventario();
+		}
 		require "plantillas/inventario.php";
 	}else{
 		header("location: login");
@@ -72,7 +82,10 @@ function inventario_action(){
 
 function inventario_consultar_action($codigo){
 	return $producto = inventario_consultar($codigo);
-	}
+}
+function inventario_consultar2_action($codigo,$fecha){
+	return $producto = inventario_consultar2($codigo,$fecha);
+}
 
 function clientes_action(){
 	$rol = "admin";
@@ -85,13 +98,16 @@ function clientes_action(){
 }
 
 function consultar_cliente_action(){
-	$cliente = consultar_cliente();
-	$json = json_encode($cliente); 
-	echo $json;
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$cedula = $_POST['id'];
+		$cliente = consultar_cliente($cedula);
+		$json = json_encode($cliente); 
+		echo $json;
+	}
 }
 
 function actualizar_cliente_action(){
-		actualizar_cliente();
+	actualizar_cliente();
 }
 
 function crear_cliente_action(){
@@ -118,7 +134,7 @@ function consultar_proveedor_action(){
 }
 
 function actualizar_proveedor_action(){
-		actualizar_provedor();
+	actualizar_provedor();
 }
 
 function crear_proveedor_action(){
@@ -141,7 +157,11 @@ function prodcuto_nuevo_action(){
 }
 
 function consultar_inventario_action(){
-	consultar_inventario();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$codigo = $_POST['id'];
+		$producto = inventario_consultar($codigo);
+		echo json_encode($producto);
+	}
 }
 
 function procesar_pedido_action(){
@@ -203,4 +223,18 @@ function consultar_producto_fact_action(){
 function guardar_factura_action(){
 	crear_factura();
 }
+
+function facturas_action(){
+	$facturas = facturas();
+	require "plantillas/facturas.php";
+}
+
+function consultar_detalles_action(){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$numero = $_POST['id'];
+		$productos = detalles_factura($numero);
+		echo json_encode($productos);
+	}
+}
+
 ?>

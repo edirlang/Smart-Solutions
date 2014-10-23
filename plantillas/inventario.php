@@ -1,4 +1,32 @@
 <?php ob_start(); ?>
+<div class="panel panel-success">
+	<div class="panel-body">
+		<form action="inventario" method="POST" class="form-inline" role="form">
+
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-6 col-md-6 col-lg-6 control-label">Codigo Producto</label>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 control-label">
+						<input type="text" class="form-control input-sm" id="codigo" name="codigo" >
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-6 col-md-6 col-lg-6 control-label">Fecha</label>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 control-label">
+						<input type="date" class="form-control input-sm" id="fecha" name="fecha" >
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<button type="submit" class="btn btn-primary">Buscar</button>
+			</div>
+		</form>
+	</div>
+</div>
 <?php 
 foreach ($productos as $key => $valor) { ?>
 <div id="productos" class='panel panel-danger'>
@@ -29,41 +57,47 @@ foreach ($productos as $key => $valor) { ?>
 				</tr>
 			</thead>
 			<tbody>
-				<?php 
-				$consulta = inventario_consultar_action($valor);
+				<?php
+				$consulta; 
+				if(isset($_POST['fecha']) && $_POST['fecha'] != null){
+					$consulta = inventario_consultar2_action($valor,$_POST['fecha']);
+				}else{
+					$consulta = inventario_consultar_action($valor);
+				}
 				
+
 				foreach($consulta as $producto) {	?>
-					<tr>
-						<td><?php echo $producto['fecha']; ?></td>
-						<td><?php echo $producto['descripcion']; ?></td>
-						<td><?php echo $producto['codigo']; ?></td>
+				<tr>
+					<td><?php echo $producto['fecha']; ?></td>
+					<td><?php echo $producto['descripcion']; ?></td>
+					<td><?php echo $producto['codigo']; ?></td>
 
-						<td><?php echo $producto['vlr_inicial']; ?></td>
-						<?php if($producto['tipo']=='C'){ ?>
-						<td><?php echo $producto['cant_inicial']; ?></td>
-						<td><?php echo $producto['vlr_inicial']*$producto['cant_inicial']; ?></td>
-						<td>0</td>
-						<td>0</td>
-						<?php }else{ ?>
-						<td>0</td>
-						<td>0</td>
-						<td><?php echo $producto['cant_inicial']; ?></td>
-						<td><?php echo $producto['vlr_inicial']*$producto['cant_inicial']; ?></td>
+					<td><?php echo $producto['vlr_inicial']; ?></td>
+					<?php if($producto['tipo']=='C'){ ?>
+					<td><?php echo $producto['cant_inicial']; ?></td>
+					<td><?php echo $producto['vlr_inicial']*$producto['cant_inicial']; ?></td>
+					<td>0</td>
+					<td>0</td>
+					<?php }else{ ?>
+					<td>0</td>
+					<td>0</td>
+					<td><?php echo $producto['cant_inicial']; ?></td>
+					<td><?php echo $producto['vlr_inicial']*$producto['cant_inicial']; ?></td>
 
-						<?php } ?>
-
-						<td><?php echo $producto['cantidad']; ?></td>
-						<td><?php echo $producto['vlr_unidad']; ?></td>
-						<td><?php echo $producto['total']; ?></td>
-
-					</tr> 
 					<?php } ?>
-				</tbody>
-			</table>
 
-		</div>
+					<td><?php echo $producto['cantidad']; ?></td>
+					<td><?php echo $producto['vlr_unidad']; ?></td>
+					<td><?php echo $producto['total']; ?></td>
+
+				</tr> 
+				<?php } ?>
+			</tbody>
+		</table>
+
 	</div>
-	<?php } ?>
+</div>
+<?php } ?>
 </div>
 <?php $contenido = ob_get_clean(); ?>
 <?php include "plantilla_base.php"; ?>

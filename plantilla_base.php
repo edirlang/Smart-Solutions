@@ -44,5 +44,6 @@
     <script language="javascript" type="text/javascript" src="/Smart-Solutions/js/jquery.js"></script>
     <script language="javascript" type="text/javascript" src="/Smart-Solutions/js/jquery.validate.js"></script>
     <script src="/Smart-Solutions/js/bootstrap.min.js"></script>
+    <script src="/Smart-Solutions/js/jquery-ui.js"></script>
   </body>   
   </html>

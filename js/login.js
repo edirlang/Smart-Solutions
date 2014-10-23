@@ -47,8 +47,11 @@ function procesar(datos){
       if($('#error').length){
 
       }else{
-        $('#Mensaje').append("<div id='error' class='alert alert-danger'>Error: "+datos+"</div>");
+        $('#Mensaje').append("<div id='error' class='alert alert-danger'><button type='button' id='cerrar' class='close'>&times;</button>Error: "+datos+"</div>");
       }
     break;
   }
+  $("#cerrar").click(function(){
+    $("#error").remove();
+  });
 }

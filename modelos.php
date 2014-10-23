@@ -79,24 +79,6 @@ function consultar_empleado($cedula){
 	return $usuario;
 }
 
-function consultar_empleado1(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		$cedula = $_POST['id'];
-		$consulta = "SELECT * FROM usuarios where Cedula = '$cedula'";
-
-		$resultado = mysqli_query($conexion,$consulta);
-
-		$usuario = array();
-
-		while ($fila = mysqli_fetch_assoc($resultado)) {
-			$usuario = $fila;
-		}
-		cerrar_conexion_db($conexion);
-		echo json_encode($usuario);
-	}
-}
-
 function actualizar_empleado(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$conexion = conectar_base_datos();
@@ -188,6 +170,47 @@ function inventario_consultar($id){
 	return $producto_inventario;
 }
 
+function inventario_consultar2($id,$fecha){
+	$conexion = conectar_base_datos();
+	$inventario = "SELECT * FROM inventario where codigo='$id' and fecha='$fecha' order by fecha";
+	$resultado = mysqli_query($conexion,$inventario);
+
+	$producto_inventario= array();
+	while($row = mysqli_fetch_assoc($resultado)){
+		array_push($producto_inventario, $row);
+	}
+	cerrar_conexion_db($conexion);
+	return $producto_inventario;
+}
+
+function consultar_inventario($numero){
+	$conexion = conectar_base_datos();
+	$inventario;
+	if($numero != null){
+		$inventario = "SELECT * FROM inventario where codigo='$numero' order by fecha";
+	}else{
+		$inventario = "SELECT * FROM inventario";
+	}
+	
+	$resultado = mysqli_query($conexion,$inventario);
+
+	$productos= array();
+	while($row = mysqli_fetch_assoc($resultado)){
+		$aux1=$row['codigo'];
+		$i=0;
+		foreach ($productos as $key => $valor) {
+			if($aux1 == $valor){
+				$i=1;
+			}
+		}
+		if($i==0){
+			array_push($productos, $row['codigo']);
+		}
+	}
+	cerrar_conexion_db($conexion);
+	return $productos;
+}
+
 function clientes(){
 	$conexion = conectar_base_datos();
 	$consulta = "SELECT * FROM clientes";
@@ -202,8 +225,8 @@ function clientes(){
 	return $clientes;
 }
 
-function consultar_cliente(){
-	$cedula = $_POST['id'];
+function consultar_cliente($cedula){
+	
 	$conexion = conectar_base_datos();
 	$consulta = "SELECT * FROM clientes where Cedula = '$cedula'";
 
@@ -398,7 +421,7 @@ function consultar_producto($row,$conexion){
 
 	$sql = mysqli_query($conexion,"SELECT * FROM productos where Codigo = '".$id."'");
 	while ($fila = mysqli_fetch_assoc($sql)) {
-		$producto=[$row['codigo'],$row['vlr_unidad'],$fila['iva'],$fila['ValorVenta']];
+		$producto=[$row['codigo'],$row['vlr_unidad'],$fila['iva'],$fila['ValorVenta'],$fila['Nombre']];
 		return $producto;
 	}
 }
@@ -416,7 +439,7 @@ function consultar_producto_fact(){
 		echo mysqli_error($conexion);
 		while ($row = mysqli_fetch_assoc($resultado)) {
 			$producto = consultar_producto($row,$conexion);
-			$returno = [$producto[0],$producto[1],$producto[2],$producto[3],$row['vlr_unidad'],];
+			$returno = [$producto[0],$producto[1],$producto[2],$producto[3],$row['vlr_unidad'],$producto[4]];
 			echo json_encode($returno);
 		}
 		cerrar_conexion_db($conexion);
@@ -429,24 +452,6 @@ function actualizar_prodcto($codigo,$iva,$conexion){
 }
 
 //Inventario
-function consultar_inventario(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		
-		$id = $_POST['id'];
-
-		$sql = "SELECT * FROM inventario where codigo = '$id'  order by fecha desc limit 1";
-		
-		$resultado = mysqli_query($conexion,$sql);
-
-		echo mysqli_error($conexion);
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			$producto = consultar_producto($row,$conexion);
-			echo json_encode($producto);
-		}
-		cerrar_conexion_db($conexion);
-	}
-}
 
 function crear_inventario(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -937,6 +942,18 @@ function crear_contabilida(){
 }
 
 //CRUD Facturas
+function facturas(){
+	$conexion = conectar_base_datos();
+	$facturas = array();
+	$result = mysqli_query($conexion,"SELECT * FROM `factura`");
+
+	while ($factura = mysqli_fetch_assoc($result)) {
+		array_push($facturas, $factura);
+	}
+	return $facturas;
+	cerrar_conexion_db($conexion);
+}
+
 function consltar_num_factura(){
 	$conexion = conectar_base_datos();
 
@@ -1008,25 +1025,9 @@ function consultar_inventario1($documento,$cajero,$fecha, $row, $cn){
 		return $inventario;
 }
 
-function consultar_cliente1($cedula){
-	$conexion = conectar_base_datos();
-	$consulta = "SELECT * FROM clientes where Cedula = '$cedula'";
-
-	$resultado = mysqli_query($conexion,$consulta);
-
-	$cliente = array();
-
-	while ($fila = mysqli_fetch_assoc($resultado)) {
-		$cliente = $fila;
-	}
-	cerrar_conexion_db($conexion);
-	return $cliente;
-}
-
 function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$productos){
-	$conexion = conectar_base_datos();
-	$cliente = consultar_cliente1($cedula,$conexion);
-	cerrar_conexion_db($conexion);
+	$cliente = consultar_cliente($cedula);
+
 	$nom_cliente = $cliente['Nombre']." ".$cliente['Apellido']; 
 	$empleado = consultar_empleado($cajero);
 	$nom_cajero = $empleado['Nombre']." ".$empleado['Apellido'];
@@ -1167,5 +1168,14 @@ function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$pr
 	</div>
 </div>";
 	echo $factura;
+}
 
+function detalles_factura($numero){
+	$conexion = conectar_base_datos();
+	$productos = array();
+	$result = mysqli_query($conexion,"SELECT * FROM detallefactura where num_factura = '$numero'");
+	while ($producto = mysqli_fetch_assoc($result)) {
+		array_push($productos, $producto);
+	}
+	return $productos; 
 }

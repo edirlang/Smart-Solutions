@@ -5,6 +5,7 @@
       <li><a href="clientes"><span class="glyphicon glyphicon-list"></span>  Clientes</a></li>
       <li><a href="empleados"><span class="glyphicon glyphicon-briefcase"></span>  Empleados</a></li>
       <li><a href="proveedores"><span class="glyphicon glyphicon-folder-open"></span>   Proveedores</a></li>
+      <li><a href="facturas"><span class="glyphicon glyphicon-folder-open"></span>   Facturas</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span>
            Estados Financieros<b class="caret"></b>
@@ -13,8 +14,8 @@
           <li><a href="#">Ventas</a></li>
           <li><a href="#">Compras</a></li>
           <li class="divider"></li>
-          <li><a href="#">Activos</a></li>
-          <li><a href="#">Pasivos</a></li>
+          <li><a href="#">Balance General</a></li>
+          <li><a href="#">P y G</a></li>
           <li><a href="#">Gastos</a></li>
         </ul>
       </li>

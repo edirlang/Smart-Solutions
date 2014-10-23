@@ -14,7 +14,7 @@ $(function() {
       }
     }
     );
-  $( "#tags" ).autocomplete({
+  $("#tags").autocomplete({
     source: codigos
   });
 });
@@ -105,7 +105,6 @@ function presionBoton()
 }
 
 function Consultar_Producto(dato){
-  alert(dato);
   var datos=[];
   datos=$.parseJSON(dato);
 
@@ -113,12 +112,11 @@ function Consultar_Producto(dato){
     var iva = (datos[2]*datos[4])/100;
     var vlr_unid = datos[3];
     var subtotal = (vlr_unid*1)*($("#cantidad").val()*1);
-    var producto = new Array($("#tags").val(),$("#cantidad").val(),iva,vlr_unid,subtotal,datos[1]);
+    var producto = new Array($("#tags").val(),$("#cantidad").val(),iva,vlr_unid,subtotal,datos[5]);
     productos.push(producto);
-    alert("sub total "+subtotal+"  + "+iva);
     $("<tr>").append(
       $('<td>', { text: datos[0]
-      }), $('<td>', { text: datos[1]
+      }), $('<td>', { text: datos[5]
       }), $('<td>', { text:  $("#cantidad").val()
     }), $('<td>', { text: vlr_unid 
     }), $('<td>', { text: datos[2]  
