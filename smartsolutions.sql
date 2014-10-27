@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-10-2014 a las 16:45:12
+-- Tiempo de generación: 28-10-2014 a las 00:53:03
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -153,7 +153,11 @@ INSERT INTO `activo1` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `
 (92, '1', '14', '2014-10-19', 'D', 'InventarioLENOVA Y410p', 4500000),
 (93, '1', '1105', '2014-10-19', 'C', 'Caja PagoAcer AOD2', 3000000),
 (93, '1', '14', '2014-10-19', 'D', 'InventarioAcer AOD2', 3000000),
-(94, '2', '1105', '2014-10-20', 'D', 'Caja', 1000);
+(94, '2', '1105', '2014-10-20', 'D', 'Caja', 1000),
+(95, '1', '1105', '2014-10-25', 'C', 'Caja PagoAcer AOD2', 262500),
+(95, '1', '14', '2014-10-25', 'D', 'InventarioAcer AOD2', 262500),
+(96, '1', '1105', '2014-10-25', 'C', 'Caja PagoAcer AOD2', 262500),
+(96, '1', '14', '2014-10-25', 'D', 'InventarioAcer AOD2', 262500);
 
 -- --------------------------------------------------------
 
@@ -173,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 --
 
 INSERT INTO `clientes` (`Cedula`, `Nombre`, `Apellido`, `Telefono`) VALUES
-('1', 'jkj a', 'jkj', 'jkj'),
+('1', 'jkj asad', 'jkj', 'jkj'),
 ('1069745533', 'Javier Andres', 'Valencia muñoz', '3153232553'),
 ('1069751356', 'Fernando', 'Ricaurte', '3204367170'),
 ('1069753434', 'Edixon', 'Hernandez', '3134765649');
@@ -370,7 +374,7 @@ INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, 
 CREATE TABLE IF NOT EXISTS `documentado` (
 `cod_documento` int(11) NOT NULL,
   `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=95 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=97 ;
 
 --
 -- Volcado de datos para la tabla `documentado`
@@ -468,7 +472,55 @@ INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
 (90, 'Factura+48'),
 (92, 'Compra'),
 (93, 'Compra'),
-(94, 'Transacion');
+(94, 'Transacion'),
+(95, 'Compra'),
+(96, 'Compra');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empresa`
+--
+
+CREATE TABLE IF NOT EXISTS `empresa` (
+`id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `tipos_empresa` varchar(255) NOT NULL,
+  `regimen` varchar(30) NOT NULL,
+  `representante` varchar(20) NOT NULL,
+  `somos` text NOT NULL,
+  `mision` text NOT NULL,
+  `vision` text NOT NULL,
+  `objeto` text NOT NULL,
+  `salario_minimo` int(11) NOT NULL,
+  `uvt` int(11) NOT NULL,
+  `trasporte` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `nombre`, `tipos_empresa`, `regimen`, `representante`, `somos`, `mision`, `vision`, `objeto`, `salario_minimo`, `uvt`, `trasporte`) VALUES
+(1, 'Smart Solutions Ltda', 'Sociedad', 'Comun', '1', 'Smart-Solutions esta conformada por un grupo de 5 ingenieros que buscan solucionar las continuas dudas que se les presentan a los consumidores cuando se deben afrontar a la difícil decisión de adquirir un equipo nuevo, ya que en el mercado actual hay una gran variedad de productos diferentes disponibles en el mercado distribuidos en una amplia gama de precios en los que se encuentran equipos con configuraciones y propósitos diferentes, los cuales no quedan muy claros para los compradores en algunos casos, por ello es necesario prestar una asesoría durante todo el proceso de compra, para que cuando el usuario adquiera su producto este sea el que realmente se acomode a sus necesidades.', 'El propósito de la comercializadora Smart-Solutions es el de proveer computadores de excelente calidad y rendimiento a los diferentes tipos de consumidores presentes en el mercado a través de una asesoría personalizada, garantizándole al consumidor el equipo mas adecuado para suplir sus necesidades, ya sea para el uso casual, estudio, trabajo, entretenimiento o cualquier otra.', 'El objetivo de Smart-Solutions es el de prestar un servicio de excelente calidad a todos sus consumidores, para poder expandirse en toda la región de Cundinamarca y posteriormente por todo el país, no solo como comercializadora de computadores portátiles sino también buscando ampliar el portafolio de servicios e implementando el servicio técnico a sus consumidores.', '4651 - Comercio al por mayor de ordenadores, equipos periféricos y programas informáticos \r\n4741 - Comercio al por menor de ordenadores, equipos periféricos y programas informáticos en establecimientos especializados', 616000, 27485, 72000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eps`
+--
+
+CREATE TABLE IF NOT EXISTS `eps` (
+`ID` int(11) NOT NULL,
+  `Nombre` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `eps`
+--
+
+INSERT INTO `eps` (`ID`, `Nombre`) VALUES
+(1, 'prueva');
 
 -- --------------------------------------------------------
 
@@ -595,7 +647,7 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `vlr_unidad` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `inventario`
@@ -618,7 +670,42 @@ INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`
 (14, 'Acer E15', 'Venta', '2014-10-17', 1, 350000, 5, 350000, 1750000, 'V'),
 (15, 'Acer AOD2', 'Venta', '2014-10-17', 1, 200000, 6, 200000, 1200000, 'V'),
 (17, 'LENOVA Y410p', 'Compra', '2014-10-19', 10, 450000, 10, 450000, 4500000, 'C'),
-(18, 'Acer AOD2', 'Compra', '2014-10-19', 10, 300000, 16, 262500, 4200000, 'C');
+(18, 'Acer AOD2', 'Compra', '2014-10-19', 10, 300000, 16, 262500, 4200000, 'C'),
+(19, 'Acer AOD2', 'Compra', '2014-10-25', 1, 262500, 17, 262500, 4462500, 'C'),
+(20, 'Acer AOD2', 'Compra', '2014-10-25', 1, 262500, 18, 262500, 4725000, 'C');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Nomina`
+--
+
+CREATE TABLE IF NOT EXISTS `Nomina` (
+`id` int(11) NOT NULL,
+  `empleado` varchar(20) NOT NULL,
+  `dias_trab` double NOT NULL,
+  `basico` int(11) NOT NULL,
+  `horas_extra` int(11) NOT NULL,
+  `comisiones` int(11) NOT NULL,
+  `bonificaciones` int(11) NOT NULL,
+  `auxilio_trasp` int(11) NOT NULL,
+  `auxilio_alim` int(11) NOT NULL,
+  `salud` int(11) NOT NULL,
+  `pension` int(11) NOT NULL,
+  `fondo_emple` int(11) NOT NULL,
+  `libranzas` int(11) NOT NULL,
+  `envargos` int(11) NOT NULL,
+  `retencion` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `Nomina`
+--
+
+INSERT INTO `Nomina` (`id`, `empleado`, `dias_trab`, `basico`, `horas_extra`, `comisiones`, `bonificaciones`, `auxilio_trasp`, `auxilio_alim`, `salud`, `pension`, `fondo_emple`, `libranzas`, `envargos`, `retencion`, `total`) VALUES
+(1, '1', 30, 7300000, 0, 0, 0, 0, 0, 292000, 292000, 0, 0, 0, 377540, 6338460),
+(2, '1', 29, 7056667, 47526, 0, 0, 0, 0, 284168, 284168, 0, 0, 0, 380830, 6155028);
 
 -- --------------------------------------------------------
 
@@ -641,9 +728,25 @@ CREATE TABLE IF NOT EXISTS `pasivo` (
 --
 
 INSERT INTO `pasivo` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(92, '1', '2804', '2014-10-19', 'D', 'IVALENOVA Y410p', 0),
-(93, '1', '2804', '2014-10-19', 'D', 'IVAAcer AOD2', 0),
 (94, '2', '21', '2014-10-20', 'C', 'Obligaciones Financi', 1000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pension`
+--
+
+CREATE TABLE IF NOT EXISTS `pension` (
+`ID` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `pension`
+--
+
+INSERT INTO `pension` (`ID`, `nombre`) VALUES
+(1, 'prueva');
 
 -- --------------------------------------------------------
 
@@ -745,6 +848,7 @@ CREATE TABLE IF NOT EXISTS `proveedo` (
 
 INSERT INTO `proveedo` (`codigo`, `nombre`, `telefono`, `direccion`) VALUES
 (12, 'klkl', 'lkl', 'lkl'),
+(67, 'SAnberto', '123121', 'csdslf'),
 (8967573, 'AsusColombia', '3145678976', 'calle 23-45'),
 (89737484, 'lenovoColombia', '3134564454', 'calle 45-67');
 
@@ -759,6 +863,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `salario_basico` int(11) NOT NULL,
+  `pension` int(11) NOT NULL,
+  `eps` int(11) NOT NULL,
+  `fondo_emple` int(11) NOT NULL,
   `Rol` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Contrasena` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `salt` varchar(255) COLLATE utf8_spanish_ci NOT NULL
@@ -768,10 +876,35 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `Rol`, `Contrasena`, `salt`) VALUES
-('1', 'Edixon', 'Hernandez', '1235', 'admin', 'shSVw/ZRPc3ec549e18dc7e9aa180f4c04aaa36216ceb', '549e18dc7e9aa180f4c04aaa36216ceb'),
-('2', 'Javier', 'Valencia', '321', 'contador', 'shy8LQEfxqkewa18effe44e536f3b23160dc5f3ea8b5f', 'a18effe44e536f3b23160dc5f3ea8b5f'),
-('3', 'Fernando', 'Ricaurte', '123', 'cajero', 'sh4SKBxY2.SO.38105425b3ec299e9c9320b78b748f26', '38105425b3ec299e9c9320b78b748f26');
+INSERT INTO `usuarios` (`Cedula`, `Nombre`, `Apellido`, `Telefono`, `salario_basico`, `pension`, `eps`, `fondo_emple`, `Rol`, `Contrasena`, `salt`) VALUES
+('1', 'Edixon', 'Hernandez', '123', 7300000, 1, 1, 0, 'admin', 'shSVw/ZRPc3ec7395aa2974951419272b48709ae88281', '7395aa2974951419272b48709ae88281'),
+('2', 'Javier', 'Valencia', '321', 2500000, 1, 1, 0, 'contador', 'shy8LQEfxqkewa18effe44e536f3b23160dc5f3ea8b5f', 'a18effe44e536f3b23160dc5f3ea8b5f'),
+('3', 'Fernando', 'Ricaurte', '123', 615000, 1, 1, 0, 'cajero', 'sh4SKBxY2.SO.38105425b3ec299e9c9320b78b748f26', '38105425b3ec299e9c9320b78b748f26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `uvt`
+--
+
+CREATE TABLE IF NOT EXISTS `uvt` (
+  `id` int(11) NOT NULL,
+  `tarifa` int(11) NOT NULL,
+  `desde` int(11) NOT NULL,
+  `hasta` int(11) NOT NULL,
+  `menos` int(11) NOT NULL,
+  `mas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `uvt`
+--
+
+INSERT INTO `uvt` (`id`, `tarifa`, `desde`, `hasta`, `menos`, `mas`) VALUES
+(1, 0, 0, 95, 0, 0),
+(2, 19, 95, 150, 95, 0),
+(3, 28, 150, 360, 150, 10),
+(4, 33, 360, 2147483647, 360, 69);
 
 --
 -- Índices para tablas volcadas
@@ -814,6 +947,18 @@ ALTER TABLE `documentado`
  ADD PRIMARY KEY (`cod_documento`), ADD KEY `cod_documento` (`cod_documento`);
 
 --
+-- Indices de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+ ADD PRIMARY KEY (`id`), ADD KEY `representante` (`representante`);
+
+--
+-- Indices de la tabla `eps`
+--
+ALTER TABLE `eps`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
@@ -838,10 +983,22 @@ ALTER TABLE `inventario`
  ADD PRIMARY KEY (`id`), ADD KEY `codigo` (`codigo`);
 
 --
+-- Indices de la tabla `Nomina`
+--
+ALTER TABLE `Nomina`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `pasivo`
 --
 ALTER TABLE `pasivo`
  ADD PRIMARY KEY (`Documento`), ADD KEY `Cedula` (`Cedula`);
+
+--
+-- Indices de la tabla `pension`
+--
+ALTER TABLE `pension`
+ ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `productos`
@@ -865,7 +1022,13 @@ ALTER TABLE `proveedo`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
- ADD PRIMARY KEY (`Cedula`);
+ ADD PRIMARY KEY (`Cedula`), ADD KEY `pension` (`pension`,`eps`), ADD KEY `eps` (`eps`);
+
+--
+-- Indices de la tabla `uvt`
+--
+ALTER TABLE `uvt`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -875,7 +1038,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `documentado`
 --
 ALTER TABLE `documentado`
-MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=95;
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
+--
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `eps`
+--
+ALTER TABLE `eps`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
@@ -885,7 +1058,17 @@ MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT de la tabla `Nomina`
+--
+ALTER TABLE `Nomina`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `pension`
+--
+ALTER TABLE `pension`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
@@ -926,6 +1109,13 @@ ADD CONSTRAINT `pasivo_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `usuarios` (`Ce
 ALTER TABLE `producto_proveedor`
 ADD CONSTRAINT `producto_proveedor_ibfk_1` FOREIGN KEY (`cod_proveedor`) REFERENCES `proveedo` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `producto_proveedor_ibfk_2` FOREIGN KEY (`cod_poducto`) REFERENCES `productos` (`Codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`pension`) REFERENCES `pension` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`eps`) REFERENCES `eps` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

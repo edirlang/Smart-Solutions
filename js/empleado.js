@@ -56,7 +56,6 @@ function presionBoton()
 }
 
 function procesar(datos){
-
  if(datos==1){
   alert("Correcto");
   $("<tr>").append(

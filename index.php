@@ -1,7 +1,9 @@
 <?php 
-require_once "modelos.php";
-require_once "controladores.php";
 session_start();
+require_once "modelos.php";
+require_once "modelos/usuarios_model.php";
+require_once "modelos/inventario_model.php";
+require_once "controladores.php";
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -13,6 +15,7 @@ $uri = $_SERVER['REQUEST_URI'];
 		case "/Smart-Solutions/index.php/login":
 		login();
 		break;
+		
 		case "/Smart-Solutions/":
 		header("Location: index.php/login");
 		break;
@@ -142,6 +145,17 @@ $uri = $_SERVER['REQUEST_URI'];
 
 		case "/Smart-Solutions/index.php/consultar_factura":
 		consultar_detalles_action();
+		break;
+
+		case "/Smart-Solutions/index.php/modificar-empresa":
+		empresa_action();
+		break;
+
+		case "/Smart-Solutions/index.php/nomina":
+		nominas_action();
+		break;
+		case "/Smart-Solutions/index.php/nueva_nomina":
+		crear_nomina_action();
 		break;
 	}
 

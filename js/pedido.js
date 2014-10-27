@@ -21,7 +21,6 @@ function producto_selecionado(){
   $.post("consultar_producto",{
     id: $("#codigo").val()
   },function(datos){
-    alert(datos);
     var dato = $.parseJSON(datos);
     $("#iva").val(dato[2]);
     $("#vlr_unidad").val(dato[1]);
@@ -92,7 +91,6 @@ function EnviarBD(){
    
 }
 function procesar(datos){
-  alert(datos);
  if(datos==1){
   alert("Correcto");
   setTimeout("location.href='proveedores'", 50);

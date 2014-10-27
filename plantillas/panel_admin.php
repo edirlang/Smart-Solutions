@@ -3,14 +3,14 @@
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <h3>¿Quienes Somos?</h3>
-      <p class="text-info" align="justify">Smart-Solutions esta conformada por un grupo de 5 ingenieros que buscan solucionar las continuas dudas que se les presentan a los consumidores cuando se deben afrontar a la difícil decisión de adquirir un equipo nuevo, ya que en el mercado actual hay una gran variedad de productos diferentes disponibles en el mercado distribuidos en una amplia gama de precios en los que se encuentran equipos con configuraciones y propósitos diferentes, los cuales no quedan muy claros para los compradores en algunos casos, por ello es necesario prestar una asesoría durante todo el proceso de compra, para que cuando el usuario adquiera su producto este sea el que realmente se acomode a sus necesidades.</p>
+      <p class="text-info" align="justify"><?php echo $empresa['somos']; ?></p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Datos de la empresa</h3>
         <ul>
-          <li class="text-info"><b>Nombre legalizado: </b> Smart Solutions Ltda</li>
-          <li class="text-info"><b>Constitucion: </b>Sociedad </li>
-          <li class="text-info"><b>Regimen: </b> Comun</li>
+          <li class="text-info"><b>Nombre legalizado: </b><?php echo $empresa['nombre']; ?></li>
+          <li class="text-info"><b>Constitucion: </b><?php echo $empresa['tipo_empresa']; ?></li>
+          <li class="text-info"><b>Regimen: </b><?php echo $empresa['regimen']; ?></li>
           <li class="text-info"><b>Representante legal: </b> Edixon Fabian Hernandez Carrillo</li>
           <li class="text-info"><b>Tarifa de IVA: </b> 16%</li>
         </ul>
@@ -19,16 +19,21 @@
   <div class="row">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Objeto Social</h3>
-      <p class="text-info" align="justify">4651 - Comercio al por mayor de ordenadores, equipos periféricos y programas informáticos <br>
-      4741 - Comercio al por menor de ordenadores, equipos periféricos y programas informáticos en establecimientos especializados</p>
+      <p class="text-info" align="justify">
+        <?php echo $empresa['objeto']; ?>
+      </p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Mision</h3>
-      <p class="text-info" align="justify">El propósito de la comercializadora Smart-Solutions es el de proveer computadores de excelente calidad y rendimiento a los diferentes tipos de consumidores presentes en el mercado a través de una asesoría personalizada, garantizándole al consumidor el equipo mas adecuado para suplir sus necesidades, ya sea para el uso casual, estudio, trabajo, entretenimiento o cualquier otra.</p>
+      <p class="text-info" align="justify">
+        <?php echo $empresa['mison']; ?>
+      </p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Vision</h3>
-      <p class="text-info" align="justify">El objetivo de Smart-Solutions es el de prestar un servicio de excelente calidad a todos sus consumidores, para poder expandirse en toda la región de Cundinamarca y posteriormente por todo el país, no solo como comercializadora de computadores portátiles sino también buscando ampliar el portafolio de servicios e implementando el servicio técnico a sus consumidores.</p>
+      <p class="text-info" align="justify">
+        <?php echo $empresa['vison']; ?>
+      </p>
     </div>
   </div>
 </div>

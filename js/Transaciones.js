@@ -59,7 +59,6 @@ function VaciarFormulario(){
 }
 
 function EnviarBD(){
-
   var jdatos = JSON.stringify(transacion); 
   $.post("guardar_transaiones",{
     jdatos: jdatos

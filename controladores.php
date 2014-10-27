@@ -10,17 +10,40 @@ function tipo_usuario($usuario){
 
 function login(){
 	if($_SERVER['REQUEST_METHOD'] != 'POST'){
-		comprovar_usuario();
 		require "plantillas/login.php";
 	}else{
-		comprovar_usuario();
+		$datos = json_decode($_POST['jdatos'], true);
+
+		$usuario = consultar_empleado($datos[0]);
+		if(isset($usuario['Cedula'])){
+			$contrasena = crypt($datos[1],"sha542");
+			$contrasena = $contrasena.$usuario['salt'];
+			if ($usuario['Contrasena']==$contrasena) {
+				$_SESSION['usuario']=$usuario['Cedula'];
+				$_SESSION['rol'] = $usuario['Rol'];
+				$_SESSION['nombre']=$usuario['Nombre'].' '.$usuario['Apellido'];
+				echo $_SESSION['rol'];
+			}else{
+				echo "Login Incorecto Usuario o Contraseña errornea";
+			}
+		}else{
+			echo " No registrado pongase en contacto con el administrador";
+		}
 	}
+}
+
+function cerrar_secion(){
+	session_unset();
+	session_destroy();
+	header("Location: login");
 }
 
 function empleados_action(){
 	$rol = "admin";
 	if(tipo_usuario($rol)){
-		$empleados = empleados();
+		$empleados = usuarios();
+		$epses = eps();
+		$pensiones = pension();
 		require "plantillas/empleados.php";
 	}else{
 		header("location: login");
@@ -36,20 +59,45 @@ function consultar_empleado_action(){
 }
 
 function actualizar_empleado_action(){
-	actualizar_empleado();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$cedula= $_POST['cedula'];
+		$nombre = $_POST['nombre'];
+		$apellido = $_POST['apellido'];
+		$telefono = $_POST['telefono'];
+		$cargo = $_POST['cargo'];
+	
+		actualizar_usuario($cedula,$nombre,$apellido,$telefono,$cargo);
+	}
 }
 
 function crear_empleado_action(){
-	crear_empleado();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$cedula= $_POST['Cedula'];
+		$nombre = $_POST['Nombre'];
+		$apellido = $_POST['Apellido'];
+		$telefono = $_POST['Telefono'];
+		$contrasena = $_POST['Contrasena'];
+		$rol = $_POST['Rol'];
+		$salario = 1;
+		$pension = 1;
+		$eps = 1;
+
+		$estado = crear_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$rol,$contrasena);
+		echo 1;
+	}
 }
 
 function eliminar_empleado_action(){
-	eliminar_empleado();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$cedula = $_POST['id'];
+		return eliminar_usuario($cedula);
+	}
 }
 
 function abrir_panel_admin(){
 	$rol = "admin";
 	if(tipo_usuario($rol)){
+		$empresa = Empresa();
 		require "plantillas/panel_admin.php";
 	}else{
 		header("location: login");
@@ -159,8 +207,11 @@ function prodcuto_nuevo_action(){
 function consultar_inventario_action(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$codigo = $_POST['id'];
-		$producto = inventario_consultar($codigo);
-		echo json_encode($producto);
+		$producto = inventario_consultar3($codigo);
+		$producto2 = consultar_producto2($codigo);
+
+		$respuesta = [$producto2['Codigo'],$producto['vlr_unidad'],$producto2['iva']];
+		echo json_encode($respuesta);
 	}
 }
 
@@ -237,4 +288,32 @@ function consultar_detalles_action(){
 	}
 }
 
+function empresa_action(){
+	$empresa = Empresa();
+	$uvts = uvt();
+	$representante = consultar_empleado($empresa['representante']);
+	require "plantillas/empresa.php";
+}
+
+function nominas_action(){
+	$nominas = nomina();
+	require "plantillas/nominas.php";	
+}
+
+function crear_nomina_action(){
+	$empleados = usuarios();
+	if(isset($_POST['empleado'])){
+		$empleado = $_POST['empleado'];
+		$dias = $_POST['dias'];
+		$extras = $_POST['extras'];
+		$comision = $_POST['comision'];
+		$bonificacion = $_POST['bonificacion'];
+		$libranzas = $_POST['libranzas'];
+		$fondo = $_POST['fondo'];
+		$embargo = $_POST['embargo'];
+		generar_nomina($empleado,$dias,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo);
+		header("Location: nomina");
+	}
+	require "plantillas/nueva_nomina.php";
+}
 ?>

@@ -6,6 +6,8 @@
       <li><a href="empleados"><span class="glyphicon glyphicon-briefcase"></span>  Empleados</a></li>
       <li><a href="proveedores"><span class="glyphicon glyphicon-folder-open"></span>   Proveedores</a></li>
       <li><a href="facturas"><span class="glyphicon glyphicon-folder-open"></span>   Facturas</a></li>
+      <li><a href="modificar-empresa"><span class="glyphicon glyphicon-folder-open"></span>   Editar-Empresa</a></li>
+      <li><a href="nomina"><span class="glyphicon glyphicon-folder-open"></span>   Nomina</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span>
            Estados Financieros<b class="caret"></b>

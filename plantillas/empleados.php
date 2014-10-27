@@ -4,6 +4,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">Empleados</h3>
     </div>
+    <a class="btn btn-danger" href="nueva_nomina">Nomina</a>
   <div class="panel-body">
     <table class="table table-condensed table-hover">
       <thead>
@@ -13,6 +14,10 @@
           <th>Apellido</th>
           <th>Telefono</th>
           <th>Cargo</th>
+          <th>Salario</th>
+          <th>Salud</th>
+          <th>Pension</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -25,6 +30,9 @@
             <td id="-2"><?php echo $row['Apellido']; ?></td>
             <td id="-3"><?php echo $row['Telefono']; ?></td>
             <td id="-4"><?php echo $row['Rol']; ?></td>
+            <td id="-4"><?php echo $row['salario_basico']; ?></td>
+            <td id="-4"><?php echo $row['eps']; ?></td>
+            <td id="-4"><?php echo $row['pension']; ?></td>
             <td>
               <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
               <script language="JavaScript" type="text/javascript">
@@ -41,8 +49,11 @@
                 document.getElementById('apellido').value =datos['Apellido'];
                 document.getElementById('telefono').value =datos['Telefono'];
                 document.getElementById('cargo').value =datos['Rol'];
+                document.getElementById('salario').value =datos['salario_basico'];
+                document.getElementById('salud').value =datos['eps'];
+                document.getElementById('pension').value =datos['pension']; 
               }
-              )
+              ) 
             }
             );
             </script>
@@ -88,6 +99,23 @@
       <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="primer apellido">
       <label for="">Telefono</label>
       <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
+      <label for="">Salario</label>
+      <input type="text" class="form-control" id="Salario" name="Salario" placeholder="Salario">
+      
+      <label for="">Salud</label>
+      <select  class="form-control" id="Salud" name="Salud">
+        <?php foreach ($epses as $eps): ?>
+          <option value="<?php echo $eps[ID] ?>"><?php echo $eps['Nombre'] ?></option>
+        <?php endforeach ?>
+      </select>
+      
+      <label for="">Pension</label>
+      <select  class="form-control" id="Pension" name="Pension">
+        <?php foreach ($pensiones as $pension): ?>
+          <option value="<?php echo $pension[ID] ?>"><?php echo $pension['nombre'] ?></option>
+        <?php endforeach ?>
+      </select>
+      
       <label for="">Cargo</label>
       <select  class="form-control" id="rol" name="rol">
         <option value="admin">Administrador</option>
@@ -127,6 +155,23 @@
 
           <label for="">Telefono</label>
           <input type="text" class="form-control" name="telefono" id="telefono">
+
+          <label for="">Salario</label>
+          <input type="text" class="form-control" name="salario" id="salario">
+
+          <label for="">Salud</label>
+          <select  class="form-control" id="salud" name="salud">
+            <?php foreach ($epses as $eps): ?>
+              <option value="<?php echo $eps[ID] ?>"><?php echo $eps['Nombre'] ?></option>
+            <?php endforeach ?>
+          </select>
+          
+          <label for="">Pension</label>
+          <select  class="form-control" id="pension" name="pension">
+            <?php foreach ($pensiones as $pension): ?>
+              <option value="<?php echo $pension[ID] ?>"><?php echo $pension['nombre'] ?></option>
+            <?php endforeach ?>
+          </select>
 
           <label for="">Cargo</label>
           <select  class="form-control" id="cargo" name="rol">
