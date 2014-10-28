@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<div class="<?php echo $tamano; ?>">
 
   <div class="panel panel-info">
     <div class="panel-heading">
@@ -44,6 +44,7 @@
   <input type="submit" id="env">
 </form>
 
+<?php if($_SESSION['rol']=='admin'){ ?>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
   <div class="panel panel-warning">
     <div class="panel-heading">
@@ -71,7 +72,7 @@
     </div>
   </div>
 </div>
-</div>
-</div>
+<?php } ?>
+
 <?php $contenido = ob_get_clean(); ?>
 <?php include "plantilla_base.php"; ?>

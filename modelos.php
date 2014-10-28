@@ -1039,7 +1039,7 @@ function nomina(){
 	return $nominas;
 }
 
-function generar_nomina($cedula,$dias,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo){
+function generar_nomina($cedula,$dias,$fecha,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo){
 	$empleado = consultar_empleado($cedula);
 	$empresa = Empresa();
 	$uvts = uvt();
@@ -1083,7 +1083,7 @@ function generar_nomina($cedula,$dias,$extras,$comision,$bonificacion,$libranzas
 	$uvt = $uvt_valor*$empresa['uvt'];
 	$total_deducciones = ($salud+$pension+$fondo_emple+$libranzas+$embargo+$uvt);
 	$total = $total_devengado - $total_deducciones;
-	$result = mysqli_query($conexion,"INSERT INTO Nomina values ('','$cedula','$dias','$basico','$vlr_extras','$comision','$bonificacion','$trasporte','$alimentacion','$salud','$pension','$fondo_emple','$libranzas','$embargo','$uvt','$total')");
+	$result = mysqli_query($conexion,"INSERT INTO Nomina values ('','$fecha','$cedula','$dias','$basico','$vlr_extras','$comision','$bonificacion','$trasporte','$alimentacion','$salud','$pension','$fondo_emple','$libranzas','$embargo','$uvt','$total')");
 	
 	echo mysqli_error($conexion);
 	cerrar_conexion_db($conexion);	

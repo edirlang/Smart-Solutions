@@ -168,9 +168,12 @@ function eliminar_cliente_action(){
 
 //Proveedores
 function proveedores_action(){
-	$rol = "admin";
-	if(tipo_usuario($rol)){
+	if(tipo_usuario('admin') || tipo_usuario('cajero')){
 		$proveedores = proveedores();
+		$tamano = "col-xs-12 col-sm-12 col-md-12 col-lg-12";
+		if($_SESSION['rol']=='admin'){
+			$tamano = "col-xs-12 col-sm-12 col-md-8 col-lg-8";
+		}
 		require "plantillas/proveedores.php";
 	}else{
 		header("location: login");
@@ -305,13 +308,14 @@ function crear_nomina_action(){
 	if(isset($_POST['empleado'])){
 		$empleado = $_POST['empleado'];
 		$dias = $_POST['dias'];
+		$fecha = $_POST['fecha'];
 		$extras = $_POST['extras'];
 		$comision = $_POST['comision'];
 		$bonificacion = $_POST['bonificacion'];
 		$libranzas = $_POST['libranzas'];
 		$fondo = $_POST['fondo'];
 		$embargo = $_POST['embargo'];
-		generar_nomina($empleado,$dias,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo);
+		generar_nomina($empleado,$dias,$fecha,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo);
 		header("Location: nomina");
 	}
 	require "plantillas/nueva_nomina.php";

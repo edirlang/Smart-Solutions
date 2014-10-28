@@ -11,6 +11,9 @@
       <?php endforeach ?>
     </select>
     
+    <label for="">Fecha</label>
+    <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Dias Trabajados">
+
     <label for="">Dias Trabajados</label>
     <input type="number" class="form-control" id="dias" name="dias" placeholder="Dias Trabajados">
 

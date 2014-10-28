@@ -3,6 +3,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="factura"><span class="glyphicon glyphicon-shopping-cart"></span> Factura</a></li>
 				<li><a href="clientes"><span class="glyphicon glyphicon-list"></span> Clientes</a></li>
+				<li><a href="proveedores"><span class="glyphicon glyphicon-list"></span> Pedidos</a></li>
 				<li><a href="catalogo"><span class="glyphicon glyphicon-book"></span> Catalogo</a></li>
 			</ul>
 
