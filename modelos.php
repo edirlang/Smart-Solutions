@@ -445,6 +445,7 @@ function consultar_activos(){
 //CRUD Pasivo
 function crear_pasivo($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
 	mysqli_query($conexion,"INSERT INTO pasivo VALUES ('".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
+	echo mysqli_error($conexion);
 }
 
 function pasivos_documento($documento){
@@ -1047,7 +1048,11 @@ function generar_nomina($cedula,$dias,$fecha,$extras,$comision,$bonificacion,$li
 	$conexion = conectar_base_datos();
 	
 	$basico = ($empleado['salario_basico']/30)*$dias;
-	$vlr_extras = ((($empleado['salario_basico']/240)*1.25)/8)*$extras;
+	
+	$hora_base = $empleado['salario_basico']/240;
+	
+	$vlr_extras = (($hora_base*0.25)+$hora_base)*$extras;
+	
 	$trasporte = 0;
 	if($empleado['salario_basico'] < (2*$empresa['salario_minimo'])){
 		$trasporte = $empresa['trasporte'];
@@ -1083,8 +1088,160 @@ function generar_nomina($cedula,$dias,$fecha,$extras,$comision,$bonificacion,$li
 	$uvt = $uvt_valor*$empresa['uvt'];
 	$total_deducciones = ($salud+$pension+$fondo_emple+$libranzas+$embargo+$uvt);
 	$total = $total_devengado - $total_deducciones;
-	$result = mysqli_query($conexion,"INSERT INTO Nomina values ('','$fecha','$cedula','$dias','$basico','$vlr_extras','$comision','$bonificacion','$trasporte','$alimentacion','$salud','$pension','$fondo_emple','$libranzas','$embargo','$uvt','$total')");
+	$result = mysqli_query($conexion,"INSERT INTO Nomina values ('','$fecha','$cedula','$dias','$basico','$vlr_extras','$comision','$bonificacion','$trasporte','$alimentacion','$salud','$pension','$fondo_emple','$libranzas','$embargo','$uvt','$total',true)");
 	
 	echo mysqli_error($conexion);
-	cerrar_conexion_db($conexion);	
+	cerrar_conexion_db($conexion);
+
+	$salud_e = $total_devengado_sin*0.085;
+	$pension_e = $total_devengado_sin*0.125;	
+	$arl = $total_devengado_sin*0.01;
+
+	$vacaciones = $total_devengado * 0.0416;
+	$prima = $total_devengado * 0.0833;
+	$cesantias = $total_devengado * 0.0833;
+	$int_cesantias = $cesantias * 0.01;
+
+	$icbf = $total_devengado * 0.03;
+	$ccf = $total_devengado * 0.04;
+	$sena = $total_devengado * 0.02;
+
+	$apropiacion = guardar_apropiaciones(consultar_ultima_nomina(),$salud_e,$pension_e,$arl,$vacaciones,$prima,$cesantias,$int_cesantias,$icbf,$ccf,$sena);	
+	generar_Contabilidad_nomina(consultar_ultima_nomina(),$fecha,$basico,$vlr_extras,$bonificacion,$trasporte,$alimentacion,$salud,$pension,$fondo_emple,$libranzas,$embargo,$uvt,$apropiacion,$total);
+}
+
+function guardar_apropiaciones($nomina,$salud,$pension,$arl,$vacaciones,$prima,$cesantias,$int_cesantias,$icbf,$ccf,$sena){
+	$conexion = conectar_base_datos();
+	
+	$result = mysqli_query($conexion,"INSERT INTO apropiaciones values ('$nomina','$salud','$pension','$arl','$vacaciones','$prima','$cesantias','$int_cesantias','$icbf',',$ccf','$sena')");
+	
+	echo mysqli_error($conexion);
+	cerrar_conexion_db($conexion);
+	$apropiacione = [$salud,$pension,$arl,$vacaciones,$prima,$cesantias,$int_cesantias,$icbf,$ccf,$sena];
+	return $apropiacione;
+}
+
+function generar_Contabilidad_nomina($nomina,$fecha,$basico,$vlr_extras,$bonificacion,$trasporte,$alimentacion,$salud,$pension,$fondo_emple,$libranzas,$embargo,$uvt,$apropiacion,$total){
+	
+	$conexion = conectar_base_datos();
+	crear_documento("Nomina ".$nomina,$conexion);
+	$documento = consultar_ultimo_documento($conexion);
+
+	//Devengado
+	crear_gasto($documento,$_SESSION['usuario'],'510506',$fecha,'D','Sueldos',$basico,$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510515',$fecha,'D','Horas extra',$vlr_extras,$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510548',$fecha,'D','Bonificaciones',$bonificacion,$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510527',$fecha,'D','Auxilio de trasporte',$trasporte,$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510545',$fecha,'D','Auxilio de alimentacion',$alimentacion,$conexion);
+	
+	//Deduciones
+	crear_pasivo($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$salud,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$pension,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237040',$fecha,'C','Cooperativas',$fondo_emple,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237025',$fecha,'C','Embargos Judiciales',$embargo,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237030',$fecha,'C','Libranzas',$libranzas,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'236505',$fecha,'C','Retencion Salarios y pagos laborales',$uvt,$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'2550',$fecha,'C','Obligaciones Laborales',$total,$conexion);
+	
+	//Apropiaciones
+	crear_pasivo($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$apropiacion[0],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510569',$fecha,'D','Aportes a Salud',$apropiacion[0],$conexion);
+
+	crear_pasivo($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510559',$fecha,'D','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'237006',$fecha,'C','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510568',$fecha,'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'252021',$fecha,'C','Prima',$apropiacion[3],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510536',$fecha,'D','Prima de servicios',$apropiacion[3],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'252522',$fecha,'C','Vacaciones',$apropiacion[4],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510539',$fecha,'D','Vacaciones',$apropiacion[4],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'251023',$fecha,'C','Cesantías',$apropiacion[5],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510530',$fecha,'D','Cesantías',$apropiacion[5],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'251520',$fecha,'C','Intereces Sobre Cesantías',$apropiacion[6],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510533',$fecha,'D','Intereces Sobre cesantías',$apropiacion[6],$conexion);
+	
+	crear_pasivo($documento,$_SESSION['usuario'],'237010',$fecha,'C','Aportes al ICBF, SENA y cajas de compensación',($apropiacion[7]+$apropiacion[8]+$apropiacion[9]),$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510578',$fecha,'D','SENA',$apropiacion[7],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510575',$fecha,'D','Aportes a ICBF',$apropiacion[8],$conexion);
+	crear_gasto($documento,$_SESSION['usuario'],'510572',$fecha,'D','Aportes cajas de compensación familia',$apropiacion[9],$conexion);
+	
+	echo mysqli_error($conexion);
+	cerrar_conexion_db($conexion);
+}
+
+function liquidar_nomina($id,$forma_pago){
+	$nomina = consultar_nomina_id($id);
+	$apropiacion = consultar_apropiacion_nomina($id);
+
+	$conexion = conectar_base_datos();
+	crear_documento("Liquidar-nomina ".$id,$conexion);
+	$documento = consultar_ultimo_documento($conexion);
+
+	crear_pasivo($documento,$_SESSION['usuario'],'2550',$fecha,'D','Sueldos',$nomina['basico'],$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237005',$fecha,'D','Aportes a Salud',($nomina['salud']+$apropiacion['salud']),$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'238030',$fecha,'D','Fondos de cesantías y/o pensiones',($nomina['pension']+$apropiacion['pension']),$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237040',$fecha,'D','Cooperativas',$nomina['fondo_emple'],$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237025',$fecha,'D','Embargos Judiciales',$nomina['envargos'],$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237030',$fecha,'D','Libranzas',$nomina['libranzas'],$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'236505',$fecha,'D','Retencion Salarios y pagos laborales',$nomina['retencion'],$conexion);
+	crear_pasivo($documento,$_SESSION['usuario'],'237006',$fecha,'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion['arl'],$conexion);
+
+	$codigo_pago = "0";
+	if($forma_pago == "contado"){
+		$codigo_pago = ["1105","CAJA"];
+	}else{
+		$codigo_pago = ["1110","Banco"];
+	}
+
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$nomina['basico'],$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],($nomina['salud']+$apropiacion['salud']),$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],($nomina['pension']+$apropiacion['pension']),$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$nomina['fondo_emple'],$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$nomina['envargos'],$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$nomina['libranzas'],$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$nomina['retencion'],$conexion);
+	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],$fecha,'C',$codigo_pago[1],$apropiacion['arl'],$conexion);
+	
+	$result = mysqli_query($conexion,"UPDATE Nomina SET estado=false WHERE id='$id'");
+	echo mysqli_error($conexion);
+	cerrar_conexion_db($conexion);
+
+}
+
+function consultar_ultima_nomina(){
+	$conexion = conectar_base_datos();
+	$numero_nomina = array();
+	$result = mysqli_query($conexion,"SELECT * FROM Nomina order by id desc limit 1");
+	while ($row = mysqli_fetch_assoc($result)) {
+		$numero_nomina = $row['id'];
+	}
+	cerrar_conexion_db($conexion);
+	return $numero_nomina;	
+}
+
+function consultar_nomina_id($id){
+	$conexion = conectar_base_datos();
+	$nomina = array();
+	$result = mysqli_query($conexion,"SELECT * FROM Nomina where id='$id' limit 1");
+	while ($row = mysqli_fetch_assoc($result)) {
+		$nomina = $row;
+	}
+	cerrar_conexion_db($conexion);
+	return $nomina;	
+}
+
+function consultar_apropiacion_nomina($id){
+	$conexion = conectar_base_datos();
+	$apropiacion = array();
+	$result = mysqli_query($conexion,"SELECT * FROM apropiacion where nomina='$id' limit 1");
+	while ($row = mysqli_fetch_assoc($result)) {
+		$apropiacion = $row;
+	}
+	cerrar_conexion_db($conexion);
+	return $apropiacion;	
 }

@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">Cuentas Contables</h3>
+      <h3 class="panel-title">Libro Contable</h3>
     </div>
     <div class="panel-body">
       <div class="panel panel-success">
@@ -64,6 +64,8 @@
             <td><h3><?php echo $total_d; ?></h3></td>
             <td><h3>Total Credito</h3></td>
             <td><h3><?php echo $total_c; ?></h3></td>
+            <td><h3>Estado de Cuenta</h3></td>
+            <td><h3><?php echo ($total_d-$total_c); ?></h3></td>
           </tr>
         </tbody>
       </table>

@@ -41,12 +41,12 @@ function consultar(datos){
 				).hide().appendTo('#filas').fadeIn('slow');
 		});
 	$("<tr>").append(
-				$('<td>', { text: 'Total debito'
-				}), $('<td>', { text: '$'
-				}), $('<td>', { text: total_D 
-				}), $('<td>', { text: 'Total Credito'  
-				}), $('<td>', { text: '$'  
-				}), $('<td>', { text: total_C  
+				$('<td>', { text: 'Total debito $'
+				}), $('<td>', { text: total_D
+				}), $('<td>', { text: 'Total Credito $' 
+				}), $('<td>', { text: total_C   
+				}), $('<td>', { text: 'Estado de Cuenta'  
+				}), $('<td>', { text: (total_D*1-total_C*1)
 				}), $('<td>', { text: ''  
 				})
 				).hide().appendTo('#filas').fadeIn('slow');

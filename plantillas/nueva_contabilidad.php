@@ -66,7 +66,7 @@
         </tbody>
       </table>
       <button class="btn btn-success" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-      <a type="button" class="btn btn-danger" href="Transacion-manual.php"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+      <a type="button" class="btn btn-danger" href="Transacion-manual"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 
     </div>
   </div>

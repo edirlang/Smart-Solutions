@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-10-2014 a las 00:53:03
+-- Tiempo de generación: 02-11-2014 a las 06:13:36
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `activo1` (
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -162,6 +162,37 @@ INSERT INTO `activo1` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `apropiaciones`
+--
+
+CREATE TABLE IF NOT EXISTS `apropiaciones` (
+  `nomina` int(11) NOT NULL,
+  `salud` int(11) NOT NULL,
+  `pension` int(11) NOT NULL,
+  `arl` int(11) NOT NULL,
+  `vacaciones` int(11) NOT NULL,
+  `prima` int(11) NOT NULL,
+  `cesantias` int(11) NOT NULL,
+  `int_cesantias` int(11) NOT NULL,
+  `icbf` int(11) NOT NULL,
+  `ccf` int(11) NOT NULL,
+  `sena` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `apropiaciones`
+--
+
+INSERT INTO `apropiaciones` (`nomina`, `salud`, `pension`, `arl`, `vacaciones`, `prima`, `cesantias`, `int_cesantias`, `icbf`, `ccf`, `sena`) VALUES
+(1, 620500, 912500, 73000, 303680, 608090, 608090, 73000, 219000, 0, 146000),
+(2, 633427, 931510, 74521, 310007, 620759, 620759, 74521, 223563, 0, 149042),
+(3, 620500, 912500, 73000, 303680, 608090, 608090, 73000, 219000, 0, 146000),
+(4, 212500, 312500, 25000, 104000, 208250, 208250, 2083, 75000, 0, 50000),
+(5, 620500, 912500, 73000, 303680, 608090, 608090, 6081, 219000, 0, 146000);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `clientes`
 --
 
@@ -179,8 +210,10 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 INSERT INTO `clientes` (`Cedula`, `Nombre`, `Apellido`, `Telefono`) VALUES
 ('1', 'jkj asad', 'jkj', 'jkj'),
 ('1069745533', 'Javier Andres', 'Valencia muñoz', '3153232553'),
-('1069751356', 'Fernando', 'Ricaurte', '3204367170'),
-('1069753434', 'Edixon', 'Hernandez', '3134765649');
+('1069750715', 'Cristian', 'Guerrero', '3144462165'),
+('1069753434', 'Edixon', 'Hernandez', '3134765649'),
+('Cristian ', 'doble cacorron', 'barbosa', '314334'),
+('jaja', 'jaja', 'jaja', '1');
 
 -- --------------------------------------------------------
 
@@ -190,7 +223,7 @@ INSERT INTO `clientes` (`Cedula`, `Nombre`, `Apellido`, `Telefono`) VALUES
 
 CREATE TABLE IF NOT EXISTS `codigotransacion` (
   `Codigo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -212,9 +245,37 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 ('14', 'Inventario', 'activo'),
 ('21', 'Obligaciones Financi', 'pasivo'),
 ('2205', 'Proveedor', 'pasivo'),
+('236505', 'Retencion Salarios y pagos laborales', 'pasivo'),
+('237005', 'Aportes a Salud', 'pasivo'),
+('237006', 'Aportes a administradoras de riesgos profesionales, ARP', 'pasivo'),
+('237010', 'Aportes al ICBF, SENA y cajas de compensación', 'pasivo'),
+('237025', 'Embargos Judiciales', 'pasivo'),
+('237030', 'Libranzas', 'pasivo'),
+('237040', 'Cooperativas', 'pasivo'),
+('238030', 'Fondos de cesantías y/o pensiones', 'pasivo'),
+('251023', 'Cesantias', 'pasivo'),
+('251520', 'Interés sobre Cesantias', 'pasivo'),
+('252021', 'Prima', 'pasivo'),
+('252522', 'Vacaciones', 'pasivo'),
+('2550', 'Obligación Laboral', 'pasivo'),
 ('2804', 'IVA', 'pasivo'),
 ('31', 'Capital Social', 'activo'),
 ('4135', 'Ventas', 'ingreso'),
+('510506', 'Sueldos', 'gasto'),
+('510515', 'Horas Extra', 'gasto'),
+('510527', 'Auxilio de trasporte', 'gasto'),
+('510530', 'Cesantias', 'gasto'),
+('510533', 'Intereses sobre cesantías', 'gasto'),
+('510536', 'Prima de servicios', 'gasto'),
+('510539', 'Vacaciones', 'gasto'),
+('510545', 'Auxilio de alimentac', 'gasto'),
+('510548', 'Bonificaciones', 'gasto'),
+('510559', 'Pensiones de jubilación', 'gasto'),
+('510568', 'Aportes a administradoras de riesgos profesionales, AR', 'pasivo'),
+('510569', 'Aportes a entidades promotoras de salud, E', 'gasto'),
+('510572', 'Aportes cajas de compensación familia', 'gasto'),
+('510575', 'Aportes ICBF', 'gasto'),
+('510578', 'SENA', 'gasto'),
 ('613554', 'Costo de venta', 'costo');
 
 -- --------------------------------------------------------
@@ -229,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `costos` (
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -373,8 +434,8 @@ INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, 
 
 CREATE TABLE IF NOT EXISTS `documentado` (
 `cod_documento` int(11) NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=97 ;
+  `descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=110 ;
 
 --
 -- Volcado de datos para la tabla `documentado`
@@ -474,7 +535,20 @@ INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
 (93, 'Compra'),
 (94, 'Transacion'),
 (95, 'Compra'),
-(96, 'Compra');
+(96, 'Compra'),
+(97, 'Nomina 1'),
+(98, 'Nomina 2'),
+(99, 'Nomina 3'),
+(100, 'Nomina 4'),
+(101, 'Nomina 5'),
+(102, 'Nomina 6'),
+(103, 'Nomina 7'),
+(104, 'Nomina 8'),
+(105, 'Nomina 1'),
+(106, 'Nomina 2'),
+(107, 'Nomina 3'),
+(108, 'Nomina 4'),
+(109, 'Nomina 5');
 
 -- --------------------------------------------------------
 
@@ -603,9 +677,90 @@ CREATE TABLE IF NOT EXISTS `gasto` (
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `gasto`
+--
+
+INSERT INTO `gasto` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(105, '1', '510506', '2014-11-01', 'D', 'Sueldos', 7300000),
+(105, '1', '510515', '2014-11-01', 'D', 'Horas extra', 0),
+(105, '1', '510548', '2014-11-01', 'D', 'Bonificaciones', 0),
+(105, '1', '510527', '2014-11-01', 'D', 'Auxilio de trasporte', 0),
+(105, '1', '510545', '2014-11-01', 'D', 'Auxilio de alimentacion', 0),
+(105, '1', '510569', '2014-11-01', 'C', 'Aportes a Salud', 620500),
+(105, '1', '510559', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 912500),
+(105, '1', '510568', '2014-11-01', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(105, '1', '510536', '2014-11-01', 'C', 'Prima de servicios', 303680),
+(105, '1', '510539', '2014-11-01', 'C', 'Vacaciones', 608090),
+(105, '1', '510530', '2014-11-01', 'C', 'Cesantías', 608090),
+(105, '1', '510533', '2014-11-01', 'C', 'Intereces Sobre cesantías', 73000),
+(105, '1', '510578', '2014-11-01', 'C', 'SENA', 219000),
+(105, '1', '510575', '2014-11-01', 'C', 'Aportes a ICBF', 292000),
+(105, '1', '510572', '2014-11-01', 'C', 'Aportes cajas de compensación familia', 146000),
+(106, '1', '510506', '2014-11-01', 'D', 'Sueldos', 7300000),
+(106, '1', '510515', '2014-11-01', 'D', 'Horas extra', 152083),
+(106, '1', '510548', '2014-11-01', 'D', 'Bonificaciones', 0),
+(106, '1', '510527', '2014-11-01', 'D', 'Auxilio de trasporte', 0),
+(106, '1', '510545', '2014-11-01', 'D', 'Auxilio de alimentacion', 0),
+(106, '1', '510569', '2014-11-01', 'C', 'Aportes a Salud', 633427),
+(106, '1', '510559', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 931510),
+(106, '1', '510568', '2014-11-01', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 74521),
+(106, '1', '510536', '2014-11-01', 'C', 'Prima de servicios', 310007),
+(106, '1', '510539', '2014-11-01', 'C', 'Vacaciones', 620759),
+(106, '1', '510530', '2014-11-01', 'C', 'Cesantías', 620759),
+(106, '1', '510533', '2014-11-01', 'C', 'Intereces Sobre cesantías', 74521),
+(106, '1', '510578', '2014-11-01', 'C', 'SENA', 223563),
+(106, '1', '510575', '2014-11-01', 'C', 'Aportes a ICBF', 298083),
+(106, '1', '510572', '2014-11-01', 'C', 'Aportes cajas de compensación familia', 149042),
+(107, '1', '510506', '2014-11-01', 'D', 'Sueldos', 7300000),
+(107, '1', '510515', '2014-11-01', 'D', 'Horas extra', 0),
+(107, '1', '510548', '2014-11-01', 'D', 'Bonificaciones', 0),
+(107, '1', '510527', '2014-11-01', 'D', 'Auxilio de trasporte', 0),
+(107, '1', '510545', '2014-11-01', 'D', 'Auxilio de alimentacion', 0),
+(107, '1', '510569', '2014-11-01', 'C', 'Aportes a Salud', 620500),
+(107, '1', '510559', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 912500),
+(107, '1', '510568', '2014-11-01', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(107, '1', '510536', '2014-11-01', 'C', 'Prima de servicios', 303680),
+(107, '1', '510539', '2014-11-01', 'C', 'Vacaciones', 608090),
+(107, '1', '510530', '2014-11-01', 'C', 'Cesantías', 608090),
+(107, '1', '510533', '2014-11-01', 'C', 'Intereces Sobre cesantías', 73000),
+(107, '1', '510578', '2014-11-01', 'C', 'SENA', 219000),
+(107, '1', '510575', '2014-11-01', 'C', 'Aportes a ICBF', 292000),
+(107, '1', '510572', '2014-11-01', 'C', 'Aportes cajas de compensación familia', 146000),
+(108, '1', '510506', '2014-11-01', 'D', 'Sueldos', 2500000),
+(108, '1', '510515', '2014-11-01', 'D', 'Horas extra', 0),
+(108, '1', '510548', '2014-11-01', 'D', 'Bonificaciones', 0),
+(108, '1', '510527', '2014-11-01', 'D', 'Auxilio de trasporte', 0),
+(108, '1', '510545', '2014-11-01', 'D', 'Auxilio de alimentacion', 0),
+(108, '1', '510569', '2014-11-01', 'D', 'Aportes a Salud', 212500),
+(108, '1', '510559', '2014-11-01', 'D', 'Fondos de cesantías y/o pensiones', 312500),
+(108, '1', '510568', '2014-11-01', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 25000),
+(108, '1', '510536', '2014-11-01', 'D', 'Prima de servicios', 104000),
+(108, '1', '510539', '2014-11-01', 'D', 'Vacaciones', 208250),
+(108, '1', '510530', '2014-11-01', 'D', 'Cesantías', 208250),
+(108, '1', '510533', '2014-11-01', 'D', 'Intereces Sobre cesantías', 2083),
+(108, '1', '510578', '2014-11-01', 'D', 'SENA', 75000),
+(108, '1', '510575', '2014-11-01', 'D', 'Aportes a ICBF', 100000),
+(108, '1', '510572', '2014-11-01', 'D', 'Aportes cajas de compensación familia', 50000),
+(109, '1', '510506', '2014-11-04', 'D', 'Sueldos', 7300000),
+(109, '1', '510515', '2014-11-04', 'D', 'Horas extra', 0),
+(109, '1', '510548', '2014-11-04', 'D', 'Bonificaciones', 0),
+(109, '1', '510527', '2014-11-04', 'D', 'Auxilio de trasporte', 0),
+(109, '1', '510545', '2014-11-04', 'D', 'Auxilio de alimentacion', 0),
+(109, '1', '510569', '2014-11-04', 'D', 'Aportes a Salud', 620500),
+(109, '1', '510559', '2014-11-04', 'D', 'Fondos de cesantías y/o pensiones', 912500),
+(109, '1', '510568', '2014-11-04', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(109, '1', '510536', '2014-11-04', 'D', 'Prima de servicios', 303680),
+(109, '1', '510539', '2014-11-04', 'D', 'Vacaciones', 608090),
+(109, '1', '510530', '2014-11-04', 'D', 'Cesantías', 608090),
+(109, '1', '510533', '2014-11-04', 'D', 'Intereces Sobre cesantías', 6081),
+(109, '1', '510578', '2014-11-04', 'D', 'SENA', 219000),
+(109, '1', '510575', '2014-11-04', 'D', 'Aportes a ICBF', 292000),
+(109, '1', '510572', '2014-11-04', 'D', 'Aportes cajas de compensación familia', 146000);
 
 -- --------------------------------------------------------
 
@@ -619,7 +774,7 @@ CREATE TABLE IF NOT EXISTS `ingresos` (
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -682,6 +837,7 @@ INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`
 
 CREATE TABLE IF NOT EXISTS `Nomina` (
 `id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado` varchar(20) NOT NULL,
   `dias_trab` double NOT NULL,
   `basico` int(11) NOT NULL,
@@ -696,16 +852,18 @@ CREATE TABLE IF NOT EXISTS `Nomina` (
   `libranzas` int(11) NOT NULL,
   `envargos` int(11) NOT NULL,
   `retencion` int(11) NOT NULL,
-  `total` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `total` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `Nomina`
 --
 
-INSERT INTO `Nomina` (`id`, `empleado`, `dias_trab`, `basico`, `horas_extra`, `comisiones`, `bonificaciones`, `auxilio_trasp`, `auxilio_alim`, `salud`, `pension`, `fondo_emple`, `libranzas`, `envargos`, `retencion`, `total`) VALUES
-(1, '1', 30, 7300000, 0, 0, 0, 0, 0, 292000, 292000, 0, 0, 0, 377540, 6338460),
-(2, '1', 29, 7056667, 47526, 0, 0, 0, 0, 284168, 284168, 0, 0, 0, 380830, 6155028);
+INSERT INTO `Nomina` (`id`, `fecha`, `empleado`, `dias_trab`, `basico`, `horas_extra`, `comisiones`, `bonificaciones`, `auxilio_trasp`, `auxilio_alim`, `salud`, `pension`, `fondo_emple`, `libranzas`, `envargos`, `retencion`, `total`, `estado`) VALUES
+(3, '2014-11-01', '1', 30, 7300000, 0, 0, 0, 0, 0, 292000, 292000, 0, 0, 0, 377540, 6338460, 1),
+(4, '2014-11-01', '2', 30, 2500000, 0, 0, 0, 0, 0, 100000, 100000, 0, 0, 0, 0, 2300000, 1),
+(5, '2014-11-04', '1', 30, 7300000, 0, 0, 0, 0, 0, 292000, 292000, 0, 0, 0, 377540, 6338460, 1);
 
 -- --------------------------------------------------------
 
@@ -719,7 +877,7 @@ CREATE TABLE IF NOT EXISTS `pasivo` (
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -728,7 +886,77 @@ CREATE TABLE IF NOT EXISTS `pasivo` (
 --
 
 INSERT INTO `pasivo` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(94, '2', '21', '2014-10-20', 'C', 'Obligaciones Financi', 1000);
+(105, '1', '237005', '2014-11-01', 'C', 'Aportes a Salud', 620500),
+(105, '1', '238030', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 912500),
+(105, '1', '237040', '2014-11-01', 'C', 'Cooperativas', 0),
+(105, '1', '237025', '2014-11-01', 'C', 'Embargos Judiciales', 0),
+(105, '1', '237030', '2014-11-01', 'C', 'Libranzas', 0),
+(105, '1', '2550', '2014-11-01', 'C', 'Obligaciones Laborales', 6338460),
+(105, '1', '237005', '2014-11-01', 'D', 'Aportes a Salud', 620500),
+(105, '1', '238030', '2014-11-01', 'D', 'Fondos de cesantías y/o pensiones', 912500),
+(105, '1', '237006', '2014-11-01', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(105, '1', '252021', '2014-11-01', 'D', 'Prima', 303680),
+(105, '1', '252522', '2014-11-01', 'D', 'Vacaciones', 608090),
+(105, '1', '251023', '2014-11-01', 'D', 'Cesantías', 608090),
+(105, '1', '251520', '2014-11-01', 'D', 'Intereces Sobre Cesantías', 73000),
+(105, '1', '237010', '2014-11-01', 'D', 'Aportes al ICBF, SENA y cajas de compensación', 657000),
+(106, '1', '237005', '2014-11-01', 'C', 'Aportes a Salud', 633427),
+(106, '1', '238030', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 931510),
+(106, '1', '237040', '2014-11-01', 'C', 'Cooperativas', 0),
+(106, '1', '237025', '2014-11-01', 'C', 'Embargos Judiciales', 0),
+(106, '1', '237030', '2014-11-01', 'C', 'Libranzas', 0),
+(106, '1', '2550', '2014-11-01', 'C', 'Obligaciones Laborales', 6480932),
+(106, '1', '237005', '2014-11-01', 'D', 'Aportes a Salud', 633427),
+(106, '1', '238030', '2014-11-01', 'D', 'Fondos de cesantías y/o pensiones', 931510),
+(106, '1', '237006', '2014-11-01', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 74521),
+(106, '1', '252021', '2014-11-01', 'D', 'Prima', 310007),
+(106, '1', '252522', '2014-11-01', 'D', 'Vacaciones', 620759),
+(106, '1', '251023', '2014-11-01', 'D', 'Cesantías', 620759),
+(106, '1', '251520', '2014-11-01', 'D', 'Intereces Sobre Cesantías', 74521),
+(106, '1', '237010', '2014-11-01', 'D', 'Aportes al ICBF, SENA y cajas de compensación', 670688),
+(107, '1', '237005', '2014-11-01', 'C', 'Aportes a Salud', 620500),
+(107, '1', '238030', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 912500),
+(107, '1', '237040', '2014-11-01', 'C', 'Cooperativas', 0),
+(107, '1', '237025', '2014-11-01', 'C', 'Embargos Judiciales', 0),
+(107, '1', '237030', '2014-11-01', 'C', 'Libranzas', 0),
+(107, '1', '2550', '2014-11-01', 'C', 'Obligaciones Laborales', 6338460),
+(107, '1', '237005', '2014-11-01', 'D', 'Aportes a Salud', 620500),
+(107, '1', '238030', '2014-11-01', 'D', 'Fondos de cesantías y/o pensiones', 912500),
+(107, '1', '237006', '2014-11-01', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(107, '1', '252021', '2014-11-01', 'D', 'Prima', 303680),
+(107, '1', '252522', '2014-11-01', 'D', 'Vacaciones', 608090),
+(107, '1', '251023', '2014-11-01', 'D', 'Cesantías', 608090),
+(107, '1', '251520', '2014-11-01', 'D', 'Intereces Sobre Cesantías', 73000),
+(107, '1', '237010', '2014-11-01', 'D', 'Aportes al ICBF, SENA y cajas de compensación', 657000),
+(108, '1', '237005', '2014-11-01', 'C', 'Aportes a Salud', 100000),
+(108, '1', '238030', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 100000),
+(108, '1', '237040', '2014-11-01', 'C', 'Cooperativas', 0),
+(108, '1', '237025', '2014-11-01', 'C', 'Embargos Judiciales', 0),
+(108, '1', '237030', '2014-11-01', 'C', 'Libranzas', 0),
+(108, '1', '2550', '2014-11-01', 'C', 'Obligaciones Laborales', 2300000),
+(108, '1', '237005', '2014-11-01', 'C', 'Aportes a Salud', 212500),
+(108, '1', '238030', '2014-11-01', 'C', 'Fondos de cesantías y/o pensiones', 312500),
+(108, '1', '237006', '2014-11-01', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 25000),
+(108, '1', '252021', '2014-11-01', 'C', 'Prima', 104000),
+(108, '1', '252522', '2014-11-01', 'C', 'Vacaciones', 208250),
+(108, '1', '251023', '2014-11-01', 'C', 'Cesantías', 208250),
+(108, '1', '251520', '2014-11-01', 'C', 'Intereces Sobre Cesantías', 2083),
+(108, '1', '237010', '2014-11-01', 'C', 'Aportes al ICBF, SENA y cajas de compensación', 225000),
+(109, '1', '237005', '2014-11-04', 'C', 'Aportes a Salud', 292000),
+(109, '1', '238030', '2014-11-04', 'C', 'Fondos de cesantías y/o pensiones', 292000),
+(109, '1', '237040', '2014-11-04', 'C', 'Cooperativas', 0),
+(109, '1', '237025', '2014-11-04', 'C', 'Embargos Judiciales', 0),
+(109, '1', '237030', '2014-11-04', 'C', 'Libranzas', 0),
+(109, '1', '236505', '2014-11-04', 'C', 'Retencion Salarios y pagos laborales', 377540),
+(109, '1', '2550', '2014-11-04', 'C', 'Obligaciones Laborales', 6338460),
+(109, '1', '237005', '2014-11-04', 'C', 'Aportes a Salud', 620500),
+(109, '1', '238030', '2014-11-04', 'C', 'Fondos de cesantías y/o pensiones', 912500),
+(109, '1', '237006', '2014-11-04', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 73000),
+(109, '1', '252021', '2014-11-04', 'C', 'Prima', 303680),
+(109, '1', '252522', '2014-11-04', 'C', 'Vacaciones', 608090),
+(109, '1', '251023', '2014-11-04', 'C', 'Cesantías', 608090),
+(109, '1', '251520', '2014-11-04', 'C', 'Intereces Sobre Cesantías', 6081),
+(109, '1', '237010', '2014-11-04', 'C', 'Aportes al ICBF, SENA y cajas de compensación', 657000);
 
 -- --------------------------------------------------------
 
@@ -917,6 +1145,12 @@ ALTER TABLE `activo1`
  ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`);
 
 --
+-- Indices de la tabla `apropiaciones`
+--
+ALTER TABLE `apropiaciones`
+ ADD PRIMARY KEY (`nomina`);
+
+--
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
@@ -968,7 +1202,7 @@ ALTER TABLE `factura`
 -- Indices de la tabla `gasto`
 --
 ALTER TABLE `gasto`
- ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`), ADD KEY `Documentado` (`Documento`,`Cedula`,`Codigo`);
+ ADD KEY `Cedula` (`Cedula`), ADD KEY `Documentado` (`Documento`,`Cedula`,`Codigo`);
 
 --
 -- Indices de la tabla `ingresos`
@@ -986,13 +1220,13 @@ ALTER TABLE `inventario`
 -- Indices de la tabla `Nomina`
 --
 ALTER TABLE `Nomina`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`,`fecha`);
 
 --
 -- Indices de la tabla `pasivo`
 --
 ALTER TABLE `pasivo`
- ADD PRIMARY KEY (`Documento`), ADD KEY `Cedula` (`Cedula`);
+ ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `pension`
@@ -1038,7 +1272,7 @@ ALTER TABLE `uvt`
 -- AUTO_INCREMENT de la tabla `documentado`
 --
 ALTER TABLE `documentado`
-MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
@@ -1063,7 +1297,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 -- AUTO_INCREMENT de la tabla `Nomina`
 --
 ALTER TABLE `Nomina`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `pension`
 --

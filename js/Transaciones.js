@@ -2,6 +2,7 @@ var x;
 x=$(document);
 x.ready(inicializarEventos);
 var transacion=[];
+var fecha;
 function inicializarEventos()
 {
   var x;
@@ -14,6 +15,7 @@ function inicializarEventos()
 
 function presionBoton()
 {
+
   $('#formulario').validate({
     rules: {
      'Cedula': 'required',
@@ -24,12 +26,12 @@ function presionBoton()
      'Valor': { required: true, number: true }
    },
    messages: {
-     'Cedula': 'Debe ingresar su usuario',
-     'Codigo': 'Debe ingresar el codigo de transacion',
-     'Fecha': 'Debe ingresar una fecha valida',
-     'Naturaleza': 'Selecione una Naturaleza',
-     'Descripcion': 'Descripcion de la transacion invalida',
-     'Valor': 'Digite el valor de la transacion'
+     'Cedula': '<div class="alert alert-danger" >Debe ingresar su usuario </div>',
+     'Codigo': '<div class="alert alert-danger" >Debe ingresar el codigo de transacion </div>',
+     'Fecha': '<div class="alert alert-danger" >Debe ingresar una fecha valida </div>',
+     'Naturaleza': '<div class="alert alert-danger" >Selecione una Naturaleza </div>',
+     'Descripcion': '<div class="alert alert-danger" >Descripcion de la transacion invalida </div>',
+     'Valor': '<div class="alert alert-danger" >Digite el valor de la transacion </div>'
    },
        //errorElement: 'div',
        //errorContainer: $('#errores'),
@@ -37,6 +39,7 @@ function presionBoton()
         var datos = new Array($("#Cedula").val(),$("#codigo option:selected").val(),$("#Fecha").val(),$("#Naturaleza").val(),$("#Descripcion").val(),$("#Valor").val());
         transacion.push(datos);
 
+        fecha = $("#Fecha").val();
         $("<tr>").append(
           $('<td>', { text: $("#Cedula").val()
         }), $('<td>', { text: $("#codigo option:selected").val()
@@ -55,7 +58,8 @@ function VaciarFormulario(){
   $('#formulario').each (function(){
     this.reset();
   });
-
+  $("#Fecha").val(fecha);
+  $("#Fecha").attr('readonly', 'readonly');
 }
 
 function EnviarBD(){
