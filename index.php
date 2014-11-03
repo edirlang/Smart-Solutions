@@ -5,9 +5,10 @@ require_once "modelos/usuarios_model.php";
 require_once "modelos/inventario_model.php";
 require_once "controladores.php";
 
-$uri = $_SERVER['REQUEST_URI'];
-
-	switch ($uri) {
+$url = $_SERVER['REQUEST_URI'];
+$uri = explode("?", $url);
+	
+	switch ($uri[0]) {
 		case "/Smart-Solutions/index.php/salir":
 		cerrar_secion();
 		break;
@@ -157,6 +158,14 @@ $uri = $_SERVER['REQUEST_URI'];
 		case "/Smart-Solutions/index.php/nueva_nomina":
 		crear_nomina_action();
 		break;
+		case "/Smart-Solutions/index.php/liquidar_nomina":
+		liquidar_nomina_action();
+		break;
+		case "/Smart-Solutions/index.php/consultar_nomina":
+		consultar_nomina_action();
+		break;
+
+
 	}
 
 ?>

@@ -21,7 +21,7 @@ function login(){
 			if ($usuario['Contrasena']==$contrasena) {
 				$_SESSION['usuario']=$usuario['Cedula'];
 				$_SESSION['rol'] = $usuario['Rol'];
-				$_SESSION['nombre']=$usuario['Nombre'].' '.$usuario['Apellido'];
+				$_SESSION['nombre']=$usuario['Nombre'];
 				echo $_SESSION['rol'];
 			}else{
 				echo "Login Incorecto Usuario o Contraseña errornea";
@@ -65,7 +65,7 @@ function actualizar_empleado_action(){
 		$apellido = $_POST['apellido'];
 		$telefono = $_POST['telefono'];
 		$cargo = $_POST['cargo'];
-	
+
 		actualizar_usuario($cedula,$nombre,$apellido,$telefono,$cargo);
 	}
 }
@@ -319,5 +319,24 @@ function crear_nomina_action(){
 		header("Location: nomina");
 	}
 	require "plantillas/nueva_nomina.php";
+}
+
+function liquidar_nomina_action(){
+	$id = $_GET['id'];
+	$nomina_liquidada = liquidar_nomina($id,'contado');
+	if($nomina_liquidada){
+		$nomina = consultar_nomina_id($id);	
+		$empleado = consultar_empleado($nomina['empleado']);
+		require "plantillas/liquidar_nomina.php";
+	}else{
+		nominas_action();
+	}
+}
+
+function consultar_nomina_action(){
+	$id = $_GET['id'];
+	$nomina = consultar_nomina_id($id);	
+	$empleado = consultar_empleado($nomina['empleado']);
+	require "plantillas/liquidar_nomina.php";
 }
 ?>
