@@ -8,7 +8,7 @@ $info;
 setlocale(LC_ALL, 'es_CO.UTF-8');
 $url = $_SERVER['REQUEST_URI'];
 $uri = explode("?", $url);
-	
+
 	switch ($uri[0]) {
 		case "/Smart-Solutions/index.php/salir":
 		cerrar_secion();

@@ -27,7 +27,7 @@
             <td id="-5"><?php echo $row['hora']; ?></td>
             <td id="-6"><?php echo $row['total']; ?></td>
             <td>
-              <a class="btn btn-danger" id="<?php echo $row['num_factura'] ?>"><span class="glyphicon glyphicon-trash blue"></span> Detalles</a>
+              <a class="btn btn-success" id="<?php echo $row['num_factura'] ?>"><span class="glyphicon glyphicon-list"></span> Detalles</a>
               <script language="JavaScript" type="text/javascript">
                 $("#<?php echo $row['num_factura']; ?>").click(function(){
                   

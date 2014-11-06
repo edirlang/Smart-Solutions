@@ -47,7 +47,7 @@
             <a class="btn btn-danger" id="eli<?php echo $row['Cedula']; ?>" href="eliminar_cliente?id=<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-trash blue"></span> Eliminar</a> 
             <?php } ?>
           </td>
-          <td><a id="facturas<?php echo $row['Cedula']; ?>" class="btn btn-success">Ver Facturas</a></td>
+          <td><a id="facturas<?php echo $row['Cedula']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Ver Facturas</a></td>
           <script language="JavaScript" type="text/javascript">
           $("#facturas<?php echo $row['Cedula']; ?>").click(function(){
             $.post('consultar_facturas_cliente',{
@@ -108,7 +108,7 @@
         <label for="">Telefono</label>
         <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
       </div>
-      <button id="Enviar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+      <button id="Enviar" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
     </form>  
   </div>
 </div>

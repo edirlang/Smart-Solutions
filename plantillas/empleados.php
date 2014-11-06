@@ -34,7 +34,7 @@
             <td id="-6"><?php echo $row['eps']; ?></td>
             <td id="-7"><?php echo $row['pension']; ?></td>
             <td>
-              <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
+              <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span> Editar</a>
               <script language="JavaScript" type="text/javascript">
               $("#<?php echo $row['Cedula']; ?>").click(function(){
 
@@ -60,7 +60,7 @@
             </script>
             </td>
             <td>
-              <a class="btn btn-danger" id="eli<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a> </td>
+              <a class="btn btn-danger" id="eli<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a></td>
               <script language="JavaScript" type="text/javascript">
                 $("#eli<?php echo $row['Cedula']; ?>").click(function(){
                 
@@ -129,7 +129,7 @@
       <label for="">Contraseña</label>
       <input type="password" class="form-control" id="Contrasena" name="Contrasena">
     </div>
-    <button id="Enviar"  class="btn btn-primary">Guardar</button>
+    <center><button id="Enviar"  class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button></center>
   </form>  
 
 </div>
@@ -142,7 +142,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Editar Empleado</h4>
+        <center><h3>Editar Empleado</h3></center>
       </div>
 
       <div class="modal-body">
@@ -191,8 +191,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" id="guardar" data-dismiss="modal">Actualizar</button>
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
     </div>
   </div>
 </div>

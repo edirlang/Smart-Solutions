@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<button type="submit" class="btn btn-primary">Buscar</button>
+				<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Buscar</button>
 			</div>
 		</form>
 	</div>

@@ -30,6 +30,7 @@
   <script type="text/javascript" src="/Smart-Solutions/engine1/jquery.js"></script>
   <link rel="stylesheet" href="/Smart-Solutions/css/bootstrap.min.css">
   <link rel="stylesheet" href="/Smart-Solutions/css/bootstrap.css">
+  <link rel="icon" type="image/png" href="/Smart-Solutions/Imagenes/ico.png" />
 </head>
 
 <body>
