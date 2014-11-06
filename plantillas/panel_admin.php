@@ -9,7 +9,7 @@
       <h3>Datos de la empresa</h3>
         <ul>
           <li class="text-info"><b>Nombre legalizado: </b><?php echo $empresa['nombre']; ?></li>
-          <li class="text-info"><b>Constitucion: </b><?php echo $empresa['tipo_empresa']; ?></li>
+          <li class="text-info"><b>Constitucion: </b><?php echo $empresa['tipos_empresa']; ?></li>
           <li class="text-info"><b>Regimen: </b><?php echo $empresa['regimen']; ?></li>
           <li class="text-info"><b>Representante legal: </b> Edixon Fabian Hernandez Carrillo</li>
           <li class="text-info"><b>Tarifa de IVA: </b> 16%</li>
@@ -26,13 +26,13 @@
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Mision</h3>
       <p class="text-info" align="justify">
-        <?php echo $empresa['mison']; ?>
+        <?php echo $empresa['mision']; ?>
       </p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <h3>Vision</h3>
       <p class="text-info" align="justify">
-        <?php echo $empresa['vison']; ?>
+        <?php echo $empresa['vision']; ?>
       </p>
     </div>
   </div>

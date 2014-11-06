@@ -15,13 +15,14 @@ function usuarios(){
 	return $usuarios;
 }
 
-function crear_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$rol,$contrasena){
+function crear_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$fondo,$rol,$contrasena){
 	$conexion = conectar_base_datos();
 	$salt = md5(time());
 	$contrasena_encrip = crypt($contrasena,"sha542");
 	$contrasena_encrip=$contrasena_encrip.$salt;
-	$consulta  = "INSERT INTO usuarios values('$cedula','$nombre','$apellido','$telefono','$salario' ,'$pension' ,'$eps' ,'$rol','$contrasena_encrip','$salt')";
+	$consulta  = "INSERT INTO usuarios values('$cedula','$nombre','$apellido','$telefono','$salario' ,'$pension' ,'$eps','$fondo','$rol','$contrasena_encrip','$salt')";
 	mysqli_query($conexion,$consulta);
+	echo mysqli_error($conexion);
 	cerrar_conexion_db($conexion);
 	return 1;
 }
@@ -41,9 +42,9 @@ function consultar_empleado($cedula){
 	return $usuario;
 }
 
-function actualizar_usuario($cedula,$nombre,$apellido,$telefono,$cargo){
+function actualizar_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$fondo,$cargo){
 	$conexion = conectar_base_datos();
-	$consulta  = "UPDATE usuarios Set Nombre='$nombre', Apellido='$apellido', Telefono='$telefono', Rol = '$cargo' Where Cedula='$cedula'";
+	$consulta  = "UPDATE usuarios Set Nombre='$nombre', Apellido='$apellido', Telefono='$telefono', salario_basico='$salario',pension='$pension',eps='$eps',fondo_emple='$fondo' ,Rol = '$cargo' Where Cedula='$cedula'";
 	mysqli_query($conexion,$consulta);
 	cerrar_conexion_db($conexion);
 }
@@ -55,6 +56,7 @@ function eliminar_usuario($cedula){
 		$resultado = mysqli_query($conexion,$consulta);
 
 		cerrar_conexion_db($conexion);
+		
 		return true;
 }
 

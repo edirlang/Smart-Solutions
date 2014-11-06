@@ -65,8 +65,12 @@ function actualizar_empleado_action(){
 		$apellido = $_POST['apellido'];
 		$telefono = $_POST['telefono'];
 		$cargo = $_POST['cargo'];
+		$fondo = $_POST['fondo'];
+		$salario = $_POST['salario'];
+		$pension = $_POST['pension'];
+		$eps = $_POST['salud'];
 
-		actualizar_usuario($cedula,$nombre,$apellido,$telefono,$cargo);
+		actualizar_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$fondo,$cargo);
 	}
 }
 
@@ -77,13 +81,13 @@ function crear_empleado_action(){
 		$apellido = $_POST['Apellido'];
 		$telefono = $_POST['Telefono'];
 		$contrasena = $_POST['Contrasena'];
+		$fondo = $_POST['Fondo'];
 		$rol = $_POST['Rol'];
-		$salario = 1;
-		$pension = 1;
-		$eps = 1;
-
-		$estado = crear_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$rol,$contrasena);
-		echo 1;
+		$salario = $_POST['Salario'];
+		$pension = $_POST['Pension'];
+		$eps = $_POST['Salud'];
+		$estado = crear_usuario($cedula,$nombre,$apellido,$telefono,$salario,$pension,$eps,$fondo,$rol,$contrasena);
+		echo $estado;
 	}
 }
 
@@ -163,7 +167,10 @@ function crear_cliente_action(){
 }
 
 function eliminar_cliente_action(){
-	eliminar_cliente();
+	if (isset($_GET['id'])) {
+		$estado = eliminar_cliente($_GET['id']);
+		header("location: clientes");
+	}
 }
 
 //Proveedores
@@ -204,7 +211,16 @@ function pedido_action(){
 }
 
 function prodcuto_nuevo_action(){
-	crear_producto();
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$codigo = $_POST['Codigo'];
+		$nombre = $_POST['Nombre'];
+		$descripcion = $_POST['Descripcion'];
+		$especificaciones = $_POST['Especificaciones'];
+		$iva = $_POST['iva'];
+		$valor_ven = $_POST['ValorVen'];
+
+		echo crear_producto($codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven);
+	}
 }
 
 function consultar_inventario_action(){
@@ -213,7 +229,7 @@ function consultar_inventario_action(){
 		$producto = inventario_consultar3($codigo);
 		$producto2 = consultar_producto2($codigo);
 
-		$respuesta = [$producto2['Codigo'],$producto['vlr_unidad'],$producto2['iva']];
+		$respuesta = [$producto2['Codigo'],$producto['vlr_unidad'],$producto2['iva'],$producto2['ValorVenta']];
 		echo json_encode($respuesta);
 	}
 }
@@ -300,11 +316,11 @@ function empresa_action(){
 
 function nominas_action(){
 	$nominas = nomina();
+	$empleados = usuarios();
 	require "plantillas/nominas.php";	
 }
 
 function crear_nomina_action(){
-	$empleados = usuarios();
 	if(isset($_POST['empleado'])){
 		$empleado = $_POST['empleado'];
 		$dias = $_POST['dias'];
@@ -313,12 +329,10 @@ function crear_nomina_action(){
 		$comision = $_POST['comision'];
 		$bonificacion = $_POST['bonificacion'];
 		$libranzas = $_POST['libranzas'];
-		$fondo = $_POST['fondo'];
 		$embargo = $_POST['embargo'];
-		generar_nomina($empleado,$dias,$fecha,$extras,$comision,$bonificacion,$libranzas,$fondo,$embargo);
+		generar_nomina($empleado,$dias,$fecha,$extras,$comision,$bonificacion,$libranzas,$embargo);
 		header("Location: nomina");
 	}
-	require "plantillas/nueva_nomina.php";
 }
 
 function liquidar_nomina_action(){
@@ -338,5 +352,13 @@ function consultar_nomina_action(){
 	$nomina = consultar_nomina_id($id);	
 	$empleado = consultar_empleado($nomina['empleado']);
 	require "plantillas/liquidar_nomina.php";
+}
+
+function consultar_facturas_cliente_action(){
+	if($_SERVER['REQUEST_METHOD']== 'POST'){
+		$id = $_POST['id'];
+		$facturas = consultar_facturas_cliente($id);
+		echo json_encode($facturas);
+	}
 }
 ?>

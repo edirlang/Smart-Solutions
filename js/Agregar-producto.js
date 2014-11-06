@@ -22,6 +22,7 @@ $(function() {
 function inicializarEventos() {
   $("#agregar").click(presionBoton);
   $("#Enviar").click(EnviarBD);
+  $("#Credito").click(EnviarBD2);
   $("#l_guardar").click(crear_cliente);
   
   $("#cerrar_v").click(cerar);
@@ -156,6 +157,23 @@ function EnviarBD(){
     cajero: $("#cajero").val(),
     Efectivo: Efectivo,
     pago: 'contado',
+    jdatos: jdatos
+  },procesar); 
+}
+
+function EnviarBD2(){
+  var Efectivo = $("#efectivo_v").val();
+
+  var jdatos = JSON.stringify(productos); 
+
+  $.post("imprimir_factura",{
+    num_fact: $("#numero").val(),
+    fecha: $("#fecha").val(),
+    hora: $("#hora").val(),
+    cliente: $("#cc_cliente").val(),
+    cajero: $("#cajero").val(),
+    Efectivo: '0',
+    pago: 'Credito',
     jdatos: jdatos
   },procesar); 
 }

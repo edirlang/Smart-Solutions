@@ -30,9 +30,9 @@
             <td id="-2"><?php echo $row['Apellido']; ?></td>
             <td id="-3"><?php echo $row['Telefono']; ?></td>
             <td id="-4"><?php echo $row['Rol']; ?></td>
-            <td id="-4"><?php echo $row['salario_basico']; ?></td>
-            <td id="-4"><?php echo $row['eps']; ?></td>
-            <td id="-4"><?php echo $row['pension']; ?></td>
+            <td id="-5"><?php echo $row['salario_basico']; ?></td>
+            <td id="-6"><?php echo $row['eps']; ?></td>
+            <td id="-7"><?php echo $row['pension']; ?></td>
             <td>
               <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span></a>
               <script language="JavaScript" type="text/javascript">
@@ -48,10 +48,11 @@
                 document.getElementById('nombre').value =datos['Nombre'];
                 document.getElementById('apellido').value =datos['Apellido'];
                 document.getElementById('telefono').value =datos['Telefono'];
-                document.getElementById('cargo').value =datos['Rol'];
-                document.getElementById('salario').value =datos['salario_basico'];
-                document.getElementById('salud').value =datos['eps'];
-                document.getElementById('pension').value =datos['pension']; 
+                document.getElementById('cargo').value = datos['Rol'];
+                document.getElementById('salario').value = datos['salario_basico'];
+                document.getElementById('salud').value = datos['eps'];
+                document.getElementById('pension').value = datos['pension'];
+                document.getElementById('fondo').value =datos['fondo_emple']; 
               }
               ) 
             }
@@ -66,7 +67,7 @@
                   $.post('eliminar_empleado',{
                     id: <?php echo $row['Cedula']; ?>
                   },function(datos){
-                     
+                      
                       $("#<?php echo $row['Cedula'];?>").remove();
                       }
                     )
@@ -85,7 +86,7 @@
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
  <div class="panel panel-success">
    <div class="panel-heading">
-     <h3 class="panel-title">Nuevo Cliente</h3>
+     <h3 class="panel-title">Nuevo Empleado</h3>
    </div>
    <div class="panel-body">
 
@@ -105,17 +106,20 @@
       <label for="">Salud</label>
       <select  class="form-control" id="Salud" name="Salud">
         <?php foreach ($epses as $eps): ?>
-          <option value="<?php echo $eps[ID] ?>"><?php echo $eps['Nombre'] ?></option>
+          <option value="<?php echo $eps['ID'] ?>"><?php echo $eps['Nombre'] ?></option>
         <?php endforeach ?>
       </select>
       
       <label for="">Pension</label>
       <select  class="form-control" id="Pension" name="Pension">
         <?php foreach ($pensiones as $pension): ?>
-          <option value="<?php echo $pension[ID] ?>"><?php echo $pension['nombre'] ?></option>
+          <option value="<?php echo $pension['ID'] ?>"><?php echo $pension['nombre'] ?></option>
         <?php endforeach ?>
       </select>
-      
+
+      <label for="">Aporte a Fondo de Empleados</label>
+      <input type="number" class="form-control" id="Fondo" name="Fondo" placeholder="Aporte a Fondo de empleados porventaje">
+
       <label for="">Cargo</label>
       <select  class="form-control" id="rol" name="rol">
         <option value="admin">Administrador</option>
@@ -162,16 +166,19 @@
           <label for="">Salud</label>
           <select  class="form-control" id="salud" name="salud">
             <?php foreach ($epses as $eps): ?>
-              <option value="<?php echo $eps[ID] ?>"><?php echo $eps['Nombre'] ?></option>
+              <option value="<?php echo $eps['ID'] ?>"><?php echo $eps['Nombre'] ?></option>
             <?php endforeach ?>
           </select>
           
           <label for="">Pension</label>
           <select  class="form-control" id="pension" name="pension">
             <?php foreach ($pensiones as $pension): ?>
-              <option value="<?php echo $pension[ID] ?>"><?php echo $pension['nombre'] ?></option>
+              <option value="<?php echo $pension['ID'] ?>"><?php echo $pension['nombre'] ?></option>
             <?php endforeach ?>
           </select>
+          
+          <label for="">Aporte a Fondo de Empleados</label>
+          <input type="number" class="form-control" id="fondo" name="fondo" placeholder="Aporte a Fondo de empleados porventaje">
 
           <label for="">Cargo</label>
           <select  class="form-control" id="cargo" name="rol">

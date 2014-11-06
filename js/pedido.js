@@ -24,6 +24,7 @@ function producto_selecionado(){
     var dato = $.parseJSON(datos);
     $("#iva").val(dato[2]);
     $("#vlr_unidad").val(dato[1]);
+     $("#vlr_venta").val(dato[3]);
   });
 }
 
@@ -36,6 +37,7 @@ function presionBoton()
      'Codigo': 'required',
      'cantidad': { required: true, number: true },
      'vlr_unidad': { required: true, number: true },
+     'vlr_venta': { required: true, number: true },
      'iva': 'required'
    },
    messages: {
@@ -43,6 +45,7 @@ function presionBoton()
      'Codigo': '<p class="alert alert-danger">Debe selecionar el codigo de producto</p><br>',
      'cantidad': '<p class="alert alert-danger">digita la cantidad</p><br>',
      'vlr_unidad': '<p class="alert alert-danger">Digita el valor de unidad</p><br>',
+     'vlr_venta': '<p class="alert alert-danger">Digita el valor de unidad para la venta</p><br>',
      'iva': '<p class="alert alert-danger">Digite el iva</p><br>'
    },
        //errorElement: 'div',
@@ -50,7 +53,7 @@ function presionBoton()
        submitHandler: function(form){
         if($('#codigo').val() !='0'){
           $("#nuevo").remove();
-          var datos = new Array($("#proveedor").val(),fecha,$("#codigo").val(),$("#cantidad").val(),$("#vlr_unidad").val(),$("#iva").val());
+          var datos = new Array($("#proveedor").val(),fecha,$("#codigo").val(),$("#cantidad").val(),$("#vlr_unidad").val(),$("#iva").val(),$("#vlr_venta").val());
           transacion.push(datos);
           subtotal = $("#cantidad").val()*$("#vlr_unidad").val();
 
@@ -164,6 +167,9 @@ function GuardarProducto(){
 
                         total = (parent.document.getElementById("total").value * 1)+subtotal;
                         parent.document.getElementById("total").value =total;
+
+                        var producto = new Array($("#proveedor").val(),fecha,$("#cod_nuevo").val(),$("#cant").val(),$("#vlr_comp").val(),$("#iva_nuevo").val());
+                        transacion.push(producto);
     },
     success: function(datos){
       alert("Producto "+datos+" creado");

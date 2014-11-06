@@ -28,9 +28,12 @@
 					<label for="">Cantidad</label>
 					<input type="number" class="form-control" name="cantidad" id="cantidad" placeholder="Unidades recibidas">
 
-					<label for="">Valor unidad</label>
+					<label for="">Valor Compra sin IVA</label>
 					<input type="number" class="form-control" name="vlr_unidad" id="vlr_unidad" placeholder="Valor de unidad">
 
+					<label for="">Valor Venta</label>
+					<input type="number" class="form-control" name="vlr_venta" id="vlr_venta" placeholder="Valor de unidad">
+					
 					<label for="">IVA</label>
 					<input type="number" class="form-control" name="iva" id="iva" placeholder="IVA de producto">
 				</div>

@@ -4,7 +4,8 @@ require_once "modelos.php";
 require_once "modelos/usuarios_model.php";
 require_once "modelos/inventario_model.php";
 require_once "controladores.php";
-
+$info;
+setlocale(LC_ALL, 'es_CO.UTF-8');
 $url = $_SERVER['REQUEST_URI'];
 $uri = explode("?", $url);
 	
@@ -51,6 +52,7 @@ $uri = explode("?", $url);
 		crear_cliente_action();
 		break;
 		case "/Smart-Solutions/index.php/eliminar_cliente":
+
 		eliminar_cliente_action();
 		break;
 
@@ -165,7 +167,9 @@ $uri = explode("?", $url);
 		consultar_nomina_action();
 		break;
 
-
+		case "/Smart-Solutions/index.php/consultar_facturas_cliente":
+		consultar_facturas_cliente_action();
+		break;		
 	}
 
 ?>

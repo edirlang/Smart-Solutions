@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <table class="table table-condensed table-hover">
+      <table class="table table-condensed">
         <thead>
           <tr>
             <th>Documento</th>
@@ -44,28 +44,34 @@
           <?php 
           $total_c=0;
           $total_d=0;
-          foreach ($transaciones as $key => $valor) {
-            echo "<tr>";
+          foreach ($transaciones as $valor) {
+            $tramitador = consultar_empleado($valor['Cedula']);
             if ($valor['Naturaleza']=='D') {
               $total_d+=$valor['Valor'];
             }else{
               $total_c+=$valor['Valor'];
-            }
-            foreach ($valor as $key1 => $row) {
-
-              echo "<td>".$row."</td>";
-            }
-            echo "</tr>"; 
-          }
-
-          ?>
+            } ?>
+            <tr>
+              <td><?php echo $valor['Documento']; ?></td>
+              <td><?php echo $tramitador['Nombre']."" .$tramitador['Apellido']; ?></td>
+              <td><?php echo $valor['Codigo']; ?></td>
+              <td><?php echo $valor['Fecha']; ?></td>
+              <td><?php if($valor['Naturaleza'] == 'C'){
+                          echo 'Credito';
+                        }else{
+                          echo "Debito";
+                        }?></td>
+              <td><?php echo $valor['Descripcion']; ?></td>
+              <td><?php echo $valor['Valor']; ?></td>
+            </tr> 
+          <?php } ?>
           <tr>
-            <td><h3>Total Debito</h3></td>
-            <td><h3><?php echo $total_d; ?></h3></td>
-            <td><h3>Total Credito</h3></td>
-            <td><h3><?php echo $total_c; ?></h3></td>
-            <td><h3>Estado de Cuenta</h3></td>
-            <td><h3><?php echo ($total_d-$total_c); ?></h3></td>
+            <td><h5>Total Debito</h5></td>
+            <td><h5><?php echo money_format('%(#0n', $total_d); ?></h5></td>
+            <td><h5>Total Credito</h5></td>
+            <td><h5><?php echo money_format('%(#0n', $total_c); ?></h5></td>
+            <td><h5>Estado de Cuenta</h5></td>
+            <td><h5><?php echo money_format('%(#0n',($total_d-$total_c)); ?></h5></td>
           </tr>
         </tbody>
       </table>

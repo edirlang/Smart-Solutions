@@ -36,17 +36,17 @@ function consultar(datos){
 				}), $('<td>', { text: valor['Fecha']  
 				}), $('<td>', { text: valor['Naturaleza']  
 				}), $('<td>', { text: valor['Descripcion']  
-				}), $('<td>', { text: valor['Valor']  
+				}), $('<td>', { text: currency(valor['Valor'])  
 				})
 				).hide().appendTo('#filas').fadeIn('slow');
 		});
 	$("<tr>").append(
 				$('<td>', { text: 'Total debito $'
-				}), $('<td>', { text: total_D
+				}), $('<td>', { text: currency(total_D)
 				}), $('<td>', { text: 'Total Credito $' 
-				}), $('<td>', { text: total_C   
+				}), $('<td>', { text: currency(total_C)   
 				}), $('<td>', { text: 'Estado de Cuenta'  
-				}), $('<td>', { text: (total_D*1-total_C*1)
+				}), $('<td>', { text: currency((total_D*1-total_C*1))
 				}), $('<td>', { text: ''  
 				})
 				).hide().appendTo('#filas').fadeIn('slow');

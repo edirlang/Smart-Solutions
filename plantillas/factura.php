@@ -25,16 +25,16 @@
                             <div class="form-group">
                                 <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 control-label">Fecha</label>
                                 <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-                                    <input type="text" class="form-control input-sm" id="fecha" value="<?php echo date("y/m/d"); ?>" >
+                                    <input type="date" class="form-control input-sm" id="fecha" value="<?php echo strftime("%Y-%m-%d"); ?>" >
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                             <div class="form-group">
-                                <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 control-label">Hora: </label>
+                                <label class="col-xs-12 col-sm-6 col-md-4 col-lg-4 control-label">Hora</label>
                                 <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
-                                    <input type="text" class="form-control input-sm" id="hora" value="<?php echo date('h:m'); ?>" >
+                                    <input type="text" class="form-control input-sm" id="hora">
                                 </div>
                             </div>
                         </div>
@@ -192,13 +192,26 @@
             </div>
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="Enviar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+                <button type="submit" class="btn btn-primary" id="Credito" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Credito</button>
+                <button type="submit" class="btn btn-primary" id="Enviar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Contado</button>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript" src="/Smart-Solutions/js/Agregar-producto.js"></script>
+<script language="JavaScript" type="text/javascript">
+    function show5(){
+        var Digital=new Date()
+        var hours=Digital.getHours()
+        var minutes=Digital.getMinutes()
+        var seconds=Digital.getSeconds()
 
+        myclock=hours+":"+minutes+":"+seconds
+        document.getElementById("hora").value= myclock
+        setTimeout("show5()",1000)
+    }
+    window.onload=show5
+     </script>
 <?php $contenido = ob_get_clean(); ?>
 <?php include "plantilla_base.php"; ?>

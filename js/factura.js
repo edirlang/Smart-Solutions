@@ -38,9 +38,9 @@ function presionBoton()
         $("<tr>").append(
           $('<td>', { text: $("#codigo").val()
         }), $('<td>', { text: $("#cantidad").val()
-      }), $('<td>', { text: $("#vlr_unidad").val() 
+      }), $('<td>', { text: currency($("#vlr_unidad").val()) 
     }), $('<td>', { text: $("#iva").val()  
-  }), $('<td>', { text: subtotal  
+  }), $('<td>', { text: currency(subtotal)  
   })
   ).hide().appendTo('#Filas').fadeIn('slow');
         var cantidad = $("#cantidad").val();
