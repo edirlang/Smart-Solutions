@@ -11,6 +11,7 @@ function tipo_usuario($usuario){
 function login(){
 	if($_SERVER['REQUEST_METHOD'] != 'POST'){
 		require "plantillas/login.php";
+		cierre_contable();
 	}else{
 		$datos = json_decode($_POST['jdatos'], true);
 
@@ -360,5 +361,29 @@ function consultar_facturas_cliente_action(){
 		$facturas = consultar_facturas_cliente($id);
 		echo json_encode($facturas);
 	}
+}
+
+function cierre_contable(){
+	$mes = strftime("%m");
+	$año = strftime("%Y");
+	$dia_ultimo = getUltimoDiaMes($año,$mes);
+	$fecha_actual = strftime("%Y-%m-%d");
+	$fecha_cierre = $año."-".$mes."-".$dia_ultimo;
+	if($fecha_actual == $fecha_cierre){
+		generara_cierre();
+	}
+}
+
+function getUltimoDiaMes($elAnio,$elMes) {
+	return date("d",(mktime(0,0,0,$elMes+1,1,$elAnio)-1));
+}
+
+function cierres_contables_action(){
+	$cierres = todos_cierres_contables();
+	require "plantillas/cierres_contables.php";
+}
+function consultar_detalles_cierre_action(){
+	$cuentas_cierre = consultar_cierres_contables($_GET['id']);
+	require "plantillas/cierre.php";
 }
 ?>

@@ -9,7 +9,7 @@
 						<li><a href="nueva_contabilidad"><span class="glyphicon glyphicon-list-alt"></span> Ingresar Nueva Transacion</a></li>
 						<li><a href="Codigos"><span class="glyphicon glyphicon-list"></span>	Codigos-PUC</a></li>
 					</ul>
-				</li>
+				<li><a href="cierre"><span class="glyphicon glyphicon-list"></span>	Cierre Contables</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span> Reportes<b class="caret"></b></a>
 					<ul class="dropdown-menu">

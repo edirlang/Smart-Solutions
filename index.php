@@ -169,7 +169,14 @@ $uri = explode("?", $url);
 
 		case "/Smart-Solutions/index.php/consultar_facturas_cliente":
 		consultar_facturas_cliente_action();
-		break;		
+		break;
+
+		case "/Smart-Solutions/index.php/cierre":
+		cierres_contables_action();
+		break;
+		case "/Smart-Solutions/index.php/cierre_detalles":
+		consultar_detalles_cierre_action();
+		break;
 	}
 
 ?>
