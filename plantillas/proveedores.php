@@ -1,9 +1,9 @@
 <?php ob_start(); ?>
 <div class="<?php echo $tamano; ?>">
 
-  <div class="panel panel-info">
+  <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">Proveedores Registrados</h3>
+      <center><h3 class="panel-title">Proveedores Registrados</h3></Center>
     </div>
     <div class="panel-body">
       <table class="table table-condensed">
@@ -46,9 +46,9 @@
 
 <?php if($_SESSION['rol']=='admin'){ ?>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-  <div class="panel panel-warning">
+  <div class="panel panel-danger">
     <div class="panel-heading">
-      <h3 class="panel-title">Nuevo Proveedor</h3>
+      <center><h3 class="panel-title">Nuevo Proveedor</h3></center>
     </div>
     <div class="panel-body">
       <form action="crear_proveedor" method="POST" role="form" enctype="multipart/form-data">
@@ -66,8 +66,8 @@
           <input type="text" class="form-control" name="direccion" placeholder="dirrecion de envio">
 
         </div>
-        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-        <a href="proveedores" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpiar</a>
+        <center><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+        <a href="proveedores" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpiar</a></Center>
       </form>
     </div>
   </div>

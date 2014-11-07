@@ -3,7 +3,7 @@
       
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Codigos Registrados</h3>
+          <center><h3 class="panel-title">Codigos Registrados</h3></center>
         </div>
         <div class="panel-body">
           <table class="table table-condensed table-hover ">
@@ -30,9 +30,9 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-      <div class="panel panel-warning">
+      <div class="panel panel-success">
         <div class="panel-heading">
-          <h3 class="panel-title">Nuevo Codigo</h3>
+          <center><h3 class="panel-title">Nuevo Codigo</h3></Center>
         </div>
         <div class="panel-body">
           <form action="Codigos" method="POST" role="form" enctype="multipart/form-data">
@@ -53,8 +53,7 @@
                 <option value="costo">Costos</option>
               </select>
             </div>
-
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button>
+              <center><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Agregar</button></center>
             </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <h1>Datos de la Empresa</h1>
+  <center><h1>Datos de la Empresa</h1></center>
   <table class="table table-hover table-bordered">
     <tbody>
       <tr>
@@ -66,15 +66,13 @@
   </table>
 </div>
 
-<button id="guardar" type="submit" class="btn btn-primary">Guardar Cambios</button>
-
 <div class="modal fade" id="ventana" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Editar Empresa</h4>
+        <center><h4>Editar Empresa</h4></Center>
       </div>
 
       <div class="modal-body">
@@ -88,8 +86,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" id="guardar" data-dismiss="modal">Actualizar</button>
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <center><button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
     </div>
   </div>
 </div>
@@ -101,7 +99,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Editar Empresa</h4>
+        <center><h4>Editar Empresa</h4></center>
       </div>
 
       <div class="modal-body">
@@ -132,8 +130,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" id="guardar" data-dismiss="modal">Actualizar</button>
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <center><button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cerrar</button></center>
     </div>
   </div>
 </div>
