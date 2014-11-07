@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">Empleados</h3>
+      <center><h1 class="panel-title">Empleados</h1></center>
     </div>
   <div class="panel-body">
     <table class="table table-condensed table-hover">
@@ -71,7 +71,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Detalles de factura</h4>
+        <center><h1>Detalles de factura</h1></center>
       </div>
 
       <div class="modal-body">
@@ -92,7 +92,7 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <center><button type="submit" class="btn btn-success" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
     </div>
   </div>
 </div>
