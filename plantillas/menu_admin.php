@@ -1,11 +1,11 @@
 <nav class="navbar navbar-inverse">
   <a class="navbar-brand" href="admin"><span class="glyphicon glyphicon-home"></span> HOME</a>
   <ul class="nav navbar-nav">
-    <li ><a href="inventario"><span class="glyphicon glyphicon-book"></span> Inventario</a></li>
+    <li ><a href="inventario"><span class="glyphicon glyphicon-barcode"></span> Inventario</a></li>
     <li><a href="clientes"><span class="glyphicon glyphicon-list"></span> Clientes</a></li>
     <li><a href="empleados"><span class="glyphicon glyphicon-briefcase"></span> Empleados</a></li>
-    <li><a href="proveedores"><span class="glyphicon glyphicon-folder-open"></span> Proveedores</a></li>
-    <li><a href="facturas"><span class="glyphicon glyphicon-folder-open"></span> Facturas</a></li>
+    <li><a href="proveedores"><span class="glyphicon glyphicon-tag"></span> Proveedores</a></li>
+    <li><a href="facturas"><span class="glyphicon glyphicon-list-alt"></span> Facturas</a></li>
     <li class="dropdown">
       <a href="Transacion-manual" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-close"></span> Contabilidad<b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -20,8 +20,8 @@
         <li><a href="#"> Estado de resultado</a></li>
       </ul>
     </li>
-    <li><a href="modificar-empresa"><span class="glyphicon glyphicon-folder-open"></span> Editar-Empresa</a></li>
-    <li><a href="nomina"><span class="glyphicon glyphicon-folder-open"></span> Nomina</a></li>
+    <li><a href="modificar-empresa"><span class="glyphicon glyphicon-tower"></span> Editar-Empresa</a></li>
+    <li><a href="nomina"><span class="glyphicon glyphicon-align-justify"></span> Nomina</a></li>
   </ul>
 
 <ul class="nav navbar-nav navbar-right">
