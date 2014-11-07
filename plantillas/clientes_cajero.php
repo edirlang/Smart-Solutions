@@ -2,7 +2,7 @@
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="panel panel-danger">
         <div class="panel-heading">
-          <h3 class="panel-title">Clientes</h3>
+          <center><h2 class="panel-title">Clientes</h2></center>
         </div>
         <div class="panel-body">
           <table class="table table-condensed table-hover">
@@ -26,7 +26,6 @@
                 <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                 <script language="JavaScript" type="text/javascript">
                 $("#<?php echo $row['Cedula']; ?>").click(function(){
-                
                   $.post('consultar_cliente',{
                     id: <?php echo $row['Cedula']; ?>
                   },function(datos){
@@ -69,7 +68,7 @@
           <label for="">Telefono</label>
           <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
         </div>
-        <button id="Enviar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+        <center><button id="Enviar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button></center>
       </form>  
     </div>
   </div>

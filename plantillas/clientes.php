@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
   <div class="panel panel-danger">
     <div class="panel-heading">
-      <h3 class="panel-title">Clientes</h3>
+      <center><h3 class="panel-title">Clientes</h3></center>
     </div>
     <div class="panel-body">
       <table class="table table-condensed table-hover">
@@ -24,7 +24,7 @@
            <td id="2"><?php echo $row['Apellido']; ?></td>
            <td id="3"><?php echo $row['Telefono']; ?></td>
            <td>
-            <a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <center><a class="btn btn-success" data-toggle="modal" data-target="#ventana" id="<?php echo $row['Cedula']; ?>"><span class="glyphicon glyphicon-edit"></span> Editar</a></center>
             <script language="JavaScript" type="text/javascript">
             $("#<?php echo $row['Cedula']; ?>").click(function(){
 
@@ -93,7 +93,7 @@
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
  <div class="panel panel-success">
    <div class="panel-heading">
-     <h3 class="panel-title">Nuevo Cliente</h3>
+     <center><h3 class="panel-title">Nuevo Cliente</h3></center>
    </div>
    <div class="panel-body">
 
@@ -108,7 +108,7 @@
         <label for="">Telefono</label>
         <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="telefono">
       </div>
-      <button id="Enviar" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+      <center><button id="Enviar" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button></center>
     </form>  
   </div>
 </div>
@@ -120,7 +120,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Editar Cliente</h4>
+        <center><h4>Editar Cliente</h4></center>
       </div>
 
       <div class="modal-body">
@@ -142,8 +142,8 @@
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
-      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+      <center><button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
     </div>
   </div>
 </div>
@@ -155,7 +155,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4>Facturas</h4>
+        <center><h4>Facturas</h4></center>
       </div>
 
       <div class="modal-body">
@@ -178,7 +178,7 @@
      </div>
 
      <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      <center><button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cerrar</button></center>
     </div>
   </div>
 </div>

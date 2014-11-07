@@ -31,10 +31,10 @@
 foreach ($productos as $key => $valor) { ?>
 <div id="productos" class='panel panel-danger'>
 	<div class='panel-heading'>
-		<h1>Inventario <?php echo $valor; ?></h1>
+		<center><h1>Inventario <?php echo $valor; ?></h1></center>
 	</div>
 	<div class='panel-body'>
-		<table class="table table-condensed table-bordered">
+		<table class="table table-condensed table-bordered table-hover">
 			<thead>
 				<tr>
 					<th colspan="4" class="text-center"></th>
