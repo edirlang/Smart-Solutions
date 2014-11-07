@@ -177,6 +177,10 @@ $uri = explode("?", $url);
 		case "/Smart-Solutions/index.php/cierre_detalles":
 		consultar_detalles_cierre_action();
 		break;
+		
+		case "/Smart-Solutions/index.php/imprimir_factura2":
+		imprimir_factura_action();
+		break;
 	}
 
 ?>

@@ -386,4 +386,22 @@ function consultar_detalles_cierre_action(){
 	$cuentas_cierre = consultar_cierres_contables($_GET['id']);
 	require "plantillas/cierre.php";
 }
+
+function imprimir_factura_action(){
+	if(isset($_POST['id'])){
+		$numero = $_POST['id'];
+		$factura = consultar_factura($numero);
+		$productos_bd = detalles_factura($numero);
+		$productos = array();
+		$efectivo = 0;
+		$iva = 0;
+		foreach ($productos_bd as $producto) {
+			$producto_bd = consultar_producto2($producto['codigo']);
+			array_push($productos, [$producto['codigo'],$producto['cantidad'],$producto_bd['iva'],$producto['vlr_venta'],$producto['total'],$producto_bd['Nombre']]);
+			$efectivo+= $producto['total'];
+			$iva+=($producto['cantidad']*($producto['vlr_venta']*($producto_bd['iva']/100)));
+		}
+		generar_factura($numero,$factura['fecha'],$factura['hora'],$factura['cliente'],$factura['vendedor'],$efectivo,$iva,$productos);
+	}	
+}
 ?>

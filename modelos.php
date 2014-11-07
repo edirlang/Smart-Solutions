@@ -765,6 +765,20 @@ function consltar_num_factura(){
 	return $numero;
 }
 
+function consultar_factura($numero){
+	$conexion = conectar_base_datos();
+
+	$result = mysqli_query($conexion,"SELECT * FROM factura where  num_factura = '$numero'");
+
+	$numero;
+	while($row = mysqli_fetch_assoc($result)){ 
+		$numero = $row;
+	}
+	cerrar_conexion_db($conexion);
+
+	return $numero;
+}
+
 function crear_factura(){
 	$conexion = conectar_base_datos();
 	$productos = json_decode($_POST['jdatos'], true);
@@ -830,6 +844,7 @@ function consultar_inventario1($documento,$cajero,$fecha, $row, $cn){
 
 function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$productos){
 	$cliente = consultar_cliente($cedula);
+	$factura_actual = consultar_factura($numero);
 
 	$nom_cliente = $cliente['Nombre']." ".$cliente['Apellido']; 
 	$empleado = consultar_empleado($cajero);
@@ -840,14 +855,14 @@ function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$pr
 	$factura = "<div class='container container-fluid'>
 	<div class='row'>
 	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<a href='factura' class='hidden-print btn btn-primary'>Regresar</a>
 	</div>
-	<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
-	<img src='../Imagenes/bac.gif'></img>
+	<div class='col-xs-5 col-sm-5 col-md-5 col-lg-5'>
+	<img src='/Smart-Solutions/Imagenes/bac.png'></img>
 	</div>
 	<font size='3' face='Verdana'>
-	<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center'>
-	<p>Smart-Solutions</p>
+	<div class='col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center'>
+	<h1>Smart-Solutions</h1>
+	<p><small>&quot;El equipo correcto para la persona correcta&quot;</small></p>
 	<p>Nit: 1069748845-5 Regimen Comun</p>
 	<p>Cra 6 # 7-49 CC. La Hacienda Local 201 </p>
 	<p>Tel: 867 2290</p>
@@ -932,6 +947,41 @@ function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$pr
 	}
 	$subtotal = $total-$iva;
 	$Cambio = $Efectivo-$total;
+
+	if($factura_actual['Credito']){
+		$factura = $factura."
+	</tbody>
+	</table>
+	</div>
+	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<hr size='10' ></hr>
+	</div>
+	<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<table>
+	<tr>
+	<td>Subtotal</td>
+	<td> $ ".$subtotal."</td>
+	</tr>
+	<tr>
+	<td>IVA</td>
+	<td> $ ".$iva."</td>
+	</tr>
+	<tr>
+	<td>Total </td>
+	<td> $ ".$total."</td>
+	</tr>
+	</table>
+	</div>
+
+	<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+	<p>Resolucion</p>
+	</div>
+	</font>
+	</div>
+	</div>";
+
+	}else{
+	
 	$factura = $factura."
 	</tbody>
 	</table>
@@ -970,6 +1020,7 @@ function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$pr
 	</font>
 	</div>
 	</div>";
+	}
 	echo $factura;
 }
 
@@ -978,6 +1029,17 @@ function detalles_factura($numero){
 	$productos = array();
 	$result = mysqli_query($conexion,"SELECT * FROM detallefactura where num_factura = '$numero'");
 	while ($producto = mysqli_fetch_assoc($result)) {
+		array_push($productos, $producto);
+	}
+	cerrar_conexion_db($conexion); 
+	return $productos;
+}
+
+function detalles_factura2($numero){
+	$conexion = conectar_base_datos();
+	$productos = array();
+	$result = mysqli_query($conexion,"SELECT * FROM detallefactura where num_factura = '$numero'");
+	while ($producto = mysqli_fetch_row($result)) {
 		array_push($productos, $producto);
 	}
 	cerrar_conexion_db($conexion); 
