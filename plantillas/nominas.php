@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <center><h2 class="panel-title">Nominas de empleados</h2></center>
+      <h3 class="panel-title">Nominas de empleados</h3>
     </div>
     <div class="panel-body">
       <table class="table table-hover">
@@ -26,10 +26,10 @@
             <td><?php echo ($nomina['basico']+$nomina['horas_extra']+$nomina['comisiones']+$nomina['bonificaciones']+$nomina['auxilio_trasp']+$nomina['auxilio_alim']); ?></td>
             <td><?php echo ($nomina['salud']+$nomina['pension']+$nomina['fondo_emple']+$nomina['libranzas']+$nomina['envargos']+$nomina['retencion']); ?></td>
             <td><?php echo $nomina['total']; ?></td> 
-            <td><?php if($nomina['estado']=='1'){ ?>
-              <center><a href="consultar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Imprimir</a>
+            <td><?php if($nomina['liquidada']){ ?>
+              <a href="consultar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-default">Imprimir</a>
               <?php } else{?>
-              <a href="liquidar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Liquidar</a></center>
+              <a href="liquidar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-default">Liquidar</a>
               <?php } ?>
             </td>
           </tr>
@@ -40,12 +40,14 @@
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-  <div class="panel panel-info">
+  <div class="panel panel-success">
     <div class="panel-heading">
-      <center><h2 class="panel-title">Nueva Nomina</h2></center>
+      <h3 class="panel-title">Nueva Nomina</h3>
     </div>
     <div class="panel-body">
       <form action="nueva_nomina" method="POST" role="form">
+        <legend>Nueva Nomina</legend>
+
         <div class="form-group">
           <label for="">Empleado</label>
           <select class="form-control" id="empleado" name="empleado">
@@ -75,7 +77,7 @@
         <label for="">Embargo Judicial</label>
         <input type="number" class="form-control" id="embargo" name="embargo" placeholder="Valor de embargo judicial">
       </div>
-      <center><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span> Generar</button></center>
+      <button type="submit" class="btn btn-primary">Generar</button>
     </form>
   </div>
 </div>

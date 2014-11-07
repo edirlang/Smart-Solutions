@@ -5,7 +5,7 @@
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <center><h1 class="panel-title">Nueva Transaccion</h1></center>
+      <h3 class="panel-title">Nueva Transacion</h3>
     </div>
     <div class="panel-body">
       <form id="formulario" name="formulario" method="POST" role="form" on>
@@ -47,7 +47,7 @@
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <center><h1 class="panel-title">Transacciones</h1></center>
+      <h3 class="panel-title">Transaciones</h3>
     </div>
     <div class="panel-body">
       <table class="table table-condensed table-hover">
@@ -65,8 +65,8 @@
 
         </tbody>
       </table>
-      <center><button class="btn btn-success" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-      <a type="button" class="btn btn-danger" href="Transacion-manual"><span class="glyphicon glyphicon-remove"></span> Cancelar</a></center>
+      <button class="btn btn-success" id="Enviar"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+      <a type="button" class="btn btn-danger" href="Transacion-manual"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
 
     </div>
   </div>

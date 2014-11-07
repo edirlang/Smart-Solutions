@@ -3,10 +3,10 @@
 
   <div class="panel panel-info">
     <div class="panel-heading">
-      <center><h1 class="panel-title">Proveedores Registrados</h1></center>
+      <h3 class="panel-title">Proveedores Registrados</h3>
     </div>
     <div class="panel-body">
-      <table class="table table-condensed table-hover">
+      <table class="table table-condensed">
         <thead>
           <tr>
             <th>Codigo</th>
@@ -24,7 +24,7 @@
             echo "<td>".$row['nombre']."</td>";
             echo "<td>".$row['telefono']."</td>";
             echo "<td>".$row['direccion']."</td>";
-            echo "<td><a class='btn btn-info' id='".$row['codigo']."'><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>";
+            echo "<td><a class='btn btn-success' id='".$row['codigo']."'><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>";
             echo "</tr>";
           ?>
         <script language="JavaScript" type="text/javascript">
@@ -46,7 +46,7 @@
 
 <?php if($_SESSION['rol']=='admin'){ ?>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-  <div class="panel panel-success">
+  <div class="panel panel-warning">
     <div class="panel-heading">
       <h3 class="panel-title">Nuevo Proveedor</h3>
     </div>
@@ -66,8 +66,8 @@
           <input type="text" class="form-control" name="direccion" placeholder="dirrecion de envio">
 
         </div>
-        <center><button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
-        <a href="proveedores" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpiar</a></center>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-share-alt"></span> Enviar</button>
+        <a href="proveedores" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpiar</a>
       </form>
     </div>
   </div>

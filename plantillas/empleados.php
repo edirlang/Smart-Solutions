@@ -2,8 +2,9 @@
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <center><h1 class="panel-title">Empleados</h1></center>
+      <h3 class="panel-title">Empleados</h3>
     </div>
+    <a class="btn btn-danger" href="nueva_nomina">Nomina</a>
   <div class="panel-body">
     <table class="table table-condensed table-hover">
       <thead>
@@ -85,7 +86,7 @@
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
  <div class="panel panel-success">
    <div class="panel-heading">
-     <center><h1 class="panel-title">Nuevo Empleado</h1></center>
+     <h3 class="panel-title">Nuevo Empleado</h3>
    </div>
    <div class="panel-body">
 
@@ -190,8 +191,8 @@
     </div>
 
     <div class="modal-footer">
-      <center><button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
-      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
+      <button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
+      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
     </div>
   </div>
 </div>
