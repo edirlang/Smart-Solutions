@@ -26,7 +26,7 @@
             <td><?php echo ($nomina['basico']+$nomina['horas_extra']+$nomina['comisiones']+$nomina['bonificaciones']+$nomina['auxilio_trasp']+$nomina['auxilio_alim']); ?></td>
             <td><?php echo ($nomina['salud']+$nomina['pension']+$nomina['fondo_emple']+$nomina['libranzas']+$nomina['envargos']+$nomina['retencion']); ?></td>
             <td><?php echo $nomina['total']; ?></td> 
-            <td><?php if($nomina['estado']){ ?>
+            <td><?php if($nomina['liquidada']){ ?>
               <center><a href="consultar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> Imprimir</a></center>
               <?php } else{?>
               <center><a href="liquidar_nomina?id=<?php echo $nomina['id']; ?>" class="btn btn-info"><span class="glyphicon glyphicon-file"></span> Liquidar</a><center>
