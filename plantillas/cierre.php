@@ -17,14 +17,26 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cuentas_cierre as $cuenta) { ?>
+                <?php 
+                $total_d = 0;
+                $total_c = 0;
+                foreach ($cuentas_cierre as $cuenta) {
+                    $total_c += $cuenta['credito'];
+                    $total_d += $cuenta['debito'];
+                    ?>
                 <tr>
-                    <td><?php echo $cuenta['debito']; ?></td>
+                    <td><?php echo $cuenta['cuenta']; ?></td>
                     <td><?php echo $cuenta['debito']; ?></td>
                     <td><?php echo $cuenta['credito']; ?></td>
                     <td><?php echo $cuenta['estado']; ?></td>
                 </tr>
                 <?php } ?>
+                <tr>
+                    <td><h3>Total</h3></td>
+                    <td><h3><?php echo $total_d; ?></h3></td>
+                    <td><h3><?php echo $total_c; ?></h3></td>
+                    <td><h3><?php echo ($total_d-$total_c); ?></h3></td>
+                </tr>
             </tbody>
         </table>
     </div>

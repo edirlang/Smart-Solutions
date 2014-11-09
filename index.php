@@ -181,6 +181,14 @@ $uri = explode("?", $url);
 		case "/Smart-Solutions/index.php/imprimir_factura2":
 		imprimir_factura_action();
 		break;
+
+		case "/Smart-Solutions/index.php/ajustes_contables":
+		ajuste_contable_action();
+		break;		
+
+		case "/Smart-Solutions/index.php/crear_ajustes_contables":
+		crear_ajuste_contable_action();
+		break;
 	}
 
 ?>

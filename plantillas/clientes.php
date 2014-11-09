@@ -54,9 +54,9 @@
               id: <?php echo $row['Cedula']; ?>
             },function(datos){
               var a=document.getElementById("Filas-fact");
-                        while(a.hasChildNodes()){
-                          a.removeChild(a.firstChild);  
-                        }
+              while(a.hasChildNodes()){
+                a.removeChild(a.firstChild);  
+              }
               datos=$.parseJSON(datos);
               datos.forEach(
                 function(valor,key){
@@ -71,16 +71,16 @@
                 }), $('<td>', { text: valor['fecha'] 
               }), $('<td>', { text: valor['hora']  
             }), $('<td>', { text: valor['vendedor']  
-        }), $('<td>', { text: valor['total']  
-      }), $('<td>', { text: forma_pago  
-      })
-        ).hide().appendTo('#Filas-fact').fadeIn('slow');
+          }), $('<td>', { text: valor['total']  
+        }), $('<td><a type="submit" class="btn btn-success" href="imprimir_factura_cliente?id='+valor['num_factura']+'"><span class="glyphicon glyphicon-print"></span>Imprimir</a></td>')
+          ).hide().appendTo('#Filas-fact').fadeIn('slow');
                 });
-            $("#facturas").modal();
+              
+              $("#facturas").modal();
             }
             )
-          }
-          );
+}
+);
 </script>
 </tr>
 <?php } ?>
@@ -143,10 +143,10 @@
 
     <div class="modal-footer">
       <center><button type="submit" class="btn btn-success" id="guardar" data-dismiss="modal"><span class="glyphicon glyphicon-refresh"></span> Actualizar</button>
-      <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
+        <button type="submit" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button></center>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <div class="modal fade" id="facturas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

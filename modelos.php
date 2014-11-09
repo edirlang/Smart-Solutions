@@ -142,9 +142,9 @@ function eliminar_provedor(){
 
 //Producto-proveedor
 function consultar_provedor_producto(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
+	if(isset($_GET['id'])){
 		$conexion = conectar_base_datos();
-		$codigo = $_POST['codigo'];
+		$codigo = $_GET['id'];
 		$consulta = "SELECT * FROM producto_proveedor where cod_proveedor = '$codigo'";
 
 		$resultado = mysqli_query($conexion,$consulta);
@@ -159,10 +159,10 @@ function consultar_provedor_producto(){
 	}
 }
 
-function crear_provedor_producto(){
+function crear_provedor_producto($proveedor,$codigo,$valor_ven){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$conexion = conectar_base_datos();
-		mysqli_query($conexion,"INSERT INTO producto_proveedor VALUES ('".$_POST['proveedor']."','".$_POST['Codigo']."','".$_POST['ValorVen']."')");
+		mysqli_query($conexion,"INSERT INTO producto_proveedor VALUES ('$proveedor','$codigo','$valor_ven')");
 		cerrar_conexion_db($conexion);
 	}
 }
@@ -178,9 +178,8 @@ function productos(){
 	return $productos;
 }
 
-function crear_producto($codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven){
+function crear_producto($proveedor,$codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven){
 	$conexion = conectar_base_datos();
-
 
 	$result = mysqli_query($conexion,"SELECT * FROM productos WHERE Codigo='".$codigo."'") or die (mysqli_error());
 
@@ -191,7 +190,7 @@ function crear_producto($codigo,$nombre,$descripcion,$especificaciones,$iva,$val
 	}
 	cerrar_conexion_db($conexion);
 
-	crear_provedor_producto();
+	crear_provedor_producto($proveedor,$codigo,$valor_ven);
 
 	return $codigo;
 }
@@ -242,7 +241,7 @@ function consultar_producto_fact(){
 
 function actualizar_prodcto($codigo,$iva,$vlr_venta,$conexion){
 	$produc = "UPDATE productos SET iva = '$iva' ValorVenta='$vlr_venta' where Codigo = '".$codigo."')";
-mysqli_query($conexion,$produc);
+	mysqli_query($conexion,$produc);
 }
 
 //Inventario
@@ -258,12 +257,16 @@ function crear_inventario(){
 			
 			$i=0;
 			
-			actualizar_prodcto($producto[2],$producto[5],$producto[7],$conexion);	
+			actualizar_prodcto($producto[2],$producto[5],$producto[4],$conexion);	
 
 			$result =mysqli_query($conexion,"SELECT * FROM `inventario` WHERE codigo='$producto[2]' order by fecha desc limit 1");
 			
 			$subtotal=$producto[3]*$producto[4];
 
+
+			if(mysqli_num_rows($result) == '0'){
+				$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$producto[3]."','".$producto[4]."','".$subtotal."','C')";
+			}else{
 			while ($row = mysqli_fetch_assoc($result)) {
 				$cantidad = $row['cantidad']+$producto[3];
 				$total = $row['total']+$subtotal;
@@ -271,10 +274,7 @@ function crear_inventario(){
 				$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$cantidad."','".$vlr_unidad."','".$total."','C')";
 				$i=1;
 			}
-			if($i == 0){
-				$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$producto[3]."','".$producto[4]."','".$subtotal."','C')";
 			}
-
 			mysqli_query($conexion,$sql);
 
 			crear_documento("Compra",$conexion);
@@ -1466,4 +1466,47 @@ function consultar_cierres_contables($id){
 	}
 	cerrar_conexion_db($conexion);
 	return $cierres;
+}
+
+function crear_ajuste_contable($id,$codigo,$naturaleza,$valor){
+	$detalles_cierre = consultar_cierres_contables($id);
+	$credito_total=0;
+	$debito_total=0;
+	$conexion = conectar_base_datos();
+	foreach ($detalles_cierre as $detalle_cierre) {
+		if($detalle_cierre['cuenta'] == $codigo){
+			if($naturaleza=='D'){
+				$debito = $detalle_cierre['debito']+$valor;
+				$estado = $debito-$detalle_cierre['credito'];
+				mysqli_query($conexion,"UPDATE detalle_cierre set debito='$debito', estado='$estado' where id='$id' and cuenta='$codigo'");
+				$debito_total+=$debito;
+			}else{
+				$credito = $detalle_cierre['credito']+$valor;
+				$estado = $credito-$detalle_cierre['credito'];
+				mysqli_query($conexion,"UPDATE detalle_cierre set credito='$credito', estado='$estado' where id='$id' and cuenta='$codigo'");
+				$credito_total+=$credito;
+			}
+		}
+	}
+	cerrar_conexion_db($conexion);
+	actualizar_cierre_contables($id,$debito_total,$credito_total);
+	
+}
+
+function actualizar_cierre_contables($id,$debito,$credito){
+	$conexion = conectar_base_datos();
+	$estado = $debito-$credito;
+	$sql = mysqli_query($conexion,"UPDATE cierre set debito='$debito',credito='$credito', estado='$estado' where id='$id'");
+	cerrar_conexion_db($conexion);
+}
+
+function consultar_ultimo_cierre_contable(){
+	$conexion = conectar_base_datos();
+	$cierre = array();
+	$sql = mysqli_query($conexion,"SELECT * from cierre order by id desc limit 1");
+	while ($row = mysqli_fetch_assoc($sql)) {
+		$cierre = $row;
+	}
+	cerrar_conexion_db($conexion);
+	return $cierre; 
 }

@@ -93,9 +93,10 @@ function crear_empleado_action(){
 }
 
 function eliminar_empleado_action(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$cedula = $_POST['id'];
-		return eliminar_usuario($cedula);
+	if(isset($_GET['id'])){
+		$cedula = $_GET['id'];
+		eliminar_usuario($cedula);
+		header("location: empleados");
 	}
 }
 
@@ -205,10 +206,12 @@ function eliminar_proveedor_action(){
 }
 
 function pedido_action(){
-	$proveedor = $_POST['codigo'];
-	$productos = consultar_provedor_producto();
+	if(isset($_GET['id'])){
+		$proveedor = $_GET['id'];
+		$productos = consultar_provedor_producto();
 
-	require "plantillas/nuevo_pedido.php";
+		require "plantillas/nuevo_pedido.php";	
+	}
 }
 
 function prodcuto_nuevo_action(){
@@ -219,8 +222,9 @@ function prodcuto_nuevo_action(){
 		$especificaciones = $_POST['Especificaciones'];
 		$iva = $_POST['iva'];
 		$valor_ven = $_POST['ValorVen'];
+		$proveedor = $_POST['proveedor'];
 
-		echo crear_producto($codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven);
+		echo crear_producto($proveedor,$codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven);
 	}
 }
 
@@ -403,5 +407,22 @@ function imprimir_factura_action(){
 		}
 		generar_factura($numero,$factura['fecha'],$factura['hora'],$factura['cliente'],$factura['vendedor'],$efectivo,$iva,$productos);
 	}	
+}
+function ajuste_contable_action(){
+	$cierre = consultar_ultimo_cierre_contable();
+	$codigos = codigos();
+	require "plantillas/ajuste_contables.php";
+}	
+
+function crear_ajuste_contable_action(){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		$id=$_POST['id'];
+		$cuentas = json_decode($_POST['transaciones']);
+		
+		foreach ($cuentas as $cuenta) {
+			crear_ajuste_contable($id,$cuenta[0],$cuenta[1],$cuenta[2]);
+		}
+		echo 1;
+	}
 }
 ?>

@@ -10,6 +10,7 @@
 						<li><a href="Codigos"><span class="glyphicon glyphicon-list"></span>	Codigos-PUC</a></li>
 					</ul>
 				<li><a href="cierre"><span class="glyphicon glyphicon-list"></span>	Cierre Contables</a></li>
+				<li><a href="ajustes_contables"><span class="glyphicon glyphicon-list"></span>	Ajustes Contables</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span> Reportes<b class="caret"></b></a>
 					<ul class="dropdown-menu">

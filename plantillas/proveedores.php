@@ -18,22 +18,15 @@
         </thead>
         <tbody>
           <?php 
-          foreach ($proveedores as $row) {
-            echo "<tr>";
-            echo "<td>".$row['codigo']."</td>";
-            echo "<td>".$row['nombre']."</td>";
-            echo "<td>".$row['telefono']."</td>";
-            echo "<td>".$row['direccion']."</td>";
-            echo "<td><a class='btn btn-success' id='".$row['codigo']."'><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>";
-            echo "</tr>";
-          ?>
-        <script language="JavaScript" type="text/javascript">
-                $("#<?php echo $row['codigo']; ?>").click(function enviar(){
-                    $("#codigo").val(<?php echo $row['codigo']; ?>);
-                    document.formu.submit();
-                  });
-        </script>
-        <?php } ?>
+          foreach ($proveedores as $row) { ?>
+            <tr>
+              <td><?php echo $row['codigo']; ?></td>
+              <td><?php echo $row['nombre']; ?></td>
+              <td><?php echo $row['telefono']; ?></td>
+              <td><?php echo $row['direccion']; ?></td>
+              <td><a class='btn btn-success' id='<?php echo $row['codigo']; ?>' href='nuevo_pedido?id=<?php echo $row['codigo']; ?>'><span class='glyphicon glyphicon-edit'></span> Ingresar Pedido</a></td>
+            </tr>
+          <?php } ?>
         </tbody>
       </table>
     </div>

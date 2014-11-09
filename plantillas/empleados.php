@@ -4,7 +4,6 @@
     <div class="panel-heading">
       <center><h3 class="panel-title">Empleados</h3></center>
     </div>
-    <a class="btn btn-danger" href="nueva_nomina">Nomina</a>
   <div class="panel-body">
     <table class="table table-condensed table-hover">
       <thead>
@@ -60,20 +59,7 @@
             </script>
             </td>
             <td>
-              <a class="btn btn-danger" id="eli<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a></td>
-              <script language="JavaScript" type="text/javascript">
-                $("#eli<?php echo $row['Cedula']; ?>").click(function(){
-                
-                  $.post('eliminar_empleado',{
-                    id: <?php echo $row['Cedula']; ?>
-                  },function(datos){
-                      
-                      $("#<?php echo $row['Cedula'];?>").remove();
-                      }
-                    )
-                  }
-                );
-                 </script>
+              <a class="btn btn-danger" id="eli<?php echo $row['Cedula'] ?>" href="eliminar_empleado?id=<?php echo $row['Cedula'] ?>"><span class="glyphicon glyphicon-trash blue"></span></a></td>
           </tr>
         <?php } ?>
         </tbody>
