@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-11-2014 a las 22:24:34
+-- Tiempo de generación: 11-11-2014 a las 19:16:44
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -19,48 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `smartsolutions`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `activo1`
---
-
-CREATE TABLE IF NOT EXISTS `activo1` (
-`id` int(11) NOT NULL,
-  `Documento` int(11) NOT NULL,
-  `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` date NOT NULL,
-  `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `Valor` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=20 ;
-
---
--- Volcado de datos para la tabla `activo1`
---
-
-INSERT INTO `activo1` (`id`, `Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(1, 1, '1', '31', '2014-11-04', 'C', 'Capital Social', 40000000),
-(2, 1, '1', '1105', '2014-11-04', 'D', 'Caja', 40000000),
-(3, 2, '1', '14', '2014-11-04', 'D', 'InventarioAcer AOD2', 800000),
-(4, 2, '1', '1105', '2014-11-04', 'C', 'Caja PagoAcer AOD2', 800000),
-(5, 3, '3', '1105', '2014-11-04', 'D', 'CAJA Acer AOD2', 300000),
-(6, 3, '3', '14', '2014-11-04', 'C', 'Inventario  Acer AOD2', 200000),
-(7, 4, '1', '14', '2014-11-05', 'D', 'InventarioLENOVAE431', 3000000),
-(8, 4, '1', '1105', '2014-11-05', 'C', 'Caja PagoLENOVAE431', 3000000),
-(9, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 7300000),
-(10, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 926757),
-(11, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 1223319),
-(12, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
-(13, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
-(14, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
-(15, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 375623),
-(16, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 74140),
-(17, 8, '1', '1105', '2014-11-06', 'C', 'CAJA', 3897582),
-(18, 9, '3', '1105', '2014-11-06', 'D', 'CAJA Acer AOD2', 300000),
-(19, 9, '3', '14', '2014-11-06', 'C', 'Inventario  Acer AOD2', 200000);
 
 -- --------------------------------------------------------
 
@@ -88,7 +46,8 @@ CREATE TABLE IF NOT EXISTS `apropiaciones` (
 
 INSERT INTO `apropiaciones` (`nomina`, `salud`, `pension`, `arl`, `vacaciones`, `prima`, `cesantias`, `int_cesantias`, `icbf`, `ccf`, `sena`) VALUES
 (1, 630195, 926757, 74140, 308425, 617591, 617591, 6175, 222421, 0, 148281),
-(2, 212500, 312500, 25000, 104000, 208250, 208250, 2082, 75000, 0, 50000);
+(2, 212500, 312500, 25000, 104000, 208250, 208250, 2082, 75000, 0, 50000),
+(3, 620500, 912500, 73000, 303680, 608090, 608090, 6080, 219000, 0, 146000);
 
 -- --------------------------------------------------------
 
@@ -109,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `cierre` (
 --
 
 INSERT INTO `cierre` (`id`, `fecha`, `debito`, `credito`, `estado`) VALUES
-(2, '2014-11-07', 73349813, 73657202, -307389);
+(1, '2014-11-11', 136261143, 126008523, 10252620);
 
 -- --------------------------------------------------------
 
@@ -154,11 +113,16 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 ('12', 'Inversiones', 'activo'),
 ('1205', 'Acciones', 'activo'),
 ('123005', 'Empresas', 'activo'),
+('1295', 'Otras Inversiones', 'activo'),
+('1305', 'Clientes', 'activo'),
 ('131505', 'Ventas', 'activo'),
 ('131520', 'Presatomos', 'activo'),
 ('134010', 'Maquinaria y equipo', 'activo'),
 ('134515', 'Comiciones', 'activo'),
+('1365', 'Cuentas por cobrar a trabajadores', 'activo'),
+('1399', 'Proviciones', 'pasivo'),
 ('14', 'Inventario', 'activo'),
+('1592', 'Depreciación Acumulada', 'activo'),
 ('21', 'Obligaciones Financi', 'pasivo'),
 ('2205', 'Proveedor', 'pasivo'),
 ('236505', 'Retencion Salarios y pagos laborales', 'pasivo'),
@@ -174,9 +138,14 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 ('252021', 'Prima', 'pasivo'),
 ('252522', 'Vacaciones', 'pasivo'),
 ('2550', 'Obligación Laboral', 'pasivo'),
+('28', 'Saldos a facor', 'pasivo'),
 ('2804', 'IVA', 'pasivo'),
 ('31', 'Capital Social', 'activo'),
+('4', 'otros intresos', 'ingreso'),
 ('4135', 'Ventas', 'ingreso'),
+('4210', 'Ingresos Financieros', 'ingreso'),
+('4295', 'Otros Ingresos', 'ingreso'),
+('470525', 'Activos diferido', 'activo'),
 ('510506', 'Sueldos', 'gasto'),
 ('510515', 'Horas Extra', 'gasto'),
 ('510527', 'Auxilio de trasporte', 'gasto'),
@@ -192,15 +161,20 @@ INSERT INTO `codigotransacion` (`Codigo`, `Descripcion`, `Tipo`) VALUES
 ('510572', 'Aportes cajas de compensación familia', 'gasto'),
 ('510575', 'Aportes ICBF', 'gasto'),
 ('510578', 'SENA', 'gasto'),
+('5160', 'Depreciaciones', 'gasto'),
+('5165', 'Amortizaciones', 'gasto'),
+('530505', 'Gastos Bancarios', 'gasto'),
+('5310', 'Perdida en ventaa', 'gasto'),
 ('613554', 'Costo de venta', 'costo');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `costos`
+-- Estructura de tabla para la tabla `cuentas`
 --
 
-CREATE TABLE IF NOT EXISTS `costos` (
+CREATE TABLE IF NOT EXISTS `cuentas` (
+`id` int(11) NOT NULL,
   `Documento` int(11) NOT NULL,
   `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
@@ -208,15 +182,80 @@ CREATE TABLE IF NOT EXISTS `costos` (
   `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `Valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=68 ;
 
 --
--- Volcado de datos para la tabla `costos`
+-- Volcado de datos para la tabla `cuentas`
 --
 
-INSERT INTO `costos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(3, '3', '613554', '2014-11-04', 'D', 'Costo  Acer AOD2', 200000),
-(9, '3', '613554', '2014-11-06', 'D', 'Costo  Acer AOD2', 200000);
+INSERT INTO `cuentas` (`id`, `Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
+(1, 1, '1', '31', '2014-11-04', 'C', 'Capital Social', 40000000),
+(2, 1, '1', '1105', '2014-11-04', 'D', 'Caja', 40000000),
+(3, 2, '1', '14', '2014-11-04', 'D', 'InventarioAcer AOD2', 800000),
+(4, 2, '1', '1105', '2014-11-04', 'C', 'Caja PagoAcer AOD2', 800000),
+(5, 3, '3', '1105', '2014-11-04', 'D', 'CAJA Acer AOD2', 300000),
+(6, 3, '3', '14', '2014-11-04', 'C', 'Inventario  Acer AOD2', 200000),
+(7, 4, '1', '14', '2014-11-05', 'D', 'InventarioLENOVAE431', 3000000),
+(8, 4, '1', '1105', '2014-11-05', 'C', 'Caja PagoLENOVAE431', 3000000),
+(9, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 7300000),
+(10, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 926757),
+(11, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 1223319),
+(12, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
+(13, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
+(14, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 0),
+(15, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 375623),
+(16, 6, '1', '1105', '2014-11-06', 'C', 'CAJA', 74140),
+(17, 8, '1', '1105', '2014-11-06', 'C', 'CAJA', 3897582),
+(18, 9, '3', '1105', '2014-11-06', 'D', 'CAJA Acer AOD2', 300000),
+(19, 9, '3', '14', '2014-11-06', 'C', 'Inventario  Acer AOD2', 200000),
+(20, 11, '1', '14', '2014-11-08', 'D', 'Inventario8998', 0),
+(21, 11, '1', '1105', '2014-11-08', 'C', 'Caja Pago8998', 0),
+(22, 12, '1', '14', '2014-11-08', 'D', 'Inventario8998', 0),
+(23, 12, '1', '1105', '2014-11-08', 'C', 'Caja Pago8998', 0),
+(24, 13, '1', '14', '2014-11-08', 'D', 'Inventario8998', 0),
+(25, 13, '1', '1105', '2014-11-08', 'C', 'Caja Pago8998', 0),
+(26, 14, '1', '14', '2014-11-08', 'D', 'Inventario898', 0),
+(27, 14, '1', '1105', '2014-11-08', 'C', 'Caja Pago898', 0),
+(28, 15, '1', '14', '2014-11-08', 'D', 'Inventario0909', 0),
+(29, 15, '1', '1105', '2014-11-08', 'C', 'Caja Pago0909', 0),
+(30, 16, '1', '14', '2014-11-08', 'D', 'Inventario90', 1000),
+(31, 16, '1', '1105', '2014-11-08', 'C', 'Caja Pago90', 1000),
+(32, 17, '1', '14', '2014-11-08', 'D', 'Inventario90', 1000),
+(33, 17, '1', '1105', '2014-11-08', 'C', 'Caja Pago90', 1000),
+(34, 18, '1', '14', '2014-11-08', 'D', 'Inventario09000', 1000),
+(35, 18, '1', '1105', '2014-11-08', 'C', 'Caja Pago09000', 1000),
+(36, 20, '1', '1105', '2014-11-08', 'C', 'CAJA', 11758480),
+(37, 21, '2', '1105', '2014-11-10', 'D', '', 1000),
+(38, 21, '2', '1105', '2014-11-10', 'C', '', 1000),
+(39, 21, '2', '1105', '2014-11-10', 'D', '', 1000),
+(40, 21, '2', '1105', '2014-11-10', 'C', '', 1000),
+(41, 22, '2', '1105', '2014-11-10', 'D', '', 1000),
+(42, 22, '2', '112005', '2014-11-10', 'D', '', 1000),
+(43, 22, '2', '1105', '2014-11-10', 'C', '', 2000),
+(44, 23, '2', '1105', '2014-11-10', 'D', 'Caja', 10000),
+(45, 23, '2', '1105', '2014-11-10', 'C', 'Caja', 10000),
+(46, 24, '2', '1105', '2014-11-10', 'D', 'Caja', 1000),
+(47, 24, '2', '1105', '2014-11-10', 'C', 'Caja', 1000),
+(48, 25, '2', '1105', '2014-11-10', 'D', 'Caja', 1000),
+(49, 25, '2', '1105', '2014-11-10', 'C', 'Caja', 1000),
+(50, 26, '2', '2205', '2014-11-11', 'D', 'Proveedor', 1000),
+(51, 26, '2', '2205', '2014-11-11', 'C', 'Proveedor', 1000),
+(52, 27, '2', '1105', '2014-11-11', 'D', 'Caja', 100000),
+(53, 27, '2', '1105', '2014-11-11', 'C', 'Caja', 100000),
+(54, 28, '2', '112005', '2014-11-11', 'D', 'Bancos', 10000),
+(55, 28, '2', '112005', '2014-11-11', 'C', 'Bancos', 10000),
+(56, 29, '1', '14', '2014-11-11', 'D', 'InventarioAcer AOD2', 600000),
+(57, 29, '1', '2804', '2014-11-11', 'D', 'IVAAcer AOD2', 0),
+(58, 29, '1', '1105', '2014-11-11', 'C', 'Caja PagoAcer AOD2', 600000),
+(59, 30, '3', '1105', '2014-11-11', 'D', 'CAJA Acer AOD2', 300000),
+(60, 30, '3', '2804', '2014-11-11', 'C', 'IVA Acer AOD2', 0),
+(61, 30, '3', '4135', '2014-11-11', 'C', 'VENTA Acer AOD2', 300000),
+(62, 30, '3', '14', '2014-11-11', 'C', 'Inventario  Acer AOD2', 200000),
+(63, 31, '3', '1105', '2014-11-11', 'D', 'CAJA Acer AOD2', 300000),
+(64, 31, '3', '2804', '2014-11-11', 'C', 'IVA Acer AOD2', 0),
+(65, 31, '3', '4135', '2014-11-11', 'C', 'VENTA Acer AOD2', 300000),
+(66, 31, '3', '14', '2014-11-11', 'C', 'Inventario  Acer AOD2', 200000),
+(67, 31, '3', '613554', '2014-11-11', 'D', 'Costo  Acer AOD2', 200000);
 
 -- --------------------------------------------------------
 
@@ -238,7 +277,9 @@ CREATE TABLE IF NOT EXISTS `detallefactura` (
 
 INSERT INTO `detallefactura` (`num_factura`, `codigo`, `cantidad`, `vlr_venta`, `total`) VALUES
 (1, 'Acer AOD2', 1, 300000, 300000),
-(2, 'Acer AOD2', 1, 300000, 300000);
+(2, 'Acer AOD2', 1, 300000, 300000),
+(3, 'Acer AOD2', 1, 300000, 300000),
+(4, 'Acer AOD2', 1, 300000, 300000);
 
 -- --------------------------------------------------------
 
@@ -259,51 +300,64 @@ CREATE TABLE IF NOT EXISTS `detalle_cierre` (
 --
 
 INSERT INTO `detalle_cierre` (`id`, `cuenta`, `debito`, `credito`, `estado`) VALUES
-(2, '1105', 40600000, 17597421, 23002579),
-(2, '1120', 0, 0, 0),
-(2, '112005', 0, 0, 0),
-(2, '12', 0, 0, 0),
-(2, '1205', 0, 0, 0),
-(2, '123005', 0, 0, 0),
-(2, '131505', 0, 0, 0),
-(2, '131520', 0, 0, 0),
-(2, '134010', 0, 0, 0),
-(2, '134515', 0, 0, 0),
-(2, '14', 3800000, 400000, 3400000),
-(2, '21', 0, 0, 0),
-(2, '2205', 0, 0, 0),
-(2, '236505', 375623, 375623, 0),
-(2, '237005', 1239257, 1239257, 0),
-(2, '237006', 224140, 99140, 125000),
-(2, '237010', 0, 892265, -892265),
-(2, '237025', 0, 0, 0),
-(2, '237030', 0, 0, 0),
-(2, '237040', 0, 0, 0),
-(2, '238030', 1635819, 1635819, 0),
-(2, '251023', 208250, 825841, -617591),
-(2, '251520', 2082, 8257, -6175),
-(2, '252021', 0, 412425, -412425),
-(2, '252522', 104000, 825841, -721841),
-(2, '2550', 9800000, 8745313, 1054687),
-(2, '2804', 0, 0, 0),
-(2, '31', 0, 40000000, -40000000),
-(2, '4135', 0, 600000, -600000),
-(2, '510506', 9800000, 0, 9800000),
-(2, '510515', 114062, 0, 114062),
-(2, '510527', 0, 0, 0),
-(2, '510530', 825841, 0, 825841),
-(2, '510533', 8257, 0, 8257),
-(2, '510536', 412425, 0, 412425),
-(2, '510539', 825841, 0, 825841),
-(2, '510545', 0, 0, 0),
-(2, '510548', 0, 0, 0),
-(2, '510559', 1239257, 0, 1239257),
-(2, '510568', 0, 0, 0),
-(2, '510569', 842695, 0, 842695),
-(2, '510572', 198281, 0, 198281),
-(2, '510575', 396562, 0, 396562),
-(2, '510578', 297421, 0, 297421),
-(2, '613554', 400000, 0, 400000);
+(1, '1105', 40715000, 29474901, 100000),
+(1, '1120', 0, 0, 0),
+(1, '112005', 11000, 10000, 10000),
+(1, '12', 0, 0, 0),
+(1, '1205', 0, 0, 0),
+(1, '123005', 0, 0, 0),
+(1, '1295', 0, 0, 0),
+(1, '1305', 0, 0, 0),
+(1, '131505', 0, 0, 0),
+(1, '131520', 0, 0, 0),
+(1, '134010', 0, 0, 0),
+(1, '134515', 0, 0, 0),
+(1, '1365', 0, 0, 0),
+(1, '1399', 0, 0, 0),
+(1, '14', 3803000, 400000, 3403000),
+(1, '1592', 0, 0, 0),
+(1, '21', 0, 0, 0),
+(1, '2205', 0, 0, 0),
+(1, '236505', 753163, 753163, 0),
+(1, '237005', 2151757, 2151757, 0),
+(1, '237006', 662140, 172140, 490000),
+(1, '237010', 0, 1549265, -1549265),
+(1, '237025', 0, 0, 0),
+(1, '237030', 0, 0, 0),
+(1, '237040', 0, 0, 0),
+(1, '238030', 2840319, 2840319, 0),
+(1, '251023', 816340, 1433931, -617591),
+(1, '251520', 8162, 14337, -6175),
+(1, '252021', 0, 716105, -716105),
+(1, '252522', 407680, 1433931, -1026251),
+(1, '2550', 17100000, 15083773, 2016227),
+(1, '28', 0, 0, 0),
+(1, '2804', 0, 0, 0),
+(1, '31', 0, 40000000, -40000000),
+(1, '4', 0, 0, 0),
+(1, '4135', 0, 600000, -600000),
+(1, '4210', 0, 0, 0),
+(1, '4295', 0, 0, 0),
+(1, '510506', 17100000, 0, 17100000),
+(1, '510515', 114062, 0, 114062),
+(1, '510527', 0, 0, 0),
+(1, '510530', 1433931, 0, 1433931),
+(1, '510533', 14337, 0, 14337),
+(1, '510536', 716105, 0, 716105),
+(1, '510539', 1433931, 0, 1433931),
+(1, '510545', 0, 0, 0),
+(1, '510548', 0, 0, 0),
+(1, '510559', 2151757, 0, 2151757),
+(1, '510568', 0, 0, 0),
+(1, '510569', 1463195, 0, 1463195),
+(1, '510572', 344281, 0, 344281),
+(1, '510575', 688562, 0, 688562),
+(1, '510578', 516421, 0, 516421),
+(1, '5160', 0, 0, 0),
+(1, '5165', 0, 0, 0),
+(1, '530505', 0, 0, 0),
+(1, '5310', 0, 0, 0),
+(1, '613554', 400000, 0, 400000);
 
 -- --------------------------------------------------------
 
@@ -314,7 +368,7 @@ INSERT INTO `detalle_cierre` (`id`, `cuenta`, `debito`, `credito`, `estado`) VAL
 CREATE TABLE IF NOT EXISTS `documentado` (
 `cod_documento` int(11) NOT NULL,
   `descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=32 ;
 
 --
 -- Volcado de datos para la tabla `documentado`
@@ -329,7 +383,29 @@ INSERT INTO `documentado` (`cod_documento`, `descripcion`) VALUES
 (6, 'Liquidar-nomina 1'),
 (7, 'Nomina 2'),
 (8, 'Liquidar-nomina 2'),
-(9, 'Factura 2');
+(9, 'Factura 2'),
+(10, 'Factura '),
+(11, 'Compra'),
+(12, 'Compra'),
+(13, 'Compra'),
+(14, 'Compra'),
+(15, 'Compra'),
+(16, 'Compra'),
+(17, 'Compra'),
+(18, 'Compra'),
+(19, 'Nomina 3'),
+(20, 'Liquidar-nomina 3'),
+(21, 'Transacion'),
+(22, 'Transacion'),
+(23, 'Transacion'),
+(24, 'Transacion'),
+(25, 'Transacion'),
+(26, 'Transacion'),
+(27, 'Transacion'),
+(28, 'Transacion'),
+(29, 'Compra'),
+(30, 'Factura 3'),
+(31, 'Factura 4');
 
 -- --------------------------------------------------------
 
@@ -380,6 +456,28 @@ INSERT INTO `eps` (`ID`, `Nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estado_situacion`
+--
+
+CREATE TABLE IF NOT EXISTS `estado_situacion` (
+`id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `id_cierre` int(11) NOT NULL,
+  `activos` int(11) NOT NULL,
+  `pasivos` int(11) NOT NULL,
+  `patrimonio` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `estado_situacion`
+--
+
+INSERT INTO `estado_situacion` (`id`, `fecha`, `id_cierre`, `activos`, `pasivos`, `patrimonio`) VALUES
+(1, '2014-11-10', 1, 1000, 1000, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `factura`
 --
 
@@ -391,91 +489,17 @@ CREATE TABLE IF NOT EXISTS `factura` (
   `vendedor` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
   `Credito` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `factura`
 --
 
 INSERT INTO `factura` (`num_factura`, `cliente`, `fecha`, `hora`, `vendedor`, `total`, `Credito`) VALUES
-(1, '1069740361', '2014-11-04', '12:22:29', '3', 300000, 0),
-(2, '1069740361', '2014-11-06', '16:06:09', '3', 300000, 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `gasto`
---
-
-CREATE TABLE IF NOT EXISTS `gasto` (
-  `Documento` int(11) NOT NULL,
-  `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` date NOT NULL,
-  `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `Valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `gasto`
---
-
-INSERT INTO `gasto` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(5, '1', '510506', '2014-11-06', 'D', 'Sueldos', 7300000),
-(5, '1', '510515', '2014-11-06', 'D', 'Horas extra', 114062),
-(5, '1', '510548', '2014-11-06', 'D', 'Bonificaciones', 0),
-(5, '1', '510527', '2014-11-06', 'D', 'Auxilio de trasporte', 0),
-(5, '1', '510545', '2014-11-06', 'D', 'Auxilio de alimentacion', 0),
-(5, '1', '510569', '2014-11-06', 'D', 'Aportes a Salud', 630195),
-(5, '1', '510559', '2014-11-06', 'D', 'Fondos de cesantías y/o pensiones', 926757),
-(5, '1', '510568', '2014-11-06', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 74140),
-(5, '1', '510536', '2014-11-06', 'D', 'Prima de servicios', 308425),
-(5, '1', '510539', '2014-11-06', 'D', 'Vacaciones', 617591),
-(5, '1', '510530', '2014-11-06', 'D', 'Cesantías', 617591),
-(5, '1', '510533', '2014-11-06', 'D', 'Intereces Sobre cesantías', 6175),
-(5, '1', '510578', '2014-11-06', 'D', 'SENA', 222421),
-(5, '1', '510575', '2014-11-06', 'D', 'Aportes a ICBF', 296562),
-(5, '1', '510572', '2014-11-06', 'D', 'Aportes cajas de compensación familia', 148281),
-(7, '1', '510506', '2014-11-06', 'D', 'Sueldos', 2500000),
-(7, '1', '510515', '2014-11-06', 'D', 'Horas extra', 0),
-(7, '1', '510548', '2014-11-06', 'D', 'Bonificaciones', 0),
-(7, '1', '510527', '2014-11-06', 'D', 'Auxilio de trasporte', 0),
-(7, '1', '510545', '2014-11-06', 'D', 'Auxilio de alimentacion', 0),
-(7, '1', '510569', '2014-11-06', 'D', 'Aportes a Salud', 212500),
-(7, '1', '510559', '2014-11-06', 'D', 'Fondos de cesantías y/o pensiones', 312500),
-(7, '1', '510568', '2014-11-06', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 25000),
-(7, '1', '510536', '2014-11-06', 'D', 'Prima de servicios', 104000),
-(7, '1', '510539', '2014-11-06', 'D', 'Vacaciones', 208250),
-(7, '1', '510530', '2014-11-06', 'D', 'Cesantías', 208250),
-(7, '1', '510533', '2014-11-06', 'D', 'Intereces Sobre cesantías', 2082),
-(7, '1', '510578', '2014-11-06', 'D', 'SENA', 75000),
-(7, '1', '510575', '2014-11-06', 'D', 'Aportes a ICBF', 100000),
-(7, '1', '510572', '2014-11-06', 'D', 'Aportes cajas de compensación familia', 50000);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ingresos`
---
-
-CREATE TABLE IF NOT EXISTS `ingresos` (
-  `Documento` int(11) NOT NULL,
-  `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` date NOT NULL,
-  `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `Valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ingresos`
---
-
-INSERT INTO `ingresos` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(3, '3', '4135', '2014-11-04', 'C', 'VENTA Acer AOD2', 300000),
-(9, '3', '4135', '2014-11-06', 'C', 'VENTA Acer AOD2', 300000);
+(1, '1069740361', '2014-11-04', '12:22:29', '3', 300000, 1),
+(2, '1069740361', '2014-11-06', '16:06:09', '3', 300000, 0),
+(3, '1069740361', '2014-11-11', '13:11:32', '3', 300000, 0),
+(4, '1069740361', '2014-11-11', '13:12:56', '3', 300000, 1);
 
 -- --------------------------------------------------------
 
@@ -494,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `inventario` (
   `vlr_unidad` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `inventario`
@@ -504,7 +528,18 @@ INSERT INTO `inventario` (`id`, `codigo`, `descripcion`, `fecha`, `cant_inicial`
 (1, 'Acer AOD2', 'Compra', '2014-11-04', 4, 200000, 4, 200000, 800000, 'C'),
 (2, 'Acer AOD2', 'Venta', '2014-11-04', 1, 200000, 3, 200000, 600000, 'V'),
 (3, 'LENOVAE431', 'Compra', '2014-11-05', 3, 1000000, 3, 1000000, 3000000, 'C'),
-(4, 'Acer AOD2', 'Venta', '2014-11-06', 1, 200000, 3, 200000, 600000, 'V');
+(4, 'Acer AOD2', 'Venta', '2014-11-06', 1, 200000, 3, 200000, 600000, 'V'),
+(5, '8998', 'Compra', '2014-11-08', 10, 0, 10, 0, 0, 'C'),
+(6, '8998', 'Compra', '2014-11-08', 10, 0, 20, 0, 0, 'C'),
+(7, '8998', 'Compra', '2014-11-08', 10, 0, 20, 0, 0, 'C'),
+(8, '898', 'Compra', '2014-11-08', 1, 0, 1, 0, 0, 'C'),
+(9, '0909', 'Compra', '2014-11-08', 0, 0, 0, 0, 0, 'C'),
+(10, '90', 'Compra', '2014-11-08', 10, 100, 10, 100, 1000, 'C'),
+(11, '90', 'Compra', '2014-11-08', 1, 1000, 11, 181, 2000, 'C'),
+(12, '09000', 'Compra', '2014-11-08', 10, 100, 10, 100, 1000, 'C'),
+(13, 'Acer AOD2', 'Compra', '2014-11-11', 3, 200000, 6, 200000, 1200000, 'C'),
+(14, 'Acer AOD2', 'Venta', '2014-11-11', 1, 200000, 5, 200000, 1000000, 'V'),
+(15, 'Acer AOD2', 'Venta', '2014-11-11', 1, 200000, 4, 200000, 800000, 'V');
 
 -- --------------------------------------------------------
 
@@ -531,7 +566,7 @@ CREATE TABLE IF NOT EXISTS `Nomina` (
   `retencion` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `liquidada` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `Nomina`
@@ -539,84 +574,8 @@ CREATE TABLE IF NOT EXISTS `Nomina` (
 
 INSERT INTO `Nomina` (`id`, `fecha`, `empleado`, `dias_trab`, `basico`, `horas_extra`, `comisiones`, `bonificaciones`, `auxilio_trasp`, `auxilio_alim`, `salud`, `pension`, `fondo_emple`, `libranzas`, `envargos`, `retencion`, `total`, `liquidada`) VALUES
 (1, '2014-11-06', '1', 30, 7300000, 114062, 0, 0, 0, 0, 296562, 296562, 0, 0, 0, 375623, 6445313, 1),
-(2, '2014-11-06', '2', 30, 2500000, 0, 0, 0, 0, 0, 100000, 100000, 0, 0, 0, 0, 2300000, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pasivo`
---
-
-CREATE TABLE IF NOT EXISTS `pasivo` (
-  `Documento` int(11) NOT NULL,
-  `Cedula` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Codigo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` date NOT NULL,
-  `Naturaleza` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `Valor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `pasivo`
---
-
-INSERT INTO `pasivo` (`Documento`, `Cedula`, `Codigo`, `Fecha`, `Naturaleza`, `Descripcion`, `Valor`) VALUES
-(2, '1', '2804', '2014-11-04', 'D', 'IVAAcer AOD2', 0),
-(3, '3', '2804', '2014-11-04', 'C', 'IVA Acer AOD2', 0),
-(4, '1', '2804', '2014-11-05', 'D', 'IVALENOVAE431', 0),
-(5, '1', '237005', '2014-11-06', 'C', 'Aportes a Salud', 296562),
-(5, '1', '238030', '2014-11-06', 'C', 'Fondos de cesantías y/o pensiones', 296562),
-(5, '1', '237040', '2014-11-06', 'C', 'Cooperativas', 0),
-(5, '1', '237025', '2014-11-06', 'C', 'Embargos Judiciales', 0),
-(5, '1', '237030', '2014-11-06', 'C', 'Libranzas', 0),
-(5, '1', '236505', '2014-11-06', 'C', 'Retencion Salarios y pagos laborales', 375623),
-(5, '1', '2550', '2014-11-06', 'C', 'Obligaciones Laborales', 6445313),
-(5, '1', '237005', '2014-11-06', 'C', 'Aportes a Salud', 630195),
-(5, '1', '238030', '2014-11-06', 'C', 'Fondos de cesantías y/o pensiones', 926757),
-(5, '1', '237006', '2014-11-06', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 74140),
-(5, '1', '252021', '2014-11-06', 'C', 'Prima', 308425),
-(5, '1', '252522', '2014-11-06', 'C', 'Vacaciones', 617591),
-(5, '1', '251023', '2014-11-06', 'C', 'Cesantías', 617591),
-(5, '1', '251520', '2014-11-06', 'C', 'Intereces Sobre Cesantías', 6175),
-(5, '1', '237010', '2014-11-06', 'C', 'Aportes al ICBF, SENA y cajas de compensación', 667265),
-(6, '1', '2550', '2014-11-06', 'D', 'Sueldos', 7300000),
-(6, '1', '237005', '2014-11-06', 'D', 'Aportes a Salud', 926757),
-(6, '1', '238030', '2014-11-06', 'D', 'Fondos de cesantías y/o pensiones', 1223319),
-(6, '1', '237040', '2014-11-06', 'D', 'Cooperativas', 0),
-(6, '1', '237025', '2014-11-06', 'D', 'Embargos Judiciales', 0),
-(6, '1', '237030', '2014-11-06', 'D', 'Libranzas', 0),
-(6, '1', '236505', '2014-11-06', 'D', 'Retencion Salarios y pagos laborales', 375623),
-(6, '1', '237006', '2014-11-06', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 74140),
-(7, '1', '237005', '2014-11-06', 'C', 'Aportes a Salud', 100000),
-(7, '1', '238030', '2014-11-06', 'C', 'Fondos de cesantías y/o pensiones', 100000),
-(7, '1', '237040', '2014-11-06', 'C', 'Cooperativas', 0),
-(7, '1', '237025', '2014-11-06', 'C', 'Embargos Judiciales', 0),
-(7, '1', '237030', '2014-11-06', 'C', 'Libranzas', 0),
-(7, '1', '236505', '2014-11-06', 'C', 'Retencion Salarios y pagos laborales', 0),
-(7, '1', '2550', '2014-11-06', 'C', 'Obligaciones Laborales', 2300000),
-(7, '1', '237005', '2014-11-06', 'C', 'Aportes a Salud', 212500),
-(7, '1', '238030', '2014-11-06', 'C', 'Fondos de cesantías y/o pensiones', 312500),
-(7, '1', '237006', '2014-11-06', 'C', 'Aportes a administradoras de riesgos profesionales, ARP', 25000),
-(7, '1', '252021', '2014-11-06', 'C', 'Prima', 104000),
-(7, '1', '252522', '2014-11-06', 'C', 'Vacaciones', 208250),
-(7, '1', '251023', '2014-11-06', 'C', 'Cesantías', 208250),
-(7, '1', '251520', '2014-11-06', 'C', 'Intereces Sobre Cesantías', 2082),
-(7, '1', '237010', '2014-11-06', 'C', 'Aportes al ICBF, SENA y cajas de compensación', 225000),
-(8, '1', '2550', '2014-11-06', 'D', 'Sueldos', 2500000),
-(8, '1', '237005', '2014-11-06', 'D', 'Aportes a Salud', 312500),
-(8, '1', '238030', '2014-11-06', 'D', 'Fondos de cesantías y/o pensiones', 412500),
-(8, '1', '237040', '2014-11-06', 'D', 'Cooperativas', 0),
-(8, '1', '237025', '2014-11-06', 'D', 'Embargos Judiciales', 0),
-(8, '1', '237030', '2014-11-06', 'D', 'Libranzas', 0),
-(8, '1', '236505', '2014-11-06', 'D', 'Retencion Salarios y pagos laborales', 0),
-(8, '1', '237006', '2014-11-06', 'D', 'Aportes a administradoras de riesgos profesionales, ARP', 25000),
-(8, '1', '252522', '2014-11-06', 'D', 'Vacaciones', 104000),
-(8, '1', '252521', '2014-11-06', 'D', 'Prima', 208250),
-(8, '1', '251023', '2014-11-06', 'D', 'Cesantias', 208250),
-(8, '1', '251520', '2014-11-06', 'D', 'Intereces Sobre Cesantias', 2082),
-(8, '1', '237006', '2014-11-06', 'D', 'Aportes al ICBF, SENA y cajas de compensación, ARP', 125000),
-(9, '3', '2804', '2014-11-06', 'C', 'IVA Acer AOD2', 0);
+(2, '2014-11-06', '2', 30, 2500000, 0, 0, 0, 0, 0, 100000, 100000, 0, 0, 0, 0, 2300000, 1),
+(3, '2014-11-08', '1', 30, 7300000, 0, 0, 0, 0, 0, 292000, 292000, 0, 0, 0, 377540, 6338460, 1);
 
 -- --------------------------------------------------------
 
@@ -656,6 +615,8 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Descripcion`, `Especificaciones`, `iva`, `ValorVenta`) VALUES
+('09000', 'klk', 'lklkl ', 'llklk ', '0', 1000),
+('90', 'kjjk', 'kjkj ', 'kjk ', '0', 1000),
 ('Acer AOD2', 'Acer Aspire One AOD2', 'Acer Aspire One AOD250-1042 10.1 inch Atom 1.6GHz/ 1GB/ 160GB/ XP Home Netbook Computer (Red) ', ' Screen Size	10.1 inches\nProcessor	1.6 GHz Intel Atom N270\nRAM	1 GB DDR2\nHard Drive	160 GB\nGraphics Coprocessor	Intel GMA 950\nAverage Battery Life (in hours)	3.15 hours\nExpand\nOther Technical Details\nBrand Name	Acer\nSeries	Aspire One\nItem model number	AOD250-1042/LU.S700B.028\nHardware Platform	PC\nOperating System	Windows XP Home Edition\nItem Weight	5 pounds\nItem Dimensions L x W x H	10.20 x 7.20 x 1 inches\nColor	Red\nProcessor Brand	Intel\nProcessor Count	1\nComputer Memory Type	SDRAM\nHard Drive Interface	ATA100', '0', 300000),
 ('Acer E15', 'Acer E15 15-Inch ', ' Intel N2830 dual-core processor (2.16GHz/2.41GHz w/ Intel Burst)15.6" HD widescreen CineCrystalTM LCD display (1366 x 768) - Intel HD Graphics4GB DDR3L memory (1 Memory Slots, 8GB Maximum Memory) - 500GB hard drivestereo speakers - HD audio - webcam - multi-gesture touchpad - Wireless - Bluetooth 4.0 - HDMI - USB 3.0 - card readerWindows 8.1 (64 bits), 3 cell (up to 4.5-hour) battery - 1-year limited warranty. Color: Diamond Black', ' Screen Size	15.6 inches\nMax Screen Resolution	1366 x 768\nProcessor	Intel Celeron\nRAM	SDRAM DDR3\nHard Drive	500 GB\nWireless Type	802.11bgn\nExpand\nOther Technical Details\nBrand Name	Acer\nSeries	Aspire\nItem model number	ES1-511-C0DV\nHardware Platform	PC\nOperating System	Windows 8\nItem Weight	5.3 pounds\nItem Dimensions L x W x H	15 x 1.10 x 10.20 inches\nColor	Black\nComputer Memory Type	DDR3 SDRAM', '0', 450000),
 ('AcerAspire ES1-511', 'Acer Aspire ES1-511', 'Intel Celeron N2830 2.16 GHz Processor (1 MB Cache)4 GB DDR3L SDRAM500 GB 5400 rpm Hard Drive15.6-Inch Screen, Intel HD GraphicsWindows 8.1, 4.5-hour battery life', 'Screen Size	15.6 inchesMax Screen Resolution	1366x768Processor	2.16 GHz Intel CeleronRAM	4 GB DDR3L SDRAMHard Drive	500 GB SATAGraphics Coprocessor	Intel HD GraphicsGraphics Card Ram Size	64 MBWireless Type	802.11bgnNumber of USB 2.0 Ports	2Number of USB 3.0 Ports	1Average Battery Life (in hours)	4.5 hoursExpandOther Technical DetailsBrand Name	AcerSeries	ES1-511Item model number	ES1-511-C59VOperating System	Windows 8.1Item Weight	5.3 poundsItem Dimensions L x W x H	15.02 x 10.16 x 1.07 inchesColor	Diamond BlackProcessor Brand	Intel CeleronHard Drive Rotational Speed	5400 RPMBatteries:	1 Lithium ion batteries required. (included)', '16', 500000),
@@ -694,6 +655,8 @@ CREATE TABLE IF NOT EXISTS `producto_proveedor` (
 --
 
 INSERT INTO `producto_proveedor` (`cod_proveedor`, `cod_poducto`, `vlr_compra`) VALUES
+(1, '09000', 1000),
+(2, '90', 1000),
 (1, 'Acer AOD2', 300000),
 (1, 'Acer E15', 450000),
 (1, 'AcerC720', 400000),
@@ -789,12 +752,6 @@ INSERT INTO `uvt` (`id`, `tarifa`, `desde`, `hasta`, `menos`, `mas`) VALUES
 --
 
 --
--- Indices de la tabla `activo1`
---
-ALTER TABLE `activo1`
- ADD PRIMARY KEY (`id`), ADD KEY `Cedula` (`Cedula`);
-
---
 -- Indices de la tabla `apropiaciones`
 --
 ALTER TABLE `apropiaciones`
@@ -819,10 +776,10 @@ ALTER TABLE `codigotransacion`
  ADD PRIMARY KEY (`Codigo`);
 
 --
--- Indices de la tabla `costos`
+-- Indices de la tabla `cuentas`
 --
-ALTER TABLE `costos`
- ADD PRIMARY KEY (`Documento`,`Codigo`,`Cedula`);
+ALTER TABLE `cuentas`
+ ADD PRIMARY KEY (`id`), ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `detallefactura`
@@ -855,22 +812,16 @@ ALTER TABLE `eps`
  ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `estado_situacion`
+--
+ALTER TABLE `estado_situacion`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id_cierre` (`id_cierre`), ADD KEY `id_cierre1` (`id_cierre`);
+
+--
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
  ADD PRIMARY KEY (`num_factura`,`cliente`), ADD KEY `cliente` (`cliente`);
-
---
--- Indices de la tabla `gasto`
---
-ALTER TABLE `gasto`
- ADD KEY `Cedula` (`Cedula`), ADD KEY `Documentado` (`Documento`,`Cedula`,`Codigo`);
-
---
--- Indices de la tabla `ingresos`
---
-ALTER TABLE `ingresos`
- ADD PRIMARY KEY (`Documento`,`Cedula`,`Codigo`), ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `inventario`
@@ -883,12 +834,6 @@ ALTER TABLE `inventario`
 --
 ALTER TABLE `Nomina`
  ADD PRIMARY KEY (`id`,`fecha`);
-
---
--- Indices de la tabla `pasivo`
---
-ALTER TABLE `pasivo`
- ADD KEY `Cedula` (`Cedula`);
 
 --
 -- Indices de la tabla `pension`
@@ -931,15 +876,15 @@ ALTER TABLE `uvt`
 --
 
 --
--- AUTO_INCREMENT de la tabla `activo1`
+-- AUTO_INCREMENT de la tabla `cuentas`
 --
-ALTER TABLE `activo1`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+ALTER TABLE `cuentas`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT de la tabla `documentado`
 --
 ALTER TABLE `documentado`
-MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `cod_documento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `empresa`
 --
@@ -951,20 +896,25 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 ALTER TABLE `eps`
 MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT de la tabla `estado_situacion`
+--
+ALTER TABLE `estado_situacion`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `num_factura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `Nomina`
 --
 ALTER TABLE `Nomina`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pension`
 --
@@ -985,24 +935,6 @@ ADD CONSTRAINT `detallefactura_ibfk_1` FOREIGN KEY (`codigo`) REFERENCES `produc
 --
 ALTER TABLE `factura`
 ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `gasto`
---
-ALTER TABLE `gasto`
-ADD CONSTRAINT `gasto_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `usuarios` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ingresos`
---
-ALTER TABLE `ingresos`
-ADD CONSTRAINT `ingresos_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `usuarios` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `pasivo`
---
-ALTER TABLE `pasivo`
-ADD CONSTRAINT `pasivo_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `usuarios` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto_proveedor`

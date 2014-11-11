@@ -250,6 +250,7 @@ function contabilidad_action(){
 
 function contabilidad_consultar_action(){
 	consultar_cuentas();
+	echo json_encode(consultar_cuentas());
 }
 
 function contabilidad_nueva_action(){
@@ -259,11 +260,21 @@ function contabilidad_nueva_action(){
 }
 
 function consultar_codigo_action(){
-	consultar_codigo();
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+		$codigo = $_POST['codigo'];
+		$codigo_mos = consultar_codigo($codigo);
+		echo $codigo_mos['Descripcion'];
+	}
 }
 
 function crear_contabilidad_action(){
-	crear_contabilida();
+	if($_SERVER['REQUEST_METHOD']=="POST")
+	{
+	$transaciones = json_decode($_POST['jdatos'], true);
+	crear_contabilida($transaciones);
+	echo "1";
+	}
 }
 function codigos_action(){
 	$codigos = codigos();
@@ -419,10 +430,24 @@ function crear_ajuste_contable_action(){
 		$id=$_POST['id'];
 		$cuentas = json_decode($_POST['transaciones']);
 		
-		foreach ($cuentas as $cuenta) {
-			crear_ajuste_contable($id,$cuenta[0],$cuenta[1],$cuenta[2]);
-		}
+		crear_ajuste_contable($id,$cuentas);
+		
 		echo 1;
 	}
+}
+
+function estado_situacion_financiera_action(){
+	$empresa = Empresa();
+	$id=1;
+	$estado1 = consultar_estado_situacion($id);
+	$estado2 = consultar_estado_situacion($id-1);
+	if(isset($estado2)){
+		$estado2 = $estado1;
+	}
+	$detalles_cierre1 = consultar_cierres_contables($estado1['id_cierre']);
+	$detalles_cierre2 = consultar_cierres_contables($estado2['id_cierre']);
+	$cierre1 = consultar_cierre_contable($estado1['id_cierre']);
+	$cierre2 = consultar_cierre_contable($estado2['id_cierre']);
+	require "plantillas/estado_situacion_financiero.php";
 }
 ?>

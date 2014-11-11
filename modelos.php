@@ -241,7 +241,7 @@ function consultar_producto_fact(){
 
 function actualizar_prodcto($codigo,$iva,$vlr_venta,$conexion){
 	$produc = "UPDATE productos SET iva = '$iva' ValorVenta='$vlr_venta' where Codigo = '".$codigo."')";
-	mysqli_query($conexion,$produc);
+mysqli_query($conexion,$produc);
 }
 
 //Inventario
@@ -267,13 +267,13 @@ function crear_inventario(){
 			if(mysqli_num_rows($result) == '0'){
 				$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$producto[3]."','".$producto[4]."','".$subtotal."','C')";
 			}else{
-			while ($row = mysqli_fetch_assoc($result)) {
-				$cantidad = $row['cantidad']+$producto[3];
-				$total = $row['total']+$subtotal;
-				$vlr_unidad=$total/$cantidad;
-				$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$cantidad."','".$vlr_unidad."','".$total."','C')";
-				$i=1;
-			}
+				while ($row = mysqli_fetch_assoc($result)) {
+					$cantidad = $row['cantidad']+$producto[3];
+					$total = $row['total']+$subtotal;
+					$vlr_unidad=$total/$cantidad;
+					$sql = "INSERT INTO inventario VALUES (null,'".$producto[2]."','Compra','".$producto[1]."','".$producto[3]."','".$producto[4]."','".$cantidad."','".$vlr_unidad."','".$total."','C')";
+					$i=1;
+				}
 			}
 			mysqli_query($conexion,$sql);
 
@@ -285,14 +285,14 @@ function crear_inventario(){
 			$iva = (($producto[5]*$producto[4])/100)*$producto[3];
 			$total = $subtotal+$iva;
 
-			crear_activo($documento,$_SESSION['usuario'],14,$producto[1],'D','Inventario'.$producto[2],$subtotal,$conexion);
+			crear_cuenta($documento,$_SESSION['usuario'],14,$producto[1],'D','Inventario'.$producto[2],$subtotal,$conexion);
 
-			crear_pasivo($documento,$_SESSION['usuario'],2804,$producto[1],'D','IVA'.$producto[2],$iva,$conexion);
+			crear_cuenta($documento,$_SESSION['usuario'],2804,$producto[1],'D','IVA'.$producto[2],$iva,$conexion);
 
 			if($forma_pago=="contado"){
-				crear_activo($documento,$_SESSION['usuario'],1105,$producto[1],'C','Caja Pago'.$producto[2],$total,$conexion);
+				crear_cuenta($documento,$_SESSION['usuario'],1105,$producto[1],'C','Caja Pago'.$producto[2],$total,$conexion);
 			}else{
-				crear_pasivo($documento,$_SESSION['usuario'],2205,$producto[1],'C','Pedido por Pagar'.$producto[2],$total,$conexion);
+				crear_cuenta($documento,$_SESSION['usuario'],2205,$producto[1],'C','Pedido por Pagar'.$producto[2],$total,$conexion);
 			}
 		}
 		echo mysqli_error($conexion);
@@ -308,51 +308,21 @@ function cuentas_contables(){
 	$documentos = documentos();
 	$cuentas = array();
 	foreach ($documentos as $documento) {
-		$activos = activos_documento($documento['cod_documento']);
+		$activos = cuentas_documento($documento['cod_documento']);
 		foreach ($activos as $valor) {
 			array_push($cuentas,$valor);
 		}
-		$pasivos = pasivos_documento($documento['cod_documento']);
-		foreach ($pasivos as $valor) {
-			array_push($cuentas,$valor);
-		}
-		$ingresos = ingresos_documento($documento['cod_documento']);
-		foreach ($ingresos as $valor) {
-			array_push($cuentas,$valor);
-		}
-		$gastos = gastos_documento($documento['cod_documento']);
-		foreach ($gastos as $valor) {
-			array_push($cuentas,$valor);
-		}
-		$costos = costos_documento($documento['cod_documento']);
-		foreach ($costos as $valor) {
-			array_push($cuentas,$valor);
-		}
+		
 	}
 	return $cuentas;
 }
 
-function consultar_cuentas(){
+function consultar_cuentas1(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$cuentas = array();
-		$activos = consultar_activos();
-		$pasivos = consultar_pasivos();
-		$ingresos = consultar_ingresos();
-		$gastos = consultar_gastos();
-		$costos = consultar_costos();
-		foreach ($costos as $valor) {
-			array_push($cuentas, $valor);
-		}
-		foreach ($gastos as $valor) {
-			array_push($cuentas, $valor);
-		}
-		foreach ($ingresos as $valor) {
-			array_push($cuentas, $valor);
-		}
-		foreach ($activos as $valor) {
-			array_push($cuentas, $valor);
-		}
-		foreach ($pasivos as $valor) {
+		$cuentas_bd = consultar_cuentas();
+		
+		foreach ($cuentas_bd as $valor) {
 			array_push($cuentas, $valor);
 		}
 		$jdatos = json_encode($cuentas);
@@ -386,14 +356,14 @@ function documentos(){
 	return $documentos;
 }
 
-//CRUD Activo
-function crear_activo($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
-	mysqli_query($conexion,"INSERT INTO activo1 VALUES (null,'".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
+//CRUD cuentas
+function crear_cuenta($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
+	mysqli_query($conexion,"INSERT INTO cuentas VALUES (null,'".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
 }
 
-function activos_documento($documento){
+function cuentas_documento($documento){
 	$conexion = conectar_base_datos();
-	$result = mysqli_query($conexion,"SELECT * FROM activo1 where  Documento = '$documento'");
+	$result = mysqli_query($conexion,"SELECT * FROM cuentas where  Documento = '$documento'");
 	$activos=array();
 	while ($row = mysqli_fetch_assoc($result)){
 		array_push($activos, $row);
@@ -402,7 +372,7 @@ function activos_documento($documento){
 	return $activos;
 }
 
-function consultar_activos(){
+function consultar_cuentas(){
 	if($_SERVER['REQUEST_METHOD']=='POST'){
 		$conexion = conectar_base_datos();
 		$codigo = $_POST['codigo'];
@@ -414,19 +384,23 @@ function consultar_activos(){
 		$resultado;
 
 		if($codigo != null && $documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
 		}elseif($codigo != null && $documento != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Documento = '$documento' and Codigo = '$codigo'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Documento = '$documento' and Codigo = '$codigo'");
 		}elseif($codigo != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Codigo = '$codigo' and Fecha = '$fecha'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Codigo = '$codigo' and Fecha = '$fecha'");
 		}elseif($documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Documento = '$documento' and Fecha = '$fecha'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Documento = '$documento' and Fecha = '$fecha'");
 		}elseif($codigo == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Documento = '$documento'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Documento = '$documento'");
 		}elseif($documento == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Codigo = '$codigo'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Codigo = '$codigo'");
 		}elseif($documento == null && $codigo == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM activo1 WHERE Fecha = '$fecha'");
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas WHERE Fecha = '$fecha'");
+		}else
+		echo $documento;
+		if($codigo == '' && $documento == '' && $fecha == ''){
+			$resultado = mysqli_query($conexion,"SELECT * FROM cuentas");	
 		}
 
 		
@@ -435,211 +409,6 @@ function consultar_activos(){
 		}
 		cerrar_conexion_db($conexion);
 		return $activos;
-	}
-}
-
-//CRUD Pasivo
-function crear_pasivo($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
-	mysqli_query($conexion,"INSERT INTO pasivo VALUES ('".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
-	echo mysqli_error($conexion);
-}
-
-function pasivos_documento($documento){
-	$conexion = conectar_base_datos();
-	$result = mysqli_query($conexion,"SELECT * FROM pasivo where  Documento = '$documento'");
-	$pasivos=array();
-	while ($row = mysqli_fetch_assoc($result)){
-		array_push($pasivos, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $pasivos;
-}
-
-function consultar_pasivos(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		$codigo = $_POST['codigo'];
-		$fecha = $_POST['fecha'];
-		$documento = $_POST['documento'];
-
-		$pasivos=array();
-		
-		$resultado;
-		
-		if($codigo != null && $documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
-		}elseif($codigo != null && $documento != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Documento = '$documento' and Codigo = '$codigo'");
-		}elseif($codigo != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Codigo = '$codigo' and Fecha = '$fecha'");
-		}elseif($documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Documento = '$documento' and Fecha = '$fecha'");
-		}elseif($codigo == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Documento = '$documento'");
-		}elseif($documento == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Codigo = '$codigo'");
-		}elseif($documento == null && $codigo == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM pasivo WHERE Fecha = '$fecha'");
-		}
-
-		
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			array_push($pasivos,$row);
-		}
-		cerrar_conexion_db($conexion);
-		return $pasivos;
-	}
-}
-
-//CRUD Ingreso
-function crear_ingreso($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
-	mysqli_query($conexion,"INSERT INTO ingresos VALUES ('".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
-}
-function ingresos_documento($documento){
-	$conexion = conectar_base_datos();
-	$result = mysqli_query($conexion,"SELECT * FROM ingresos where  Documento = '$documento'");
-	$ingresos=array();
-	while ($row = mysqli_fetch_assoc($result)){
-		array_push($ingresos, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $ingresos;
-}
-
-function consultar_ingresos(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		$codigo = $_POST['codigo'];
-		$fecha = $_POST['fecha'];
-		$documento = $_POST['documento'];
-
-		$ingresos=array();
-		
-		$resultado;
-		
-		if($codigo != null && $documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
-		}elseif($codigo != null && $documento != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Documento = '$documento' and Codigo = '$codigo'");
-		}elseif($codigo != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Codigo = '$codigo' and Fecha = '$fecha'");
-		}elseif($documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Documento = '$documento' and Fecha = '$fecha'");
-		}elseif($codigo == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Documento = '$documento'");
-		}elseif($documento == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Codigo = '$codigo'");
-		}elseif($documento == null && $codigo == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM ingresos WHERE Fecha = '$fecha'");
-		}
-
-		
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			array_push($ingresos,$row);
-		}
-		cerrar_conexion_db($conexion);
-		return $ingresos;
-	}
-}
-
-//CRUD Gasto
-function crear_gasto($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
-	mysqli_query($conexion,"INSERT INTO gasto VALUES ('".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
-}
-function gastos_documento($documento){
-	$conexion = conectar_base_datos();
-	$result = mysqli_query($conexion,"SELECT * FROM gasto where  Documento = '$documento'");
-	$gastos=array();
-	while ($row = mysqli_fetch_assoc($result)){
-		array_push($gastos, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $gastos;
-}
-
-function consultar_gastos(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		$codigo = $_POST['codigo'];
-		$fecha = $_POST['fecha'];
-		$documento = $_POST['documento'];
-
-		$gastos=array();
-		
-		$resultado;
-		
-		if($codigo != null && $documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
-		}elseif($codigo != null && $documento != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Documento = '$documento' and Codigo = '$codigo'");
-		}elseif($codigo != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Codigo = '$codigo' and Fecha = '$fecha'");
-		}elseif($documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Documento = '$documento' and Fecha = '$fecha'");
-		}elseif($codigo == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Documento = '$documento'");
-		}elseif($documento == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Codigo = '$codigo'");
-		}elseif($documento == null && $codigo == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM gasto WHERE Fecha = '$fecha'");
-		}
-		
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			array_push($gastos,$row);
-		}
-		cerrar_conexion_db($conexion);
-		return $gastos;
-	}
-}
-
-//CRUD Costo
-function crear_costo($documento,$tramitador,$codigo,$fecha,$naturaleza,$descripcion,$valor,$conexion){
-	mysqli_query($conexion,"INSERT INTO costos VALUES ('".$documento."','".$tramitador."','$codigo','".$fecha."','$naturaleza','$descripcion','".$valor."')");
-}
-function costos_documento($documento){
-	$conexion = conectar_base_datos();
-	$result = mysqli_query($conexion,"SELECT * FROM costos where  Documento = '$documento'");
-	$costos=array();
-	while ($row = mysqli_fetch_assoc($result)){
-		array_push($costos, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $costos;
-}
-
-function consultar_costos(){
-	if($_SERVER['REQUEST_METHOD']=='POST'){
-		$conexion = conectar_base_datos();
-		$codigo = $_POST['codigo'];
-		$fecha = $_POST['fecha'];
-		$documento = $_POST['documento'];
-
-		$costos=array();
-		
-		$resultado;
-		
-		if($codigo != null && $documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Documento = '$documento' and Codigo = '$codigo' and Fecha = '$fecha'");	
-		}elseif($codigo != null && $documento != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Documento = '$documento' and Codigo = '$codigo'");
-		}elseif($codigo != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Codigo = '$codigo' and Fecha = '$fecha'");
-		}elseif($documento != null && $fecha != null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Documento = '$documento' and Fecha = '$fecha'");
-		}elseif($codigo == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Documento = '$documento'");
-		}elseif($documento == null && $fecha == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Codigo = '$codigo'");
-		}elseif($documento == null && $codigo == null){
-			$resultado = mysqli_query($conexion,"SELECT * FROM costos WHERE Fecha = '$fecha'");
-		}
-
-		
-		while ($row = mysqli_fetch_assoc($resultado)) {
-			array_push($costos,$row);
-		}
-		cerrar_conexion_db($conexion);
-		return $costos;
 	}
 }
 
@@ -655,19 +424,18 @@ function codigos(){
 	return $codigos;
 }
 
-function consultar_codigo(){
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		$codigo = $_POST['codigo'];
-		$conexion = conectar_base_datos();
-		$result = mysqli_query($conexion, "SELECT * FROM codigotransacion where Codigo = '$codigo'");
-		$codigo = array();
-		while ($row = mysqli_fetch_assoc($result)) {
-			$codigo =  $row;
-		}
-		cerrar_conexion_db($conexion);
-		echo $codigo['Descripcion'];
+function consultar_codigo($id){
+	
+	$conexion = conectar_base_datos();
+	$result = mysqli_query($conexion, "SELECT * FROM codigotransacion where Codigo = '$id'");
+	$codigo = array();
+	while ($row = mysqli_fetch_assoc($result)) {
+		$codigo =  $row;
+
 	}
+	
+	cerrar_conexion_db($conexion);
+	return $codigo;
 }
 
 function nuevo_codigo(){
@@ -678,65 +446,41 @@ function nuevo_codigo(){
 	cerrar_conexion_db($cn);
 }
 
-function crear_contabilida(){
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		$conexion = conectar_base_datos();
-		$transaciones = json_decode($_POST['jdatos'], true);
+function crear_contabilida($transaciones){
+	
+	$conexion = conectar_base_datos();
+	$codigos = codigos();
 
-		$codigos = codigos();
+	$totalCredito = 0;
+	$totalDebito = 0;
 
-		$totalCredito = 0;
-		$totalDebito = 0;
+	foreach ($transaciones as $transacion) {
+		foreach ($codigos as $codigo) {
+			if($codigo['Codigo'] == $transacion[1]){
+				
+				if($transacion[3]=="C"){
+					$totalCredito+=$transacion[5];
+				}else{
+					$totalDebito+=$transacion[5];
+				}	
+			}	
+		}
+	}
+	if(($totalDebito != $totalCredito) || ($totalCredito == 0)){
+		echo 0;
+	}else{
+		crear_documento("Transacion",$conexion);
+		$documento = consultar_ultimo_documento($conexion);
 
 		foreach ($transaciones as $transacion) {
 			foreach ($codigos as $codigo) {
-				if($codigo['Codigo'] == $transacion[1]){
-					if($transacion[3]=="C"){
-						$totalCredito+=$transacion[5];
-					}else{
-						$totalDebito+=$transacion[5];
-					}	
+				if($codigo['Codigo']==$transacion[1]){
+					crear_cuenta($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
 				}	
 			}
 		}
-
-		if(($totalDebito != $totalCredito) || ($totalCredito == 0)){
-			echo 0;
-		}else{
-			crear_documento("Transacion",$conexion);
-			$documento = consultar_ultimo_documento($conexion);
-
-			foreach ($transaciones as $transacion) {
-				foreach ($codigos as $codigo) {
-					if($codigo['Codigo']==$transacion[1]){
-						switch ($codigo['Tipo']) {
-							case 'activo':
-							crear_activo($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-							case 'pasivo':
-							crear_pasivo($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-							case 'patrimonio':
-							crear_activo($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-							case 'ingreso':
-							crear_ingreso($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-							case 'gasto':
-							crear_gasto($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-							case 'costo':
-							crear_costo($documento,$transacion[0],$transacion[1],$transacion[2],$transacion[3],$transacion[4],$transacion[5],$conexion);
-							break;
-						}
-					}	
-				}
-			}
-			echo 1;
-		}
-		cerrar_conexion_db($conexion);
 	}
+	cerrar_conexion_db($conexion);	
 }
 
 //CRUD Facturas
@@ -810,13 +554,13 @@ function crear_factura(){
 		
 		crear_detalle_factura($numero, $producto[0], $producto[1], $producto[3] ,$producto[4],$conexion);
 
-		crear_activo($documento,$cajero,'1105',$fecha,'D','CAJA '.$producto[0],($producto[4]+$iva),$conexion);
-		crear_pasivo($documento,$cajero,'2804',$fecha,'C','IVA '.$producto[0],$iva,$conexion);
-		crear_ingreso($documento,$cajero,'4135',$fecha,'C','VENTA '.$producto[0],$producto[4],$conexion);
+		crear_cuenta($documento,$cajero,'1105',$fecha,'D','CAJA '.$producto[0],($producto[4]+$iva),$conexion);
+		crear_cuenta($documento,$cajero,'2804',$fecha,'C','IVA '.$producto[0],$iva,$conexion);
+		crear_cuenta($documento,$cajero,'4135',$fecha,'C','VENTA '.$producto[0],$producto[4],$conexion);
 		
 		$inventario = consultar_inventario1($documento,$cajero,$fecha,$producto, $conexion);
-		crear_activo($documento,$cajero,'14',$fecha,'C','Inventario  '.$producto[0],$inventario,$conexion);
-		crear_costo($documento,$cajero,'613554',$fecha,'D','Costo  '.$producto[0],$inventario,$conexion);
+		crear_cuenta($documento,$cajero,'14',$fecha,'C','Inventario  '.$producto[0],$inventario,$conexion);
+		crear_cuenta($documento,$cajero,'613554',$fecha,'D','Costo  '.$producto[0],$inventario,$conexion);
 	}
 
 	cerrar_conexion_db($conexion);
@@ -950,76 +694,76 @@ function generar_factura($numero,$fecha,$hora,$cedula,$cajero,$Efectivo,$iva,$pr
 
 	if($factura_actual['Credito']){
 		$factura = $factura."
-	</tbody>
-	</table>
-	</div>
-	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<hr size='10' ></hr>
-	</div>
-	<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<table>
-	<tr>
-	<td>Subtotal</td>
-	<td> $ ".$subtotal."</td>
-	</tr>
-	<tr>
-	<td>IVA</td>
-	<td> $ ".$iva."</td>
-	</tr>
-	<tr>
-	<td>Total </td>
-	<td> $ ".$total."</td>
-	</tr>
-	</table>
-	</div>
+		</tbody>
+		</table>
+		</div>
+		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<hr size='10' ></hr>
+		</div>
+		<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<table>
+		<tr>
+		<td>Subtotal</td>
+		<td> $ ".$subtotal."</td>
+		</tr>
+		<tr>
+		<td>IVA</td>
+		<td> $ ".$iva."</td>
+		</tr>
+		<tr>
+		<td>Total </td>
+		<td> $ ".$total."</td>
+		</tr>
+		</table>
+		</div>
 
-	<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<p>Resolucion</p>
-	</div>
-	</font>
-	</div>
-	</div>";
+		<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<p>Resolucion</p>
+		</div>
+		</font>
+		</div>
+		</div>";
 
 	}else{
-	
-	$factura = $factura."
-	</tbody>
-	</table>
-	</div>
-	<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<hr size='10' ></hr>
-	</div>
-	<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<table>
-	<tr>
-	<td>Subtotal</td>
-	<td> $ ".$subtotal."</td>
-	</tr>
-	<tr>
-	<td>IVA</td>
-	<td> $ ".$iva."</td>
-	</tr>
-	<tr>
-	<td>Total </td>
-	<td> $ ".$total."</td>
-	</tr>
-	<tr>
-	<td>Efectivo </td>
-	<td> $ ".$Efectivo."</td>
-	</tr>
-	<tr>
-	<td>Cambio</td>
-	<td> $ ".$Cambio."</td>
-	</tr>
-	</table>
-	</div>
 
-	<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-	<p>Resolucion</p>
-	</div>
-	</font>
-	</div>
-	</div>";
+		$factura = $factura."
+		</tbody>
+		</table>
+		</div>
+		<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<hr size='10' ></hr>
+		</div>
+		<div align='right' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<table>
+		<tr>
+		<td>Subtotal</td>
+		<td> $ ".$subtotal."</td>
+		</tr>
+		<tr>
+		<td>IVA</td>
+		<td> $ ".$iva."</td>
+		</tr>
+		<tr>
+		<td>Total </td>
+		<td> $ ".$total."</td>
+		</tr>
+		<tr>
+		<td>Efectivo </td>
+		<td> $ ".$Efectivo."</td>
+		</tr>
+		<tr>
+		<td>Cambio</td>
+		<td> $ ".$Cambio."</td>
+		</tr>
+		</table>
+		</div>
+
+		<div align='center' class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+		<p>Resolucion</p>
+		</div>
+		</font>
+		</div>
+		</div>";
 	}
 	echo $factura;
 }
@@ -1203,47 +947,47 @@ function generar_Contabilidad_nomina($nomina,$fecha,$basico,$vlr_extras,$bonific
 	$documento = consultar_ultimo_documento($conexion);
 
 	//Devengado
-	crear_gasto($documento,$_SESSION['usuario'],'510506',$fecha,'D','Sueldos',$basico,$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510515',$fecha,'D','Horas extra',$vlr_extras,$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510548',$fecha,'D','Bonificaciones',$bonificacion,$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510527',$fecha,'D','Auxilio de trasporte',$trasporte,$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510545',$fecha,'D','Auxilio de alimentacion',$alimentacion,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510506',$fecha,'D','Sueldos',$basico,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510515',$fecha,'D','Horas extra',$vlr_extras,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510548',$fecha,'D','Bonificaciones',$bonificacion,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510527',$fecha,'D','Auxilio de trasporte',$trasporte,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510545',$fecha,'D','Auxilio de alimentacion',$alimentacion,$conexion);
 	
 	//Deduciones
-	crear_pasivo($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$salud,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$pension,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237040',$fecha,'C','Cooperativas',$fondo_emple,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237025',$fecha,'C','Embargos Judiciales',$embargo,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237030',$fecha,'C','Libranzas',$libranzas,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'236505',$fecha,'C','Retencion Salarios y pagos laborales',$uvt,$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'2550',$fecha,'C','Obligaciones Laborales',$total,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$salud,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$pension,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237040',$fecha,'C','Cooperativas',$fondo_emple,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237025',$fecha,'C','Embargos Judiciales',$embargo,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237030',$fecha,'C','Libranzas',$libranzas,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'236505',$fecha,'C','Retencion Salarios y pagos laborales',$uvt,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'2550',$fecha,'C','Obligaciones Laborales',$total,$conexion);
 	
 	//Apropiaciones
-	crear_pasivo($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$apropiacion[0],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510569',$fecha,'D','Aportes a Salud',$apropiacion[0],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237005',$fecha,'C','Aportes a Salud',$apropiacion[0],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510569',$fecha,'D','Aportes a Salud',$apropiacion[0],$conexion);
 
-	crear_pasivo($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510559',$fecha,'D','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'238030',$fecha,'C','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510559',$fecha,'D','Fondos de cesantías y/o pensiones',$apropiacion[1],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'237006',$fecha,'C','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510568',$fecha,'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237006',$fecha,'C','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510568',$fecha,'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion[2],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'252021',$fecha,'C','Prima',$apropiacion[3],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510536',$fecha,'D','Prima de servicios',$apropiacion[3],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'252021',$fecha,'C','Prima',$apropiacion[3],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510536',$fecha,'D','Prima de servicios',$apropiacion[3],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'252522',$fecha,'C','Vacaciones',$apropiacion[4],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510539',$fecha,'D','Vacaciones',$apropiacion[4],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'252522',$fecha,'C','Vacaciones',$apropiacion[4],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510539',$fecha,'D','Vacaciones',$apropiacion[4],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'251023',$fecha,'C','Cesantías',$apropiacion[5],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510530',$fecha,'D','Cesantías',$apropiacion[5],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'251023',$fecha,'C','Cesantías',$apropiacion[5],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510530',$fecha,'D','Cesantías',$apropiacion[5],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'251520',$fecha,'C','Intereces Sobre Cesantías',$apropiacion[6],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510533',$fecha,'D','Intereces Sobre cesantías',$apropiacion[6],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'251520',$fecha,'C','Intereces Sobre Cesantías',$apropiacion[6],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510533',$fecha,'D','Intereces Sobre cesantías',$apropiacion[6],$conexion);
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'237010',$fecha,'C','Aportes al ICBF, SENA y cajas de compensación',($apropiacion[7]+$apropiacion[8]+$apropiacion[9]),$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510578',$fecha,'D','SENA',$apropiacion[7],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510575',$fecha,'D','Aportes a ICBF',$apropiacion[8],$conexion);
-	crear_gasto($documento,$_SESSION['usuario'],'510572',$fecha,'D','Aportes cajas de compensación familia',$apropiacion[9],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237010',$fecha,'C','Aportes al ICBF, SENA y cajas de compensación',($apropiacion[7]+$apropiacion[8]+$apropiacion[9]),$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510578',$fecha,'D','SENA',$apropiacion[7],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510575',$fecha,'D','Aportes a ICBF',$apropiacion[8],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'510572',$fecha,'D','Aportes cajas de compensación familia',$apropiacion[9],$conexion);
 	
 	echo mysqli_error($conexion);
 	cerrar_conexion_db($conexion);
@@ -1258,19 +1002,19 @@ function liquidar_nomina($id,$forma_pago){
 	$documento = consultar_ultimo_documento($conexion);
 	$parafiscales = $apropiacion['sena']+$apropiacion['icbf']+$apropiacion['ccf'];
 	
-	crear_pasivo($documento,$_SESSION['usuario'],'2550',date("y-m-d"),'D','Sueldos',$nomina['basico'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237005',date("y-m-d"),'D','Aportes a Salud',($nomina['salud']+$apropiacion['salud']),$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'238030',date("y-m-d"),'D','Fondos de cesantías y/o pensiones',($nomina['pension']+$apropiacion['pension']),$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237040',date("y-m-d"),'D','Cooperativas',$nomina['fondo_emple'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237025',date("y-m-d"),'D','Embargos Judiciales',$nomina['envargos'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237030',date("y-m-d"),'D','Libranzas',$nomina['libranzas'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'236505',date("y-m-d"),'D','Retencion Salarios y pagos laborales',$nomina['retencion'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237006',date("y-m-d"),'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion['arl'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'252522',date("y-m-d"),'D','Vacaciones',$apropiacion['vacaciones'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'252521',date("y-m-d"),'D','Prima',$apropiacion['prima'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'251023',date("y-m-d"),'D','Cesantias',$apropiacion['cesantias'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'251520',date("y-m-d"),'D','Intereces Sobre Cesantias',$apropiacion['int_cesantias'],$conexion);
-	crear_pasivo($documento,$_SESSION['usuario'],'237006',date("y-m-d"),'D','Aportes al ICBF, SENA y cajas de compensación, ARP',$parafiscales,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'2550',date("y-m-d"),'D','Sueldos',$nomina['basico'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237005',date("y-m-d"),'D','Aportes a Salud',($nomina['salud']+$apropiacion['salud']),$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'238030',date("y-m-d"),'D','Fondos de cesantías y/o pensiones',($nomina['pension']+$apropiacion['pension']),$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237040',date("y-m-d"),'D','Cooperativas',$nomina['fondo_emple'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237025',date("y-m-d"),'D','Embargos Judiciales',$nomina['envargos'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237030',date("y-m-d"),'D','Libranzas',$nomina['libranzas'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'236505',date("y-m-d"),'D','Retencion Salarios y pagos laborales',$nomina['retencion'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237006',date("y-m-d"),'D','Aportes a administradoras de riesgos profesionales, ARP',$apropiacion['arl'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'252522',date("y-m-d"),'D','Vacaciones',$apropiacion['vacaciones'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'252521',date("y-m-d"),'D','Prima',$apropiacion['prima'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'251023',date("y-m-d"),'D','Cesantias',$apropiacion['cesantias'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'251520',date("y-m-d"),'D','Intereces Sobre Cesantias',$apropiacion['int_cesantias'],$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],'237006',date("y-m-d"),'D','Aportes al ICBF, SENA y cajas de compensación, ARP',$parafiscales,$conexion);
 	
 	$codigo_pago = "0";
 	if($forma_pago == "contado"){
@@ -1281,7 +1025,7 @@ function liquidar_nomina($id,$forma_pago){
 	$valor = $nomina['basico']+($nomina['salud']+$apropiacion['salud'])+($nomina['pension']+$apropiacion['pension'])+$nomina['fondo_emple']+$nomina['envargos']+$nomina['libranzas']+$nomina['retencion']+$apropiacion['arl'];
 	$valor = $valor + $apropiacion['vacaciones'] + $apropiacion['prima'] + $apropiacion['cesantias'] + $apropiacion['int_cesantias'] + $parafiscales;
 	
-	crear_activo($documento,$_SESSION['usuario'],$codigo_pago[0],date("y-m-d"),'C',$codigo_pago[1],$valor,$conexion);
+	crear_cuenta($documento,$_SESSION['usuario'],$codigo_pago[0],date("y-m-d"),'C',$codigo_pago[1],$valor,$conexion);
 	
 	$result = mysqli_query($conexion,"UPDATE Nomina SET liquidada=true WHERE id='$id'");
 	echo mysqli_error($conexion);
@@ -1333,23 +1077,8 @@ function generara_cierre(){
 	$total_c=0;
 	foreach ($codigos_transacion as $codigo) {
 		$cuenta = array();
-		switch ($codigo['Tipo']) {
-			case 'activo':
-			$cuenta = consultar_activo_codigo($codigo['Codigo']);
-			break;
-			case 'pasivo':
-			$cuenta = consultar_pasivo_codigo($codigo['Codigo']);
-			break;
-			case 'ingreso':
-			$cuenta = consultar_ingreso_codigo($codigo['Codigo']);
-			break;
-			case 'gasto':
-			$cuenta = consultar_gasto_codigo($codigo['Codigo']);
-			break;
-			case 'costo':
-			$cuenta = consultar_costo_codigo($codigo['Codigo']);
-			break;
-		}
+		
+		$cuenta = consultar_cuenta_codigo($codigo['Codigo']);
 		if(isset($cuenta)){
 			$total_debito = 0;
 			$total_credito = 0;
@@ -1365,10 +1094,10 @@ function generara_cierre(){
 			$total_c+=$total_credito;
 			$total_d+=$total_debito;
 		}
-	$estado = $total_d-$total_c;
-	$conexion = conectar_base_datos();
-	mysqli_query($conexion,"UPDATE cierre set debito='$total_d',credito='$total_c',estado='$estado'");
-	cerrar_conexion_db($conexion);	
+		$estado = $total_d-$total_c;
+		$conexion = conectar_base_datos();
+		mysqli_query($conexion,"UPDATE cierre set debito='$total_d',credito='$total_c',estado='$estado'");
+		cerrar_conexion_db($conexion);	
 	}
 }
 
@@ -1383,59 +1112,15 @@ function consultar_id_cierre_ultimo(){
 	cerrar_conexion_db($conexion);
 }
 
-function consultar_activo_codigo($codigo){
+function consultar_cuenta_codigo($codigo){
 	$conexion = conectar_base_datos();
 	$activo = array();
-	$sql = mysqli_query($conexion,"SELECT * from activo1 where Codigo='$codigo' ");
+	$sql = mysqli_query($conexion,"SELECT * from cuentas where Codigo='$codigo' ");
 	while ($row = mysqli_fetch_assoc($sql)) {
 		array_push($activo, $row);
 	}
 	cerrar_conexion_db($conexion);
 	return $activo; 
-}
-
-function consultar_pasivo_codigo($codigo){
-	$conexion = conectar_base_datos();
-	$pasivo = array();
-	$sql = mysqli_query($conexion,"SELECT * from pasivo where Codigo='$codigo' ");
-	while ($row = mysqli_fetch_assoc($sql)) {
-		array_push($pasivo, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $pasivo; 
-}
-
-function consultar_ingreso_codigo($codigo){
-	$conexion = conectar_base_datos();
-	$ingreso = array();
-	$sql = mysqli_query($conexion,"SELECT * from ingresos where Codigo='$codigo' ");
-	while ($row = mysqli_fetch_assoc($sql)) {
-		array_push($ingreso, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $ingreso; 
-}
-
-function consultar_gasto_codigo($codigo){
-	$conexion = conectar_base_datos();
-	$gasto = array();
-	$sql = mysqli_query($conexion,"SELECT * from gasto where Codigo='$codigo' ");
-	while ($row = mysqli_fetch_assoc($sql)) {
-		array_push($gasto, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $gasto; 
-}
-
-function consultar_costo_codigo($codigo){
-	$conexion = conectar_base_datos();
-	$costo = array();
-	$sql = mysqli_query($conexion,"SELECT * from costos where Codigo='$codigo' ");
-	while ($row = mysqli_fetch_assoc($sql)) {
-		array_push($costo, $row);
-	}
-	cerrar_conexion_db($conexion);
-	return $costo; 
 }
 
 function todos_cierres_contables(){
@@ -1468,33 +1153,47 @@ function consultar_cierres_contables($id){
 	return $cierres;
 }
 
-function crear_ajuste_contable($id,$codigo,$naturaleza,$valor){
+function crear_ajuste_contable($id,$cuentas){
 	$detalles_cierre = consultar_cierres_contables($id);
 	$credito_total=0;
 	$debito_total=0;
-	$conexion = conectar_base_datos();
-	foreach ($detalles_cierre as $detalle_cierre) {
-		if($detalle_cierre['cuenta'] == $codigo){
-			if($naturaleza=='D'){
-				$debito = $detalle_cierre['debito']+$valor;
-				$estado = $debito-$detalle_cierre['credito'];
-				mysqli_query($conexion,"UPDATE detalle_cierre set debito='$debito', estado='$estado' where id='$id' and cuenta='$codigo'");
-				$debito_total+=$debito;
-			}else{
-				$credito = $detalle_cierre['credito']+$valor;
-				$estado = $credito-$detalle_cierre['credito'];
-				mysqli_query($conexion,"UPDATE detalle_cierre set credito='$credito', estado='$estado' where id='$id' and cuenta='$codigo'");
-				$credito_total+=$credito;
+	$transacion = array();
+	foreach ($cuentas as $cuenta) {
+		$codigo = $cuenta[0];
+		$naturaleza = $cuenta[1];
+		$valor = $cuenta[2];
+		$fecha_actual = strftime("%Y-%m-%d");
+		$codigo_bd = consultar_codigo($codigo);
+		$conexion = conectar_base_datos();
+		foreach ($detalles_cierre as $detalle_cierre) {
+			if($detalle_cierre['cuenta'] == $codigo){
+				if($naturaleza=='D'){
+					$debito = $detalle_cierre['debito']+$valor;
+					$estado = $debito-$detalle_cierre['credito'];
+					mysqli_query($conexion,"UPDATE detalle_cierre set debito='$debito', estado='$estado' where id='$id' and cuenta='$codigo'");
+					$debito_total =$debito_total + $debito;
+					array_push($transacion,[$_SESSION['usuario'],$codigo,$fecha_actual,'D',$codigo_bd['Descripcion'],$valor]);
+				}else{
+					$credito = $detalle_cierre['credito']+$valor;
+					$estado = $credito-$detalle_cierre['credito'];
+					mysqli_query($conexion,"UPDATE detalle_cierre set credito='$credito', estado='$estado' where id='$id' and cuenta='$codigo'");
+					$credito_total= $credito_total + $credito;
+					array_push($transacion,[$_SESSION['usuario'],$codigo,$fecha_actual,'C',$codigo_bd['Descripcion'],$valor]);
+				}
+
 			}
 		}
 	}
 	cerrar_conexion_db($conexion);
 	actualizar_cierre_contables($id,$debito_total,$credito_total);
-	
+	crear_contabilida($transacion);
 }
 
 function actualizar_cierre_contables($id,$debito,$credito){
+	$cierre = consultar_cierre_contable($id);
 	$conexion = conectar_base_datos();
+	$debito = $debito + $cierre['debito'];
+	$credito = $credito +  $cierre['credito'];
 	$estado = $debito-$credito;
 	$sql = mysqli_query($conexion,"UPDATE cierre set debito='$debito',credito='$credito', estado='$estado' where id='$id'");
 	cerrar_conexion_db($conexion);
@@ -1504,6 +1203,28 @@ function consultar_ultimo_cierre_contable(){
 	$conexion = conectar_base_datos();
 	$cierre = array();
 	$sql = mysqli_query($conexion,"SELECT * from cierre order by id desc limit 1");
+	while ($row = mysqli_fetch_assoc($sql)) {
+		$cierre = $row;
+	}
+	cerrar_conexion_db($conexion);
+	return $cierre; 
+}
+
+function consultar_estado_situacion($id){
+	$conexion = conectar_base_datos();
+	$id2 = $id-1;
+	$cierre = array();
+	$sql = mysqli_query($conexion,"SELECT * from estado_situacion where id='$id' or id='$id2'");
+	while ($row = mysqli_fetch_assoc($sql)) {
+		$cierre = $row;
+	}
+	cerrar_conexion_db($conexion);
+	return $cierre; 
+}
+function consultar_cierre_contable($id){
+	$conexion = conectar_base_datos();
+	$cierre = array();
+	$sql = mysqli_query($conexion,"SELECT * from cierre where id='$id'");
 	while ($row = mysqli_fetch_assoc($sql)) {
 		$cierre = $row;
 	}

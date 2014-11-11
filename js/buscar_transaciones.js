@@ -16,11 +16,12 @@ function Buscar(){
 }
 
 function consultar(datos){
-	
+
 	$("#filas").children('tr').remove();
 	datos=$.parseJSON(datos);
 	var total_C=0;
 	var total_D=0;
+	
 	datos.forEach(
 		function(valor,key){
 			if(valor['Naturaleza']=='C'){
