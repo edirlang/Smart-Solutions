@@ -34,6 +34,21 @@ foreach ($productos as $key => $valor) { ?>
 		<center><h1>Inventario <?php echo $valor; ?></h1></center>
 	</div>
 	<div class='panel-body'>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<img class='img-rounded img-responsive' height="100" width="100" src='/Smart-Solutions/Imagenes/<?php echo $valor; ?>.png'/>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<form action="guardar_imagen" method="POST" enctype='multipart/form-data' role="form">
+				<div class="form-group">
+					<input class='hide' type="text" name="codigo" value="<?php echo $valor; ?>">
+					<label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">Cambiar Foto</label>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<input type="file" class="form-control input-sm" id="foto" name='foto' >
+					</div>
+					<button type="submit" class="btn btn-success input-sm col-xs-12 col-sm-4 col-md-4 col-lg-4">Cambiar</button>
+				</div>
+			</form>
+		</div>
 		<table class="table table-condensed table-bordered table-hover">
 			<thead>
 				<tr>
@@ -80,7 +95,7 @@ foreach ($productos as $key => $valor) { ?>
 				<?php } ?>
 			</tbody>
 		</table>
-
+		
 	</div>
 </div>
 <?php } ?>

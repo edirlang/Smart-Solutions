@@ -193,6 +193,11 @@ $uri = explode("?", $url);
 		case "/Smart-Solutions/index.php/estado%20de%20situacion%20financiera":
 		estado_situacion_financiera_action();
 		break;
+
+		case "/Smart-Solutions/index.php/guardar_imagen":
+		guardar_archivo_action();
+		break;
+		
 	}
 
 ?>

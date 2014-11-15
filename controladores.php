@@ -223,8 +223,6 @@ function prodcuto_nuevo_action(){
 		$iva = $_POST['iva'];
 		$valor_ven = $_POST['ValorVen'];
 		$proveedor = $_POST['proveedor'];
-
-		
 		echo crear_producto($proveedor,$codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven);
 	}
 }
@@ -272,9 +270,9 @@ function consultar_codigo_action(){
 function crear_contabilidad_action(){
 	if($_SERVER['REQUEST_METHOD']=="POST")
 	{
-	$transaciones = json_decode($_POST['jdatos'], true);
-	crear_contabilida($transaciones);
-	echo "1";
+		$transaciones = json_decode($_POST['jdatos'], true);
+		crear_contabilida($transaciones);
+		echo "1";
 	}
 }
 function codigos_action(){
@@ -450,5 +448,18 @@ function estado_situacion_financiera_action(){
 	$cierre1 = consultar_cierre_contable($estado1['id_cierre']);
 	$cierre2 = consultar_cierre_contable($estado2['id_cierre']);
 	require "plantillas/estado_situacion_financiero.php";
+}
+
+function guardar_archivo_action(){
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		if($_FILES['foto']['error']=='0'){
+			$nombre = $_POST['codigo'].".png";
+			$destino = "Imagenes/".$nombre;
+			$ubicacion_tep = $_FILES['foto']['tmp_name'];
+			move_uploaded_file($ubicacion_tep, $destino);
+			header("location: inventario");
+			//Luego se almacena en BD los datos
+		}
+	}
 }
 ?>

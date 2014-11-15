@@ -118,9 +118,6 @@
 
 						<label for="">Cantidad</label>
 						<input type="number" name="cant" id="cant" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
-
-						<label for="">Imagen</label>
-						<input type="file" class="form-control" name="foto" id="foto" >
 					</div>
 				</form>
 			</div>
