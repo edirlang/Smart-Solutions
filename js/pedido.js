@@ -112,6 +112,9 @@ function GuardarProducto(){
   $.ajax({
     type: 'POST',
     url: "crear_producto",
+    data : form,
+    processData : false, 
+    contentType : false,
     data: {
       Codigo: $("#cod_nuevo").val(),
       Nombre: $("#nombre").val(),
@@ -121,10 +124,9 @@ function GuardarProducto(){
       ValorVen: $("#vlr_ven").val(),
       Cantidad: $("#cant").val(),
       iva: $("#iva_nuevo").val(),
-      proveedor: $("#proveedor").val()
+      proveedor: $("#proveedor").val(),
+      foto:  $("#foto")
     },
-    dataType: "text",
-    contentType: "application/x-www-form-urlencoded",
     beforeSend: function () {
                         var texto = document.getElementById("cod_nuevo").value;
                         var fila = document.createElement("tr");

@@ -224,6 +224,7 @@ function prodcuto_nuevo_action(){
 		$valor_ven = $_POST['ValorVen'];
 		$proveedor = $_POST['proveedor'];
 
+		
 		echo crear_producto($proveedor,$codigo,$nombre,$descripcion,$especificaciones,$iva,$valor_ven);
 	}
 }
@@ -382,7 +383,7 @@ function cierre_contable(){
 	$mes = strftime("%m");
 	$año = strftime("%Y");
 	$dia_ultimo = getUltimoDiaMes($año,$mes);
-	$fecha_actual = strftime("%Y-%m-%d");
+	$fecha_actual = strftime("%Y").'-'.strftime("%m").'-'.(strftime("%d")-1);
 	$fecha_cierre = $año."-".$mes."-".$dia_ultimo;
 	if($fecha_actual == $fecha_cierre){
 		generara_cierre();

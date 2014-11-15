@@ -15,7 +15,6 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span> Reportes<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="estado de situacion financiera">Estado de situacion financiera</a></li>
-						<li><a href="#">Pasivos</a></li>
 					</ul>
 				</li>
 			</ul>

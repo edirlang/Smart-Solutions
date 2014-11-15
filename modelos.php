@@ -1175,7 +1175,7 @@ function crear_ajuste_contable($id,$cuentas){
 					array_push($transacion,[$_SESSION['usuario'],$codigo,$fecha_actual,'D',$codigo_bd['Descripcion'],$valor]);
 				}else{
 					$credito = $detalle_cierre['credito']+$valor;
-					$estado = $credito-$detalle_cierre['credito'];
+					$estado = $detalle_cierre['debito']-$credito;
 					mysqli_query($conexion,"UPDATE detalle_cierre set credito='$credito', estado='$estado' where id='$id' and cuenta='$codigo'");
 					$credito_total= $credito_total + $credito;
 					array_push($transacion,[$_SESSION['usuario'],$codigo,$fecha_actual,'C',$codigo_bd['Descripcion'],$valor]);

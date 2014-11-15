@@ -90,7 +90,7 @@
 			</div>
 
 			<div class="modal-body">
-				<form id="fomr_producto" role="form">
+				<form id="fomr_producto" role="form" entype="multipart/form-data">
 					<div class="form-group">
 						<label for="">Proveedor</label>
 						<input type="text" class="form-control" name="proveedor" id="proveedor" value="<?php echo $proveedor; ?>">
@@ -119,10 +119,6 @@
 						<label for="">Cantidad</label>
 						<input type="number" name="cant" id="cant" class="form-control" value="" min="{5"} max="" step="" required="required" title="">
 
-					</div>
-				</from>
-				<form id="fomr_producto" role="form">
-					<div class="form-group">
 						<label for="">Imagen</label>
 						<input type="file" class="form-control" name="foto" id="foto" >
 					</div>

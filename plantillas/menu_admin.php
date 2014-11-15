@@ -15,9 +15,7 @@
         <li><a href="Codigos"><span class="glyphicon glyphicon-list"></span> Codigos-PUC</a></li>
         <li class="divider"></li>
         <li role="presentation" class="dropdown-header"> Estados Financieros</li>
-        <li><a href="#"> Balance General</a></li>
-        <li><a href="#"> P y G</a></li>
-        <li><a href="#"> Estado de resultado</a></li>
+        <li><a href="estado de situacion financiera">Estado de situacion financiera</a></li>
       </ul>
     </li>
     <li><a href="modificar-empresa"><span class="glyphicon glyphicon-tower"></span> Editar-Empresa</a></li>
